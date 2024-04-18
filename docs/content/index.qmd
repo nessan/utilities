@@ -56,6 +56,13 @@ This command downloads and unpacks an archive of the current version of `utiliti
 You can then add a dependency on `utilities::utilities`, a `CMake` alias for `utilities`.
 `FetchContent` will automatically ensure the build system knows where to find the downloaded header files and any needed compiler flags.
 
+::: {.callout-note}
+# Fixed release
+That URL downloads the library's current version --- whatever is in the `main` branch when you do the download.
+That content may change from time to time.
+Use a URL like `https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip` to get a fixed library version.
+:::
+
 ## Documentation
 
 The project's source code repository is [here][repo]. \

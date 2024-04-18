@@ -1,0 +1,37 @@
+# Trump suit S = 0, H = 1, D = 2, C = 3, NT = 4
+1
+            
+# Tricks left to play
+13          
+
+# Tricks that N-S must win
+13
+            
+# Who is on lead N = 0, E = 1, S = 2, W = 3
+3
+
+# North's hand
+3C                	\
+3H 2H      			\              # Spurious spaces
+AD KD 2D      		\
+AS KS 7S 6S 5S 4S 3S
+
+# East's hand
+8C 7C 6C 5C 4C 	\   
+QH TH 8H 7H     \        
+8D 7D 6D      	\
+2S
+
+# South's hand
+AC QC JC 9C    			\   
+AH KH JH 9H 6H 5H       \ # Spurious comment
+5D 4D 3D
+
+# West's hand
+KC TC 2C          	\
+4H                 	\     
+QD JD TD 9D   		\
+QS JS TS 9S 8S
+
+# The opening lead (XX to have the computer hunt for an optimal lead)
+QS

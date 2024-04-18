@@ -1,0 +1,34 @@
+<!-- Shortcuts and links used throughout the documentation -->
+
+<!--Links to software tools, etc., that we reference -->
+[MIT License]:          https://opensource.org/license/mit
+[Pandoc]:               https://pandoc.org
+[Quarto]:               https://quarto.org
+[repo]:                 https://github.com/nessan/utilities
+[docs]:                 https://nessan.github.io/utilities
+[email]:                mailto:nzznfitz+gh@icloud.com
+
+<!-- Formatted links to pages for items in the standard library -->
+[`assert`]:             https://www.cplusplus.com/reference/cassert/assert/
+[concept]:              https://en.cppreference.com/w/cpp/language/constraints
+[ranges]:               https://en.cppreference.com/w/cpp/ranges
+[`std::format`]:        https://en.cppreference.com/w/cpp/utility/format/format
+[`std::formatter`]:     https://en.cppreference.com/w/cpp/utility/format/formatter
+[`std::logic_error`]:   https://en.cppreference.com/w/cpp/error/
+[`std::nullopt`]:       https://en.cppreference.com/w/cpp/utility/optional/nullopt
+[`std::optional`]:      https://en.cppreference.com/w/cpp/utility/optional
+[`std::print`]:         https://en.cppreference.com/w/cpp/io/print
+[`std::vector`]:        https://en.cppreference.com/w/cpp/container/vector
+[`what`]:               https://en.cppreference.com/w/cpp/error/exception/what
+
+<!-- Formatted links to all the library header file pages -->
+[`check.h`]:            /content/check.qmd
+[`format.h`]:           /content/format.qmd
+[`log.h`]:              /content/log.qmd
+[`macros.h`]:           /content/macros.qmd
+[`print.h`]:            /content/print.qmd
+[`stopwatch.h`]:        /content/stopwatch.qmd
+[`stream.h`]:           /content/stream.qmd
+[`string.h`]:           /content/string.qmd
+[`thousands.h`]:        /content/thousands.qmd
+[`type.h`]:             /content/type.qmd

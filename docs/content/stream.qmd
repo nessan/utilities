@@ -1,0 +1,53 @@
+{{< include /content/_common.qmd >}}
+---
+title: Stream Functions
+---
+
+## Introduction
+
+The `<utilities/stream.h>` header supplies some utility functions that work on streams.
+
+## Reading from a Stream
+
+```cpp
+std::string
+utilities::read_line(std::istream &s,
+                     std::string_view comment_begin = "#");   // <1>
+std::size_t
+utilities::read_line(std::istream &s, std::string &line,
+                     std::string_view comment_begin = "#");   // <2>
+```
+1. Reads a '`line`' from a stream `s` and returns that as a `std::string`.
+2. Overwrites the '`line`' argument with the contents from a stream `s`.
+Returns the number of characters placed into `line`.
+
+These functions differ from [`std::getline`] in a few ways:
+
+1. They ignore blank lines in the input stream.
+2. They allow for long lines by assuming that lines that end with a "\\" continue to the next.
+3. They strip out comment lines and trailing comments.
+
+Comment lines begin with "#" by default.
+
+## Related Functions
+
+```cpp
+std::istream & rewind(std::istream &is);            // <1>
+
+std::size_t
+line_count(std::istream &is,
+           std::string_view comment_begin = "#");  // <2>
+```
+1. This function rewinds an input stream to the start.
+2. This function returns the number of non-comment lines in the stream.
+
+If the comment start string is empty, `line_count` uses [`std::getline`] to read the lines.
+Otherwise, we use our `read_line(...)` function, so comment lines are excluded, etc.
+
+::: {.callout-note}
+# Files only
+These two functions only work with file streams, etc.
+:::
+
+<!-- Some reference link definitions -->
+[`std::getline`]:  https://en.cppreference.com/w/cpp/string/basic_string/getline

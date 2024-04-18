@@ -1,0 +1,80 @@
+{{< include /content/_common.qmd >}}
+---
+title: Formatted Output
+---
+
+## Introduction
+
+{{< var cpp20 >}} introduced the formatting library [`std::format`].
+That library makes it easy to create strings with interpolated values and has facilities that allow you to add your types as values in those strings.
+
+The `<utilities/format.h>` header augments that facility.
+
+Many classes already implement a `std::string to_string() const` method that returns a string representation of an instance --- we can use that to push values into `std::format`.
+
+We have a [concept] that captures all types with an appropriate `to_string()` method.
+```cpp
+template<typename T>
+concept has_to_string_method = requires(const T& x) {
+    { x.to_string() } -> std::convertible_to<std::string>;
+};
+```
+We also supply a [`std::formatter`] that automatically connects any `has_string_method` class to the standard formatting library.
+
+[Example]{.bt}
+```cpp
+#include <utilities/format.h>
+#include <iostream>
+
+struct Whatever {
+    std::string to_string() const { return "Whatever!"; }
+};
+
+int main()
+{
+    Whatever w;
+    std::cout << std::format("Struct with a to_string() method: '{}'\n", w);
+    return 0;
+}
+```
+[Output]{.bt}
+```sh
+Struct with a to_string() method: 'Whatever!'
+```
+
+## Ranges workaround
+
+{{< var cpp23 >}} will have facilities to allow [`std::format`] to work with [ranges], which will make it easier to create formatted strings with interpolated values from arrays, vectors, lists, etc.
+If your compiler does not yet support this type of interpolation, `<utilities/format.h>` supplies a workaround.
+
+[Example]{.bt}
+```cpp
+#include <utilities/format.h>
+#include <iostream>
+#include <vector>
+int main()
+{
+#ifdef __cpp_lib_format_ranges          // <1>
+    std::cout << "The compiler natively supports formatting `ranges`!\n";
+#else
+    std::cout << "I will format `ranges` using the `<utilities>` library!\n";
+#endif
+
+    std::vector v = {1.123123, 2.1235, 3.555555};
+    std::cout << std::format("Unformatted vector: {}\n", v);
+    std::cout << std::format("Formatted vector:   {::3.2f}\n", v);
+}
+```
+1. `__cpp_lib_format_ranges` is a standard preprocessor flag indicating whether your compiler can format ranges.
+
+[Output]{.bt}
+```sh
+I will format `ranges` using the `<utilities>` library!
+Unformatted vector: [1.123123, 2.1235, 3.555555]
+Formatted vector:   [1.12, 2.12, 3.56]
+```
+
+### Sew Also
+[`print.h`] \
+[`std::format`] \
+[`std::formatter`]

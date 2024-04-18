@@ -1,0 +1,125 @@
+# Metadata for this documentation project.
+# See https://quarto.orgcontent/reference/projects/websites.html
+project:
+    type: website
+    output-dir: _site
+format:
+    html:
+        toc: true
+        toc-expand: true
+        code-copy: true
+        code-overflow: scroll
+        grid:
+            sidebar-width: 250px
+            body-width: 800px
+            margin-width: 250px
+            gutter-width: 1.5em
+        theme:
+            - cosmo
+            - assets/css/theme.scss
+website:
+    title: "C++ Utilities Library"
+    image: "assets/images/logo.png"
+    favicon: "assets/images/logo.png"
+    open-graph: true
+    twitter-card: true
+    google-analytics: G-1KYLJGVB85
+    site-url: "https://nessan.github.io/utilities"
+    repo-url: "https://github.com/nessan/utilities"
+    repo-subdir: docs
+    issue-url: "https://github.com/nessan/utilities/issues/new/choose"
+    repo-actions: [edit, issue]
+    page-navigation: true
+    bread-crumbs: false
+    back-to-top-navigation: true
+    page-footer:
+        left: |
+            Copyright (c) Nessan Fitzmaurice
+        center: |
+            Project is under the MIT License
+        right:
+            - icon: github
+              href: "https://github.com/nessan/utilities"
+              aria-label: GitHub Repo
+            - icon: twitter
+              href: https://twitter.com/nezzan
+              aria-label: Twitter
+    navbar:
+        background: dark
+        logo: "assets/images/logo.png"
+        logo-alt: "The utilities library logo"
+        title: utilities
+        search: true
+        pinned: true
+        collapse-below: lg
+        left:
+            - text: "Home"
+              file: content/index.qmd
+            - text: "Format"
+              file: content/format.qmd
+            - text: "Checks"
+              file: content/check.qmd
+            - text: "Logging"
+              file: content/log.qmd
+            - text: "Stopwatch"
+              file: content/stopwatch.qmd
+            - text: "Strings"
+              file: content/string.qmd
+            - text: "Streams"
+              file: content/stream.qmd
+            - text: "Commas"
+              file: content/thousands.qmd
+            - text: "Macros"
+              file: content/macros.qmd
+            - text: "Types"
+              file: content/type.qmd
+            - text: "More"
+              menu:
+                  - text: "Project Repo"
+                    icon: "github"
+                    href: "https://github.com/nessan/utilities/issues"
+                  - text: "Report a Bug"
+                    icon: "bug"
+                    href: "https://github.com/nessan/utilities/issues"
+                  - text: "Ask a Question"
+                    icon: "chat-right-text"
+                    href: "https://github.com/nessan/utilities/discussions"
+        tools:
+            - icon: github
+              href: "https://github.com/nessan/utilities"
+              text: GitHub repo
+            - icon: twitter
+              href: https://twitter.com/nezzan
+              aria-label: Twitter
+    sidebar:
+        style: floating
+        type: light
+        background: light
+        align: left
+        collapse-level: 2
+        contents:
+            - text: "Library Overview"
+              file: content/index.qmd
+            - text: "Formatted Output"
+              file: content/format.qmd
+            - text: "Print Facilities"
+              file: content/print.qmd
+            - text: "Checks & Assertions"
+              file: content/check.qmd
+            - text: "Logging"
+              file: content/log.qmd
+            - text: "Stopwatch"
+              file: content/stopwatch.qmd
+            - text: "String Functions"
+              file: content/string.qmd
+            - text: "Stream Functions"
+              file: content/stream.qmd
+            - text: "Readable Numbers"
+              file: content/thousands.qmd
+            - text: "Useful Macros"
+              file: content/macros.qmd
+            - text: "Names for Types"
+              file: content/type.qmd
+editor:
+    markdown:
+        canonical: true

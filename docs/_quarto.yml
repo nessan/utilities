@@ -77,7 +77,7 @@ website:
               menu:
                   - text: "Project Repo"
                     icon: "github"
-                    href: "https://github.com/nessan/utilities/issues"
+                    href: "https://github.com/nessan/utilities"
                   - text: "Report a Bug"
                     icon: "bug"
                     href: "https://github.com/nessan/utilities/issues"

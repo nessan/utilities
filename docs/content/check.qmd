@@ -56,7 +56,7 @@ debug_check(u.size() == v.size(), "Vector sizes {} and {} DO NOT match!", u.size
 ```
 This code checks that the two vector arguments have equal length --- a necessary constraint for the dot product operation to make sense.
 This code throws an exception if the requirement is not satisfied, with an informative message that includes the size of the two vectors.
-Uncaught exceptions aborts the program with a helpful message that includes the location of the problem.
+Uncaught exceptions abort the program with a helpful message that includes the location of the problem.
 
 The check here is **off** by default, and you need to do something special (i.e., define the `DEBUG` flag at compile time) to enable it.
 The idea is that production code may do many of these dot products, and we do not generally want to pay for the check.

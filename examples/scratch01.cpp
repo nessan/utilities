@@ -1,13 +1,12 @@
-#include <utilities/format.h>
+#include <utilities/macros.h>
+#include <format>
 #include <iostream>
-
-struct Whatever {
-    std::string to_string() const { return "Whatever!"; }
-};
+#include <iterator>
+#include <string>
 
 int main()
 {
-    Whatever w;
-    std::cout << std::format("Struct with a to_string() method: '{}'\n", w);
-    return 0;
+    RUN(std::string s1);
+    RUN(double x = 123456789.123456789);
+    RUN(std::format_to(std::back_inserter(s1), "x = {:12.5f}", x), s1);
 }

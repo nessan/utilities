@@ -74,7 +74,7 @@ Unformatted vector: [1.123123, 2.1235, 3.555555]
 Formatted vector:   [1.12, 2.12, 3.56]
 ```
 
-### Sew Also
+### See Also
 [`print.h`] \
 [`std::format`] \
 [`std::formatter`]

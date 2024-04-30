@@ -1,6 +1,6 @@
 {{< include /content/_common.qmd >}}
 ---
-title: Check & Assertions
+title: Checks & Assertions
 ---
 
 ## Introduction
@@ -39,7 +39,6 @@ Microsoft's old traditional preprocessor is not happy with these macros, but the
 Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 Our `CMake` module `compiler_init` does that automatically for you.
 :::
-
 
 ## Why three macro forms?
 
@@ -94,7 +93,7 @@ always_check(M.is_square(), "Cannot invert a {} x {} NON-square matrix!", M.rows
 ```
 
 The decision to use one of these forms vs. another is predicated on the cost of doing the check versus the work done by the method in question.
-A primary use case for `debug_check` is to do things like bounds checking on indices -- from experience, this is vital during development.
+A primary use case for `debug_check` is to do things like bounds checking on indices --- from experience, this is vital during development.
 However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude.
 So it makes sense to have the checks in place for development but to ensure they are never there in release builds.
 

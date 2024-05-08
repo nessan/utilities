@@ -6,11 +6,11 @@
 
 #include <exception>
 #include <format>
+#include <iostream>
 #include <string>
 
-/// @brief Throw a check_error exception defined below. Often not caught, so ends the program.
-#define check_failed(...) \
-    throw check_error { __func__, __FILE__, __LINE__, std::format(__VA_ARGS__) }
+/// @brief Exit via the utilities::exit(...) method automatically adding location information to the payload.
+#define check_failed(...) utilities::exit(__func__, __FILE__, __LINE__, std::format(__VA_ARGS__))
 
 /// @def The `always_check` macro cannot be switched off with compiler flags.
 #define always_check(cond, ...) \
@@ -30,37 +30,30 @@
     #define check(cond, ...) always_check(cond, __VA_ARGS__)
 #endif
 
-/// @brief Our error exceptions capture the location where the exception was created and optionally a payload string.
-/// @note  These are created by the `check_failed(...)` macro above that inserts the needed location information.
-class check_error : public std::logic_error {
-public:
-    check_error(std::string_view func, std::string_view path, std::size_t line, std::string_view payload = "") :
-        std::logic_error(to_string(func, path, line, payload))
-    {
-        // Empty body--we just needed to populate the parent `std::logic_error`'s `what()` string.
-    }
+namespace utilities {
 
-    /// @brief Returns the whole exception as a string e.g. "[ERROR] 'foobar' foo.cpp line 25: x = 10, y = 11".
-    static std::string to_string(std::string_view func, std::string_view path, std::size_t line,
-                                 std::string_view payload)
-    {
-        auto retval = std::format("\n[ERROR] In function '{}' ({}, line {})", func, filename(path), line);
-        if (!payload.empty()) {
-            retval += ":\n";
-            retval += payload;
-        }
-        return retval;
-    }
-
-    /// @brief Reduce a full path to just the filename.
-    static std::string filename(std::string_view path)
-    {
-        char sep = '/';
+/// @brief Given a path like `/home/jj/dev/project/src/foo.cpp` this returns its basename `foo.cpp`
+inline std::string
+basename(std::string_view path)
+{
+    char sep = '/';
 #ifdef _WIN32
-        sep = '\\';
+    sep = '\\';
 #endif
-        auto i = path.rfind(sep, path.length());
-        if (i != std::string::npos) return std::string{path.substr(i + 1, path.length() - i)};
-        return "";
-    }
-};
+    auto i = path.rfind(sep, path.length());
+    if (i != std::string::npos) return std::string{path.substr(i + 1, path.length() - i)};
+    return "";
+}
+
+/// @brief This function prints an error message with source code location information and exits the program.
+/// @note  Generally this is only called from some macro which adds the needed location info.
+inline void
+exit(std::string_view func, std::string_view path, std::size_t line, std::string_view payload = "")
+{
+    std::cerr << std::format("\n[ERROR] In function '{}' ({}, line {})", func, basename(path), line);
+    if (!payload.empty()) std::cerr << ":\n" << payload;
+    std::cerr << '\n' << std::endl;
+    ::exit(1);
+}
+
+} // namespace utilities

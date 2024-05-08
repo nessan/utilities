@@ -16,22 +16,16 @@ always_check(condition, message)               // <3>
 2. Checks of this type are **only** verified if the `DEBUG` flag is set at compile time.
 3. Checks of this type are **always** verified and cannot be turned off with a compiler flag.
 
-Assuming the checks are "on", in all cases, if `condition` evaluates to `false`, a `check_error` is thrown.
-
-A `check_error` is a custom exception object that inherits from [`std::logic_error`]
+Assuming the checks are "on", in all cases, if `condition` evaluates to `false`, these call the macro:
 ```cpp
-class check_error : public std::logic_error { ... }
+check_failed(message)
 ```
-The exception message always includes the location of the failure and an extra dynamic payload typically used to print the values of the variables that triggered the failure.
-The payload can be anything that can be formatted using the facilities in [`std::format`].
+The `check_failed(message)` macro passes the `message` and the source code location of the failure to `utilities::exit(...)`.
+That function prints the source code location of the failure along with the `message` payload and then **exits** the program.
 
-Uncaught exceptions cause the program to abort, printing the [`what`] string from the exception.
-
-::: {.callout-note}
-# Macro-land
-We are in macro land here, so there are no namespaces.
-Typically, macros have names in caps, but the standard `assert` does not follow that custom, so neither do these `check` macros.
-:::
+The `utilities::exit` function needs source code location parameters (the filename, the line number, and the function name), and the `check_fail` macro automatically adds those.
+You typically use the `message` argument to print the values of the variables that triggered the failure.
+The message can be anything that can be formatted using the facilities in [`std::format`].
 
 ::: {.callout-tip}
 # Microsoft compiler
@@ -39,6 +33,29 @@ Microsoft's old traditional preprocessor is not happy with these macros, but the
 Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 Our `CMake` module `compiler_init` does that automatically for you.
 :::
+
+## Examples
+
+[Example]{.bt}
+```cpp
+#include <utilities/check.h>
+int subtract(int x, int y)
+{
+    always_check(x == y, "x = {}, y = {}", x, y);
+    return y - x;
+}
+int main()
+{
+    return subtract(10, 11);
+}
+```
+
+[Output]{.bt}
+```sh
+[ERROR] In function 'subtract' (check01.cpp, line 8):
+Statement 'x == y' is NOT true: x = 10, y = 11
+```
+The program will then exit.
 
 ## Why three macro forms?
 
@@ -55,8 +72,7 @@ For example, here is a pre-condition from a hypothetical `dot(Vector u, Vector v
 debug_check(u.size() == v.size(), "Vector sizes {} and {} DO NOT match!", u.size(), v.size());
 ```
 This code checks that the two vector arguments have equal length --- a necessary constraint for the dot product operation to make sense.
-This code throws an exception if the requirement is not satisfied, with an informative message that includes the size of the two vectors.
-Uncaught exceptions abort the program with a helpful message that includes the location of the problem.
+If the requirement is not satisfied, and the program exits with an informative message that includes the size of the two vectors.
 
 The check here is **off** by default, and you need to do something special (i.e., define the `DEBUG` flag at compile time) to enable it.
 The idea is that production code may do many of these dot products, and we do not generally want to pay for the check.
@@ -75,10 +91,10 @@ Here is how you might do that check in an `invert(const Matrix& M)` function:
 check(M.is_square(), "Cannot invert a {} x {} NON-square matrix!", M.rows(), M.cols());
 ```
 We can only invert square matrices.
-The `M.is_square()` call checks that condition and, on failure, throws an exception with a helpful message.
+The `M.is_square()` call checks that condition and, on failure, exits the program with a helpful message.
 
 This particular check is always on by default, and the programmer needs to do something special (i.e., define the `NDEBUG` flag at compile time) to deactivate it.
-
+c
 The `check(...)` macro expands to nothing **only if** you set the `NDEBUG` flag at compile time --- the behavior is the same as the standard [`assert`] macro but allows for adding a formatted error message.
 
 ### `always_check`
@@ -97,27 +113,11 @@ A primary use case for `debug_check` is to do things like bounds checking on ind
 However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude.
 So it makes sense to have the checks in place for development but to ensure they are never there in release builds.
 
-[Example]{.bt}
-```cpp
-#include <utilities/check.h>
-int subtract(int x, int y)
-{
-    always_check(x == y, "x = {}, y = {}", x, y);
-    return y - x;
-}
-int main()
-{
-    return subtract(10, 11);
-}
-```
-
-[Output]{.bt}
-```sh
-libc++abi: terminating due to uncaught exception of type check_error:
-[ERROR] In function 'subtract' (scratch01.cpp, line 4):
-Statement 'x == y' is NOT true: x = 10, y = 11
-```
-The program will then abort.
+::: {.callout-note}
+# Macro-land
+We are in macro land here, so there are no namespaces.
+Typically, macros have names in caps, but the standard `assert` does not follow that custom, so neither do these `check` macros.
+:::
 
 ### See Also
 [`format.h`] \

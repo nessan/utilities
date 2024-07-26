@@ -5,18 +5,16 @@ title: Checks & Assertions
 
 ## Introduction
 
-The `<utilities/check.h>` header has three replacements for the standard [`assert`] macro --- they all allow for an additional string output that you can use to print the values of the variables that triggered any failure.
+The `<utilities/check.h>` header has two replacements for the standard [`assert`] macro --- they both allow for an additional string output that you can use to print the values of the variables that triggered any failure.
 
 ```cpp
-check(condition, message)                      // <1>
-debug_check(condition, message)                // <2>
-always_check(condition, message)               // <3>
+debug_check(condition, message)                // <1>
+always_check(condition, message)               // <2>
 ```
-1. Checks of this type are verified **unless** the `NDEBUG` flag is set at compile time.  This version is closest in spirit to the standard [`assert`] macro.
-2. Checks of this type are **only** verified if the `DEBUG` flag is set at compile time.
-3. Checks of this type are **always** verified and cannot be turned off with a compiler flag.
+1. Checks of this type are **only** verified if the `DEBUG` flag is set at compile time.
+2. Checks of this type are **always** verified and cannot be turned off with a compiler flag.
 
-Assuming the checks are "on", in all cases, if `condition` evaluates to `false`, these call the macro:
+Assuming a check is "on", in all cases, if `condition` evaluates to `false`, these both call the macro:
 ```cpp
 check_failed(message)
 ```
@@ -57,7 +55,7 @@ Statement 'x == y' is NOT true: x = 10, y = 11
 ```
 The program will then exit.
 
-## Why three macro forms?
+## Design Rationale
 
 ### `debug_check`
 
@@ -72,7 +70,7 @@ For example, here is a pre-condition from a hypothetical `dot(Vector u, Vector v
 debug_check(u.size() == v.size(), "Vector sizes {} and {} DO NOT match!", u.size(), v.size());
 ```
 This code checks that the two vector arguments have equal length --- a necessary constraint for the dot product operation to make sense.
-If the requirement is not satisfied, and the program exits with an informative message that includes the size of the two vectors.
+If the requirement is not satisfied, the program exits with an informative message that includes the size of the two vectors.
 
 The check here is **off** by default, and you need to do something special (i.e., define the `DEBUG` flag at compile time) to enable it.
 The idea is that production code may do many of these dot products, and we do not generally want to pay for the check.
@@ -80,10 +78,9 @@ However, enabling these sorts of checks may be very useful during development.
 
 The `debug_check(...)` macro expands to nothing **unless** you set the `DEBUG` flag at compile time.
 
-### `check`
+### `always_check`
 
-On the other hand, some checks are pretty cheap, especially when you compare the cost to the actual work done by the function.
-The `check(...)` form is helpful for those cheaper verifications.
+On the other hand, there are some checks you never want to be turned off or at least the cost of the check is so slight when compared to the work of the function you might as well never turn the assertion off.
 
 For example, a pre-condition for a matrix inversion method is that the input matrix must be square.
 Here is how you might do that check in an `invert(const Matrix& M)` function:
@@ -93,22 +90,10 @@ check(M.is_square(), "Cannot invert a {} x {} NON-square matrix!", M.rows(), M.c
 We can only invert square matrices.
 The `M.is_square()` call checks that condition and, on failure, exits the program with a helpful message.
 
-This particular check is always on by default, and the programmer needs to do something special (i.e., define the `NDEBUG` flag at compile time) to deactivate it.
-c
-The `check(...)` macro expands to nothing **only if** you set the `NDEBUG` flag at compile time --- the behavior is the same as the standard [`assert`] macro but allows for adding a formatted error message.
+The check cost is very slight compared to the work done by the `invert(...)` method, so leaving it on even in production code is not a problem.
 
-### `always_check`
+The decision to use one form vs. the other is predicated on the cost of doing the check versus the work done by the method in question.
 
-There may be checks you never want to be turned off.
-The final form `always_check(...)` accomplishes those tasks --- it is unaffected by compiler flags.
-
-For instance, in that last example, the check cost is very slight compared to the work done by the `invert(...)` method, so leaving it on even in production code is probably not a problem.
-You might well want to use the `always_check(...)` version so the check never gets disabled:
-```cpp
-always_check(M.is_square(), "Cannot invert a {} x {} NON-square matrix!", M.rows(), M.cols());
-```
-
-The decision to use one of these forms vs. another is predicated on the cost of doing the check versus the work done by the method in question.
 A primary use case for `debug_check` is to do things like bounds checking on indices --- from experience, this is vital during development.
 However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude.
 So it makes sense to have the checks in place for development but to ensure they are never there in release builds.

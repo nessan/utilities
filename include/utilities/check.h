@@ -1,4 +1,4 @@
-/// @brief Three replacements for the standard `assert(condition)` macro that add an informational message.
+/// @brief `Two replacements for the standard `assert(condition)` macro that add an informational message.
 /// @link  https://nessan.github.io/utilities/
 /// SPDX-FileCopyrightText:  2024 Nessan Fitzmaurice <nessan.fitzmaurice@me.com>
 /// SPDX-License-Identifier: MIT
@@ -9,7 +9,8 @@
 #include <iostream>
 #include <string>
 
-/// @brief Exit via the utilities::exit(...) method automatically adding location information to the payload.
+/// @brief Any failed checks will call this macro to exit the program via the @c utilities::exit(...) method.
+/// @note  This macro automatically adds the needed location information to the passed payload.
 #define check_failed(...) utilities::exit(__func__, __FILE__, __LINE__, std::format(__VA_ARGS__))
 
 /// @def The `always_check` macro cannot be switched off with compiler flags.
@@ -21,13 +22,6 @@
     #define debug_check(cond, ...) always_check(cond, __VA_ARGS__)
 #else
     #define debug_check(cond, ...) void(0)
-#endif
-
-/// @def The `check`macro expands to a no-op *only if* the `NDEBUG` flag is set.
-#ifdef NDEBUG
-    #define check(cond, ...) void(0)
-#else
-    #define check(cond, ...) always_check(cond, __VA_ARGS__)
 #endif
 
 namespace utilities {

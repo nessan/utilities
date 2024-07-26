@@ -24,10 +24,6 @@ main()
 #ifdef DEBUG
     std::cout << "The DEBUG flag is set!\n";
 #endif
-#ifdef NDEBUG
-    std::cout << "The NDEBUG flag is set!\n";
-#endif
-
     // LOG without args just prints the source location.
     LOG();
     return add(10, 11) + subtract(10, 11);

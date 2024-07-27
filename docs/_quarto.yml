@@ -57,8 +57,8 @@ website:
               file: content/index.qmd
             - text: "Format"
               file: content/format.qmd
-            - text: "Checks"
-              file: content/check.qmd
+            - text: "Assertions"
+              file: content/assertion.qmd
             - text: "Logging"
               file: content/log.qmd
             - text: "Stopwatch"
@@ -104,8 +104,8 @@ website:
               file: content/format.qmd
             - text: "Print Facilities"
               file: content/print.qmd
-            - text: "Checks & Assertions"
-              file: content/check.qmd
+            - text: "Assertions"
+              file: content/assertion.qmd
             - text: "Logging"
               file: content/log.qmd
             - text: "Stopwatch"

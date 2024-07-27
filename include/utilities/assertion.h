@@ -1,27 +1,31 @@
-/// @brief `Two replacements for the standard `assert(condition)` macro that add an informational message.
+/// @brief Two replacements for the standard @c assert(condition) macro that add an informational message.
 /// @link  https://nessan.github.io/utilities/
 /// SPDX-FileCopyrightText:  2024 Nessan Fitzmaurice <nessan.fitzmaurice@me.com>
 /// SPDX-License-Identifier: MIT
 #pragma once
 
-#include <exception>
 #include <format>
 #include <iostream>
 #include <string>
 
-/// @brief Any failed checks will call this macro to exit the program via the @c utilities::exit(...) method.
-/// @note  This macro automatically adds the needed location information to the passed payload.
-#define check_failed(...) utilities::exit(__func__, __FILE__, __LINE__, std::format(__VA_ARGS__))
+/// @brief Failed assertions call this macro to exit the program using the @c utilities::exit(...) function.
+/// @note  Macro automatically adds the needed source code location information to the passed message payload.
+#define exit_with_message(...) utilities::exit(__func__, __FILE__, __LINE__, std::format(__VA_ARGS__))
 
-/// @def The `always_check` macro cannot be switched off with compiler flags.
-#define always_check(cond, ...) \
-    if (!(cond)) check_failed("Statement '{}' is NOT true: {}\n", #cond, std::format(__VA_ARGS__))
-
-/// @def The `debug_check` macro expands to a no-op *unless* the `DEBUG` flag is set.
+/// @brief The @c debug_assertion macro expands to a no-op @b unless the @c DEBUG flag is set.
 #ifdef DEBUG
-    #define debug_check(cond, ...) always_check(cond, __VA_ARGS__)
+    #define debug_assertion(cond, ...) \
+        exit_with_message("Statement '{}' is NOT true: {}\n", #cond, std::format(__VA_ARGS__))
 #else
-    #define debug_check(cond, ...) void(0)
+    #define debug_assertion(cond, ...) void(0)
+#endif
+
+/// @brief The @c assertion macro expands to a no-op @b if the @c NDEBUG flag is set.
+/// @note  This is the same behaviour as the like the standard @c assert macro.
+#ifdef NDEBUG
+    #define assertion(cond, ...) void(0)
+#else
+    #define assertion(cond, ...) exit_with_message("Statement '{}' is NOT true: {}\n", #cond, std::format(__VA_ARGS__))
 #endif
 
 namespace utilities {

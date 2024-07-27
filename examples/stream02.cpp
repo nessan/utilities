@@ -7,11 +7,11 @@ int
 main(int argc, char* argv[])
 {
     // Must have exactly 1 argument (name of file to read from)
-    if (argc != 2) check_failed("Usage: '{} <filename>' -- missing filename argument!", argv[0]);
+    if (argc != 2) exit_with_message("Usage: '{} <filename>' -- missing filename argument!", argv[0]);
 
     // Try to open the file
     std::ifstream file{argv[1]};
-    if (!file) check_failed("Failed to open file '{}'", argv[1]);
+    if (!file) exit_with_message("Failed to open file '{}'", argv[1]);
 
     std::size_t n_line = 0;
     std::string line;

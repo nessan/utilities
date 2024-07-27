@@ -22,7 +22,7 @@
 [`what`]:               https://en.cppreference.com/w/cpp/error/exception/what
 
 <!-- Formatted links to all the library header file pages -->
-[`check.h`]:            /content/check.qmd
+[`assertion.h`]:        /content/assertion.qmd
 [`format.h`]:           /content/format.qmd
 [`log.h`]:              /content/log.qmd
 [`macros.h`]:           /content/macros.qmd

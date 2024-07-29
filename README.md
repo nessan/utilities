@@ -9,9 +9,9 @@ Moreover, you can use any header file in this library on a standalone basis, as 
 
 | Header File   | Purpose                                                                                                                                                          |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `assertion.h` | Defines some `assert`-type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed.          |
+| `verify.h`    | Defines some `assert`-type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed.          |
 | `format.h`    | Functionality that connects any class with a `to_string()` method to `std::format`.                                                                              |
-| `print.h`     | Workaround for any compiler that hasn't yet implemented `std::print`.                                                                                            |
+| `print.h`     | Workaround for compilers that haven't yet implemented `std::print`.                                                                                              |
 | `macros.h`    | Defines macros often used in test and example programs. <br/>It also defines a mechanism that lets you overload a macro based on the number of passed arguments. |
 | `log.h`       | Some very simple logging macros.                                                                                                                                 |
 | `stopwatch.h` | Defines the `utilities::stopwatch` class you can use to time blocks of code.                                                                                     |

@@ -4,7 +4,6 @@
 /// SPDX-License-Identifier: MIT
 #pragma once
 
-#include "assertion.h"
 #include "format.h"
 #include "log.h"
 #include "macros.h"
@@ -14,3 +13,4 @@
 #include "string.h"
 #include "thousands.h"
 #include "type.h"
+#include "verify.h"

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>C++ Utilities Library - Formatted Output</title>
+<title>C++ Utilities Library - Pretty Print Large Numbers</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../content/print.html" rel="next">
-<link href="../content/index.html" rel="prev">
+<link href="../pages/macros.html" rel="next">
+<link href="../pages/stream.html" rel="prev">
 <link href="../assets/images/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -113,13 +113,13 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="C++ Utilities Library - Formatted Output">
+<meta property="og:title" content="C++ Utilities Library - Pretty Print Large Numbers">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://nessan.github.io/utilities/content/assets/images/logo.png">
+<meta property="og:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta property="og:site_name" content="C++ Utilities Library">
-<meta name="twitter:title" content="C++ Utilities Library - Formatted Output">
+<meta name="twitter:title" content="C++ Utilities Library - Pretty Print Large Numbers">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://nessan.github.io/utilities/content/assets/images/logo.png">
+<meta name="twitter:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -144,43 +144,43 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../content/index.html" aria-current="page"> 
+    <a class="nav-link active" href="../pages/index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/format.html"> 
+    <a class="nav-link" href="../pages/format.html"> 
 <span class="menu-text">Format</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/verify.html"> 
+    <a class="nav-link" href="../pages/verify.html"> 
 <span class="menu-text">Verifications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/log.html"> 
+    <a class="nav-link" href="../pages/log.html"> 
 <span class="menu-text">Logging</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/stopwatch.html"> 
+    <a class="nav-link" href="../pages/stopwatch.html"> 
 <span class="menu-text">Stopwatch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/string.html"> 
+    <a class="nav-link" href="../pages/string.html"> 
 <span class="menu-text">Strings</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/stream.html"> 
+    <a class="nav-link" href="../pages/stream.html"> 
 <span class="menu-text">Streams</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/thousands.html"> 
+    <a class="nav-link" href="../pages/thousands.html"> 
 <span class="menu-text">Commas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/macros.html"> 
+    <a class="nav-link" href="../pages/macros.html"> 
 <span class="menu-text">Macros</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/type.html"> 
+    <a class="nav-link" href="../pages/type.html"> 
 <span class="menu-text">Types</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -219,7 +219,7 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Formatted Output</h1>
+          <h1 class="quarto-secondary-nav-title">Pretty Print Large Numbers</h1>
         </a>     
     </div>
   </nav>
@@ -232,67 +232,67 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Library Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/format.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/format.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Formatted Output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/print.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/print.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Print Facilities</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/verify.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/verify.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Verifications</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/log.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/log.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Logging</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/stopwatch.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/stopwatch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Stopwatch</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/string.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/string.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">String Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/stream.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/stream.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Stream Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/thousands.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/thousands.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Readable Numbers</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/macros.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/macros.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Useful Macros</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/type.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/type.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Type Names</span></a>
   </div>
 </li>
@@ -306,20 +306,19 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#ranges-workaround" id="toc-ranges-workaround" class="nav-link" data-scroll-target="#ranges-workaround">Ranges workaround</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/content/format.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/thousands.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Formatted Output</h1>
+<h1 class="title d-none d-lg-block">Pretty Print Large Numbers</h1>
 </div>
 
 
@@ -342,66 +341,83 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
 <!-- Formatted links to all the library header file pages -->
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>C++20 introduced the formatting library <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a>. That library makes it easy to create strings with interpolated values and has facilities that allow you to add your types as values in those strings.</p>
-<p>The <code>&lt;utilities/format.h&gt;</code> header augments that facility.</p>
-<p>Many classes already implement a <code>std::string to_string() const</code> method that returns a string representation of an instance — we can use that to push values into <code>std::format</code>.</p>
-<p>We have a <a href="https://en.cppreference.com/w/cpp/language/constraints">concept</a> that captures all types with an appropriate <code>to_string()</code> method.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">concept</span> has_to_string_method <span class="op">=</span> <span class="kw">requires</span><span class="op">(</span><span class="at">const</span> T<span class="op">&amp;</span> x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span> x<span class="op">.</span>to_string<span class="op">()</span> <span class="op">}</span> <span class="op">-&gt;</span> <span class="bu">std::</span>convertible_to<span class="op">&lt;</span><span class="bu">std::</span>string<span class="op">&gt;;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We also supply a <a href="https://en.cppreference.com/w/cpp/utility/format/formatter"><code>std::formatter</code></a> that automatically connects any <code>has_string_method</code> class to the standard formatting library.</p>
-<p><span class="bt">Example</span></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/format.h&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Whatever <span class="op">{</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string to_string<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> <span class="st">"Whatever!"</span><span class="op">;</span> <span class="op">}</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    Whatever w<span class="op">;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"Struct with a to_string() method: '</span><span class="sc">{}</span><span class="st">'</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> w<span class="op">);</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><span class="bt">Output</span></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Struct</span> with a to_string<span class="er">(</span><span class="kw">)</span> <span class="ex">method:</span> <span class="st">'Whatever!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="ranges-workaround" class="level2">
-<h2 class="anchored" data-anchor-id="ranges-workaround">Ranges workaround</h2>
-<p>C++23 will have facilities to allow <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a> to work with <a href="https://en.cppreference.com/w/cpp/ranges">ranges</a>, which will make it easier to create formatted strings with interpolated values from arrays, vectors, lists, etc. If your compiler does not yet support this type of interpolation, <code>&lt;utilities/format.h&gt;</code> supplies a workaround.</p>
-<p><span class="bt">Example</span></p>
-<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/format.h&gt;</span></span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef __cpp_lib_format_ranges</span></span>
-<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"The compiler natively supports formatting `ranges`!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a><span class="pp">#else</span></span>
-<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"I will format `ranges` using the `&lt;utilities&gt;` library!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
-<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector v <span class="op">=</span> <span class="op">{</span><span class="fl">1.123123</span><span class="op">,</span> <span class="fl">2.1235</span><span class="op">,</span> <span class="fl">3.555555</span><span class="op">};</span></span>
-<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"Unformatted vector: </span><span class="sc">{}\n</span><span class="st">"</span><span class="op">,</span> v<span class="op">);</span></span>
-<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"Formatted vector:   {::3.2f}</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> v<span class="op">);</span></span>
-<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>&lt;utilities/thousands.h&gt;</code> header provides functions that help you print large numbers in a readable format by forcing a stream or locale to insert appropriate commas, e.g., having 23456.7 print as 23,456.7.</p>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>utilities<span class="op">::</span>imbue_stream_with_commas<span class="op">(</span><span class="bu">std::</span>ios_base <span class="op">&amp;</span>s <span class="op">=</span> <span class="bu">std::</span>cout<span class="op">,</span> <span class="dt">bool</span> on <span class="op">=</span> <span class="kw">true</span><span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>utilities<span class="op">::</span>imbue_global_with_commas<span class="op">(</span><span class="dt">bool</span> on <span class="op">=</span> <span class="kw">true</span><span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>utilities<span class="op">::</span>pretty_print_thousands<span class="op">(</span><span class="dt">bool</span> on <span class="op">=</span> <span class="kw">true</span><span class="op">);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="1"><code>__cpp_lib_format_ranges</code> is a standard preprocessor flag indicating whether your compiler can format ranges.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Turns commas on or off for a particular stream.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Turns commas on or off for the global locale.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">Turns commas on or off for the standard streams <code>std::cout</code>, <code>std::cerr</code>, <code>std::clog</code>, and the global locale.</span>
+</dd>
+</dl>
+<p>Ideally, one should be able to rely on facilities in <a href="https://en.cppreference.com/w/cpp/locale/locale"><code>std::locale</code></a> to format large numbers per local custom. For example, using <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a>, you might print a large number like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"x = </span><span class="sc">{:L}\n</span><span class="st">"</span><span class="op">,</span> <span class="fl">23456.7</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>L</code> specifier tells the text formatting library to invoke an appropriate facet from the default locale. Then, you might expect to see <code>23,456.7</code> printed on the screen for many locations.</p>
+<p>In practice, the C++ standard libraries seem to have poor support for resolving locale information.</p>
+<p>Your computer correctly supports locales at the operating system level. After all, computer manufacturers sell their machines to customers worldwide, and those customers expect to see dates, etc., presented locally. However, the default locale used in many C++ implementations is not the default one used by the operating system. Instead, it is often a complete blank, so rather than seeing <code>23,456.7</code> you will get the less readable <code>23456.7</code></p>
+<p>The various <code>utilities::imbue_xxx_with_commas</code> functions are a little hack that corrects the deficit. If you call the final version above <code>pretty_print_thousands()</code>, we inject a comma-producing facet into the default locale, and printing large numbers will work as expected. Calling <code>pretty_print_thousands(false);</code> will restore the default locale to its original state.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Commas only
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For now, the only punctuation we support with these functions is the comma. You should be aware that many countries treat the comma as a decimal point.</p>
+</div>
+</div>
+<p><span class="bt">Example</span></p>
+<div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/thousands.h&gt;</span></span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;format&gt;</span></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> x <span class="op">=</span> <span class="fl">123456789.123456789</span><span class="op">;</span></span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"Using the default locale:</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"No locale specifier:   </span><span class="sc">{:12.5f}\n</span><span class="st">"</span><span class="op">,</span>    x<span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-10" class="code-annotation-target"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"With locale specifier: </span><span class="sc">{:12.5Lf}\n\n</span><span class="st">"</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a>    utilities<span class="op">::</span>pretty_print_thousands<span class="op">();</span></span>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"After adding a commas facet:</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"No locale specifier:   </span><span class="sc">{:12.5f}\n</span><span class="st">"</span><span class="op">,</span>   x<span class="op">);</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-15" class="code-annotation-target"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"With locale specifier: </span><span class="sc">{:12.5Lf}\n</span><span class="st">"</span><span class="op">,</span>  x<span class="op">);</span></span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="10" data-code-annotation="1">We might expect to see a readable <code>x</code> here but typically will not.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="15" data-code-annotation="2">We will see a readable <code>x</code> here for sure.</span>
 </dd>
 </dl>
 <p><span class="bt">Output</span></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">I</span> will format <span class="kw">`</span><span class="ex">ranges</span><span class="kw">`</span> using the <span class="kw">`</span><span class="op">&lt;</span>utilities<span class="op">&gt;</span><span class="kw">`</span> library!</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Unformatted</span> vector: [1.123123, 2.1235, 3.555555]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Formatted</span> vector:   [1.12, 2.12, 3.56]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Using</span> the default locale:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">No</span> locale specifier:   123456789.12346</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">With</span> locale specifier: 123456789.12346</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> adding a commas facet:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">No</span> locale specifier:   123456789.12346</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">With</span> locale specifier: 123,456,789.12346</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="see-also" class="level3">
 <h3 class="anchored" data-anchor-id="see-also">See Also</h3>
-<p><a href="../content/print.html"><code>print.h</code></a><br>
-<a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a><br>
-<a href="https://en.cppreference.com/w/cpp/utility/format/formatter"><code>std::formatter</code></a></p>
+<p><a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a><br>
+<a href="https://en.cppreference.com/w/cpp/locale/locale"><code>std::locale</code></a></p>
+<!-- Some reference link definitions -->
 
 
 </section>
@@ -819,13 +835,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../content/index.html" class="pagination-link" aria-label="Library Overview">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Library Overview</span>
+      <a href="../pages/stream.html" class="pagination-link" aria-label="Stream Functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Stream Functions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../content/print.html" class="pagination-link" aria-label="Print Facilities">
-        <span class="nav-page-text">Print Facilities</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/macros.html" class="pagination-link" aria-label="Useful Macros">
+        <span class="nav-page-text">Useful Macros</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -837,7 +853,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p>Project is under the MIT License</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/content/format.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/thousands.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

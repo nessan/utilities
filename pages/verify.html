@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>C++ Utilities Library - Printing</title>
+<title>C++ Utilities Library - Verifications and Assertions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../content/verify.html" rel="next">
-<link href="../content/format.html" rel="prev">
+<link href="../pages/log.html" rel="next">
+<link href="../pages/print.html" rel="prev">
 <link href="../assets/images/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -113,13 +113,13 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="C++ Utilities Library - Printing">
+<meta property="og:title" content="C++ Utilities Library - Verifications and Assertions">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://nessan.github.io/utilities/content/assets/images/logo.png">
+<meta property="og:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta property="og:site_name" content="C++ Utilities Library">
-<meta name="twitter:title" content="C++ Utilities Library - Printing">
+<meta name="twitter:title" content="C++ Utilities Library - Verifications and Assertions">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://nessan.github.io/utilities/content/assets/images/logo.png">
+<meta name="twitter:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -144,43 +144,43 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../content/index.html" aria-current="page"> 
+    <a class="nav-link active" href="../pages/index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/format.html"> 
+    <a class="nav-link" href="../pages/format.html"> 
 <span class="menu-text">Format</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/verify.html"> 
+    <a class="nav-link" href="../pages/verify.html"> 
 <span class="menu-text">Verifications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/log.html"> 
+    <a class="nav-link" href="../pages/log.html"> 
 <span class="menu-text">Logging</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/stopwatch.html"> 
+    <a class="nav-link" href="../pages/stopwatch.html"> 
 <span class="menu-text">Stopwatch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/string.html"> 
+    <a class="nav-link" href="../pages/string.html"> 
 <span class="menu-text">Strings</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/stream.html"> 
+    <a class="nav-link" href="../pages/stream.html"> 
 <span class="menu-text">Streams</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/thousands.html"> 
+    <a class="nav-link" href="../pages/thousands.html"> 
 <span class="menu-text">Commas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/macros.html"> 
+    <a class="nav-link" href="../pages/macros.html"> 
 <span class="menu-text">Macros</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/type.html"> 
+    <a class="nav-link" href="../pages/type.html"> 
 <span class="menu-text">Types</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -219,7 +219,7 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Printing</h1>
+          <h1 class="quarto-secondary-nav-title">Verifications and Assertions</h1>
         </a>     
     </div>
   </nav>
@@ -232,67 +232,67 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Library Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/format.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/format.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Formatted Output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/print.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/print.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Print Facilities</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/verify.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/verify.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Verifications</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/log.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/log.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Logging</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/stopwatch.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/stopwatch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Stopwatch</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/string.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/string.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">String Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/stream.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/stream.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Stream Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/thousands.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/thousands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Readable Numbers</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/macros.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/macros.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Useful Macros</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/type.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/type.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Type Names</span></a>
   </div>
 </li>
@@ -306,19 +306,24 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#design-rationale" id="toc-design-rationale" class="nav-link" data-scroll-target="#design-rationale">Design Rationale</a>
   <ul class="collapse">
+  <li><a href="#verifycondition-..." id="toc-verifycondition-..." class="nav-link" data-scroll-target="#verifycondition-..."><code>verify(condition, ...)</code></a></li>
+  <li><a href="#debug_verifycondition-..." id="toc-debug_verifycondition-..." class="nav-link" data-scroll-target="#debug_verifycondition-..."><code>debug_verify(condition, ...)</code></a></li>
+  <li><a href="#assertion" id="toc-assertion" class="nav-link" data-scroll-target="#assertion"><code>assertion</code></a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/content/print.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/verify.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Printing</h1>
+<h1 class="title d-none d-lg-block">Verifications and Assertions</h1>
 </div>
 
 
@@ -341,31 +346,108 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
 <!-- Formatted links to all the library header file pages -->
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>C++23 introduces <a href="https://en.cppreference.com/w/cpp/io/print"><code>std::print</code></a> as an addition to the standard formatting library.</p>
-<p>If your compiler does not yet support <a href="https://en.cppreference.com/w/cpp/io/print"><code>std::print</code></a>, the <code>&lt;utilities/print.h&gt;</code> header file supplies a workaround.</p>
+<p>The <code>&lt;utilities/verify.h&gt;</code> header has some macros that can be used to check a condition and, on failures, cause the program to exit with a customizable message. two replacements for the standard <a href="https://www.cplusplus.com/reference/cassert/assert/"><code>assert</code></a> macro — they both allow for an additional string output that you can use to print the values of the variables that triggered any failure.</p>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>verify<span class="op">(</span>condition<span class="op">,</span> <span class="op">...)</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>debug_verify<span class="op">(</span>condition<span class="op">,</span> <span class="op">...)</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>assertion<span class="op">(</span>condition<span class="op">,</span> <span class="op">...)</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">The <code>condition</code> is checked and if it fails the program exits with a custom message synthesized from the rest of the arguments.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">This macro expands to <code>verify</code> <strong>if</strong> the <code>DEBUG</code> flag is set otherwise it’s a no-op.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">This macro expands to <code>verify</code> <strong>unless</strong> the <code>NDEBUG</code> flag is set in which case it’s a no-op. This is similar to the standard <a href="https://www.cplusplus.com/reference/cassert/assert/"><code>assert</code></a> macro.</span>
+</dd>
+</dl>
+<p>Assuming a check is “on”, in all cases, if <code>condition</code> evaluates to <code>false</code>, these all call the macro:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>exit_with_message<span class="op">(</span>message<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>exit_with_message(message)</code> macro passes the <code>message</code> arguments and the source code location of the failure to <code>utilities::exit(...)</code>. That function prints the source code location of the failure along with the <code>message</code> payload and then <strong>exits</strong> the program.</p>
+<p>The <code>utilities::exit</code> function needs source code location parameters (the filename, the line number, and the function name), and the <code>exit_with_message</code> macro automatically adds those. You typically use the <code>message</code> arguments to print the values of the variables that triggered the failure. The message can be anything that can be formatted using the facilities in <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Microsoft compiler
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Microsoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the <code>/Zc:preprocessor</code> flag to use that upgrade at compile time. Our <code>CMake</code> module <code>compiler_init</code> does that automatically for you.</p>
+</div>
+</div>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p><span class="bt">Example</span></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/format.h&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/print.h&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef __cpp_lib_print</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"The compiler has std::print!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#else</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"I will use the std::print workaround!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector v <span class="op">=</span> <span class="op">{</span><span class="fl">1.123123</span><span class="op">,</span> <span class="fl">2.1235</span><span class="op">,</span> <span class="fl">3.555555</span><span class="op">};</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>print<span class="op">(</span><span class="st">"Unformatted vector: </span><span class="sc">{}\n</span><span class="st">"</span><span class="op">,</span> v<span class="op">);</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>print<span class="op">(</span><span class="st">"Formatted vector:   {::3.2f}</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> v<span class="op">);</span>W</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/verify.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> subtract<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    verify<span class="op">(</span>x <span class="op">==</span> y<span class="op">,</span> <span class="st">"x = </span><span class="sc">{}</span><span class="st">, y = </span><span class="sc">{}</span><span class="st">"</span><span class="op">,</span> x<span class="op">,</span> y<span class="op">);</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y <span class="op">-</span> x<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> subtract<span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">11</span><span class="op">);</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>For the sake of the example we added a code line to make sure the <code>assertion</code> is triggered. In normal usage, this flag is passed through the compiler command line.</li>
+</ol>
 <p><span class="bt">Output</span></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">I</span> will use the std::print workaround!</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Unformatted</span> vector: [1.123123, 2.1235, 3.555555]</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Formatted</span> vector:   [1.12, 2.12, 3.56]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[VERIFY</span> FAILED] In function <span class="st">'subtract'</span> <span class="er">(</span><span class="ex">verify01.cpp,</span> line 7<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Statement</span> <span class="st">'x == y'</span> is NOT true: x = 10, y = 11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The program will then exit.</p>
+</section>
+<section id="design-rationale" class="level2">
+<h2 class="anchored" data-anchor-id="design-rationale">Design Rationale</h2>
+<section id="verifycondition-..." class="level3">
+<h3 class="anchored" data-anchor-id="verifycondition-..."><code>verify(condition, ...)</code></h3>
+<p>This sort of check often appears in test code. You want to check something is true and exit if it is not with an informative message. These are unaffected by compiler flags.</p>
+</section>
+<section id="debug_verifycondition-..." class="level3">
+<h3 class="anchored" data-anchor-id="debug_verifycondition-..."><code>debug_verify(condition, ...)</code></h3>
+<p>In the development cycle, it can be helpful to range-check indices and so on. However, those checks are expensive and can slow down numerical code by orders of magnitude. Therefore, we don’t want there to be any chance that those verifications are accidentally left “on” in the production code. The <code>debug_verify(...)</code> form covers this type of verification. Turning on these checks requires the programmer to take a specific action — namely, she must set the <code>DEBUG</code> flag during compile time.</p>
+<p>For example, here is a pre-condition from a hypothetical <code>dot(Vector u, Vector v)</code> function:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>debug_verify<span class="op">(</span>u<span class="op">.</span>size<span class="op">()</span> <span class="op">==</span> v<span class="op">.</span>size<span class="op">(),</span> <span class="st">"Vector sizes </span><span class="sc">{}</span><span class="st"> and </span><span class="sc">{}</span><span class="st"> DO NOT match!"</span><span class="op">,</span> u<span class="op">.</span>size<span class="op">(),</span> v<span class="op">.</span>size<span class="op">());</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This code checks that the two vector arguments have equal length — a necessary constraint for the dot product operation to make sense. If the requirement is not satisfied, the program exits with an informative message that includes the size of the two vectors.</p>
+<p>The check here is <strong>off</strong> by default, and you need to do something special (i.e., define the <code>DEBUG</code> flag at compile time) to enable it. The idea is that production code may do many of these dot products, and we do not generally want to pay for the check. However, enabling these sorts of checks may be very useful during development.</p>
+<p>The <code>debug_verify(...)</code> macro expands to nothing <strong>unless</strong> you set the <code>DEBUG</code> flag at compile time.</p>
+</section>
+<section id="assertion" class="level3">
+<h3 class="anchored" data-anchor-id="assertion"><code>assertion</code></h3>
+<p>On the other hand, there are some checks where the cost of the assertion is slight when compared to the work of the function. Leaving these checks on in production is not likely to impose much of a performance penalty.</p>
+<p>For example, a pre-condition for a matrix inversion method is that the input matrix must be square. Here is how you might do that check in an <code>invert(const Matrix&amp; M)</code> function:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>assertion<span class="op">(</span>M<span class="op">.</span>is_square<span class="op">(),</span> <span class="st">"Cannot invert a </span><span class="sc">{}</span><span class="st"> x </span><span class="sc">{}</span><span class="st"> NON-square matrix!"</span><span class="op">,</span> M<span class="op">.</span>rows<span class="op">(),</span> M<span class="op">.</span>cols<span class="op">());</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can only invert square matrices. The <code>M.is_square()</code> call checks that condition and, on failure, exits the program with a helpful message. The check cost is very slight compared to the work done by the <code>invert(...)</code> method, so leaving it on even in production code is not a problem.</p>
+<p>The check here is <strong>on</strong> by default, and you need to do something special (i.e., define the <code>NDEBUG</code> flag at compile time) to disable it.</p>
+<p>The <code>assertion(...)</code> macro expands to nothing <strong>only if</strong> you set the <code>NDEBUG</code> flag at compile time.</p>
+<p>The decision to use one form vs.&nbsp;the other is predicated on the cost of doing the check versus the work done by the method in question.</p>
+<p>A primary use case for <code>debug_verify</code> is to do things like bounds checking on indices — from experience, this is vital during development. However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude. So it makes sense to have the checks in place for development but to ensure they are never there in release builds.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Macro-land
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We are in macro land here, so there are no namespaces. Typically, macros have names in caps, but the standard <code>assert</code> does not follow that custom, so neither do these.</p>
+</div>
+</div>
+</section>
 <section id="see-also" class="level3">
 <h3 class="anchored" data-anchor-id="see-also">See Also</h3>
-<p><a href="../content/format.html"><code>format.h</code></a></p>
+<p><a href="../pages/format.html"><code>format.h</code></a><br>
+<a href="../pages/log.html"><code>log.h</code></a><br>
+<a href="https://www.cplusplus.com/reference/cassert/assert/"><code>assert</code></a></p>
 
 
 </section>
@@ -783,13 +865,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../content/format.html" class="pagination-link" aria-label="Formatted Output">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Formatted Output</span>
+      <a href="../pages/print.html" class="pagination-link" aria-label="Print Facilities">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Print Facilities</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../content/verify.html" class="pagination-link" aria-label="Verifications">
-        <span class="nav-page-text">Verifications</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/log.html" class="pagination-link" aria-label="Logging">
+        <span class="nav-page-text">Logging</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -801,7 +883,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p>Project is under the MIT License</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/content/print.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/verify.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

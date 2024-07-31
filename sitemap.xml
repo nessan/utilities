@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nessan.github.io/utilities/pages/string.html</loc>
+    <lastmod>2024-07-31T17:01:03.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/verify.html</loc>
+    <lastmod>2024-07-31T17:01:03.230Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/log.html</loc>
+    <lastmod>2024-07-31T17:01:03.234Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/type.html</loc>
+    <lastmod>2024-07-31T17:01:03.234Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/stream.html</loc>
+    <lastmod>2024-07-31T17:01:03.263Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/macros.html</loc>
+    <lastmod>2024-07-31T17:01:03.235Z</lastmod>
+  </url>
+  <url>
     <loc>https://nessan.github.io/utilities/index.html</loc>
-    <lastmod>2024-04-18T17:19:08.685Z</lastmod>
+    <lastmod>2024-07-31T17:01:09.445Z</lastmod>
   </url>
   <url>
-    <loc>https://nessan.github.io/utilities/content/print.html</loc>
-    <lastmod>2024-04-18T17:19:08.684Z</lastmod>
+    <loc>https://nessan.github.io/utilities/pages/thousands.html</loc>
+    <lastmod>2024-07-31T17:01:03.235Z</lastmod>
   </url>
   <url>
-    <loc>https://nessan.github.io/utilities/content/format.html</loc>
-    <lastmod>2024-04-30T16:54:17.834Z</lastmod>
+    <loc>https://nessan.github.io/utilities/pages/stopwatch.html</loc>
+    <lastmod>2024-07-31T17:01:03.234Z</lastmod>
   </url>
   <url>
-    <loc>https://nessan.github.io/utilities/content/index.html</loc>
-    <lastmod>2024-07-29T09:18:07.680Z</lastmod>
+    <loc>https://nessan.github.io/utilities/pages/index.html</loc>
+    <lastmod>2024-07-31T17:01:03.235Z</lastmod>
   </url>
   <url>
-    <loc>https://nessan.github.io/utilities/content/stopwatch.html</loc>
-    <lastmod>2024-04-18T17:19:08.684Z</lastmod>
+    <loc>https://nessan.github.io/utilities/pages/format.html</loc>
+    <lastmod>2024-07-31T17:01:03.230Z</lastmod>
   </url>
   <url>
-    <loc>https://nessan.github.io/utilities/content/thousands.html</loc>
-    <lastmod>2024-04-18T17:19:08.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/content/macros.html</loc>
-    <lastmod>2024-04-30T16:56:12.835Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/content/stream.html</loc>
-    <lastmod>2024-04-18T17:19:08.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/content/type.html</loc>
-    <lastmod>2024-04-18T17:19:08.685Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/content/log.html</loc>
-    <lastmod>2024-07-29T09:17:29.135Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/content/verify.html</loc>
-    <lastmod>2024-07-29T09:18:23.395Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/content/string.html</loc>
-    <lastmod>2024-04-18T17:19:08.684Z</lastmod>
+    <loc>https://nessan.github.io/utilities/pages/print.html</loc>
+    <lastmod>2024-07-31T17:01:03.230Z</lastmod>
   </url>
 </urlset>

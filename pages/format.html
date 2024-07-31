@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>C++ Utilities Library - Macros</title>
+<title>C++ Utilities Library - Formatted Output</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../content/type.html" rel="next">
-<link href="../content/thousands.html" rel="prev">
+<link href="../pages/print.html" rel="next">
+<link href="../pages/index.html" rel="prev">
 <link href="../assets/images/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -113,13 +113,13 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="C++ Utilities Library - Macros">
+<meta property="og:title" content="C++ Utilities Library - Formatted Output">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://nessan.github.io/utilities/content/assets/images/logo.png">
+<meta property="og:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta property="og:site_name" content="C++ Utilities Library">
-<meta name="twitter:title" content="C++ Utilities Library - Macros">
+<meta name="twitter:title" content="C++ Utilities Library - Formatted Output">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://nessan.github.io/utilities/content/assets/images/logo.png">
+<meta name="twitter:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -144,43 +144,43 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../content/index.html" aria-current="page"> 
+    <a class="nav-link active" href="../pages/index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/format.html"> 
+    <a class="nav-link" href="../pages/format.html"> 
 <span class="menu-text">Format</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/verify.html"> 
+    <a class="nav-link" href="../pages/verify.html"> 
 <span class="menu-text">Verifications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/log.html"> 
+    <a class="nav-link" href="../pages/log.html"> 
 <span class="menu-text">Logging</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/stopwatch.html"> 
+    <a class="nav-link" href="../pages/stopwatch.html"> 
 <span class="menu-text">Stopwatch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/string.html"> 
+    <a class="nav-link" href="../pages/string.html"> 
 <span class="menu-text">Strings</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/stream.html"> 
+    <a class="nav-link" href="../pages/stream.html"> 
 <span class="menu-text">Streams</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/thousands.html"> 
+    <a class="nav-link" href="../pages/thousands.html"> 
 <span class="menu-text">Commas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/macros.html"> 
+    <a class="nav-link" href="../pages/macros.html"> 
 <span class="menu-text">Macros</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/type.html"> 
+    <a class="nav-link" href="../pages/type.html"> 
 <span class="menu-text">Types</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -219,7 +219,7 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Macros</h1>
+          <h1 class="quarto-secondary-nav-title">Formatted Output</h1>
         </a>     
     </div>
   </nav>
@@ -232,67 +232,67 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Library Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/format.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/format.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Formatted Output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/print.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/print.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Print Facilities</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/verify.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/verify.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Verifications</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/log.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/log.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Logging</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/stopwatch.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/stopwatch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Stopwatch</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/string.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/string.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">String Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/stream.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/stream.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Stream Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/thousands.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/thousands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Readable Numbers</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/macros.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/macros.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Useful Macros</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/type.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/type.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Type Names</span></a>
   </div>
 </li>
@@ -307,20 +307,19 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#compiler-string" id="toc-compiler-string" class="nav-link" data-scroll-target="#compiler-string">Compiler String</a></li>
-  <li><a href="#macro-expansion" id="toc-macro-expansion" class="nav-link" data-scroll-target="#macro-expansion">Macro Expansion</a></li>
-  <li><a href="#overloading" id="toc-overloading" class="nav-link" data-scroll-target="#overloading">Overloading</a></li>
-  <li><a href="#semantic-version-strings" id="toc-semantic-version-strings" class="nav-link" data-scroll-target="#semantic-version-strings">Semantic Version Strings</a></li>
-  <li><a href="#print-code-lines-and-results" id="toc-print-code-lines-and-results" class="nav-link" data-scroll-target="#print-code-lines-and-results">Print Code Lines and Results</a></li>
+  <li><a href="#ranges-workaround" id="toc-ranges-workaround" class="nav-link" data-scroll-target="#ranges-workaround">Ranges workaround</a>
+  <ul class="collapse">
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/content/macros.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/format.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Macros</h1>
+<h1 class="title d-none d-lg-block">Formatted Output</h1>
 </div>
 
 
@@ -343,135 +342,69 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
 <!-- Formatted links to all the library header file pages -->
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The header <code>&lt;utilities/macros.h&gt;</code> supplies some useful macros.</p>
-<p>These include the <code>OVERLOAD</code> macro, which implements a well-known trick to “overload” any macro based on the number of passed arguments. See <a href="#overloading">overloading</a> below.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Microsoft compiler
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Microsoft’s old traditional preprocessor is unhappy with <code>OVERLOAD</code>, but their newer cross-platform compatible one is fine. Add the <code>/Zc:preprocessor</code> flag to use that upgrade at compile time. Our <code>CMake</code> module <code>compiler_init</code> does that automatically for you.</p>
-</div>
-</div>
-</section>
-<section id="compiler-string" class="level2">
-<h2 class="anchored" data-anchor-id="compiler-string">Compiler String</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>COMPILER_NAME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Expands to a string that encodes the name of the compiler and its version. Test code can use the macro to annotate results. We only support the usual three compiler suspects, <code>gcc</code>, <code>clang</code>, and <code>MSVC</code>, but adding more <a href="https://github.com/cpredef/predef/blob/master/Compilers.md%5Bcompiler%20definitions%5D">compilers</a> is not difficult.</p>
-<p>One of the examples below uses this macro.</p>
-</section>
-<section id="macro-expansion" class="level2">
-<h2 class="anchored" data-anchor-id="macro-expansion">Macro Expansion</h2>
-<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>STRINGIZE<span class="op">(</span>foo<span class="op">)</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>CONCAT<span class="op">(</span>foo<span class="op">,</span> bar<span class="op">)</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Turn the argument into a string.</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2">Concatenates the two arguments.</span>
-</dd>
-</dl>
-<p>These two classic macros work even if the arguments you pass in are themselves macros by fully expanding all arguments.</p>
-</section>
-<section id="overloading" class="level2">
-<h2 class="anchored" data-anchor-id="overloading">Overloading</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>OVERLOAD<span class="op">(</span>macro<span class="op">,</span> <span class="op">...)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can “overload” a macro based on the number of passed arguments.</p>
-<p>For example, if you have overloaded <code>FOO</code> macro:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define FOO</span><span class="op">(...)</span><span class="pp"> </span>OVERLOAD<span class="op">(</span>FOO<span class="op">,</span><span class="pp"> </span><span class="ot">__VA_ARGS__</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The consumer of the macro can call it as <code>FOO()</code>, or <code>FOO(a)</code>, or <code>FOO(a,b)</code>.</p>
-<p>All calls get automatically forwarded to the correct concrete macro. For <code>FOO</code>, these must be named <code>FOO0</code>, <code>FOO1</code>, <code>FOO2</code>, etc. The macro writer provides whichever of these makes sense, but the consumer of the macro can use them through the more straightforward call.</p>
+<p>C++20 introduced the formatting library <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a>. That library makes it easy to create strings with interpolated values and has facilities that allow you to add your types as values in those strings.</p>
+<p>The <code>&lt;utilities/format.h&gt;</code> header augments that facility.</p>
+<p>Many classes already implement a <code>std::string to_string() const</code> method that returns a string representation of an instance — we can use that to push values into <code>std::format</code>.</p>
+<p>We have a <a href="https://en.cppreference.com/w/cpp/language/constraints">concept</a> that captures all types with an appropriate <code>to_string()</code> method.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">concept</span> has_to_string_method <span class="op">=</span> <span class="kw">requires</span><span class="op">(</span><span class="at">const</span> T<span class="op">&amp;</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span> x<span class="op">.</span>to_string<span class="op">()</span> <span class="op">}</span> <span class="op">-&gt;</span> <span class="bu">std::</span>convertible_to<span class="op">&lt;</span><span class="bu">std::</span>string<span class="op">&gt;;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We also supply a <a href="https://en.cppreference.com/w/cpp/utility/format/formatter"><code>std::formatter</code></a> that automatically connects any <code>has_string_method</code> class to the standard formatting library.</p>
 <p><span class="bt">Example</span></p>
-<div class="sourceCode" id="annotated-cell-5"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/macros.h&gt;</span></span>
-<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#define COUT</span><span class="op">(...)</span><span class="pp"> </span>OVERLOAD<span class="op">(</span>COUT<span class="op">,</span><span class="pp"> </span><span class="ot">__VA_ARGS__</span><span class="op">)</span></span>
-<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-5-6" class="code-annotation-target"><a href="#annotated-cell-5-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#define COUT0</span><span class="op">(</span>x<span class="op">)</span><span class="pp">       </span><span class="bu">std::</span>cout<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="st">"Zero argument version:   "</span><span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span></span>
-<span id="annotated-cell-5-7"><a href="#annotated-cell-5-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#define COUT1</span><span class="op">(</span>x<span class="op">)</span><span class="pp">       </span><span class="bu">std::</span>cout<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="st">"One argument version:    "</span><span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span>x<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span></span>
-<span id="annotated-cell-5-8"><a href="#annotated-cell-5-8" aria-hidden="true" tabindex="-1"></a><span class="pp">#define COUT2</span><span class="op">(</span>x<span class="op">,</span><span class="pp"> </span>y<span class="op">)</span><span class="pp">    </span><span class="bu">std::</span>cout<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="st">"Two arguments version:   "</span><span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span>x<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="st">", "</span><span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span>y<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span></span>
-<span id="annotated-cell-5-9"><a href="#annotated-cell-5-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#define COUT3</span><span class="op">(</span>x<span class="op">,</span><span class="pp"> </span>y<span class="op">,</span><span class="pp"> </span>z<span class="op">)</span><span class="pp"> </span><span class="bu">std::</span>cout<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="st">"Three arguments version: "</span><span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span>x<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="st">", "</span><span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span>y<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="st">", "</span><span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span>z<span class="pp"> </span><span class="op">&lt;&lt;</span><span class="pp"> </span><span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span></span>
-<span id="annotated-cell-5-10"><a href="#annotated-cell-5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-5-11"><a href="#annotated-cell-5-11" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="annotated-cell-5-12"><a href="#annotated-cell-5-12" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="annotated-cell-5-13"><a href="#annotated-cell-5-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Compiler: "</span> <span class="op">&lt;&lt;</span> COMPILER_NAME <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
-<span id="annotated-cell-5-14"><a href="#annotated-cell-5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-5-15"><a href="#annotated-cell-5-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">// </span><span class="al">NOTE</span><span class="co">: We only ever call COUT, but we expect to get the correct concrete version.</span></span>
-<span id="annotated-cell-5-16"><a href="#annotated-cell-5-16" aria-hidden="true" tabindex="-1"></a>    COUT<span class="op">();</span></span>
-<span id="annotated-cell-5-17"><a href="#annotated-cell-5-17" aria-hidden="true" tabindex="-1"></a>    COUT<span class="op">(</span><span class="st">"x"</span><span class="op">);</span></span>
-<span id="annotated-cell-5-18"><a href="#annotated-cell-5-18" aria-hidden="true" tabindex="-1"></a>    COUT<span class="op">(</span><span class="st">"x"</span><span class="op">,</span> <span class="dv">2</span><span class="op">);</span></span>
-<span id="annotated-cell-5-19"><a href="#annotated-cell-5-19" aria-hidden="true" tabindex="-1"></a>    COUT<span class="op">(</span><span class="st">"x"</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="ch">'z'</span><span class="op">);</span></span>
-<span id="annotated-cell-5-20"><a href="#annotated-cell-5-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="annotated-cell-5-21"><a href="#annotated-cell-5-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/format.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Whatever <span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string to_string<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> <span class="st">"Whatever!"</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    Whatever w<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"Struct with a to_string() method: '</span><span class="sc">{}</span><span class="st">'</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> w<span class="op">);</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="bt">Output</span></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Struct</span> with a to_string<span class="er">(</span><span class="kw">)</span> <span class="ex">method:</span> <span class="st">'Whatever!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ranges-workaround" class="level2">
+<h2 class="anchored" data-anchor-id="ranges-workaround">Ranges workaround</h2>
+<p>C++23 will have facilities to allow <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a> to work with <a href="https://en.cppreference.com/w/cpp/ranges">ranges</a>, which will make it easier to create formatted strings with interpolated values from arrays, vectors, lists, etc. If your compiler does not yet support this type of interpolation, <code>&lt;utilities/format.h&gt;</code> supplies a workaround.</p>
+<p><span class="bt">Example</span></p>
+<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/format.h&gt;</span></span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef __cpp_lib_format_ranges</span></span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"The compiler natively supports formatting `ranges`!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a><span class="pp">#else</span></span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"I will format `ranges` using the `&lt;utilities&gt;` library!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector v <span class="op">=</span> <span class="op">{</span><span class="fl">1.123123</span><span class="op">,</span> <span class="fl">2.1235</span><span class="op">,</span> <span class="fl">3.555555</span><span class="op">};</span></span>
+<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"Unformatted vector: </span><span class="sc">{}\n</span><span class="st">"</span><span class="op">,</span> v<span class="op">);</span></span>
+<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"Formatted vector:   {::3.2f}</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> v<span class="op">);</span></span>
+<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="1">We overload a trivial macro depending on the number of passed arguments.</span>
-</dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="6" data-code-annotation="2">The one, two, and three argument versions of <code>COUT</code>.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="1"><code>__cpp_lib_format_ranges</code> is a standard preprocessor flag indicating whether your compiler can format ranges.</span>
 </dd>
 </dl>
 <p><span class="bt">Output</span></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Compiler:</span> clang 17.0.6</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Zero</span> argument version:</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">One</span> argument version:    x</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Two</span> arguments version:   x, 2</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Three</span> arguments version: x, 2, z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="semantic-version-strings" class="level2">
-<h2 class="anchored" data-anchor-id="semantic-version-strings">Semantic Version Strings</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>VERSION_STRING<span class="op">(</span>major<span class="op">)</span>                   <span class="op">&lt;</span><span class="dv">1</span><span class="op">&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>VERSION_STRING<span class="op">(</span>major<span class="op">,</span> minor<span class="op">)</span>            <span class="op">&lt;</span><span class="dv">2</span><span class="op">&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>VERSION_STRING<span class="op">(</span>major<span class="op">,</span> minor<span class="op">,</span> patch<span class="op">)</span>     <span class="op">&lt;</span><span class="dv">3</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Expands to “major”.</li>
-<li>Expands to “major.minor”.</li>
-<li>Expands to “major.minor.patch”.</li>
-</ol>
-<p><code>VERSION_STRING</code> is an <em>overloaded</em> macro. For example, <code>VERSION_STRING(3, 1, 0)</code> expands to the string <code>"3.1.0"</code>.</p>
-</section>
-<section id="print-code-lines-and-results" class="level2">
-<h2 class="anchored" data-anchor-id="print-code-lines-and-results">Print Code Lines and Results</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">(</span>code<span class="op">)</span>               <span class="op">&lt;</span><span class="dv">1</span><span class="op">&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">(</span>code<span class="op">,</span> out<span class="op">)</span>          <span class="op">&lt;</span><span class="dv">2</span><span class="op">&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>RUN<span class="op">(</span>code<span class="op">,</span> out1<span class="op">,</span> out2<span class="op">)</span>   <span class="op">&lt;</span><span class="dv">3</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Prints a line of code to the screen and then runs it.</li>
-<li>Prints a line of code to the screen, runs it, then prints the value from <code>out</code>.</li>
-<li>Prints a line of code to the screen, runs it, then prints the values <code>out1</code> and <code>out2</code>.</li>
-</ol>
-<p>This <em>overloaded</em> macro prints what will be executed in a test program, optionally followed by some results. Best illustrated with an example.</p>
-<p><span class="bt">Example</span></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/macros.h&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;format&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iterator&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    RUN<span class="op">(</span><span class="bu">std::</span>string s1<span class="op">);</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    RUN<span class="op">(</span><span class="dt">double</span> x <span class="op">=</span> <span class="fl">123456789.123456789</span><span class="op">);</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    RUN<span class="op">(</span><span class="bu">std::</span>format_to<span class="op">(</span><span class="bu">std::</span>back_inserter<span class="op">(</span>s1<span class="op">),</span> <span class="st">"x = </span><span class="sc">{:12.5f}</span><span class="st">"</span><span class="op">,</span> x<span class="op">),</span> s1<span class="op">);</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><span class="bt">Output</span></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[CODE]</span>   std::string s1</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[CODE]</span>   double x = 123456789.123456789</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[CODE]</span>   std::format_to<span class="er">(</span><span class="ex">std::back_inserter</span><span class="er">(</span><span class="ex">s1</span><span class="kw">)</span><span class="ex">,</span> <span class="st">"x = {:12.5f}"</span>, x<span class="kw">)</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[RESULT]</span> s1: x = 123456789.12346</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<!-- Some reference link definitions -->
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">I</span> will format <span class="kw">`</span><span class="ex">ranges</span><span class="kw">`</span> using the <span class="kw">`</span><span class="op">&lt;</span>utilities<span class="op">&gt;</span><span class="kw">`</span> library!</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Unformatted</span> vector: [1.123123, 2.1235, 3.555555]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Formatted</span> vector:   [1.12, 2.12, 3.56]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="see-also" class="level3">
+<h3 class="anchored" data-anchor-id="see-also">See Also</h3>
+<p><a href="../pages/print.html"><code>print.h</code></a><br>
+<a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a><br>
+<a href="https://en.cppreference.com/w/cpp/utility/format/formatter"><code>std::formatter</code></a></p>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -886,13 +819,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../content/thousands.html" class="pagination-link" aria-label="Readable Numbers">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Readable Numbers</span>
+      <a href="../pages/index.html" class="pagination-link" aria-label="Library Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Library Overview</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../content/type.html" class="pagination-link" aria-label="Type Names">
-        <span class="nav-page-text">Type Names</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/print.html" class="pagination-link" aria-label="Print Facilities">
+        <span class="nav-page-text">Print Facilities</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -904,7 +837,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p>Project is under the MIT License</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/content/macros.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/format.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

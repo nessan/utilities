@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>C++ Utilities Library - Logging</title>
+<title>C++ Utilities Library - Stream Functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../content/stopwatch.html" rel="next">
-<link href="../content/verify.html" rel="prev">
+<link href="../pages/thousands.html" rel="next">
+<link href="../pages/string.html" rel="prev">
 <link href="../assets/images/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -113,13 +113,13 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="C++ Utilities Library - Logging">
+<meta property="og:title" content="C++ Utilities Library - Stream Functions">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://nessan.github.io/utilities/content/assets/images/logo.png">
+<meta property="og:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta property="og:site_name" content="C++ Utilities Library">
-<meta name="twitter:title" content="C++ Utilities Library - Logging">
+<meta name="twitter:title" content="C++ Utilities Library - Stream Functions">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://nessan.github.io/utilities/content/assets/images/logo.png">
+<meta name="twitter:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -144,43 +144,43 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../content/index.html" aria-current="page"> 
+    <a class="nav-link active" href="../pages/index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/format.html"> 
+    <a class="nav-link" href="../pages/format.html"> 
 <span class="menu-text">Format</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/verify.html"> 
+    <a class="nav-link" href="../pages/verify.html"> 
 <span class="menu-text">Verifications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/log.html"> 
+    <a class="nav-link" href="../pages/log.html"> 
 <span class="menu-text">Logging</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/stopwatch.html"> 
+    <a class="nav-link" href="../pages/stopwatch.html"> 
 <span class="menu-text">Stopwatch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/string.html"> 
+    <a class="nav-link" href="../pages/string.html"> 
 <span class="menu-text">Strings</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/stream.html"> 
+    <a class="nav-link" href="../pages/stream.html"> 
 <span class="menu-text">Streams</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/thousands.html"> 
+    <a class="nav-link" href="../pages/thousands.html"> 
 <span class="menu-text">Commas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/macros.html"> 
+    <a class="nav-link" href="../pages/macros.html"> 
 <span class="menu-text">Macros</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/type.html"> 
+    <a class="nav-link" href="../pages/type.html"> 
 <span class="menu-text">Types</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -219,7 +219,7 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Logging</h1>
+          <h1 class="quarto-secondary-nav-title">Stream Functions</h1>
         </a>     
     </div>
   </nav>
@@ -232,67 +232,67 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Library Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/format.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/format.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Formatted Output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/print.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/print.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Print Facilities</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/verify.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/verify.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Verifications</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/log.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/log.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Logging</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/stopwatch.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/stopwatch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Stopwatch</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/string.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/string.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">String Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/stream.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/stream.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Stream Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/thousands.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/thousands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Readable Numbers</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/macros.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/macros.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Useful Macros</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/type.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/type.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Type Names</span></a>
   </div>
 </li>
@@ -307,19 +307,17 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#message-handling" id="toc-message-handling" class="nav-link" data-scroll-target="#message-handling">Message Handling</a>
-  <ul class="collapse">
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
+  <li><a href="#reading-from-a-stream" id="toc-reading-from-a-stream" class="nav-link" data-scroll-target="#reading-from-a-stream">Reading from a Stream</a></li>
+  <li><a href="#related-functions" id="toc-related-functions" class="nav-link" data-scroll-target="#related-functions">Related Functions</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/content/log.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/stream.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Logging</h1>
+<h1 class="title d-none d-lg-block">Stream Functions</h1>
 </div>
 
 
@@ -342,87 +340,68 @@ gtag('config', 'G-1KYLJGVB85', { 'anonymize_ip': true});
 <!-- Formatted links to all the library header file pages -->
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The header <code>&lt;utilities/log.h&gt;</code> supplies a couple of macros for <em>simple</em> logging and debug messages.</p>
-<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>LOG<span class="op">(...)</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>DBG<span class="op">(...)</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>&lt;utilities/stream.h&gt;</code> header supplies some utility functions that work on streams.</p>
+</section>
+<section id="reading-from-a-stream" class="level2">
+<h2 class="anchored" data-anchor-id="reading-from-a-stream">Reading from a Stream</h2>
+<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string</span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>utilities::read_line<span class="op">(</span><span class="bu">std::</span>istream <span class="op">&amp;</span>s<span class="op">,</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>                     <span class="bu">std::</span>string_view comment_begin <span class="op">=</span> <span class="st">"#"</span><span class="op">);</span></span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>size_t</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>utilities::read_line<span class="op">(</span><span class="bu">std::</span>istream <span class="op">&amp;</span>s<span class="op">,</span> <span class="bu">std::</span>string <span class="op">&amp;</span>line<span class="op">,</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>                     <span class="bu">std::</span>string_view comment_begin <span class="op">=</span> <span class="st">"#"</span><span class="op">);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">These messages are dispatched <strong>unless</strong> the <code>NO_LOGS</code> flag is set at compile time.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="1">Reads a ‘<code>line</code>’ from a stream <code>s</code> and returns that as a <code>std::string</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">These messages are dispatched <strong>only if</strong> the <code>DEBUG</code> flag is set at compile time.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="6" data-code-annotation="2">Overwrites the ‘<code>line</code>’ argument with the contents from a stream <code>s</code>. Returns the number of characters placed into <code>line</code>.</span>
 </dd>
 </dl>
-<p>These macros create and dispatch <code>utilities::message</code> objects, which hold the user-supplied message and location information specifying the message’s creation location. The <code>LOG</code> and <code>DBG</code> macros automatically pass the correct source code location information to the message.</p>
-<p>The message payload can be anything that works for the facilities in <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a>. If there is no payload, the default message handler prints the source code location.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Microsoft compiler
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Microsoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the <code>/Zc:preprocessor</code> flag to use that upgrade at compile time. Our <code>CMake</code> module <code>compiler_init</code> does that automatically for you.</p>
-</div>
-</div>
+<p>These functions differ from <a href="https://en.cppreference.com/w/cpp/string/basic_string/getline"><code>std::getline</code></a> in a few ways:</p>
+<ol type="1">
+<li>They ignore blank lines in the input stream.</li>
+<li>They allow for long lines by assuming that lines that end with a “\” continue to the next.</li>
+<li>They strip out comment lines and trailing comments.</li>
+</ol>
+<p>Comment lines begin with “#” by default.</p>
 </section>
-<section id="message-handling" class="level2">
-<h2 class="anchored" data-anchor-id="message-handling">Message Handling</h2>
-<p>The macros create and immediately dispatch messages to a message <em>handler</em>. The default handler prints the message and the location information to a default stream <code>std::cout</code>. You can change that default stream, for example:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>log_file <span class="op">=</span> <span class="bu">std::</span>ofstream<span class="op">(</span><span class="st">"log.txt"</span><span class="op">);</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>utilities<span class="op">::</span>message<span class="op">::</span>stream <span class="op">=</span> <span class="op">&amp;</span>log_file<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For fancier usage, you can interpose your message handler</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> my_handler<span class="op">(</span><span class="at">const</span> utilities<span class="op">::</span>message<span class="op">&amp;</span> msg<span class="op">)</span> <span class="op">{</span> <span class="op">...</span> <span class="op">}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>utilities<span class="op">::</span>message<span class="op">::</span>handler<span class="op">()</span> <span class="op">=</span> my_handler<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Your handler can do whatever it likes with the messages it receives. You can revert to the default handler by calling the class method <code>utilities::message::use_default_handler()</code>.</p>
+<section id="related-functions" class="level2">
+<h2 class="anchored" data-anchor-id="related-functions">Related Functions</h2>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>istream <span class="op">&amp;</span> rewind<span class="op">(</span><span class="bu">std::</span>istream <span class="op">&amp;</span>is<span class="op">);</span></span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>size_t</span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>line_count<span class="op">(</span><span class="bu">std::</span>istream <span class="op">&amp;</span>is<span class="op">,</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>           <span class="bu">std::</span>string_view comment_begin <span class="op">=</span> <span class="st">"#"</span><span class="op">);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">This function rewinds an input stream to the start.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="2">This function returns the number of non-comment lines in the stream.</span>
+</dd>
+</dl>
+<p>If the comment start string is empty, <code>line_count</code> uses <a href="https://en.cppreference.com/w/cpp/string/basic_string/getline"><code>std::getline</code></a> to read the lines. Otherwise, we use our <code>read_line(...)</code> function, so comment lines are excluded, etc.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Simplicity rules
+Files only
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Everything here is deliberately rudimentary, and there is no consideration for rotating log files, etc., or any real consideration for streaming efficiencies. The primary use case for the macros above and the underlying <code>utilities::message</code> class is to <em>easily</em> print useful messages during the development cycle. The emphasis is on ease of use as opposed to great generality or, indeed, speed. During the development cycle, the typical output is going to be pretty small anyway.</p>
+<p>These two functions only work with file streams, etc.</p>
 </div>
 </div>
-<p><span class="bt">Example (source file named <code>example.cpp</code>)</span></p>
-<div class="sourceCode" id="annotated-cell-4"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/log.h&gt;</span></span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> add<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span></span>
-<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>    DBG<span class="op">(</span><span class="st">"The DEBUG flag was set at compile time."</span><span class="op">);</span></span>
-<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a>    LOG<span class="op">(</span><span class="st">"x = </span><span class="sc">{}</span><span class="st">, y = </span><span class="sc">{}</span><span class="st">"</span><span class="op">,</span> x<span class="op">,</span> y<span class="op">);</span></span>
-<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span></span>
-<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-11" class="code-annotation-target"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a>    LOG<span class="op">();</span></span>
-<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> add<span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">11</span><span class="op">);</span></span>
-<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="11" data-code-annotation="1">A call to <code>LOG</code> without any message will print the source location.</span>
-</dd>
-</dl>
-<p><span class="bt">Output</span></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[LOG]</span> function <span class="st">'main'</span> <span class="er">(</span><span class="ex">example.cpp,</span> line 11<span class="kw">)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[DBG]</span> function <span class="st">'add'</span> <span class="er">(</span><span class="ex">example.cpp,</span> line 4<span class="kw">)</span><span class="bu">:</span> The DEBUG flag was set at compile time.</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[LOG]</span> function <span class="st">'add'</span> <span class="er">(</span><span class="ex">example.cpp,</span> line 5<span class="kw">)</span><span class="bu">:</span> x = 10, y = 11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="see-also" class="level3">
-<h3 class="anchored" data-anchor-id="see-also">See Also</h3>
-<p><a href="../content/verify.html"><code>verify.h</code></a></p>
+<!-- Some reference link definitions -->
 
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -837,13 +816,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../content/verify.html" class="pagination-link" aria-label="Verifications">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Verifications</span>
+      <a href="../pages/string.html" class="pagination-link" aria-label="String Functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">String Functions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../content/stopwatch.html" class="pagination-link" aria-label="Stopwatch">
-        <span class="nav-page-text">Stopwatch</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/thousands.html" class="pagination-link" aria-label="Readable Numbers">
+        <span class="nav-page-text">Readable Numbers</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -855,7 +834,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p>Project is under the MIT License</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/content/log.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/stream.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

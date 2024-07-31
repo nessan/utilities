@@ -22,13 +22,13 @@
 [`what`]:               https://en.cppreference.com/w/cpp/error/exception/what
 
 <!-- Formatted links to all the library header file pages -->
-[`verify.h`]:           /content/verify.qmd
-[`format.h`]:           /content/format.qmd
-[`log.h`]:              /content/log.qmd
-[`macros.h`]:           /content/macros.qmd
-[`print.h`]:            /content/print.qmd
-[`stopwatch.h`]:        /content/stopwatch.qmd
-[`stream.h`]:           /content/stream.qmd
-[`string.h`]:           /content/string.qmd
-[`thousands.h`]:        /content/thousands.qmd
-[`type.h`]:             /content/type.qmd
+[`verify.h`]:           /pages/verify.qmd
+[`format.h`]:           /pages/format.qmd
+[`log.h`]:              /pages/log.qmd
+[`macros.h`]:           /pages/macros.qmd
+[`print.h`]:            /pages/print.qmd
+[`stopwatch.h`]:        /pages/stopwatch.qmd
+[`stream.h`]:           /pages/stream.qmd
+[`string.h`]:           /pages/string.qmd
+[`thousands.h`]:        /pages/thousands.qmd
+[`type.h`]:             /pages/type.qmd

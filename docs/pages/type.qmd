@@ -1,4 +1,4 @@
-{{< include /content/_common.qmd >}}
+{{< include /pages/_common.qmd >}}
 ---
 title: The Type of an Object
 ---

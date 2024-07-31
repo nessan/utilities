@@ -1,5 +1,5 @@
 # Metadata for this documentation project.
-# See https://quarto.orgcontent/reference/projects/websites.html
+# See https://quarto.orgpages/reference/projects/websites.html
 project:
     type: website
     output-dir: _site
@@ -54,25 +54,25 @@ website:
         collapse-below: lg
         left:
             - text: "Home"
-              file: content/index.qmd
+              file: pages/index.qmd
             - text: "Format"
-              file: content/format.qmd
+              file: pages/format.qmd
             - text: "Verifications"
-              file: content/verify.qmd
+              file: pages/verify.qmd
             - text: "Logging"
-              file: content/log.qmd
+              file: pages/log.qmd
             - text: "Stopwatch"
-              file: content/stopwatch.qmd
+              file: pages/stopwatch.qmd
             - text: "Strings"
-              file: content/string.qmd
+              file: pages/string.qmd
             - text: "Streams"
-              file: content/stream.qmd
+              file: pages/stream.qmd
             - text: "Commas"
-              file: content/thousands.qmd
+              file: pages/thousands.qmd
             - text: "Macros"
-              file: content/macros.qmd
+              file: pages/macros.qmd
             - text: "Types"
-              file: content/type.qmd
+              file: pages/type.qmd
             - text: "More"
               menu:
                   - text: "Project Repo"
@@ -99,27 +99,27 @@ website:
         collapse-level: 2
         contents:
             - text: "Library Overview"
-              file: content/index.qmd
+              file: pages/index.qmd
             - text: "Formatted Output"
-              file: content/format.qmd
+              file: pages/format.qmd
             - text: "Print Facilities"
-              file: content/print.qmd
+              file: pages/print.qmd
             - text: "Verifications"
-              file: content/verify.qmd
+              file: pages/verify.qmd
             - text: "Logging"
-              file: content/log.qmd
+              file: pages/log.qmd
             - text: "Stopwatch"
-              file: content/stopwatch.qmd
+              file: pages/stopwatch.qmd
             - text: "String Functions"
-              file: content/string.qmd
+              file: pages/string.qmd
             - text: "Stream Functions"
-              file: content/stream.qmd
+              file: pages/stream.qmd
             - text: "Readable Numbers"
-              file: content/thousands.qmd
+              file: pages/thousands.qmd
             - text: "Useful Macros"
-              file: content/macros.qmd
+              file: pages/macros.qmd
             - text: "Type Names"
-              file: content/type.qmd
+              file: pages/type.qmd
 editor:
     markdown:
         canonical: true

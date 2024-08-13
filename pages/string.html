@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>C++ Utilities Library - String Functions</title>
+<title>String Functions – C++ Utilities Library</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -113,11 +113,11 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="C++ Utilities Library - String Functions">
+<meta property="og:title" content="String Functions – C++ Utilities Library">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta property="og:site_name" content="C++ Utilities Library">
-<meta name="twitter:title" content="C++ Utilities Library - String Functions">
+<meta name="twitter:title" content="String Functions – C++ Utilities Library">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -138,7 +138,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -184,7 +184,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <span class="menu-text">Types</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">More</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-more">    
@@ -207,7 +207,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
     <a href="https://github.com/nessan/utilities" title="GitHub repo" class="quarto-navigation-tool px-1" aria-label="GitHub repo"><i class="bi bi-github"></i></a>
     <a href="https://twitter.com/nezzan" title="" class="quarto-navigation-tool px-1" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
 </div>
@@ -215,10 +215,10 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
           <h1 class="quarto-secondary-nav-title">String Functions</h1>
         </a>     
     </div>
@@ -350,7 +350,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>The header <code>&lt;utilities/string.h&gt;</code> supplies several utility functions that work on strings.</p>
-<p>Many of the functions come in two flavors. One version alters the input string in-place, while the other returns a new string that is a copy of the input appropriately converted, leaving the original untouched.</p>
+<p>Many of the functions come in two flavours. One version alters the input string in place, while the other returns a new string that is a copy of the input appropriately converted, leaving the original untouched.</p>
 <p>For example, <code>utilities::upper_case(str)</code> converts <code>str</code> to upper-case in place. On the other hand, <code>utilities::upper_cased(str)</code> returns a fresh string that is a copy of <code>str</code> converted to upper-case. As you will see below, this is the typical naming style used.</p>
 <p>There are other functions where this distinction is unnecessary, such as <code>utilities::starts_with(...)</code>.</p>
 </section>
@@ -385,7 +385,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Limitation
+Limitations
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -434,7 +434,7 @@ Limitation
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Limitation
+Limitations
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -718,7 +718,7 @@ For example, the string “(text)” becomes “text”. Multiples also work so 
 <p><span class="bt">Example</span></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> x <span class="op">=</span> possible<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>str<span class="op">);</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(</span>x<span class="op">)</span> <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> str <span class="op">&lt;&lt;</span> <span class="st">": parsed as the double value "</span> <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This function tries to fill <code>x</code> with a <code>double</code> value read from a string and, if successful, print it on <code>std::cout</code>.</p>
+<p>If successful, this function tries to fill x with a double value read from a string and print it on <code>std::cout</code>.</p>
 <!-- Some reference link definitions -->
 
 
@@ -760,18 +760,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -803,7 +792,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/nessan\.github\.io\/utilities");
@@ -811,7 +822,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

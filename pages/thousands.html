@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>C++ Utilities Library - Pretty Print Large Numbers</title>
+<title>Pretty Print Large Numbers – C++ Utilities Library</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -113,11 +113,11 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="C++ Utilities Library - Pretty Print Large Numbers">
+<meta property="og:title" content="Pretty Print Large Numbers – C++ Utilities Library">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta property="og:site_name" content="C++ Utilities Library">
-<meta name="twitter:title" content="C++ Utilities Library - Pretty Print Large Numbers">
+<meta name="twitter:title" content="Pretty Print Large Numbers – C++ Utilities Library">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -138,7 +138,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -184,7 +184,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <span class="menu-text">Types</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">More</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-more">    
@@ -207,7 +207,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
     <a href="https://github.com/nessan/utilities" title="GitHub repo" class="quarto-navigation-tool px-1" aria-label="GitHub repo"><i class="bi bi-github"></i></a>
     <a href="https://twitter.com/nezzan" title="" class="quarto-navigation-tool px-1" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
 </div>
@@ -215,10 +215,10 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
           <h1 class="quarto-secondary-nav-title">Pretty Print Large Numbers</h1>
         </a>     
     </div>
@@ -361,10 +361,10 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </dl>
 <p>Ideally, one should be able to rely on facilities in <a href="https://en.cppreference.com/w/cpp/locale/locale"><code>std::locale</code></a> to format large numbers per local custom. For example, using <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a>, you might print a large number like this:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>format<span class="op">(</span><span class="st">"x = </span><span class="sc">{:L}\n</span><span class="st">"</span><span class="op">,</span> <span class="fl">23456.7</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The <code>L</code> specifier tells the text formatting library to invoke an appropriate facet from the default locale. Then, you might expect to see <code>23,456.7</code> printed on the screen for many locations.</p>
+<p>The <code>L</code> specifier tells the text formatting library to invoke an appropriate facet from the default locale. Then, you should see <code>23,456.7</code> printed on the screen for many locations.</p>
 <p>In practice, the C++ standard libraries seem to have poor support for resolving locale information.</p>
 <p>Your computer correctly supports locales at the operating system level. After all, computer manufacturers sell their machines to customers worldwide, and those customers expect to see dates, etc., presented locally. However, the default locale used in many C++ implementations is not the default one used by the operating system. Instead, it is often a complete blank, so rather than seeing <code>23,456.7</code> you will get the less readable <code>23456.7</code></p>
-<p>The various <code>utilities::imbue_xxx_with_commas</code> functions are a little hack that corrects the deficit. If you call the final version above <code>pretty_print_thousands()</code>, we inject a comma-producing facet into the default locale, and printing large numbers will work as expected. Calling <code>pretty_print_thousands(false);</code> will restore the default locale to its original state.</p>
+<p>The various <code>utilities::imbue_xxx_with_commas</code> functions are a little hack that corrects the deficit. If you call the final version above <code>pretty_print_thousands()</code>, we inject a comma-producing facet into the default locale, and printing large numbers will work as expected. Calling <code>pretty_print_thousands(false)</code> will restore the default locale to its original state.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -375,7 +375,7 @@ Commas only
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For now, the only punctuation we support with these functions is the comma. You should be aware that many countries treat the comma as a decimal point.</p>
+<p>For now, the only punctuation we support with these functions is the comma. You should know that many countries treat the comma as a decimal point.</p>
 </div>
 </div>
 <p><span class="bt">Example</span></p>
@@ -459,18 +459,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -502,7 +491,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/nessan\.github\.io\/utilities");
@@ -510,7 +521,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

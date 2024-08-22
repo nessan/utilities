@@ -1,0 +1,125 @@
+---
+title: Verifications and Assertions
+---
+
+## Introduction
+
+The `<utilities/verify.h>` header has some macros that can be used to check a condition and, on failures, cause the program to exit with a customizable message.
+Two replacements for the standard {std.assert} macro that allow for an additional string output that you can use to print the values of the variables that triggered any failure.
+
+```cpp
+verify(condition, ...)              // <1>
+debug_verify(condition, ...)        // <2>
+assertion(condition, ...)           // <3>
+```
+1. The `condition` is checked, and if it fails, the program exits with a custom message synthesized from the rest of the arguments.
+2. This macro expands to `verify` **if** the `DEBUG` flag is set; otherwise, it's a no-op.
+3. This macro expands to `verify` **unless** the `NDEBUG` flag is set, which is a no-op. This is similar to the standard {std.assert} macro.
+
+Assuming a check is "on", in all cases, if `condition` evaluates to `false`, these all call the macro:
+```cpp
+exit_with_message(message)
+```
+The `exit_with_message(message)` macro passes the `message` arguments and the failure's source code location to `utilities::exit(...)`.
+That function prints the failure's source code location along with the `message` payload and then **exits** the program.
+
+The `utilities::exit` function needs source code location parameters (the filename, the line number, and the function name), and the `exit_with_message` macro automatically adds those.
+You typically use the `message` arguments to print the values of the variables that triggered the failure.
+The message can be anything that can be formatted using the facilities in {std.format}.
+
+::: {.callout-tip}
+# Microsoft compiler
+Microsoft's old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine.
+Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
+Our `CMake` module `compiler_init` does that automatically for you.
+:::
+
+## Examples
+
+[Example]{.bt}
+```cpp
+#include <utilities/verify.h>
+
+int subtract(int x, int y)
+{
+    verify(x == y, "x = {}, y = {}", x, y);
+    return y - x;
+}
+int main()
+{
+    return subtract(10, 11);
+}
+```
+1. For the sake of the example we added a code line to make sure the `assertion` is triggered. In normal usage, this flag is passed through the compiler command line.
+
+[Output]{.bt}
+```sh
+[VERIFY FAILED] In function 'subtract' (verify01.cpp, line 7):
+Statement 'x == y' is NOT true: x = 10, y = 11
+```
+The program will then exit.
+
+## Design Rationale
+
+### `verify(condition, ...)`
+
+This sort of check often appears in test code.
+You want to check something is true and exit if it is not with an informative message.
+These are unaffected by compiler flags.
+
+### `debug_verify(condition, ...)`
+
+In the development cycle, it can be helpful to range-check indices and so on.
+However, those checks are expensive and can slow down numerical code by orders of magnitude.
+Therefore, we don't want there to be any chance that those verifications are accidentally left "on" in the production code.
+The `debug_verify(...)` form covers this type of verification.
+Turning on these checks requires the programmer to take a specific action: she must set the `DEBUG` flag during compile time.
+
+For example, here is a pre-condition from a hypothetical `dot(Vector u, Vector v)` function:
+```cpp
+debug_verify(u.size() == v.size(), "Vector sizes {} and {} DO NOT match!", u.size(), v.size());
+```
+This code checks that the two vector arguments have equal length --- a necessary constraint for the dot product operation to make sense.
+If the requirement is not satisfied, the program exits with an informative message that includes the size of the two vectors.
+
+The check here is **off** by default, and you need to do something special (i.e., define the `DEBUG` flag at compile time) to enable it.
+Production code may do many of these dot products; we do not generally want to pay for the check.
+However, enabling these sorts of checks may be very useful during development.
+
+The `debug_verify(...)` macro expands to nothing **unless** you set the `DEBUG` flag at compile time.
+
+### `assertion`
+
+On the other hand, there are some checks where the assertion cost is slight compared to the work of the function.
+Leaving these checks on in production will not likely impose much of a performance penalty.
+
+For example, a pre-condition for a matrix inversion method is that the input matrix must be square.
+Here is how you might do that check in an `invert(const Matrix& M)` function:
+```cpp
+assertion(M.is_square(), "Cannot invert a {} x {} NON-square matrix!", M.rows(), M.cols());
+```
+We can only invert square matrices.
+The `M.is_square()` call checks that condition and, on failure, exits the program with a helpful message.
+The check cost is very slight compared to the work done by the `invert(...)` method, so leaving it on even in production code is not a problem.
+
+The check here is **on** by default, and you need to do something special (i.e., define the `NDEBUG` flag at compile time) to disable it.
+
+The `assertion(...)` macro expands to nothing **only if** you set the `NDEBUG` flag at compile time.
+
+The decision to use one form vs. the other is predicated on the cost of doing the check versus the work done by the method in question.
+
+A primary use case for `debug_verify` is checking bounds on indices.
+From experience, this is vital during development.
+However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude.
+So it makes sense to have the checks in place for development but to ensure they are never there in release builds.
+
+::: {.callout-note}
+# Macro-land
+We are in macro land here, so there are no namespaces.
+Typically, macros have names in caps, but the standard `assert` does not follow that custom, so neither do these.
+:::
+
+### See Also
+{format} \
+{log}    \
+{std.assert}

@@ -1,0 +1,38 @@
+---
+title: Printing
+---
+
+## Introduction
+
+{cpp23} introduces {std.print} as an addition to the standard formatting library.
+
+If your compiler does not yet support {std.print}, the `<utilities/print.h>` header file supplies a workaround.
+
+[Example]{.bt}
+```cpp
+#include <utilities/format.h>
+#include <utilities/print.h>
+#include <vector>
+
+int main()
+{
+#ifdef __cpp_lib_print
+    std::cout << "The compiler has std::print!\n";
+#else
+    std::cout << "I will use the std::print workaround!\n";
+#endif
+    std::vector v = {1.123123, 2.1235, 3.555555};
+    std::print("Unformatted vector: {}\n", v);
+    std::print("Formatted vector:   {::3.2f}\n", v);W
+}
+```
+
+[Output]{.bt}
+```sh
+I will use the std::print workaround!
+Unformatted vector: [1.123123, 2.1235, 3.555555]
+Formatted vector:   [1.12, 2.12, 3.56]
+```
+
+### See Also
+{format}

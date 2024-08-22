@@ -1,0 +1,39 @@
+# Shortcuts and links used throughout the documentation.
+
+# C++ versions
+cpp: "C&#43;&#43;"
+cpp20: "C&#43;&#43;20"
+cpp23: "C&#43;&#43;23"
+
+# Links to software tools, etc.
+mit-license: "[MIT License](https://opensource.org/license/mit)"
+quarto: "[Quarto](https://quarto.org)"
+repo: "[repository](https://github.com/nessan/utilities)"
+docs: "[documentation](https://nessan.github.io/utilities)"
+email: "[email](mailto:nzznfitz+gh@icloud.com)"
+
+# Formatted links to pages for items in the standard library
+std:
+    assert: "[`assert`](https://www.cplusplus.com/reference/cassert/assert/)"
+    concept: "[`concept`](https://en.cppreference.com/w/cpp/language/constraints)"
+    format: "[`std::format`](https://en.cppreference.com/w/cpp/utility/format/format)"
+    formatter: "[`std::formatter`](https://en.cppreference.com/w/cpp/utility/format/formatter)"
+    from_chars: "[`std::from_chars`](https://en.cppreference.com/w/cpp/utility/from_chars)"
+    isspace: "[`std::isspace`](https://en.cppreference.com/w/cpp/string/byte/isspace)"
+    nullopt: "[`std::nullopt`](https://en.cppreference.com/w/cpp/utility/optional/nullopt)"
+    print: "[`std::print`](https://en.cppreference.com/w/cpp/io/print)"
+    ranges: "[`ranges`](https://en.cppreference.com/w/cpp/ranges)"
+    tolower: "[`std::tolower`](https://en.cppreference.com/w/cpp/string/byte/tolower)"
+    toupper: "[`std::toupper`](https://en.cppreference.com/w/cpp/string/byte/toupper)"
+
+# Formatted links to all the library header file pages
+format: "[`format.h`](/pages/format.qmd)"
+log: "[`log.h`](/pages/log.qmd)"
+macros: "[`macros.h`](/pages/macros.qmd)"
+print: "[`print.h`](/pages/print.qmd)"
+stopwatch: "[`stopwatch.h`](/pages/stopwatch.qmd)"
+stream: "[`stream.h`](/pages/stream.qmd)"
+string: "[`string.h`](/pages/string.qmd)"
+thousands: "[`thousands.h`](/pages/thousands.qmd)"
+type: "[`type.h`](/pages/type.qmd)"
+verify: "[`verify.h`](/pages/verify.qmd)"

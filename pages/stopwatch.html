@@ -77,6 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/admonitions-1.0.0/admonitions.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,6 +114,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <meta property="og:title" content="Stopwatch Class – C++ Utilities Library">
@@ -353,38 +355,26 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> Clock <span class="op">=</span> <span class="bu">std::</span>chrono::high_resolution_clock<span class="op">&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> utilities<span class="op">::</span>stopwatch<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The header-only class is templatized over the specific clock choice, likely one of the clocks from <a href="https://en.cppreference.com/w/cpp/header/chrono"><code>std::chrono</code></a>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-The default clock
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Our default clock is <a href="https://en.cppreference.com/w/cpp/chrono/high_resolution_clock"><code>std::::chrono::high_resolution_clock</code></a>. Discussions on sites like <a href="https://stackoverflow.com">Stack Overflow</a> instead favour <a href="https://en.cppreference.com/w/cpp/chrono/steady_clock"><code>std::chrono::steady_clock</code></a>. That clock is guaranteed to be monotonic and unaffected by changing the system time, so it is suitable for long-running processes. However, in practice, we primarily examine much shorter code blocks and value accuracy over “steadiness.” We also note that, in any case, the two clocks are often identical!</p>
-</div>
-</div>
+<div class="admonition tip">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-tip" title="Tip"></i></td>
+    <td class="content">
+    
+Our default clock is <a href="https://en.cppreference.com/w/cpp/chrono/high_resolution_clock"><code>std::::chrono::high_resolution_clock</code></a>. Discussions on sites like <a href="https://stackoverflow.com">Stack Overflow</a> instead favour <a href="https://en.cppreference.com/w/cpp/chrono/steady_clock"><code>std::chrono::steady_clock</code></a>. That clock is guaranteed to be monotonic and unaffected by changing the system time, so it is suitable for long-running processes. However, in practice, we primarily examine much shorter code blocks and value accuracy over “steadiness.” We also note that, in any case, the two clocks are often identical!
+</td></tr></tbody></table></div>
 <p>If the clock choice matters, you can use one of the following type aliases:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>utilities<span class="op">::</span>precise_stopwatch <span class="op">=</span> utilities<span class="op">::</span>stopwatch<span class="op">&lt;</span><span class="bu">std::</span>chrono::high_resolution_clock<span class="op">&gt;;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>utilities<span class="op">::</span>steady_stopwatch  <span class="op">=</span> utilities<span class="op">::</span>stopwatch<span class="op">&lt;</span><span class="bu">std::</span>chrono::steady_clock<span class="op">&gt;;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>utilities<span class="op">::</span>system_stopwatch  <span class="op">=</span> utilities<span class="op">::</span>stopwatch<span class="op">&lt;</span><span class="bu">std::</span>chrono::system_clock<span class="op">&gt;;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We always store elapsed times as a <code>double</code> number of seconds — this is also contrary to advice that advocates the use of <a href="https://en.cppreference.com/w/cpp/chrono/duration"><code>std::chrono::duration</code></a>.</p>
 <p>The primary goal for <code>utilities::stopwatch</code> is ease of use. Sticking to seconds as the standard unit makes everything consistent. Besides, a double number of seconds gives you 15 or 16 places of accuracy, which is enough for any conceivable application.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-This is not a profiler
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Use the <code>utilities::stopwatch</code> class for cheap and cheerful performance measurement. It is not a replacement for the many more complete but more complex code profiling tools.</p>
-</div>
-</div>
+<div class="admonition note">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-note" title="Note"></i></td>
+    <td class="content">
+    
+Use the <code>utilities::stopwatch</code> class for cheap and cheerful performance measurement. It is not a replacement for the many more complete but more complex code profiling tools.
+</td></tr></tbody></table></div>
 </section>
 <section id="construction" class="level2">
 <h2 class="anchored" data-anchor-id="construction">Construction</h2>
@@ -452,19 +442,13 @@ This is not a profiler
 <span data-code-cell="annotated-cell-7" data-code-lines="6" data-code-annotation="2">Adds stopwatch support to <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a>.</span>
 </dd>
 </dl>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Elapsed time
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>These functions output the stopwatch’s elapsed time only. The output will look like “3.2s” without a name. The output will look like “name: 3.2s” with a name.</p>
-</div>
-</div>
+<div class="admonition note">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-note" title="Note"></i></td>
+    <td class="content">
+    
+These functions output the stopwatch’s elapsed time only. The output will look like “3.2s” without a name. The output will look like “name: 3.2s” with a name.
+</td></tr></tbody></table></div>
 </section>
 <section id="other-functions" class="level2">
 <h2 class="anchored" data-anchor-id="other-functions">Other Functions</h2>

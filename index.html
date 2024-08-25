@@ -75,6 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/admonitions-1.0.0/admonitions.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,6 +112,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <meta property="og:title" content="The utilities Library – C++ Utilities Library">
@@ -340,19 +342,13 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
 <p>The <code>utilities</code> library is a small collection of C++ classes, functions, and macros. It is header-only, so there is nothing to compile or link.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-The header files are stand-alone
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can use any header file in this library by itself — there are no interdependencies.</p>
-</div>
-</div>
+<div class="admonition tip">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-tip" title="Tip"></i></td>
+    <td class="content">
+    
+You can use any header file in this library by itself — there are no interdependencies.
+</td></tr></tbody></table></div>
 </section>
 <section id="available-facilities" class="level2">
 <h2 class="anchored" data-anchor-id="available-facilities">Available Facilities</h2>
@@ -416,19 +412,13 @@ The header files are stand-alone
 </tbody>
 </table>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Microsoft compiler
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Microsoft’s old traditional preprocessor is not happy with some of our macros, but their newer cross-platform compatible one is fine. Add the <code>/Zc:preprocessor</code> flag to use that upgrade at compile time. Our <code>CMake</code> module <code>compiler_init</code> does that automatically for you.</p>
-</div>
-</div>
+<div class="admonition tip">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-tip" title="Tip"></i></td>
+    <td class="content">
+    
+Microsoft’s old traditional preprocessor is not happy with some of our macros, but their newer cross-platform compatible one is fine. Add the <code>/Zc:preprocessor</code> flag to use that upgrade at compile time. Our <code>CMake</code> module <code>compiler_init</code> does that automatically for you.
+</td></tr></tbody></table></div>
 </section>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
@@ -438,19 +428,13 @@ Microsoft compiler
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FetchContent_Declare</span>(utilities <span class="ot">URL</span> https://github.com/nessan/utilities/releases/download/current/utilities.zip)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">FetchContent_MakeAvailable</span>(utilities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This command downloads and unpacks an archive of the current version of <code>utilities</code> to your project’s build folder. You can then add a dependency on <code>utilities::utilities</code>, a <code>CMake</code> alias for <code>utilities</code>. <code>FetchContent</code> will automatically ensure the build system knows where to find the downloaded header files and any needed compiler flags.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Fixed release
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>That URL downloads the library’s current version — whatever is in the <code>main</code> branch when you do the download. That content may change from time to time. Use a URL like <code>https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip</code> to get a fixed library version.</p>
-</div>
-</div>
+<div class="admonition note">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-note" title="Note"></i></td>
+    <td class="content">
+    
+That URL downloads the library’s current version — whatever is in the <code>main</code> branch when you do the download. That content may change from time to time. Use a URL like <code>https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip</code> to get a fixed library version.
+</td></tr></tbody></table></div>
 </section>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>

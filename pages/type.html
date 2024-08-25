@@ -76,6 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/admonitions-1.0.0/admonitions.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,6 +113,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <meta property="og:title" content="The Type of an Object – C++ Utilities Library">
@@ -351,19 +353,13 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <p>You can use <a href="https://en.cppreference.com/w/cpp/language/typeid"><code>std::typeid</code></a> to retrieve the get <a href="https://en.cppreference.com/w/cpp/types/type_info"><code>std::type_info</code></a> that has a <code>name</code> field. However, that <code>name</code> field is not standardized across compilers, and in some cases, it contains a mangled name, which is not easily readable Moreover, <a href="https://en.cppreference.com/w/cpp/language/typeid"><code>std::typeid</code></a> is not a compile-time call, so not useful for template meta-programming.</p>
 <p>We can instead use the compiler’s preprocessor. It generally has some predefined macro that produces a clean-looking signature string when invoked in any function. The name of the macro we want isn’t standardized, but <code>clang</code> and <code>GCC</code> both use <code>__PRETTY_FUNCTION__</code> while Microsoft uses <code>__FUNCSIG__</code>. How the macro expands isn’t standardized but will be consistent with any compiler.</p>
 <p>The macro string is available at compile time as its expansion is part of the pre-compilation phase. Using other <code>constexpr</code> functions, you can parse the string to get a printable name for any type at compile time.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Not standardized
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The type name will be perfectly readable but not identical across compilers.</p>
-</div>
-</div>
+<div class="admonition caution">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-caution" title="Caution"></i></td>
+    <td class="content">
+    
+The type name will be perfectly readable but not identical across compilers.
+</td></tr></tbody></table></div>
 <p><span class="bt">Example</span></p>
 <div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/print.h&gt;</span></span>
 <span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/macros.h&gt;</span></span>

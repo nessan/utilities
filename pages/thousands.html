@@ -77,6 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/admonitions-1.0.0/admonitions.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,6 +114,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <meta property="og:title" content="Pretty Print Large Numbers – C++ Utilities Library">
@@ -359,19 +361,13 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <p>In practice, the C++ standard libraries seem to have poor support for resolving locale information.</p>
 <p>Your computer correctly supports locales at the operating system level. After all, computer manufacturers sell their machines to customers worldwide, and those customers expect to see dates, etc., presented locally. However, the default locale used in many C++ implementations is not the default one used by the operating system. Instead, it is often a complete blank, so rather than seeing <code>23,456.7</code> you will get the less readable <code>23456.7</code></p>
 <p>The various <code>utilities::imbue_xxx_with_commas</code> functions are a little hack that corrects the deficit. If you call the final version above <code>pretty_print_thousands()</code>, we inject a comma-producing facet into the default locale, and printing large numbers will work as expected. Calling <code>pretty_print_thousands(false)</code> will restore the default locale to its original state.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Commas only
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For now, the only punctuation we support with these functions is the comma. You should know that many countries treat the comma as a decimal point.</p>
-</div>
-</div>
+<div class="admonition caution">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-caution" title="Caution"></i></td>
+    <td class="content">
+    
+For now, the only punctuation we support with these functions is the comma. You should know that many countries treat the comma as a decimal point.
+</td></tr></tbody></table></div>
 <p><span class="bt">Example</span></p>
 <div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/thousands.h&gt;</span></span>
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;format&gt;</span></span>

@@ -77,6 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/admonitions-1.0.0/admonitions.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,6 +114,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <meta property="og:title" content="Macros – C++ Utilities Library">
@@ -339,19 +341,13 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>The header <code>&lt;utilities/macros.h&gt;</code> supplies some useful macros.</p>
 <p>These include the <code>OVERLOAD</code> macro, which implements a well-known trick to “overload” any macro based on the number of passed arguments. See <a href="#overloading">overloading</a> below.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Microsoft compiler
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Microsoft’s old traditional preprocessor is unhappy with <code>OVERLOAD</code>, but their newer cross-platform compatible one is fine. Add the <code>/Zc:preprocessor</code> flag to use that upgrade at compile time. Our <code>CMake</code> module <code>compiler_init</code> does that automatically for you.</p>
-</div>
-</div>
+<div class="admonition tip">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-tip" title="Tip"></i></td>
+    <td class="content">
+    
+Microsoft’s old traditional preprocessor is unhappy with <code>OVERLOAD</code>, but their newer cross-platform compatible one is fine. Add the <code>/Zc:preprocessor</code> flag to use that upgrade at compile time. Our <code>CMake</code> module <code>compiler_init</code> does that automatically for you.
+</td></tr></tbody></table></div>
 </section>
 <section id="compiler-string" class="level2">
 <h2 class="anchored" data-anchor-id="compiler-string">Compiler String</h2>

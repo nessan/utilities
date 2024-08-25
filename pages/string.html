@@ -77,6 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/admonitions-1.0.0/admonitions.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,6 +114,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <meta property="og:title" content="String Functions – C++ Utilities Library">
@@ -373,19 +375,13 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="4">Returns a new string, a lowercase copy of the input string.</span>
 </dd>
 </dl>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Limitations
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Our case conversions rely on the <a href="https://en.cppreference.com/w/cpp/string/byte/tolower"><code>std::tolower</code></a> and <a href="https://en.cppreference.com/w/cpp/string/byte/toupper"><code>std::toupper</code></a> functions, which only work for simple character types.</p>
-</div>
-</div>
+<div class="admonition caution">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-caution" title="Caution"></i></td>
+    <td class="content">
+    
+Our case conversions rely on the <a href="https://en.cppreference.com/w/cpp/string/byte/tolower"><code>std::tolower</code></a> and <a href="https://en.cppreference.com/w/cpp/string/byte/toupper"><code>std::toupper</code></a> functions, which only work for simple character types.
+</td></tr></tbody></table></div>
 </section>
 <section id="trimming-spaces" class="level2">
 <h2 class="anchored" data-anchor-id="trimming-spaces">Trimming Spaces</h2>
@@ -422,19 +418,13 @@ Limitations
 <span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="6">Returns a new string that is a trimmed copy of the input string on both sides.</span>
 </dd>
 </dl>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Limitations
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Our case conversions rely on the <a href="https://en.cppreference.com/w/cpp/string/byte/isspace"><code>std::isspace</code></a> function to identify whitespace characters.</p>
-</div>
-</div>
+<div class="admonition caution">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-caution" title="Caution"></i></td>
+    <td class="content">
+    
+Our case conversions rely on the <a href="https://en.cppreference.com/w/cpp/string/byte/isspace"><code>std::isspace</code></a> function to identify whitespace characters.
+</td></tr></tbody></table></div>
 </section>
 <section id="replacing-substrings" class="level2">
 <h2 class="anchored" data-anchor-id="replacing-substrings">Replacing Substrings</h2>

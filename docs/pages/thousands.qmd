@@ -34,11 +34,8 @@ The various `utilities::imbue_xxx_with_commas` functions are a little hack that 
 If you call the final version above `pretty_print_thousands()`, we inject a comma-producing facet into the default locale, and printing large numbers will work as expected.
 Calling `pretty_print_thousands(false)` will restore the default locale to its original state.
 
-::: {.callout-warning}
-# Commas only
-For now, the only punctuation we support with these functions is the comma.
+CAUTION: For now, the only punctuation we support with these functions is the comma.
 You should know that many countries treat the comma as a decimal point.
-:::
 
 [Example]{.bt}
 ```cpp

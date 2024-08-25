@@ -22,14 +22,11 @@ class utilities::stopwatch;
 ```
 The header-only class is templatized over the specific clock choice, likely one of the clocks from [`std::chrono`].
 
-::: {.callout-tip}
-# The default clock
-Our default clock is [`std::::chrono::high_resolution_clock`].
+TIP: Our default clock is [`std::::chrono::high_resolution_clock`].
 Discussions on sites like [Stack Overflow] instead favour [`std::chrono::steady_clock`].
 That clock is guaranteed to be monotonic and unaffected by changing the system time, so it is suitable for long-running processes.
 However, in practice, we primarily examine much shorter code blocks and value accuracy over "steadiness."
 We also note that, in any case, the two clocks are often identical!
-:::
 
 If the clock choice matters, you can use one of the following type aliases:
 ```cpp
@@ -44,11 +41,8 @@ The primary goal for `utilities::stopwatch` is ease of use.
 Sticking to seconds as the standard unit makes everything consistent.
 Besides, a double number of seconds gives you 15 or 16 places of accuracy, which is enough for any conceivable application.
 
-::: {.callout-tip}
-# This is not a profiler
-Use the `utilities::stopwatch` class for cheap and cheerful performance measurement.
+NOTE: Use the `utilities::stopwatch` class for cheap and cheerful performance measurement.
 It is not a replacement for the many more complete but more complex code profiling tools.
-:::
 
 ## Construction
 
@@ -101,12 +95,9 @@ struct std::formatter<utilities::stopwatch<Clock>>;               // <2>
 1. The usual output operator for a stopwatch.
 2. Adds stopwatch support to {std.format}.
 
-::: {.callout-note}
-# Elapsed time
-These functions output the stopwatch's elapsed time only.
+NOTE: These functions output the stopwatch's elapsed time only.
 The output will look like "3.2s" without a name.
 The output will look like "name: 3.2s" with a name.
-:::
 
 ## Other Functions
 

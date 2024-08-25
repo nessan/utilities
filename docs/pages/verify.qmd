@@ -27,12 +27,9 @@ The `utilities::exit` function needs source code location parameters (the filena
 You typically use the `message` arguments to print the values of the variables that triggered the failure.
 The message can be anything that can be formatted using the facilities in {std.format}.
 
-::: {.callout-tip}
-# Microsoft compiler
-Microsoft's old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine.
+TIP: Microsoft's old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine.
 Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 Our `CMake` module `compiler_init` does that automatically for you.
-:::
 
 ## Examples
 
@@ -113,11 +110,8 @@ From experience, this is vital during development.
 However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude.
 So it makes sense to have the checks in place for development but to ensure they are never there in release builds.
 
-::: {.callout-note}
-# Macro-land
-We are in macro land here, so there are no namespaces.
+NOTE: We are in macro land here, so there are no namespaces.
 Typically, macros have names in caps, but the standard `assert` does not follow that custom, so neither do these.
-:::
 
 ### See Also
 {format} \

@@ -30,10 +30,7 @@ How the macro expands isn't standardized but will be consistent with any compile
 The macro string is available at compile time as its expansion is part of the pre-compilation phase.
 Using other `constexpr` functions, you can parse the string to get a printable name for any type at compile time.
 
-::: {.callout-note}
-# Not standardized
-The type name will be perfectly readable but not identical across compilers.
-:::
+CAUTION: The type name will be perfectly readable but not identical across compilers.
 
 [Example]{.bt}
 ```cpp

@@ -7,10 +7,7 @@ title: The `utilities` Library
 The `utilities` library is a small collection of {cpp}  classes, functions, and macros.
 It is header-only, so there is nothing to compile or link.
 
-::: {.callout-tip}
-# The header files are stand-alone
-You can use any header file in this library by itself --- there are no interdependencies.
-:::
+TIP: You can use any header file in this library by itself --- there are no interdependencies.
 
 ## Available Facilities
 
@@ -29,12 +26,9 @@ Header File     | Purpose
 `utilities.h`   | This "include-the-lot" header pulls in all the other files above.
 : {.bordered .striped .hover .responsive tbl-colwidths="[20,80]"}
 
-::: {.callout-tip}
-# Microsoft compiler
-Microsoft's old traditional preprocessor is not happy with some of our macros, but their newer cross-platform compatible one is fine.
+TIP: Microsoft's old traditional preprocessor is not happy with some of our macros, but their newer cross-platform compatible one is fine.
 Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 Our `CMake` module `compiler_init` does that automatically for you.
-:::
 
 ## Installation
 
@@ -54,12 +48,9 @@ This command downloads and unpacks an archive of the current version of `utiliti
 You can then add a dependency on `utilities::utilities`, a `CMake` alias for `utilities`.
 `FetchContent` will automatically ensure the build system knows where to find the downloaded header files and any needed compiler flags.
 
-::: {.callout-note}
-# Fixed release
-That URL downloads the library's current version --- whatever is in the `main` branch when you do the download.
+NOTE: That URL downloads the library's current version --- whatever is in the `main` branch when you do the download.
 That content may change from time to time.
 Use a URL like `https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip` to get a fixed library version.
-:::
 
 ## Documentation
 

@@ -29,10 +29,7 @@ std::string utilities::lower_cased(std::string_view);   // <4>
 3. Returns a new string, an uppercase copy of the input string.
 4. Returns a new string, a lowercase copy of the input string.
 
-::: {.callout-note}
-# Limitations
-Our case conversions rely on the {std.tolower} and {std.toupper}  functions, which only work for simple character types.
-:::
+CAUTION: Our case conversions rely on the {std.tolower} and {std.toupper}  functions, which only work for simple character types.
 
 ## Trimming Spaces
 
@@ -52,10 +49,7 @@ std::string utilities::trim(medstd::string_view);        // <6>
 5. Returns a new string, a right-trimmed copy of the input string.
 6. Returns a new string that is a trimmed copy of the input string on both sides.
 
-::: {.callout-note}
-# Limitations
-Our case conversions rely on the {std.isspace} function to identify whitespace characters.
-:::
+CAUTION: Our case conversions rely on the {std.isspace} function to identify whitespace characters.
 
 ## Replacing Substrings
 

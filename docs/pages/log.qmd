@@ -18,12 +18,9 @@ The `LOG` and `DBG` macros automatically pass the correct source code location i
 The message payload can be anything that works for the facilities in {std.format}.
 The default message handler prints the source code location if there is no payload.
 
-::: {.callout-tip}
-# Microsoft compiler
-Microsoft's old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine.
+TIP: Microsoft's old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine.
 Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 Our `CMake` module `compiler_init` does that automatically for you.
-:::
 
 ## Message Handling
 
@@ -43,13 +40,10 @@ utilities::message::handler() = my_handler;
 Your handler can do whatever it likes with the messages it receives.
 You can revert to the default handler by calling the class method `utilities::message::use_default_handler()`.
 
-::: {.callout-note}
-# Simplicity rules
-Everything here is deliberately rudimentary, and there is no consideration for rotating log files, etc., or for streaming efficiencies.
+NOTE: Everything here is deliberately rudimentary, and there is no consideration for rotating log files, etc., or for streaming efficiencies.
 The primary use case for the macros above and the underlying `utilities::message` class is easily printing useful messages during the development cycle.
 The emphasis is on ease of use as opposed to great generality or speed.
 During the development cycle, the typical output is going to be small anyway.
-:::
 
 [Example (source file named `example.cpp`)]{.bt}
 ```cpp

@@ -43,10 +43,7 @@ line_count(std::istream &is,
 If the comment start string is empty, `line_count` uses [`std::getline`] to read the lines.
 Otherwise, we use our `read_line(...)` function, so comment lines are excluded, etc.
 
-::: {.callout-note}
-# Files only
-These two functions only work with file streams, etc.
-:::
+NOTE: These two functions only work with file streams, etc.
 
 <!-- Some reference link definitions -->
 [`std::getline`]:  https://en.cppreference.com/w/cpp/string/basic_string/getline

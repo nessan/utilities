@@ -9,12 +9,9 @@ The header `<utilities/macros.h>` supplies some useful macros.
 These include the `OVERLOAD` macro, which implements a well-known trick to "overload" any macro based on the number of passed arguments.
 See [overloading] below.
 
-::: {.callout-tip}
-# Microsoft compiler
-Microsoft's old traditional preprocessor is unhappy with `OVERLOAD`, but their newer cross-platform compatible one is fine.
+TIP: Microsoft's old traditional preprocessor is unhappy with `OVERLOAD`, but their newer cross-platform compatible one is fine.
 Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 Our `CMake` module `compiler_init` does that automatically for you.
-:::
 
 ## Compiler String
 

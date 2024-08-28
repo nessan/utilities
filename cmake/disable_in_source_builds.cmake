@@ -1,8 +1,8 @@
 # -----------------------------------------------------------------------------
 # @brief Dsable in-source builds. A classic!
-# @link  https://nssn.gitlab.io/cmake
+# @link  https://nessan.github.io/cmake/
 #
-# SPDX-FileCopyrightText:  2024 Nessan Fitzmaurice <nessan.fitzmaurice@me.com>
+# SPDX-FileCopyrightText:  2023 Nessan Fitzmaurice <nessan.fitzmaurice@me.com>
 # SPDX-License-Identifier: MIT
 # -----------------------------------------------------------------------------
 function(disable_in_source_builds)
@@ -19,3 +19,6 @@ function(disable_in_source_builds)
     endif()
 
 endfunction()
+
+# Immediately run the function -- hust including this file should run it.
+disable_in_source_builds()

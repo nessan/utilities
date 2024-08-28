@@ -22,7 +22,7 @@ constexpr auto type()
     std::string_view m_suffix  = "]";
 #elif defined(_MSC_VER)
     std::string_view m_name = __FUNCSIG__;
-    std::string_view m_prefix  = "auto __cdecl type_name<";
+    std::string_view m_prefix  = "auto __cdecl utilities::type<";
     std::string_view m_suffix  = ">(void)";
 #endif
 

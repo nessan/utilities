@@ -11,7 +11,7 @@ add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 # We use C++20 features
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
 
-# Where to find the project headers (e.g., how to resolve `#include "${PROJECT_NAME}/${PROJECT_NAME}.h"`).
+# Where to find the project headers (e.g., how to resolve `#include "utilities/format.h"`).
 target_sources(${PROJECT_NAME} INTERFACE
     FILE_SET    library_headers
     TYPE        HEADERS

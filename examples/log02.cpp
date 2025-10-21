@@ -1,5 +1,5 @@
-/// @brief Exercise the LOG/DBG macros.
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// Exercise the LOG/DBG macros.
+
 #include <cstdint>
 #include "utilities/log.h"
 

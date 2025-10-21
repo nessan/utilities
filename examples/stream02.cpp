@@ -1,5 +1,5 @@
-/// @brief Read from a file and tokenize all the lines.
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// Read from a file and tokenize all the lines.
+
 #include "utilities/utilities.h"
 #include <fstream>
 
@@ -7,11 +7,11 @@ int
 main(int argc, char* argv[])
 {
     // Must have exactly 1 argument (name of file to read from)
-    if (argc != 2) exit_with_message("Usage: '{} <filename>' -- missing filename argument!", argv[0]);
+    always_assert_eq(argc, 2, "Usage: '{} <filename>' -- missing filename argument!", argv[0]);
 
     // Try to open the file
     std::ifstream file{argv[1]};
-    if (!file) exit_with_message("Failed to open file '{}'", argv[1]);
+    always_assert(file, "Failed to open file '{}'", argv[1]);
 
     std::size_t n_line = 0;
     std::string line;

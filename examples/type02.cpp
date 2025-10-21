@@ -1,5 +1,5 @@
-/// @brief What do the various compilers do with default template parameters?
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// What do the various compilers do with default template parameters?
+
 #include "utilities/utilities.h"
 
 // Trivial template with a default type

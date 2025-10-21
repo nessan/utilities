@@ -1,10 +1,8 @@
-/// @brief Simple test of the stopwatch class.
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
-#include "utilities/format.h"
-#include "utilities/print.h"
-#include "utilities/stopwatch.h"
+/// Simple test of the stopwatch class.
 
-#include <iostream>
+#include <utilities/namespace.h>
+
+#include <print>
 #include <thread>
 
 int
@@ -13,11 +11,11 @@ main()
     using namespace std::literals;
 
     auto sleep_duration = 1s;
-    std::cout << "Sleeping for " << utilities::to_seconds(sleep_duration) << "s ...\n";
-    const utilities::stopwatch stopwatch;
+    std::println("Sleeping for {}s ...", utilities::to_seconds(sleep_duration));
+    const stopwatch sw;
     std::this_thread::sleep_for(sleep_duration);
-    std::cout << "Elapsed time: " << stopwatch << '\n';
+    std::println("Elapsed time: {}", sw);
 
     /// Check that the fmt library can handle a stopwatch
-    std::print("And here is what 'std::print' puts out for elapsed time: {}\n", stopwatch);
+    std::println("And here is what 'std::print' puts out for elapsed time: {}", sw);
 }

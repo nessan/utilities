@@ -15,7 +15,17 @@ concept has_to_string_method = requires(const T& x) {
     { x.to_string() } -> std::convertible_to<std::string>;
 };
 
-/// @brief Connect any type that has an accessible `std::string to_string() const` method to `std::format
+/// @brief Connect any type that has an accessible `std::string to_string() const` method to `std::formatter`.
+///
+/// # Example
+/// ```
+/// struct Whatever {
+///     std::string to_string() const { return "Whatever!"; }
+/// };
+/// Whatever whatever;
+/// auto whatever_str = std::format("{}", whatever);
+/// assert_eq(whatever_str, "Whatever!");
+/// ```
 template<has_to_string_method T>
 struct std::formatter<T> {
     template<class FormatContext>
@@ -40,9 +50,8 @@ struct std::formatter<T> {
 // --------------------------------------------------------------------------------------------------------------------
 #ifndef __cpp_lib_format_ranges
 
-#include <ranges>
-#include <utility>
-
+    #include <ranges>
+    #include <utility>
 namespace utilities {
 /// @brief A concept that captures an associative container type.
 template<typename T>

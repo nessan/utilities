@@ -7,9 +7,9 @@
 /// SPDX-License-Identifier: MIT
 #pragma once
 
-/// @brief Invoke the pre-processor stringizing operator but fully expanding any macro argument first!
-#define STRINGIZE(s)      STRINGIZE_IMPL(s)
-#define STRINGIZE_IMPL(s) #s
+/// @brief Invoke the pre-processor stringising operator but fully expanding any macro argument first!
+#define STRINGISE(s)      STRINGISE_IMPL(s)
+#define STRINGISE_IMPL(s) #s
 
 /// @brief Concatenate two symbols but making sure to fully expand those symbols if they happen to be macros themselves.
 #define CONCAT(a, b)      CONCAT_IMPL(a, b)
@@ -20,9 +20,9 @@
 
 // The actual one, two, and three argument versions of that macro
 // NOTE: In C++ contiguous strings are concatenated so "2" "." "3" is the same as "2.3"
-#define VERSION_STRING1(major)               STRINGIZE(major)
-#define VERSION_STRING2(major, minor)        STRINGIZE(major) "." STRINGIZE(minor)
-#define VERSION_STRING3(major, minor, patch) STRINGIZE(major) "." STRINGIZE(minor) "." STRINGIZE(patch)
+#define VERSION_STRING1(major)               STRINGISE(major)
+#define VERSION_STRING2(major, minor)        STRINGISE(major) "." STRINGISE(minor)
+#define VERSION_STRING3(major, minor, patch) STRINGISE(major) "." STRINGISE(minor) "." STRINGISE(patch)
 
 /// @brief RUN(code); prints the line of code to the console and then executes it.
 /// @note This is a an overloaded macro that is used in some test/example codes to show what specific code is getting
@@ -30,7 +30,7 @@
 #define RUN(...) OVERLOAD(RUN, __VA_ARGS__)
 
 // The one, two,and three argument versions of RUN
-#define RUN1(code)                         \
+#define RUN1(code)                             \
     std::cout << "[CODE]   " << #code << "\n"; \
     code
 
@@ -50,13 +50,13 @@
 #define OVERLOAD(macro, ...) CONCAT(macro, ARG_COUNT(__VA_ARGS__))(__VA_ARGS__)
 
 /// @brief ARG_COUNT(...) expands to the count of its arguments e.g. ARG_COUNT(x,y,z) will expands to 3.
-#define ARG_COUNT(...) ARG_COUNT_IMPL(__VA_ARGS__ __VA_OPT__(, ) 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
+#define ARG_COUNT(...)                                                 ARG_COUNT_IMPL(__VA_ARGS__ __VA_OPT__(, ) 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 #define ARG_COUNT_IMPL(_1, _2, _3, _4, _5, _6, _7, _8, _9, count, ...) count
 
 /// @brief Compiler name & version as a string -- occasionally useful to have around to annotate test output etc.
 /// @note Could add more compilers from e.g. https://github.com/cpredef/predef/blob/master/Compilers.md)
 #if defined(_MSC_VER)
-    #define COMPILER_NAME "MSC " STRINGIZE(_MSC_FULL_VER)
+    #define COMPILER_NAME "MSC " STRINGISE(_MSC_FULL_VER)
 #elif defined(__clang__)
     #define COMPILER_NAME "clang " VERSION_STRING(__clang_major__, __clang_minor__, __clang_patchlevel__)
 #elif defined(__GNUC__)

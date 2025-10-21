@@ -1,0 +1,142 @@
+---
+title: Assertions
+---
+
+## Introduction
+
+The `<utilities/assert.h>` header has some macros that can be used to check a condition or equality of two values.
+On failures, the macros print a customisable message and, by default, exit the program with a non-zero status code.
+
+Exit on failure is controlled by the following static constexpr variable:
+```cpp
+static constexpr auto exit_on_failure = true;
+```
+If it is set to `true` (the default), the program will exit with a non-zero status code if there are any assertion failures.
+
+### Boolean Checks
+
+The following macros are available to check a boolean condition:
+```cpp
+always_assert(condition, ...)    // <1>
+debug_assert(condition, ...)     // <2>
+assert(condition, ...)           // <3>
+```
+1. `condition` is checked, and if it evaluates to `false`, an error message is printed to the standard error stream. <br> That can include a custom payload synthesized from the trailing argument list.
+2. The `debug_assert` macro expands to `always_assert` **if** the `DEBUG` flag is set; otherwise, it's a no-op.
+3. The `assert` macro expands to `always_assert` **unless** the `NDEBUG` flag is set, which is a no-op. <br>This is similar to the {std.assert} macro.
+
+On assertion failure, an error message is printed to the standard error stream, which includes the source code location of the failure along with any custom message payload.
+The custom message is synthesized from the trailing variadic argument list that are sent to the `std::format` function.
+The message can be anything that can be formatted using the facilities in {std.format}.
+
+### Equality Checks
+
+The following macros are available to check for the equality of two values (or objects):
+```cpp
+always_assert_eq(a, b, ...)    // <1>
+debug_assert_eq(a, b, ...)     // <2>
+assert_eq(a, b, ...)           // <3>
+```
+1. The two values `a` and `b` are checked for equality, and if they are not equal, print a custom message synthesized from the rest of the arguments. By default, this will also exit the program with a non-zero status code.
+2. The `debug_assert_eq` macro expands to `always_assert_eq` **if** the `DEBUG` flag is set; otherwise, it's a no-op.
+3. The `assert_eq` macro expands to `always_assert_eq` **unless** the `NDEBUG` flag is set, which is a no-op. This is similar to the {std.assert} macro.
+
+IMPORTANT: The first two `a` and `b` arguments to `assert_eq` must be printable using `std::format`.
+If they are your own types, they will need to have an appropriate specialisation for `std::formatter` as well as an `operator==` overload.
+
+## Examples
+
+[Example]{.bt}
+```cpp
+#include <utilities/assert.h>
+int subtract(int x, int y)
+{
+    always_assert_eq(x, y, "well that didn't work but x - y = {}", x - y);
+    return y - x;
+}
+int main()
+{
+    return subtract(10, 11);
+}
+```
+1. For the sake of the example we are using the `always_assert_eq` macro to check for equality. <br> More typically, you would use either the `debug_assert_eq` or the `assert_eq` macro.
+
+[Output]{.bt}
+```text
+FAILED `assert_eq(x, y)` [assert02.cpp:7]
+well that didn't work but x - y = -1
+lhs = 10
+rhs = 11
+```
+The program will then exit.
+
+## Design Rationale
+
+### `always_assert`
+
+Use this and the companion `always_assert_eq` macros when you want to check something is true and exit if it is not with an informative message.
+These macros are unaffected by compiler flags.
+
+### `debug_assert`
+
+In the development cycle, it can be helpful to range-check indices and so on.
+
+However, those checks are expensive and can slow down numerical code by orders of magnitude.
+Therefore, we don't want there to be any chance that those verifications are accidentally left "on" in the production code.
+The `debug_assert` and `debug_assert_eq` macros cover this type of verification.
+Turning on these checks requires the programmer to take a specific action: she must set the `DEBUG` flag during compile time.
+
+For example, here is a pre-condition from a hypothetical `dot(Vector u, Vector v)` function:
+```cpp
+debug_assert_eq(u.size(), v.size(), "Incompatible vector sizes!");
+```
+This code checks that the two vector arguments have equal length --- a necessary constraint for the dot product operation to make sense.
+If the requirement is not satisfied, the program exits with an informative message that includes the size of the two vectors.
+
+The check here is **off** by default, and you need to do something special (i.e., define the `DEBUG` flag at compile time) to enable it.
+Production code may do many of these dot products; we do not generally want to pay for the check.
+However, enabling these sorts of checks may be very useful during development.
+
+The `debug_assert-` and `debug_assert_eq` macros expand to nothing **unless** you set the `DEBUG` flag at compile time.
+
+### `assert`
+
+On the other hand, there are some checks where the assertion cost is slight compared to the work of the function.
+Leaving these checks on in production will not likely impose much of a performance penalty.
+
+For example, a pre-condition for a matrix inversion method is that the input matrix must be square.
+Here is how you might do that check in an `invert(const Matrix& M)` function:
+```cpp
+assert(M.is_square(), "Cannot invert a {} x {} NON-square matrix!", M.rows(), M.cols());
+```
+We can only invert square matrices.
+The `M.is_square()` call checks that condition and, on failure, exits the program with a helpful message.
+The check cost is very slight compared to the work done by the `invert(...)` method, so leaving it on even in production code is not a problem.
+
+The check here is **on** by default, and you need to do something special (i.e., define the `NDEBUG` flag at compile time) to disable it.
+
+The `assert` and `assert_eq` macros expand to nothing **only if** you set the `NDEBUG` flag at compile time.
+
+The decision to use one form vs. the other is predicated on the cost of doing the check versus the work done by the method in question.
+
+A primary use case for `debug_assert` and `debug_assert_eq` is checking bounds on indices.
+From experience, this is vital during development.
+However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude.
+So it makes sense to have the checks in place for development but to ensure they are never there in release builds.
+
+## Why macros?
+
+The main reason we use macros instead of a function is that we need to stringify the assertion condition and assertion arguments to produce a helpful message if the assertion fails.
+
+WARNING: Macros do have the downside that they depend on comma placement to separate arguments, which can be a bit of a gotcha in some cases.
+For example, if you are equality testing between two `std::pair` variables.
+You can often get around any issues by the judicious use of parentheses, but it is something to be aware of if you start to see weird compiler errors.
+
+TIP: Microsoft's old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine.
+Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
+Our `CMake` module `compiler_init` does that automatically for you.
+
+### See Also
+{format} \
+{log}    \
+{std.assert}

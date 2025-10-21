@@ -2,15 +2,13 @@
 /// @copyright Copyright (c) 2024 Nessan Fitzmaurice
 #include "utilities/assert.h"
 
-int
-subtract(int x, int y)
+int subtract01(int x, int y)
 {
     assert(x == y, "x = {}, y = {}", x, y);
     return y - x;
 }
 
-int
-main()
+int main()
 {
-    return subtract(10, 11);
+    return subtract01(10, 11);
 }

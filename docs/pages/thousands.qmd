@@ -15,7 +15,7 @@ utilities::pretty_print_thousands(bool on = true);                              
 2. Turns commas on or off for the global locale.
 3. Turns commas on or off for the standard streams `std::cout`, `std::cerr`, `std::clog`, and the global locale.
 
-Ideally, one should be able to rely on facilities in [`std::locale`] to format large numbers per local custom.
+Ideally, one should be able to rely on facilities in {std.locale} to format large numbers per local custom.
 For example, using {std.format}, you might print a large number like this:
 ```cpp
 std::cout << std::format("x = {:L}\n", 23456.7);
@@ -73,8 +73,4 @@ With locale specifier: 123,456,789.12346
 
 ### See Also
 {std.format} \
-[`std::locale`]
-
-<!-- Some reference link definitions -->
-[`std::locale`]:    https://en.cppreference.com/w/cpp/locale/locale
-{std.format}:    https://en.cppreference.com/w/cpp/utility/format/format
+{std.locale}

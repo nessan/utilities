@@ -46,6 +46,13 @@ imbue_global_with_commas(bool on = true)
 
 /// @brief Force the global locale & the usual output streams to insert commas into large numbers.
 /// @param on You can set this to @c false to return the locale to its default behaviour.
+///
+/// # Example
+/// ```
+/// utilities::pretty_print_thousands();
+/// auto x_str = std::format("x = {:L}", 123456789.9);
+/// assert_eq(x_str, "x = 123,456,789.9");
+/// ```
 inline void
 pretty_print_thousands(bool on = true)
 {

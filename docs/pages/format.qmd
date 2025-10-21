@@ -74,6 +74,5 @@ Formatted vector:   [1.12, 2.12, 3.56]
 ```
 
 ### See Also
-{print} \
 {std.format} \
 {std.formatter}

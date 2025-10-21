@@ -4,7 +4,7 @@ title: The Type of an Object
 
 ## Introduction
 
-The `<utilities/type.h>` heeder defines functions that return a string representing an object's "type" as the compiler/preprocessor sees.
+The `<utilities/type.h>` header defines functions that return a string representing an object's "type" as the compiler/preprocessor sees.
 
 ```cpp
 template<typename T>
@@ -34,7 +34,6 @@ CAUTION: The type name will be perfectly readable but not identical across compi
 
 [Example]{.bt}
 ```cpp
-#include <utilities/print.h>
 #include <utilities/macros.h>
 #include <utilities/stopwatch.h>
 #include <utilities/type.h>

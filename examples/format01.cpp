@@ -1,7 +1,7 @@
 /// @brief Exercise std::format a little
 /// @copyright Copyright (c) 2024 Nessan Fitzmaurice
 #include "utilities/format.h"
-#include "utilities/print.h"
+#include <print>
 
 // Here is a completely trivial class with a `to_string()` method.
 struct Whatever {

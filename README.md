@@ -7,19 +7,19 @@ Moreover, you can use any header file in this library on a standalone basis, as 
 
 ## Available Facilities
 
-| Header File   | Purpose                                                      |
-| ------------- | ------------------------------------------------------------ |
-| `verify.h`    | Defines some `assert`-type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed. |
-| `format.h`    | Functionality that connects any class with a `to_string()` method to `std::format`. |
-| `print.h`     | Workaround for compilers that haven't yet implemented `std::print`. |
+| Header File   | Purpose                                                                                                                                                          |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `assert.h`    | Defines some `assert`-type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed.          |
+| `format.h`    | Functionality that connects any class with a `to_string()` method to `std::format`.                                                                              |
+| `log.h`       | Some very simple logging macros.                                                                                                                                 |
 | `macros.h`    | Defines macros often used in test and example programs. <br/>It also defines a mechanism that lets you overload a macro based on the number of passed arguments. |
-| `log.h`       | Some very simple logging macros.                             |
-| `stopwatch.h` | Defines the `utilities::stopwatch` class you can use to time blocks of code. |
-| `stream.h`    | Defines some functions to read lines from a file, ignoring comments and allowing for continuation lines. |
-| `string.h`    | Defines several useful string functions (turn them to upper-case, trim white space, etc). |
-| `thousands.h` | Defines functions to imbue output streams and locales with commas. This makes it easier to read large numbers–for example, printing 23000.56 as 23,000.56. |
-| `type.h`      | Defines the function `utilities::type`,  which produces a string for a type. |
-| `utilities.h` | This “include-the-lot” header pulls in all the other files above. |
+| `print.h`     | Workaround for compilers that haven't yet implemented `std::print`.                                                                                              |
+| `stopwatch.h` | Defines the `utilities::stopwatch` class you can use to time blocks of code.                                                                                     |
+| `stream.h`    | Defines some functions to read lines from a file, ignoring comments and allowing for continuation lines.                                                         |
+| `string.h`    | Defines several useful string functions (turn them to upper-case, trim white space, etc).                                                                        |
+| `thousands.h` | Defines functions to imbue output streams and locales with commas. This makes it easier to read large numbers–for example, printing 23000.56 as 23,000.56.       |
+| `type.h`      | Defines the function `utilities::type`, which produces a string for a type.                                                                                      |
+| `utilities.h` | This “include-the-lot” header pulls in all the other files above.                                                                                                |
 
 ## Installation
 
@@ -37,12 +37,16 @@ This command downloads and unpacks an archive of the current version of `utiliti
 
 ## Documentation
 
-You can read the project's documentation [here](https://nessan.github.io/utilities/). \
+You can read the project's [documentation](https://nessan.github.io/utilities/). \
 We used the static website generator [Quarto](https://quarto.org) to construct the documentation site.
+
+## Tests
+
+The project makes use of [Doxytest](https://nessan.github.io/doxytest/), a tool for generating C++ test programs from code embedded in header file comments.
 
 ### Contact
 
-You can contact me by email [here](mailto:nzznfitz+gh@icloud.com).
+You can contact me by [email](mailto:nzznfitz+gh@icloud.com).
 
 ### Copyright and License
 

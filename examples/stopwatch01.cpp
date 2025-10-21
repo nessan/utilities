@@ -1,7 +1,6 @@
 /// @brief Simple test of the stopwatch class.
 /// @copyright Copyright (c) 2024 Nessan Fitzmaurice
 #include "utilities/format.h"
-#include "utilities/print.h"
 #include "utilities/stopwatch.h"
 
 #include <iostream>

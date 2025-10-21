@@ -13,11 +13,10 @@ TIP: You can use any header file in this library by itself --- there are no inte
 
 Header File     | Purpose
 --------------- | -------------------------------------------------------------------
-{verify}        | Defines some {std.assert} type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed.
+{assert}        | Defines some {std.assert} type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed.
 {format}        | Functionality that connects any class with a `to_string()` method to {std.format}.
-{print}         | Workaround for any compiler that hasn't yet implemented {std.print}.
-{macros}        | Defines macros often used in test and example programs. <br />It also defines a mechanism that lets you overload a macro based on the number of passed arguments.
 {log}           | Some very simple logging macros.
+{macros}        | Defines macros often used in test and example programs. <br />It also defines a mechanism that lets you overload a macro based on the number of passed arguments.
 {stopwatch}     | Defines the `utilities::stopwatch` class you can use to time blocks of code.
 {stream}        | Defines some functions to read lines from a file, ignoring comments and allowing for continuation lines.
 {string}        | Defines several useful string functions (e.g., turning strings to uppercase, trimming white space, etc.).
@@ -57,11 +56,15 @@ Use a URL like `https://github.com/nessan/utilities/releases/download/2.0.0/util
 Here is a link to the project's source code {repo}. \
 This {docs} site was constructed using the static website generator {quarto}.
 
-### Contact
+## Tests
+
+The project makes use of [Doxytest](https://nessan.github.io/doxytest/), a tool for generating C++ test programs from code embedded in header file comments.
+
+## Contact
 
 You can contact me by {email}
 
-### Copyright and License
+## Copyright and License
 
 Copyright (c) 2022-present Nessan Fitzmaurice. \
 You can use this software under the {mit-license}

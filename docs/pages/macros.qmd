@@ -27,7 +27,7 @@ One of the examples below uses this macro.
 ## Macro Expansion
 
 ```cpp
-STRINGIZE(foo)      // <1>
+STRINGISE(foo)      // <1>
 CONCAT(foo, bar)    // <2>
 ```
 1. Turn the argument into a string.

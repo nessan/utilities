@@ -1,441 +1,10 @@
 [
   {
-    "objectID": "pages/log.html",
-    "href": "pages/log.html",
-    "title": "Logging",
-    "section": "",
-    "text": "The header &lt;utilities/log.h&gt; supplies a couple of macros for simple logging and debugging messages.\n1LOG(...)\n2DBG(...)\n\n1\n\nThese messages are dispatched unless the NO_LOGS flag is set at compile time.\n\n2\n\nThese messages are dispatched only if the DEBUG flag is set at compile time.\n\n\nThese macros create and dispatch utilities::message objects, which hold the user-supplied message and location information specifying the message’s creation location. The LOG and DBG macros automatically pass the correct source code location information to the message.\nThe message payload can be anything that works for the facilities in std::format. The default message handler prints the source code location if there is no payload.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
-    "crumbs": [
-      "Home",
-      "Logging"
-    ]
-  },
-  {
-    "objectID": "pages/log.html#introduction",
-    "href": "pages/log.html#introduction",
-    "title": "Logging",
-    "section": "",
-    "text": "The header &lt;utilities/log.h&gt; supplies a couple of macros for simple logging and debugging messages.\n1LOG(...)\n2DBG(...)\n\n1\n\nThese messages are dispatched unless the NO_LOGS flag is set at compile time.\n\n2\n\nThese messages are dispatched only if the DEBUG flag is set at compile time.\n\n\nThese macros create and dispatch utilities::message objects, which hold the user-supplied message and location information specifying the message’s creation location. The LOG and DBG macros automatically pass the correct source code location information to the message.\nThe message payload can be anything that works for the facilities in std::format. The default message handler prints the source code location if there is no payload.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
-    "crumbs": [
-      "Home",
-      "Logging"
-    ]
-  },
-  {
-    "objectID": "pages/log.html#message-handling",
-    "href": "pages/log.html#message-handling",
-    "title": "Logging",
-    "section": "Message Handling",
-    "text": "Message Handling\nThe macros create and immediately dispatch messages to a message handler. The default handler prints the message and the location information to a default stream std::cout. You can change that default stream, for example:\nlog_file = std::ofstream(\"log.txt\");\nutilities::message::stream = &log_file;\nFor fancier usage, you can interpose your message handler\nvoid my_handler(const utilities::message& msg) { ... }\nutilities::message::handler() = my_handler;\nYour handler can do whatever it likes with the messages it receives. You can revert to the default handler by calling the class method utilities::message::use_default_handler().\n\n    \n     \n    \n    \nEverything here is deliberately rudimentary, and there is no consideration for rotating log files, etc., or for streaming efficiencies. The primary use case for the macros above and the underlying utilities::message class is easily printing useful messages during the development cycle. The emphasis is on ease of use as opposed to great generality or speed. During the development cycle, the typical output is going to be small anyway.\n\nExample (source file named example.cpp)\n#include &lt;utilities/log.h&gt;\nint add(int x, int y)\n{\n    DBG(\"The DEBUG flag was set at compile time.\");\n    LOG(\"x = {}, y = {}\", x, y);\n    return x + y;\n}\n\nint main()\n{\n1    LOG();\n    return add(10, 11);\n}\n\n1\n\nA call to LOG without any message will print the source location.\n\n\nOutput\n[LOG] function 'main' (example.cpp, line 11)\n[DBG] function 'add' (example.cpp, line 4): The DEBUG flag was set at compile time.\n[LOG] function 'add' (example.cpp, line 5): x = 10, y = 11\n\nSee Also\nverify.h",
-    "crumbs": [
-      "Home",
-      "Logging"
-    ]
-  },
-  {
-    "objectID": "pages/index.html",
-    "href": "pages/index.html",
-    "title": "The utilities Library",
-    "section": "",
-    "text": "The utilities library is a small collection of C++ classes, functions, and macros. It is header-only, so there is nothing to compile or link.\n\n    \n     \n    \n    \nYou can use any header file in this library by itself — there are no interdependencies.",
-    "crumbs": [
-      "Home",
-      "Library Overview"
-    ]
-  },
-  {
-    "objectID": "pages/index.html#project-overview",
-    "href": "pages/index.html#project-overview",
-    "title": "The utilities Library",
-    "section": "",
-    "text": "The utilities library is a small collection of C++ classes, functions, and macros. It is header-only, so there is nothing to compile or link.\n\n    \n     \n    \n    \nYou can use any header file in this library by itself — there are no interdependencies.",
-    "crumbs": [
-      "Home",
-      "Library Overview"
-    ]
-  },
-  {
-    "objectID": "pages/index.html#available-facilities",
-    "href": "pages/index.html#available-facilities",
-    "title": "The utilities Library",
-    "section": "Available Facilities",
-    "text": "Available Facilities\n\n\n\n\n\n\n\n\nHeader File\nPurpose\n\n\n\n\nverify.h\nDefines some assert type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed.\n\n\nformat.h\nFunctionality that connects any class with a to_string() method to std::format.\n\n\nprint.h\nWorkaround for any compiler that hasn’t yet implemented std::print.\n\n\nmacros.h\nDefines macros often used in test and example programs. It also defines a mechanism that lets you overload a macro based on the number of passed arguments.\n\n\nlog.h\nSome very simple logging macros.\n\n\nstopwatch.h\nDefines the utilities::stopwatch class you can use to time blocks of code.\n\n\nstream.h\nDefines some functions to read lines from a file, ignoring comments and allowing for continuation lines.\n\n\nstring.h\nDefines several useful string functions (e.g., turning strings to uppercase, trimming white space, etc.).\n\n\nthousands.h\nDefines functions to imbue output streams and locales with commas that make it easier to read large numbers — for example, printing 23000.56 as 23,000.56.\n\n\ntype.h\nDefines the function utilities::type, which produces a string for a type.\n\n\nutilities.h\nThis “include-the-lot” header pulls in all the other files above.\n\n\n\n\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with some of our macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
-    "crumbs": [
-      "Home",
-      "Library Overview"
-    ]
-  },
-  {
-    "objectID": "pages/index.html#installation",
-    "href": "pages/index.html#installation",
-    "title": "The utilities Library",
-    "section": "Installation",
-    "text": "Installation\nThis library is header-only, so there is nothing to compile & link. Drop the small utilities header directory somewhere convenient. You can even use any single header file on a stand-alone basis.\nAlternatively, if you are using CMake, you can use the standard FetchContent module by adding a few lines to your project’s CMakeLists.txt file:\ninclude(FetchContent)\nFetchContent_Declare(utilities URL https://github.com/nessan/utilities/releases/download/current/utilities.zip)\nFetchContent_MakeAvailable(utilities)\nThis command downloads and unpacks an archive of the current version of utilities to your project’s build folder. You can then add a dependency on utilities::utilities, a CMake alias for utilities. FetchContent will automatically ensure the build system knows where to find the downloaded header files and any needed compiler flags.\n\n    \n     \n    \n    \nThat URL downloads the library’s current version — whatever is in the main branch when you do the download. That content may change from time to time. Use a URL like https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip to get a fixed library version.",
-    "crumbs": [
-      "Home",
-      "Library Overview"
-    ]
-  },
-  {
-    "objectID": "pages/index.html#documentation",
-    "href": "pages/index.html#documentation",
-    "title": "The utilities Library",
-    "section": "Documentation",
-    "text": "Documentation\nHere is a link to the project’s source code repository.\nThis documentation site was constructed using the static website generator Quarto.\n\nContact\nYou can contact me by email\n\n\nCopyright and License\nCopyright (c) 2022-present Nessan Fitzmaurice.\nYou can use this software under the MIT License",
-    "crumbs": [
-      "Home",
-      "Library Overview"
-    ]
-  },
-  {
-    "objectID": "pages/stopwatch.html",
-    "href": "pages/stopwatch.html",
-    "title": "Stopwatch Class",
-    "section": "",
-    "text": "The &lt;utilities/stopwatch.h&gt; header defines utilities::stopwatch, a simple stopwatch class to measure execution times.\nYou might use it like this:\nutilities::stopwatch sw;\ndo_work();\nstd::cout &lt;&lt; sw &lt;&lt; '\\n';\nThe output will be the time taken in seconds for the do_work() call to run.",
-    "crumbs": [
-      "Home",
-      "Stopwatch"
-    ]
-  },
-  {
-    "objectID": "pages/stopwatch.html#introduction",
-    "href": "pages/stopwatch.html#introduction",
-    "title": "Stopwatch Class",
-    "section": "",
-    "text": "The &lt;utilities/stopwatch.h&gt; header defines utilities::stopwatch, a simple stopwatch class to measure execution times.\nYou might use it like this:\nutilities::stopwatch sw;\ndo_work();\nstd::cout &lt;&lt; sw &lt;&lt; '\\n';\nThe output will be the time taken in seconds for the do_work() call to run.",
-    "crumbs": [
-      "Home",
-      "Stopwatch"
-    ]
-  },
-  {
-    "objectID": "pages/stopwatch.html#declaration",
-    "href": "pages/stopwatch.html#declaration",
-    "title": "Stopwatch Class",
-    "section": "Declaration",
-    "text": "Declaration\ntemplate&lt;typename Clock = std::chrono::high_resolution_clock&gt;\nclass utilities::stopwatch;\nThe header-only class is templatized over the specific clock choice, likely one of the clocks from std::chrono.\n\n    \n     \n    \n    \nOur default clock is std::::chrono::high_resolution_clock. Discussions on sites like Stack Overflow instead favour std::chrono::steady_clock. That clock is guaranteed to be monotonic and unaffected by changing the system time, so it is suitable for long-running processes. However, in practice, we primarily examine much shorter code blocks and value accuracy over “steadiness.” We also note that, in any case, the two clocks are often identical!\n\nIf the clock choice matters, you can use one of the following type aliases:\nutilities::precise_stopwatch = utilities::stopwatch&lt;std::chrono::high_resolution_clock&gt;;\nutilities::steady_stopwatch  = utilities::stopwatch&lt;std::chrono::steady_clock&gt;;\nutilities::system_stopwatch  = utilities::stopwatch&lt;std::chrono::system_clock&gt;;\nWe always store elapsed times as a double number of seconds — this is also contrary to advice that advocates the use of std::chrono::duration.\nThe primary goal for utilities::stopwatch is ease of use. Sticking to seconds as the standard unit makes everything consistent. Besides, a double number of seconds gives you 15 or 16 places of accuracy, which is enough for any conceivable application.\n\n    \n     \n    \n    \nUse the utilities::stopwatch class for cheap and cheerful performance measurement. It is not a replacement for the many more complete but more complex code profiling tools.",
-    "crumbs": [
-      "Home",
-      "Stopwatch"
-    ]
-  },
-  {
-    "objectID": "pages/stopwatch.html#construction",
-    "href": "pages/stopwatch.html#construction",
-    "title": "Stopwatch Class",
-    "section": "Construction",
-    "text": "Construction\nutilities::stopwatch(const std::string& name = \"\");\nCreates a stopwatch and sets its zero time to now. You can give it a name, which is helpful if multiple stopwatches run in one executable.",
-    "crumbs": [
-      "Home",
-      "Stopwatch"
-    ]
-  },
-  {
-    "objectID": "pages/stopwatch.html#timing-methods",
-    "href": "pages/stopwatch.html#timing-methods",
-    "title": "Stopwatch Class",
-    "section": "Timing Methods",
-    "text": "Timing Methods\nThe stopwatch class is kept deliberately simple.\nAt its core, it measures the elapsed time in seconds from a zero time set on creation or by calling the stopwatch’s reset() method. It also supports the idea of clicking a stopwatch to record a split time–the time in seconds from the zero point to the click event. Finally, it records a lap time, which is the time between the last two stopwatch clicks. However, it has no memory further back than that.\n1constexpr void reset();\n2constexpr double elapsed() const;\n3constexpr double click();\n4constexpr double split() const;\n5constexpr double lap() const;\n\n1\n\nClears out any recorded split time and resets the zero time to now.\n\n2\n\nReturns the number of seconds from the zero_time to now.\n\n3\n\nCreates a split by recording the elapsed time in seconds from the zero time to the click() call and returns that time.\n\n4\n\nReturns the last recorded split time in seconds.\n\n5\n\nReturns the time in seconds between the last two splits — i.e., between the previous two click events.",
-    "crumbs": [
-      "Home",
-      "Stopwatch"
-    ]
-  },
-  {
-    "objectID": "pages/stopwatch.html#other-methods",
-    "href": "pages/stopwatch.html#other-methods",
-    "title": "Stopwatch Class",
-    "section": "Other Methods",
-    "text": "Other Methods\n1const std::string& name() const;\nstd::string& name();\n\n1\n\nRead-only and read-write access to the stopwatch name field.",
-    "crumbs": [
-      "Home",
-      "Stopwatch"
-    ]
-  },
-  {
-    "objectID": "pages/stopwatch.html#output-functions",
-    "href": "pages/stopwatch.html#output-functions",
-    "title": "Stopwatch Class",
-    "section": "Output Functions",
-    "text": "Output Functions\ntemplate&lt;typename Clock&gt;\nstd::ostream &\n1operator&lt;&lt;(std::ostream&, const utilities::stopwatch&lt;Clock&gt;&);\n\ntemplate&lt;typename Clock&gt;\n2struct std::formatter&lt;utilities::stopwatch&lt;Clock&gt;&gt;;\n\n1\n\nThe usual output operator for a stopwatch.\n\n2\n\nAdds stopwatch support to std::format.\n\n\n\n    \n     \n    \n    \nThese functions output the stopwatch’s elapsed time only. The output will look like “3.2s” without a name. The output will look like “name: 3.2s” with a name.",
-    "crumbs": [
-      "Home",
-      "Stopwatch"
-    ]
-  },
-  {
-    "objectID": "pages/stopwatch.html#other-functions",
-    "href": "pages/stopwatch.html#other-functions",
-    "title": "Stopwatch Class",
-    "section": "Other Functions",
-    "text": "Other Functions\ntemplate&lt;class Rep, class Period&gt;\nconstexpr double\n1to_seconds(const std::chrono::duration&lt;Rep, Period&gt;);\n\n1\n\nThis converts a std::chrono::duration to a double number of seconds.\n\n\nExample: How efficient is it to put a thread to sleep?\n#include &lt;utilities/stopwatch.h&gt;\n#include &lt;format&gt;\n#include &lt;thread&gt;\n\nint main()\n{\n    using namespace std::literals;\n    utilities::stopwatch sw;\n\n    for (auto sleep_duration = 0ms; sleep_duration &lt;= 2s; sleep_duration += 200ms) {\n\n1        sw.click();\n2        std::this_thread::sleep_for(sleep_duration);\n3        sw.click();\n\n4        double sleep_ms = 1000 * utilities::to_seconds(sleep_duration);\n5        double actual_ms = 1000 * sw.lap();\n        double diff = actual_ms - sleep_ms;\n        double percent = sleep_ms != 0 ? 100 * diff / sleep_ms : 0;\n\n        std::cout &lt;&lt; std::format(\"Requested sleep for {:8.2f}ms, measured wait was {:8.2f}ms =&gt; overhead {:.2f}ms ({:.2f}%)\\n\",\n                   sleep_ms, actual_ms, diff, percent);\n    }\n    std::cout &lt;&lt; \"Total elapsed time: \" &lt;&lt; sw &lt;&lt; '\\n';\n    return 0;\n}\n\n1\n\nCreate a split.\n\n2\n\nSleep for a set number of milliseconds.\n\n3\n\nCreate a second split and, hence, a lap.\n\n4\n\nConvert the sleep duration to a double number of seconds.\n\n5\n\nGet the lap time for that last call to sleep_for(...).\n\n\nOutput\nRequested sleep for     0.00ms, measured wait was     0.00ms =&gt; overhead 0.00ms (0.00%)\nRequested sleep for   200.00ms, measured wait was   202.96ms =&gt; overhead 2.96ms (1.48%)\nRequested sleep for   400.00ms, measured wait was   401.59ms =&gt; overhead 1.59ms (0.40%)\nRequested sleep for   600.00ms, measured wait was   604.82ms =&gt; overhead 4.82ms (0.80%)\nRequested sleep for   800.00ms, measured wait was   804.06ms =&gt; overhead 4.06ms (0.51%)\nRequested sleep for  1000.00ms, measured wait was  1001.97ms =&gt; overhead 1.97ms (0.20%)\nRequested sleep for  1200.00ms, measured wait was  1202.99ms =&gt; overhead 2.99ms (0.25%)\nRequested sleep for  1400.00ms, measured wait was  1405.10ms =&gt; overhead 5.10ms (0.36%)\nRequested sleep for  1600.00ms, measured wait was  1603.67ms =&gt; overhead 3.67ms (0.23%)\nRequested sleep for  1800.00ms, measured wait was  1803.70ms =&gt; overhead 3.70ms (0.21%)\nRequested sleep for  2000.00ms, measured wait was  2004.82ms =&gt; overhead 4.82ms (0.24%)\nTotal elapsed time: 11.036255763s\n\nSee Also\nstd::chrono",
-    "crumbs": [
-      "Home",
-      "Stopwatch"
-    ]
-  },
-  {
-    "objectID": "pages/verify.html",
-    "href": "pages/verify.html",
-    "title": "Verifications and Assertions",
-    "section": "",
-    "text": "The &lt;utilities/verify.h&gt; header has some macros that can be used to check a condition and, on failures, cause the program to exit with a customizable message. Two replacements for the standard assert macro that allow for an additional string output that you can use to print the values of the variables that triggered any failure.\n1verify(condition, ...)\n2debug_verify(condition, ...)\n3assertion(condition, ...)\n\n1\n\nThe condition is checked, and if it fails, the program exits with a custom message synthesized from the rest of the arguments.\n\n2\n\nThis macro expands to verify if the DEBUG flag is set; otherwise, it’s a no-op.\n\n3\n\nThis macro expands to verify unless the NDEBUG flag is set, which is a no-op. This is similar to the standard assert macro.\n\n\nAssuming a check is “on”, in all cases, if condition evaluates to false, these all call the macro:\nexit_with_message(message)\nThe exit_with_message(message) macro passes the message arguments and the failure’s source code location to utilities::exit(...). That function prints the failure’s source code location along with the message payload and then exits the program.\nThe utilities::exit function needs source code location parameters (the filename, the line number, and the function name), and the exit_with_message macro automatically adds those. You typically use the message arguments to print the values of the variables that triggered the failure. The message can be anything that can be formatted using the facilities in std::format.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
-    "crumbs": [
-      "Home",
-      "Verifications"
-    ]
-  },
-  {
-    "objectID": "pages/verify.html#introduction",
-    "href": "pages/verify.html#introduction",
-    "title": "Verifications and Assertions",
-    "section": "",
-    "text": "The &lt;utilities/verify.h&gt; header has some macros that can be used to check a condition and, on failures, cause the program to exit with a customizable message. Two replacements for the standard assert macro that allow for an additional string output that you can use to print the values of the variables that triggered any failure.\n1verify(condition, ...)\n2debug_verify(condition, ...)\n3assertion(condition, ...)\n\n1\n\nThe condition is checked, and if it fails, the program exits with a custom message synthesized from the rest of the arguments.\n\n2\n\nThis macro expands to verify if the DEBUG flag is set; otherwise, it’s a no-op.\n\n3\n\nThis macro expands to verify unless the NDEBUG flag is set, which is a no-op. This is similar to the standard assert macro.\n\n\nAssuming a check is “on”, in all cases, if condition evaluates to false, these all call the macro:\nexit_with_message(message)\nThe exit_with_message(message) macro passes the message arguments and the failure’s source code location to utilities::exit(...). That function prints the failure’s source code location along with the message payload and then exits the program.\nThe utilities::exit function needs source code location parameters (the filename, the line number, and the function name), and the exit_with_message macro automatically adds those. You typically use the message arguments to print the values of the variables that triggered the failure. The message can be anything that can be formatted using the facilities in std::format.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
-    "crumbs": [
-      "Home",
-      "Verifications"
-    ]
-  },
-  {
-    "objectID": "pages/verify.html#examples",
-    "href": "pages/verify.html#examples",
-    "title": "Verifications and Assertions",
-    "section": "Examples",
-    "text": "Examples\nExample\n#include &lt;utilities/verify.h&gt;\n\nint subtract(int x, int y)\n{\n    verify(x == y, \"x = {}, y = {}\", x, y);\n    return y - x;\n}\nint main()\n{\n    return subtract(10, 11);\n}\n\nFor the sake of the example we added a code line to make sure the assertion is triggered. In normal usage, this flag is passed through the compiler command line.\n\nOutput\n[VERIFY FAILED] In function 'subtract' (verify01.cpp, line 7):\nStatement 'x == y' is NOT true: x = 10, y = 11\nThe program will then exit.",
-    "crumbs": [
-      "Home",
-      "Verifications"
-    ]
-  },
-  {
-    "objectID": "pages/verify.html#design-rationale",
-    "href": "pages/verify.html#design-rationale",
-    "title": "Verifications and Assertions",
-    "section": "Design Rationale",
-    "text": "Design Rationale\n\nverify(condition, ...)\nThis sort of check often appears in test code. You want to check something is true and exit if it is not with an informative message. These are unaffected by compiler flags.\n\n\ndebug_verify(condition, ...)\nIn the development cycle, it can be helpful to range-check indices and so on. However, those checks are expensive and can slow down numerical code by orders of magnitude. Therefore, we don’t want there to be any chance that those verifications are accidentally left “on” in the production code. The debug_verify(...) form covers this type of verification. Turning on these checks requires the programmer to take a specific action: she must set the DEBUG flag during compile time.\nFor example, here is a pre-condition from a hypothetical dot(Vector u, Vector v) function:\ndebug_verify(u.size() == v.size(), \"Vector sizes {} and {} DO NOT match!\", u.size(), v.size());\nThis code checks that the two vector arguments have equal length — a necessary constraint for the dot product operation to make sense. If the requirement is not satisfied, the program exits with an informative message that includes the size of the two vectors.\nThe check here is off by default, and you need to do something special (i.e., define the DEBUG flag at compile time) to enable it. Production code may do many of these dot products; we do not generally want to pay for the check. However, enabling these sorts of checks may be very useful during development.\nThe debug_verify(...) macro expands to nothing unless you set the DEBUG flag at compile time.\n\n\nassertion\nOn the other hand, there are some checks where the assertion cost is slight compared to the work of the function. Leaving these checks on in production will not likely impose much of a performance penalty.\nFor example, a pre-condition for a matrix inversion method is that the input matrix must be square. Here is how you might do that check in an invert(const Matrix& M) function:\nassertion(M.is_square(), \"Cannot invert a {} x {} NON-square matrix!\", M.rows(), M.cols());\nWe can only invert square matrices. The M.is_square() call checks that condition and, on failure, exits the program with a helpful message. The check cost is very slight compared to the work done by the invert(...) method, so leaving it on even in production code is not a problem.\nThe check here is on by default, and you need to do something special (i.e., define the NDEBUG flag at compile time) to disable it.\nThe assertion(...) macro expands to nothing only if you set the NDEBUG flag at compile time.\nThe decision to use one form vs. the other is predicated on the cost of doing the check versus the work done by the method in question.\nA primary use case for debug_verify is checking bounds on indices. From experience, this is vital during development. However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude. So it makes sense to have the checks in place for development but to ensure they are never there in release builds.\n\n    \n     \n    \n    \nWe are in macro land here, so there are no namespaces. Typically, macros have names in caps, but the standard assert does not follow that custom, so neither do these.\n\n\n\nSee Also\nformat.h\nlog.h\nassert",
-    "crumbs": [
-      "Home",
-      "Verifications"
-    ]
-  },
-  {
-    "objectID": "pages/macros.html",
-    "href": "pages/macros.html",
-    "title": "Macros",
-    "section": "",
-    "text": "The header &lt;utilities/macros.h&gt; supplies some useful macros.\nThese include the OVERLOAD macro, which implements a well-known trick to “overload” any macro based on the number of passed arguments. See overloading below.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is unhappy with OVERLOAD, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
-    "crumbs": [
-      "Home",
-      "Useful Macros"
-    ]
-  },
-  {
-    "objectID": "pages/macros.html#introduction",
-    "href": "pages/macros.html#introduction",
-    "title": "Macros",
-    "section": "",
-    "text": "The header &lt;utilities/macros.h&gt; supplies some useful macros.\nThese include the OVERLOAD macro, which implements a well-known trick to “overload” any macro based on the number of passed arguments. See overloading below.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is unhappy with OVERLOAD, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
-    "crumbs": [
-      "Home",
-      "Useful Macros"
-    ]
-  },
-  {
-    "objectID": "pages/macros.html#compiler-string",
-    "href": "pages/macros.html#compiler-string",
-    "title": "Macros",
-    "section": "Compiler String",
-    "text": "Compiler String\nCOMPILER_NAME\nExpands to a string that encodes the name of the compiler and its version. Test code can use the macro to annotate results. We only support the usual three compiler suspects, gcc, clang, and MSVC, but adding more compilers is not difficult.\nOne of the examples below uses this macro.",
-    "crumbs": [
-      "Home",
-      "Useful Macros"
-    ]
-  },
-  {
-    "objectID": "pages/macros.html#macro-expansion",
-    "href": "pages/macros.html#macro-expansion",
-    "title": "Macros",
-    "section": "Macro Expansion",
-    "text": "Macro Expansion\n1STRINGIZE(foo)\n2CONCAT(foo, bar)\n\n1\n\nTurn the argument into a string.\n\n2\n\nConcatenates the two arguments.\n\n\nThese two classic macros work even if the arguments you pass in are themselves macros by fully expanding all arguments.",
-    "crumbs": [
-      "Home",
-      "Useful Macros"
-    ]
-  },
-  {
-    "objectID": "pages/macros.html#overloading",
-    "href": "pages/macros.html#overloading",
-    "title": "Macros",
-    "section": "Overloading",
-    "text": "Overloading\nOVERLOAD(macro, ...)\nYou can “overload” a macro based on the number of passed arguments.\nFor example, if you have overloaded FOO macro:\n#define FOO(...) OVERLOAD(FOO, __VA_ARGS__)\nThe consumer of the macro can call it as FOO(), or FOO(a), or FOO(a,b).\nAll calls get automatically forwarded to the correct concrete macro. For FOO, these must be named FOO0, FOO1, FOO2, etc. The macro writer provides whichever of these makes sense, but the macro’s consumer can use them through the more straightforward call.\nExample\n#include &lt;utilities/macros.h&gt;\n#include &lt;iostream&gt;\n\n1#define COUT(...) OVERLOAD(COUT, __VA_ARGS__)\n\n2#define COUT0(x)       std::cout &lt;&lt; \"Zero argument version:   \" &lt;&lt; '\\n'\n#define COUT1(x)       std::cout &lt;&lt; \"One argument version:    \" &lt;&lt; x &lt;&lt; '\\n'\n#define COUT2(x, y)    std::cout &lt;&lt; \"Two arguments version:   \" &lt;&lt; x &lt;&lt; \", \" &lt;&lt; y &lt;&lt; '\\n'\n#define COUT3(x, y, z) std::cout &lt;&lt; \"Three arguments version: \" &lt;&lt; x &lt;&lt; \", \" &lt;&lt; y &lt;&lt; \", \" &lt;&lt; z &lt;&lt; '\\n'\n\nint main()\n{\n    std::cout &lt;&lt; \"Compiler: \" &lt;&lt; COMPILER_NAME &lt;&lt; '\\n';\n\n    // NOTE: We only ever call COUT, but we expect to get the correct concrete version.\n    COUT();\n    COUT(\"x\");\n    COUT(\"x\", 2);\n    COUT(\"x\", 2, 'z');\n    return 0;\n}\n\n1\n\nWe overload a trivial macro depending on the number of passed arguments.\n\n2\n\nThe one, two, and three argument versions of COUT.\n\n\nOutput\nCompiler: clang 17.0.6\nZero argument version:\nOne argument version:    x\nTwo arguments version:   x, 2\nThree arguments version: x, 2, z",
-    "crumbs": [
-      "Home",
-      "Useful Macros"
-    ]
-  },
-  {
-    "objectID": "pages/macros.html#semantic-version-strings",
-    "href": "pages/macros.html#semantic-version-strings",
-    "title": "Macros",
-    "section": "Semantic Version Strings",
-    "text": "Semantic Version Strings\nVERSION_STRING(major)                   &lt;1&gt;\nVERSION_STRING(major, minor)            &lt;2&gt;\nVERSION_STRING(major, minor, patch)     &lt;3&gt;\n\nExpands to “major”.\nExpands to “major.minor”.\nExpands to “major.minor.patch”.\n\nVERSION_STRING is an overloaded macro. For example, VERSION_STRING(3, 1, 0) expands to the string \"3.1.0\".",
-    "crumbs": [
-      "Home",
-      "Useful Macros"
-    ]
-  },
-  {
-    "objectID": "pages/macros.html#print-code-lines-and-results",
-    "href": "pages/macros.html#print-code-lines-and-results",
-    "title": "Macros",
-    "section": "Print Code Lines and Results",
-    "text": "Print Code Lines and Results\nRUN(code)               &lt;1&gt;\nRUN(code, out)          &lt;2&gt;\nRUN(code, out1, out2)   &lt;3&gt;\n\nPrints a line of code to the screen and then runs it.\nPrints a line of code to the screen, runs it, then prints the value from out.\nPrints a line of code to the screen, runs it, then prints the values out1 and out2.\n\nThis overloaded macro prints what will be executed in a test program, optionally followed by some results. Best illustrated with an example.\nExample\n#include &lt;utilities/macros.h&gt;\n#include &lt;format&gt;\n#include &lt;iostream&gt;\n#include &lt;iterator&gt;\n#include &lt;string&gt;\n\nint main()\n{\n    RUN(std::string s1);\n    RUN(double x = 123456789.123456789);\n    RUN(std::format_to(std::back_inserter(s1), \"x = {:12.5f}\", x), s1);\n}\nOutput\n[CODE]   std::string s1\n[CODE]   double x = 123456789.123456789\n[CODE]   std::format_to(std::back_inserter(s1), \"x = {:12.5f}\", x)\n[RESULT] s1: x = 123456789.12346",
-    "crumbs": [
-      "Home",
-      "Useful Macros"
-    ]
-  },
-  {
-    "objectID": "pages/stream.html",
-    "href": "pages/stream.html",
-    "title": "Stream Functions",
-    "section": "",
-    "text": "The &lt;utilities/stream.h&gt; header supplies some utility functions that work on streams.",
-    "crumbs": [
-      "Home",
-      "Stream Functions"
-    ]
-  },
-  {
-    "objectID": "pages/stream.html#introduction",
-    "href": "pages/stream.html#introduction",
-    "title": "Stream Functions",
-    "section": "",
-    "text": "The &lt;utilities/stream.h&gt; header supplies some utility functions that work on streams.",
-    "crumbs": [
-      "Home",
-      "Stream Functions"
-    ]
-  },
-  {
-    "objectID": "pages/stream.html#reading-from-a-stream",
-    "href": "pages/stream.html#reading-from-a-stream",
-    "title": "Stream Functions",
-    "section": "Reading from a Stream",
-    "text": "Reading from a Stream\nstd::string\nutilities::read_line(std::istream &s,\n1                     std::string_view comment_begin = \"#\");\nstd::size_t\nutilities::read_line(std::istream &s, std::string &line,\n2                     std::string_view comment_begin = \"#\");\n\n1\n\nThis function reads a ‘line’ from a stream and returns that as a std::string.\n\n2\n\nOverwrites the ‘line’ argument with the contents from a stream s. Returns the number of characters placed into line.\n\n\nThese functions differ from std::getline in a few ways:\n\nThey ignore blank lines in the input stream.\nThey allow for long lines by assuming that lines that end with a “\\” continue to the next.\nThey strip out comment lines and trailing comments.\n\nComment lines begin with “#” by default.",
-    "crumbs": [
-      "Home",
-      "Stream Functions"
-    ]
-  },
-  {
-    "objectID": "pages/stream.html#related-functions",
-    "href": "pages/stream.html#related-functions",
-    "title": "Stream Functions",
-    "section": "Related Functions",
-    "text": "Related Functions\n1std::istream & rewind(std::istream &is);\n\nstd::size_t\nline_count(std::istream &is,\n2           std::string_view comment_begin = \"#\");\n\n1\n\nThis function rewinds an input stream to the start.\n\n2\n\nThis function returns the number of non-comment lines in the stream.\n\n\nIf the comment start string is empty, line_count uses std::getline to read the lines. Otherwise, we use our read_line(...) function, so comment lines are excluded, etc.\n\n    \n     \n    \n    \nThese two functions only work with file streams, etc.",
-    "crumbs": [
-      "Home",
-      "Stream Functions"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "The utilities Library",
-    "section": "",
-    "text": "The utilities library is a small collection of C++ classes, functions, and macros. It is header-only, so there is nothing to compile or link.\n\n    \n     \n    \n    \nYou can use any header file in this library by itself — there are no interdependencies."
-  },
-  {
-    "objectID": "index.html#project-overview",
-    "href": "index.html#project-overview",
-    "title": "The utilities Library",
-    "section": "",
-    "text": "The utilities library is a small collection of C++ classes, functions, and macros. It is header-only, so there is nothing to compile or link.\n\n    \n     \n    \n    \nYou can use any header file in this library by itself — there are no interdependencies."
-  },
-  {
-    "objectID": "index.html#available-facilities",
-    "href": "index.html#available-facilities",
-    "title": "The utilities Library",
-    "section": "Available Facilities",
-    "text": "Available Facilities\n\n\n\n\n\n\n\n\nHeader File\nPurpose\n\n\n\n\nverify.h\nDefines some assert type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed.\n\n\nformat.h\nFunctionality that connects any class with a to_string() method to std::format.\n\n\nprint.h\nWorkaround for any compiler that hasn’t yet implemented std::print.\n\n\nmacros.h\nDefines macros often used in test and example programs. It also defines a mechanism that lets you overload a macro based on the number of passed arguments.\n\n\nlog.h\nSome very simple logging macros.\n\n\nstopwatch.h\nDefines the utilities::stopwatch class you can use to time blocks of code.\n\n\nstream.h\nDefines some functions to read lines from a file, ignoring comments and allowing for continuation lines.\n\n\nstring.h\nDefines several useful string functions (e.g., turning strings to uppercase, trimming white space, etc.).\n\n\nthousands.h\nDefines functions to imbue output streams and locales with commas that make it easier to read large numbers — for example, printing 23000.56 as 23,000.56.\n\n\ntype.h\nDefines the function utilities::type, which produces a string for a type.\n\n\nutilities.h\nThis “include-the-lot” header pulls in all the other files above.\n\n\n\n\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with some of our macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you."
-  },
-  {
-    "objectID": "index.html#installation",
-    "href": "index.html#installation",
-    "title": "The utilities Library",
-    "section": "Installation",
-    "text": "Installation\nThis library is header-only, so there is nothing to compile & link. Drop the small utilities header directory somewhere convenient. You can even use any single header file on a stand-alone basis.\nAlternatively, if you are using CMake, you can use the standard FetchContent module by adding a few lines to your project’s CMakeLists.txt file:\ninclude(FetchContent)\nFetchContent_Declare(utilities URL https://github.com/nessan/utilities/releases/download/current/utilities.zip)\nFetchContent_MakeAvailable(utilities)\nThis command downloads and unpacks an archive of the current version of utilities to your project’s build folder. You can then add a dependency on utilities::utilities, a CMake alias for utilities. FetchContent will automatically ensure the build system knows where to find the downloaded header files and any needed compiler flags.\n\n    \n     \n    \n    \nThat URL downloads the library’s current version — whatever is in the main branch when you do the download. That content may change from time to time. Use a URL like https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip to get a fixed library version."
-  },
-  {
-    "objectID": "index.html#documentation",
-    "href": "index.html#documentation",
-    "title": "The utilities Library",
-    "section": "Documentation",
-    "text": "Documentation\nHere is a link to the project’s source code repository.\nThis documentation site was constructed using the static website generator Quarto.\n\nContact\nYou can contact me by email\n\n\nCopyright and License\nCopyright (c) 2022-present Nessan Fitzmaurice.\nYou can use this software under the MIT License"
-  },
-  {
-    "objectID": "pages/format.html",
-    "href": "pages/format.html",
-    "title": "Formatted Output",
-    "section": "",
-    "text": "C++20 introduced the formatting library std::format. That library makes it easy to create strings with interpolated values and has facilities for adding your types as values in those strings.\nThe &lt;utilities/format.h&gt; header augments that facility.\nMany classes already implement a std::string to_string() const method that returns a string representation of an instance — we can use that to push values into std::format.\nWe have a concept that captures all types with an appropriate to_string() method.\ntemplate&lt;typename T&gt;\nconcept has_to_string_method = requires(const T& x) {\n    { x.to_string() } -&gt; std::convertible_to&lt;std::string&gt;;\n};\nWe also supply a std::formatter that automatically connects any has_string_method class to the standard formatting library.\nExample\n#include &lt;utilities/format.h&gt;\n#include &lt;iostream&gt;\n\nstruct Whatever {\n    std::string to_string() const { return \"Whatever!\"; }\n};\n\nint main()\n{\n    Whatever w;\n    std::cout &lt;&lt; std::format(\"Struct with a to_string() method: '{}'\\n\", w);\n    return 0;\n}\nOutput\nStruct with a to_string() method: 'Whatever!'",
-    "crumbs": [
-      "Home",
-      "Formatted Output"
-    ]
-  },
-  {
-    "objectID": "pages/format.html#introduction",
-    "href": "pages/format.html#introduction",
-    "title": "Formatted Output",
-    "section": "",
-    "text": "C++20 introduced the formatting library std::format. That library makes it easy to create strings with interpolated values and has facilities for adding your types as values in those strings.\nThe &lt;utilities/format.h&gt; header augments that facility.\nMany classes already implement a std::string to_string() const method that returns a string representation of an instance — we can use that to push values into std::format.\nWe have a concept that captures all types with an appropriate to_string() method.\ntemplate&lt;typename T&gt;\nconcept has_to_string_method = requires(const T& x) {\n    { x.to_string() } -&gt; std::convertible_to&lt;std::string&gt;;\n};\nWe also supply a std::formatter that automatically connects any has_string_method class to the standard formatting library.\nExample\n#include &lt;utilities/format.h&gt;\n#include &lt;iostream&gt;\n\nstruct Whatever {\n    std::string to_string() const { return \"Whatever!\"; }\n};\n\nint main()\n{\n    Whatever w;\n    std::cout &lt;&lt; std::format(\"Struct with a to_string() method: '{}'\\n\", w);\n    return 0;\n}\nOutput\nStruct with a to_string() method: 'Whatever!'",
-    "crumbs": [
-      "Home",
-      "Formatted Output"
-    ]
-  },
-  {
-    "objectID": "pages/format.html#ranges-workaround",
-    "href": "pages/format.html#ranges-workaround",
-    "title": "Formatted Output",
-    "section": "Ranges workaround",
-    "text": "Ranges workaround\nC++23 will have facilities to allow std::format to work with ranges, which will make it easier to create formatted strings with interpolated values from arrays, vectors, lists, etc. If your compiler does not yet support this type of interpolation, &lt;utilities/format.h&gt; supplies a workaround.\nExample\n#include &lt;utilities/format.h&gt;\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\nint main()\n{\n1#ifdef __cpp_lib_format_ranges\n    std::cout &lt;&lt; \"The compiler natively supports formatting `ranges`!\\n\";\n#else\n    std::cout &lt;&lt; \"I will format `ranges` using the `&lt;utilities&gt;` library!\\n\";\n#endif\n\n    std::vector v = {1.123123, 2.1235, 3.555555};\n    std::cout &lt;&lt; std::format(\"Unformatted vector: {}\\n\", v);\n    std::cout &lt;&lt; std::format(\"Formatted vector:   {::3.2f}\\n\", v);\n}\n\n1\n\n__cpp_lib_format_ranges is a standard preprocessor flag indicating whether your compiler can format ranges.\n\n\nOutput\nI will format `ranges` using the `&lt;utilities&gt;` library!\nUnformatted vector: [1.123123, 2.1235, 3.555555]\nFormatted vector:   [1.12, 2.12, 3.56]\n\nSee Also\nprint.h\nstd::format\nstd::formatter",
-    "crumbs": [
-      "Home",
-      "Formatted Output"
-    ]
-  },
-  {
-    "objectID": "pages/type.html",
-    "href": "pages/type.html",
-    "title": "The Type of an Object",
-    "section": "",
-    "text": "The &lt;utilities/type.h&gt; heeder defines functions that return a string representing an object’s “type” as the compiler/preprocessor sees.\ntemplate&lt;typename T&gt;\n1constexpr std::string_view utilities::type();\n\ntemplate&lt;typename T&gt;\n2constexpr std::string_view utilities::type(const T&);\n\n1\n\nReturns a string for a type, e.g., utilities::type&lt;int&gt; will return \"int\".\n\n2\n\nReturns a string for the specific object type. For example, if x is an int, utilities::type(x) will return “int.”\n\n\nThere is no portable way to get a readable string representation of a type in C++, though clearly, the compiler has the information.\nYou can use std::typeid to retrieve the get std::type_info that has a name field. However, that name field is not standardized across compilers, and in some cases, it contains a mangled name, which is not easily readable Moreover, std::typeid is not a compile-time call, so not useful for template meta-programming.\nWe can instead use the compiler’s preprocessor. It generally has some predefined macro that produces a clean-looking signature string when invoked in any function. The name of the macro we want isn’t standardized, but clang and GCC both use __PRETTY_FUNCTION__ while Microsoft uses __FUNCSIG__. How the macro expands isn’t standardized but will be consistent with any compiler.\nThe macro string is available at compile time as its expansion is part of the pre-compilation phase. Using other constexpr functions, you can parse the string to get a printable name for any type at compile time.\n\n    \n     \n    \n    \nThe type name will be perfectly readable but not identical across compilers.\n\nExample\n#include &lt;utilities/print.h&gt;\n#include &lt;utilities/macros.h&gt;\n#include &lt;utilities/stopwatch.h&gt;\n#include &lt;utilities/type.h&gt;\n\nint main()\n{\n1    utilities::stopwatch         sw_default;\n    utilities::precise_stopwatch sw_precise;\n    utilities::steady_stopwatch  sw_steady;\n    utilities::system_stopwatch  sw_system;\n\n2    std::cout &lt;&lt; \"Compiler: \" &lt;&lt; COMPILER_NAME &lt;&lt; '\\n';\n\n    std::print(\"sw_default has type '{}'\\n\", utilities::type(sw_default));\n    std::print(\"sw_precise has type '{}'\\n\", utilities::type(sw_precise));\n    std::print(\"sw_steady  has type '{}'\\n\", utilities::type(sw_steady));\n    std::print(\"sw_system  has type '{}'\\n\", utilities::type(sw_system));\n}\n\n1\n\nSee stopwatch.h for details.\n\n2\n\nSee macros.h for details.\n\n\nOutput from GCC\nCompiler: gcc 13.2.0\nsw_default has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nsw_precise has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nsw_steady  has type 'stopwatch&lt;std::chrono::_V2::steady_clock&gt;'\nsw_system  has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nIt seems that libstdc++, the standard library for gcc, only has one clock, namely std::chrono::system_clock. The other clocks in its std::chrono must all be aliases for that one.\nOutput from MSVC\nCompiler: MSC 193131104\nsw_default has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_precise has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_steady  has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_system  has type 'class utilities::stopwatch&lt;struct std::chrono::system_clock&gt;'\nThis version of Microsoft Visual Studio Code also uses a single clock, std::chrono::steady_clock for our system.\nOutput from clang\nCompiler: clang 17.0.6\nsw_default has type 'utilities::stopwatch&lt;&gt;'\nsw_precise has type 'utilities::stopwatch&lt;&gt;'\nsw_steady  has type 'utilities::stopwatch&lt;&gt;'\nsw_system  has type 'utilities::stopwatch&lt;std::chrono::system_clock&gt;'\nThe specific clock type is not printed for the first three objects.\nWe have observed that while clang uses the same __PRETTY_FUNCTION__ macro name as gcc, its implementation is different, and it never outputs template arguments that match a default.\nFor the first three objects above, clang outputs utilities::stopwatch&lt;&gt; without any reference to the underlying clock. We conclude that all three use the default specified in stopwatch.h, std::chrono::high_resolution_clock. For this compiler, then std::chrono:steady_clock is the same asstd::chrono::high_resolution_clock.\nHowever, the type name for the final sw_system object references a different std::chrono::system_clock. The standard library libc++ for clang is able to access two different clocks (or at least two that it thinks are different).",
-    "crumbs": [
-      "Home",
-      "Type Names"
-    ]
-  },
-  {
-    "objectID": "pages/type.html#introduction",
-    "href": "pages/type.html#introduction",
-    "title": "The Type of an Object",
-    "section": "",
-    "text": "The &lt;utilities/type.h&gt; heeder defines functions that return a string representing an object’s “type” as the compiler/preprocessor sees.\ntemplate&lt;typename T&gt;\n1constexpr std::string_view utilities::type();\n\ntemplate&lt;typename T&gt;\n2constexpr std::string_view utilities::type(const T&);\n\n1\n\nReturns a string for a type, e.g., utilities::type&lt;int&gt; will return \"int\".\n\n2\n\nReturns a string for the specific object type. For example, if x is an int, utilities::type(x) will return “int.”\n\n\nThere is no portable way to get a readable string representation of a type in C++, though clearly, the compiler has the information.\nYou can use std::typeid to retrieve the get std::type_info that has a name field. However, that name field is not standardized across compilers, and in some cases, it contains a mangled name, which is not easily readable Moreover, std::typeid is not a compile-time call, so not useful for template meta-programming.\nWe can instead use the compiler’s preprocessor. It generally has some predefined macro that produces a clean-looking signature string when invoked in any function. The name of the macro we want isn’t standardized, but clang and GCC both use __PRETTY_FUNCTION__ while Microsoft uses __FUNCSIG__. How the macro expands isn’t standardized but will be consistent with any compiler.\nThe macro string is available at compile time as its expansion is part of the pre-compilation phase. Using other constexpr functions, you can parse the string to get a printable name for any type at compile time.\n\n    \n     \n    \n    \nThe type name will be perfectly readable but not identical across compilers.\n\nExample\n#include &lt;utilities/print.h&gt;\n#include &lt;utilities/macros.h&gt;\n#include &lt;utilities/stopwatch.h&gt;\n#include &lt;utilities/type.h&gt;\n\nint main()\n{\n1    utilities::stopwatch         sw_default;\n    utilities::precise_stopwatch sw_precise;\n    utilities::steady_stopwatch  sw_steady;\n    utilities::system_stopwatch  sw_system;\n\n2    std::cout &lt;&lt; \"Compiler: \" &lt;&lt; COMPILER_NAME &lt;&lt; '\\n';\n\n    std::print(\"sw_default has type '{}'\\n\", utilities::type(sw_default));\n    std::print(\"sw_precise has type '{}'\\n\", utilities::type(sw_precise));\n    std::print(\"sw_steady  has type '{}'\\n\", utilities::type(sw_steady));\n    std::print(\"sw_system  has type '{}'\\n\", utilities::type(sw_system));\n}\n\n1\n\nSee stopwatch.h for details.\n\n2\n\nSee macros.h for details.\n\n\nOutput from GCC\nCompiler: gcc 13.2.0\nsw_default has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nsw_precise has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nsw_steady  has type 'stopwatch&lt;std::chrono::_V2::steady_clock&gt;'\nsw_system  has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nIt seems that libstdc++, the standard library for gcc, only has one clock, namely std::chrono::system_clock. The other clocks in its std::chrono must all be aliases for that one.\nOutput from MSVC\nCompiler: MSC 193131104\nsw_default has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_precise has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_steady  has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_system  has type 'class utilities::stopwatch&lt;struct std::chrono::system_clock&gt;'\nThis version of Microsoft Visual Studio Code also uses a single clock, std::chrono::steady_clock for our system.\nOutput from clang\nCompiler: clang 17.0.6\nsw_default has type 'utilities::stopwatch&lt;&gt;'\nsw_precise has type 'utilities::stopwatch&lt;&gt;'\nsw_steady  has type 'utilities::stopwatch&lt;&gt;'\nsw_system  has type 'utilities::stopwatch&lt;std::chrono::system_clock&gt;'\nThe specific clock type is not printed for the first three objects.\nWe have observed that while clang uses the same __PRETTY_FUNCTION__ macro name as gcc, its implementation is different, and it never outputs template arguments that match a default.\nFor the first three objects above, clang outputs utilities::stopwatch&lt;&gt; without any reference to the underlying clock. We conclude that all three use the default specified in stopwatch.h, std::chrono::high_resolution_clock. For this compiler, then std::chrono:steady_clock is the same asstd::chrono::high_resolution_clock.\nHowever, the type name for the final sw_system object references a different std::chrono::system_clock. The standard library libc++ for clang is able to access two different clocks (or at least two that it thinks are different).",
-    "crumbs": [
-      "Home",
-      "Type Names"
-    ]
-  },
-  {
     "objectID": "pages/thousands.html",
     "href": "pages/thousands.html",
     "title": "Pretty Print Large Numbers",
     "section": "",
-    "text": "The &lt;utilities/thousands.h&gt; header provides functions that help you print large numbers in a readable format by forcing a stream or locale to insert appropriate commas, e.g., having 23456.7 print as 23,456.7.\n1utilities::imbue_stream_with_commas(std::ios_base &s = std::cout, bool on = true);\n2utilities::imbue_global_with_commas(bool on = true);\n3utilities::pretty_print_thousands(bool on = true);\n\n1\n\nTurns commas on or off for a particular stream.\n\n2\n\nTurns commas on or off for the global locale.\n\n3\n\nTurns commas on or off for the standard streams std::cout, std::cerr, std::clog, and the global locale.\n\n\nIdeally, one should be able to rely on facilities in std::locale to format large numbers per local custom. For example, using std::format, you might print a large number like this:\nstd::cout &lt;&lt; std::format(\"x = {:L}\\n\", 23456.7);\nThe L specifier tells the text formatting library to invoke an appropriate facet from the default locale. Then, you should see 23,456.7 printed on the screen for many locations.\nIn practice, the C++ standard libraries seem to have poor support for resolving locale information.\nYour computer correctly supports locales at the operating system level. After all, computer manufacturers sell their machines to customers worldwide, and those customers expect to see dates, etc., presented locally. However, the default locale used in many C++ implementations is not the default one used by the operating system. Instead, it is often a complete blank, so rather than seeing 23,456.7 you will get the less readable 23456.7\nThe various utilities::imbue_xxx_with_commas functions are a little hack that corrects the deficit. If you call the final version above pretty_print_thousands(), we inject a comma-producing facet into the default locale, and printing large numbers will work as expected. Calling pretty_print_thousands(false) will restore the default locale to its original state.\n\n    \n     \n    \n    \nFor now, the only punctuation we support with these functions is the comma. You should know that many countries treat the comma as a decimal point.\n\nExample\n#include &lt;utilities/thousands.h&gt;\n#include &lt;format&gt;\n\nint main()\n{\n    double x = 123456789.123456789;\n\n    std::cout &lt;&lt; std::format(\"Using the default locale:\\n\");\n    std::cout &lt;&lt; std::format(\"No locale specifier:   {:12.5f}\\n\",    x);\n1    std::cout &lt;&lt; std::format(\"With locale specifier: {:12.5Lf}\\n\\n\", x);\n\n    utilities::pretty_print_thousands();\n    std::cout &lt;&lt; std::format(\"After adding a commas facet:\\n\");\n    std::cout &lt;&lt; std::format(\"No locale specifier:   {:12.5f}\\n\",   x);\n2    std::cout &lt;&lt; std::format(\"With locale specifier: {:12.5Lf}\\n\",  x);\n}\n\n1\n\nWe might expect to see a readable x here but typically will not.\n\n2\n\nWe will see a readable x here for sure.\n\n\nOutput\nUsing the default locale:\nNo locale specifier:   123456789.12346\nWith locale specifier: 123456789.12346\n\nAfter adding a commas facet:\nNo locale specifier:   123456789.12346\nWith locale specifier: 123,456,789.12346\n\n\nstd::format\nstd::locale\n\nstd::format: https://en.cppreference.com/w/cpp/utility/format/format",
+    "text": "The &lt;utilities/thousands.h&gt; header provides functions that help you print large numbers in a readable format by forcing a stream or locale to insert appropriate commas, e.g., having 23456.7 print as 23,456.7.\n1utilities::imbue_stream_with_commas(std::ios_base &s = std::cout, bool on = true);\n2utilities::imbue_global_with_commas(bool on = true);\n3utilities::pretty_print_thousands(bool on = true);\n\n1\n\nTurns commas on or off for a particular stream.\n\n2\n\nTurns commas on or off for the global locale.\n\n3\n\nTurns commas on or off for the standard streams std::cout, std::cerr, std::clog, and the global locale.\n\n\nIdeally, one should be able to rely on facilities in std::locale to format large numbers per local custom. For example, using std::format, you might print a large number like this:\nstd::cout &lt;&lt; std::format(\"x = {:L}\\n\", 23456.7);\nThe L specifier tells the text formatting library to invoke an appropriate facet from the default locale. Then, you should see 23,456.7 printed on the screen for many locations.\nIn practice, the C++ standard libraries seem to have poor support for resolving locale information.\nYour computer correctly supports locales at the operating system level. After all, computer manufacturers sell their machines to customers worldwide, and those customers expect to see dates, etc., presented locally. However, the default locale used in many C++ implementations is not the default one used by the operating system. Instead, it is often a complete blank, so rather than seeing 23,456.7 you will get the less readable 23456.7\nThe various utilities::imbue_xxx_with_commas functions are a little hack that corrects the deficit. If you call the final version above pretty_print_thousands(), we inject a comma-producing facet into the default locale, and printing large numbers will work as expected. Calling pretty_print_thousands(false) will restore the default locale to its original state.\n\n    \n     \n    \n    \nFor now, the only punctuation we support with these functions is the comma. You should know that many countries treat the comma as a decimal point.\n\nExample\n#include &lt;utilities/thousands.h&gt;\n#include &lt;format&gt;\n\nint main()\n{\n    double x = 123456789.123456789;\n\n    std::cout &lt;&lt; std::format(\"Using the default locale:\\n\");\n    std::cout &lt;&lt; std::format(\"No locale specifier:   {:12.5f}\\n\",    x);\n1    std::cout &lt;&lt; std::format(\"With locale specifier: {:12.5Lf}\\n\\n\", x);\n\n    utilities::pretty_print_thousands();\n    std::cout &lt;&lt; std::format(\"After adding a commas facet:\\n\");\n    std::cout &lt;&lt; std::format(\"No locale specifier:   {:12.5f}\\n\",   x);\n2    std::cout &lt;&lt; std::format(\"With locale specifier: {:12.5Lf}\\n\",  x);\n}\n\n1\n\nWe might expect to see a readable x here but typically will not.\n\n2\n\nWe will see a readable x here for sure.\n\n\nOutput\nUsing the default locale:\nNo locale specifier:   123456789.12346\nWith locale specifier: 123456789.12346\n\nAfter adding a commas facet:\nNo locale specifier:   123456789.12346\nWith locale specifier: 123,456,789.12346\n\n\nstd::format\nstd::locale",
     "crumbs": [
       "Home",
       "Readable Numbers"
@@ -446,10 +15,65 @@
     "href": "pages/thousands.html#introduction",
     "title": "Pretty Print Large Numbers",
     "section": "",
-    "text": "The &lt;utilities/thousands.h&gt; header provides functions that help you print large numbers in a readable format by forcing a stream or locale to insert appropriate commas, e.g., having 23456.7 print as 23,456.7.\n1utilities::imbue_stream_with_commas(std::ios_base &s = std::cout, bool on = true);\n2utilities::imbue_global_with_commas(bool on = true);\n3utilities::pretty_print_thousands(bool on = true);\n\n1\n\nTurns commas on or off for a particular stream.\n\n2\n\nTurns commas on or off for the global locale.\n\n3\n\nTurns commas on or off for the standard streams std::cout, std::cerr, std::clog, and the global locale.\n\n\nIdeally, one should be able to rely on facilities in std::locale to format large numbers per local custom. For example, using std::format, you might print a large number like this:\nstd::cout &lt;&lt; std::format(\"x = {:L}\\n\", 23456.7);\nThe L specifier tells the text formatting library to invoke an appropriate facet from the default locale. Then, you should see 23,456.7 printed on the screen for many locations.\nIn practice, the C++ standard libraries seem to have poor support for resolving locale information.\nYour computer correctly supports locales at the operating system level. After all, computer manufacturers sell their machines to customers worldwide, and those customers expect to see dates, etc., presented locally. However, the default locale used in many C++ implementations is not the default one used by the operating system. Instead, it is often a complete blank, so rather than seeing 23,456.7 you will get the less readable 23456.7\nThe various utilities::imbue_xxx_with_commas functions are a little hack that corrects the deficit. If you call the final version above pretty_print_thousands(), we inject a comma-producing facet into the default locale, and printing large numbers will work as expected. Calling pretty_print_thousands(false) will restore the default locale to its original state.\n\n    \n     \n    \n    \nFor now, the only punctuation we support with these functions is the comma. You should know that many countries treat the comma as a decimal point.\n\nExample\n#include &lt;utilities/thousands.h&gt;\n#include &lt;format&gt;\n\nint main()\n{\n    double x = 123456789.123456789;\n\n    std::cout &lt;&lt; std::format(\"Using the default locale:\\n\");\n    std::cout &lt;&lt; std::format(\"No locale specifier:   {:12.5f}\\n\",    x);\n1    std::cout &lt;&lt; std::format(\"With locale specifier: {:12.5Lf}\\n\\n\", x);\n\n    utilities::pretty_print_thousands();\n    std::cout &lt;&lt; std::format(\"After adding a commas facet:\\n\");\n    std::cout &lt;&lt; std::format(\"No locale specifier:   {:12.5f}\\n\",   x);\n2    std::cout &lt;&lt; std::format(\"With locale specifier: {:12.5Lf}\\n\",  x);\n}\n\n1\n\nWe might expect to see a readable x here but typically will not.\n\n2\n\nWe will see a readable x here for sure.\n\n\nOutput\nUsing the default locale:\nNo locale specifier:   123456789.12346\nWith locale specifier: 123456789.12346\n\nAfter adding a commas facet:\nNo locale specifier:   123456789.12346\nWith locale specifier: 123,456,789.12346\n\n\nstd::format\nstd::locale\n\nstd::format: https://en.cppreference.com/w/cpp/utility/format/format",
+    "text": "The &lt;utilities/thousands.h&gt; header provides functions that help you print large numbers in a readable format by forcing a stream or locale to insert appropriate commas, e.g., having 23456.7 print as 23,456.7.\n1utilities::imbue_stream_with_commas(std::ios_base &s = std::cout, bool on = true);\n2utilities::imbue_global_with_commas(bool on = true);\n3utilities::pretty_print_thousands(bool on = true);\n\n1\n\nTurns commas on or off for a particular stream.\n\n2\n\nTurns commas on or off for the global locale.\n\n3\n\nTurns commas on or off for the standard streams std::cout, std::cerr, std::clog, and the global locale.\n\n\nIdeally, one should be able to rely on facilities in std::locale to format large numbers per local custom. For example, using std::format, you might print a large number like this:\nstd::cout &lt;&lt; std::format(\"x = {:L}\\n\", 23456.7);\nThe L specifier tells the text formatting library to invoke an appropriate facet from the default locale. Then, you should see 23,456.7 printed on the screen for many locations.\nIn practice, the C++ standard libraries seem to have poor support for resolving locale information.\nYour computer correctly supports locales at the operating system level. After all, computer manufacturers sell their machines to customers worldwide, and those customers expect to see dates, etc., presented locally. However, the default locale used in many C++ implementations is not the default one used by the operating system. Instead, it is often a complete blank, so rather than seeing 23,456.7 you will get the less readable 23456.7\nThe various utilities::imbue_xxx_with_commas functions are a little hack that corrects the deficit. If you call the final version above pretty_print_thousands(), we inject a comma-producing facet into the default locale, and printing large numbers will work as expected. Calling pretty_print_thousands(false) will restore the default locale to its original state.\n\n    \n     \n    \n    \nFor now, the only punctuation we support with these functions is the comma. You should know that many countries treat the comma as a decimal point.\n\nExample\n#include &lt;utilities/thousands.h&gt;\n#include &lt;format&gt;\n\nint main()\n{\n    double x = 123456789.123456789;\n\n    std::cout &lt;&lt; std::format(\"Using the default locale:\\n\");\n    std::cout &lt;&lt; std::format(\"No locale specifier:   {:12.5f}\\n\",    x);\n1    std::cout &lt;&lt; std::format(\"With locale specifier: {:12.5Lf}\\n\\n\", x);\n\n    utilities::pretty_print_thousands();\n    std::cout &lt;&lt; std::format(\"After adding a commas facet:\\n\");\n    std::cout &lt;&lt; std::format(\"No locale specifier:   {:12.5f}\\n\",   x);\n2    std::cout &lt;&lt; std::format(\"With locale specifier: {:12.5Lf}\\n\",  x);\n}\n\n1\n\nWe might expect to see a readable x here but typically will not.\n\n2\n\nWe will see a readable x here for sure.\n\n\nOutput\nUsing the default locale:\nNo locale specifier:   123456789.12346\nWith locale specifier: 123456789.12346\n\nAfter adding a commas facet:\nNo locale specifier:   123456789.12346\nWith locale specifier: 123,456,789.12346\n\n\nstd::format\nstd::locale",
     "crumbs": [
       "Home",
       "Readable Numbers"
+    ]
+  },
+  {
+    "objectID": "pages/assert.html",
+    "href": "pages/assert.html",
+    "title": "Assertions",
+    "section": "",
+    "text": "The &lt;utilities/assert.h&gt; header has some macros that can be used to check a condition or equality of two values. On failures, the macros print a customisable message and, by default, exit the program with a non-zero status code.\nExit on failure is controlled by the following static constexpr variable:\nstatic constexpr auto exit_on_failure = true;\nIf it is set to true (the default), the program will exit with a non-zero status code if there are any assertion failures.\n\n\nThe following macros are available to check a boolean condition:\n1always_assert(condition, ...)\n2debug_assert(condition, ...)\n3assert(condition, ...)\n\n1\n\ncondition is checked, and if it evaluates to false, an error message is printed to the standard error stream.  That can include a custom payload synthesized from the trailing argument list.\n\n2\n\nThe debug_assert macro expands to always_assert if the DEBUG flag is set; otherwise, it’s a no-op.\n\n3\n\nThe assert macro expands to always_assert unless the NDEBUG flag is set, which is a no-op. This is similar to the standard assert macro.\n\n\nOn assertion failure, an error message is printed to the standard error stream, which includes the source code location of the failure along with any custom message payload. The custom message is synthesized from the trailing variadic argument list that are sent to the std::format function. The message can be anything that can be formatted using the facilities in std::format.\n\n\n\nThe following macros are available to check for the equality of two values (or objects):\n1always_assert_eq(a, b, ...)\n2debug_assert_eq(a, b, ...)\n3assert_eq(a, b, ...)\n\n1\n\nThe two values a and b are checked for equality, and if they are not equal, print a custom message synthesized from the rest of the arguments. By default, this will also exit the program with a non-zero status code.\n\n2\n\nThe debug_assert_eq macro expands to always_assert_eq if the DEBUG flag is set; otherwise, it’s a no-op.\n\n3\n\nThe assert_eq macro expands to always_assert_eq unless the NDEBUG flag is set, which is a no-op. This is similar to the standard assert macro.\n\n\n\n    \n     \n    \n    \nThe first two a and b arguments to assert_eq must be printable using std::format. If they are your own types, they will need to have an appropriate specialisation for std::formatter as well as an operator== overload.",
+    "crumbs": [
+      "Home",
+      "Assertions"
+    ]
+  },
+  {
+    "objectID": "pages/assert.html#introduction",
+    "href": "pages/assert.html#introduction",
+    "title": "Assertions",
+    "section": "",
+    "text": "The &lt;utilities/assert.h&gt; header has some macros that can be used to check a condition or equality of two values. On failures, the macros print a customisable message and, by default, exit the program with a non-zero status code.\nExit on failure is controlled by the following static constexpr variable:\nstatic constexpr auto exit_on_failure = true;\nIf it is set to true (the default), the program will exit with a non-zero status code if there are any assertion failures.\n\n\nThe following macros are available to check a boolean condition:\n1always_assert(condition, ...)\n2debug_assert(condition, ...)\n3assert(condition, ...)\n\n1\n\ncondition is checked, and if it evaluates to false, an error message is printed to the standard error stream.  That can include a custom payload synthesized from the trailing argument list.\n\n2\n\nThe debug_assert macro expands to always_assert if the DEBUG flag is set; otherwise, it’s a no-op.\n\n3\n\nThe assert macro expands to always_assert unless the NDEBUG flag is set, which is a no-op. This is similar to the standard assert macro.\n\n\nOn assertion failure, an error message is printed to the standard error stream, which includes the source code location of the failure along with any custom message payload. The custom message is synthesized from the trailing variadic argument list that are sent to the std::format function. The message can be anything that can be formatted using the facilities in std::format.\n\n\n\nThe following macros are available to check for the equality of two values (or objects):\n1always_assert_eq(a, b, ...)\n2debug_assert_eq(a, b, ...)\n3assert_eq(a, b, ...)\n\n1\n\nThe two values a and b are checked for equality, and if they are not equal, print a custom message synthesized from the rest of the arguments. By default, this will also exit the program with a non-zero status code.\n\n2\n\nThe debug_assert_eq macro expands to always_assert_eq if the DEBUG flag is set; otherwise, it’s a no-op.\n\n3\n\nThe assert_eq macro expands to always_assert_eq unless the NDEBUG flag is set, which is a no-op. This is similar to the standard assert macro.\n\n\n\n    \n     \n    \n    \nThe first two a and b arguments to assert_eq must be printable using std::format. If they are your own types, they will need to have an appropriate specialisation for std::formatter as well as an operator== overload.",
+    "crumbs": [
+      "Home",
+      "Assertions"
+    ]
+  },
+  {
+    "objectID": "pages/assert.html#examples",
+    "href": "pages/assert.html#examples",
+    "title": "Assertions",
+    "section": "Examples",
+    "text": "Examples\nExample\n#include &lt;utilities/assert.h&gt;\nint subtract(int x, int y)\n{\n    always_assert_eq(x, y, \"well that didn't work but x - y = {}\", x - y);\n    return y - x;\n}\nint main()\n{\n    return subtract(10, 11);\n}\n\nFor the sake of the example we are using the always_assert_eq macro to check for equality.  More typically, you would use either the debug_assert_eq or the assert_eq macro.\n\nOutput\nFAILED `assert_eq(x, y)` [assert02.cpp:7]\nwell that didn't work but x - y = -1\nlhs = 10\nrhs = 11\nThe program will then exit.",
+    "crumbs": [
+      "Home",
+      "Assertions"
+    ]
+  },
+  {
+    "objectID": "pages/assert.html#design-rationale",
+    "href": "pages/assert.html#design-rationale",
+    "title": "Assertions",
+    "section": "Design Rationale",
+    "text": "Design Rationale\n\nalways_assert\nUse this and the companion always_assert_eq macros when you want to check something is true and exit if it is not with an informative message. These macros are unaffected by compiler flags.\n\n\ndebug_assert\nIn the development cycle, it can be helpful to range-check indices and so on.\nHowever, those checks are expensive and can slow down numerical code by orders of magnitude. Therefore, we don’t want there to be any chance that those verifications are accidentally left “on” in the production code. The debug_assert and debug_assert_eq macros cover this type of verification. Turning on these checks requires the programmer to take a specific action: she must set the DEBUG flag during compile time.\nFor example, here is a pre-condition from a hypothetical dot(Vector u, Vector v) function:\ndebug_assert_eq(u.size(), v.size(), \"Incompatible vector sizes!\");\nThis code checks that the two vector arguments have equal length — a necessary constraint for the dot product operation to make sense. If the requirement is not satisfied, the program exits with an informative message that includes the size of the two vectors.\nThe check here is off by default, and you need to do something special (i.e., define the DEBUG flag at compile time) to enable it. Production code may do many of these dot products; we do not generally want to pay for the check. However, enabling these sorts of checks may be very useful during development.\nThe debug_assert- and debug_assert_eq macros expand to nothing unless you set the DEBUG flag at compile time.\n\n\nassert\nOn the other hand, there are some checks where the assertion cost is slight compared to the work of the function. Leaving these checks on in production will not likely impose much of a performance penalty.\nFor example, a pre-condition for a matrix inversion method is that the input matrix must be square. Here is how you might do that check in an invert(const Matrix& M) function:\nassert(M.is_square(), \"Cannot invert a {} x {} NON-square matrix!\", M.rows(), M.cols());\nWe can only invert square matrices. The M.is_square() call checks that condition and, on failure, exits the program with a helpful message. The check cost is very slight compared to the work done by the invert(...) method, so leaving it on even in production code is not a problem.\nThe check here is on by default, and you need to do something special (i.e., define the NDEBUG flag at compile time) to disable it.\nThe assert and assert_eq macros expand to nothing only if you set the NDEBUG flag at compile time.\nThe decision to use one form vs. the other is predicated on the cost of doing the check versus the work done by the method in question.\nA primary use case for debug_assert and debug_assert_eq is checking bounds on indices. From experience, this is vital during development. However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude. So it makes sense to have the checks in place for development but to ensure they are never there in release builds.",
+    "crumbs": [
+      "Home",
+      "Assertions"
+    ]
+  },
+  {
+    "objectID": "pages/assert.html#why-macros",
+    "href": "pages/assert.html#why-macros",
+    "title": "Assertions",
+    "section": "Why macros?",
+    "text": "Why macros?\nThe main reason we use macros instead of a function is that we need to stringify the assertion condition and assertion arguments to produce a helpful message if the assertion fails.\n\n    \n     \n    \n    \nMacros do have the downside that they depend on comma placement to separate arguments, which can be a bit of a gotcha in some cases. For example, if you are equality testing between two std::pair variables. You can often get around any issues by the judicious use of parentheses, but it is something to be aware of if you start to see weird compiler errors.\n\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.\n\n\nSee Also\nformat.h\nlog.h\nstandard assert",
+    "crumbs": [
+      "Home",
+      "Assertions"
     ]
   },
   {
@@ -563,25 +187,444 @@
     ]
   },
   {
-    "objectID": "pages/print.html",
-    "href": "pages/print.html",
-    "title": "Printing",
+    "objectID": "pages/index.html",
+    "href": "pages/index.html",
+    "title": "The utilities Library",
     "section": "",
-    "text": "C++23 introduces std::print as an addition to the standard formatting library.\nIf your compiler does not yet support std::print, the &lt;utilities/print.h&gt; header file supplies a workaround.\nExample\n#include &lt;utilities/format.h&gt;\n#include &lt;utilities/print.h&gt;\n#include &lt;vector&gt;\n\nint main()\n{\n#ifdef __cpp_lib_print\n    std::cout &lt;&lt; \"The compiler has std::print!\\n\";\n#else\n    std::cout &lt;&lt; \"I will use the std::print workaround!\\n\";\n#endif\n    std::vector v = {1.123123, 2.1235, 3.555555};\n    std::print(\"Unformatted vector: {}\\n\", v);\n    std::print(\"Formatted vector:   {::3.2f}\\n\", v);W\n}\nOutput\nI will use the std::print workaround!\nUnformatted vector: [1.123123, 2.1235, 3.555555]\nFormatted vector:   [1.12, 2.12, 3.56]\n\n\nformat.h",
+    "text": "The utilities library is a small collection of C++ classes, functions, and macros. It is header-only, so there is nothing to compile or link.\n\n    \n     \n    \n    \nYou can use any header file in this library by itself — there are no interdependencies.",
     "crumbs": [
       "Home",
-      "Print Facilities"
+      "Library Overview"
     ]
   },
   {
-    "objectID": "pages/print.html#introduction",
-    "href": "pages/print.html#introduction",
-    "title": "Printing",
+    "objectID": "pages/index.html#project-overview",
+    "href": "pages/index.html#project-overview",
+    "title": "The utilities Library",
     "section": "",
-    "text": "C++23 introduces std::print as an addition to the standard formatting library.\nIf your compiler does not yet support std::print, the &lt;utilities/print.h&gt; header file supplies a workaround.\nExample\n#include &lt;utilities/format.h&gt;\n#include &lt;utilities/print.h&gt;\n#include &lt;vector&gt;\n\nint main()\n{\n#ifdef __cpp_lib_print\n    std::cout &lt;&lt; \"The compiler has std::print!\\n\";\n#else\n    std::cout &lt;&lt; \"I will use the std::print workaround!\\n\";\n#endif\n    std::vector v = {1.123123, 2.1235, 3.555555};\n    std::print(\"Unformatted vector: {}\\n\", v);\n    std::print(\"Formatted vector:   {::3.2f}\\n\", v);W\n}\nOutput\nI will use the std::print workaround!\nUnformatted vector: [1.123123, 2.1235, 3.555555]\nFormatted vector:   [1.12, 2.12, 3.56]\n\n\nformat.h",
+    "text": "The utilities library is a small collection of C++ classes, functions, and macros. It is header-only, so there is nothing to compile or link.\n\n    \n     \n    \n    \nYou can use any header file in this library by itself — there are no interdependencies.",
     "crumbs": [
       "Home",
-      "Print Facilities"
+      "Library Overview"
+    ]
+  },
+  {
+    "objectID": "pages/index.html#available-facilities",
+    "href": "pages/index.html#available-facilities",
+    "title": "The utilities Library",
+    "section": "Available Facilities",
+    "text": "Available Facilities\n\n\n\n\n\n\n\n\nHeader File\nPurpose\n\n\n\n\nassert.h\nDefines some standard assert type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed.\n\n\nformat.h\nFunctionality that connects any class with a to_string() method to std::format.\n\n\nlog.h\nSome very simple logging macros.\n\n\nmacros.h\nDefines macros often used in test and example programs. It also defines a mechanism that lets you overload a macro based on the number of passed arguments.\n\n\nstopwatch.h\nDefines the utilities::stopwatch class you can use to time blocks of code.\n\n\nstream.h\nDefines some functions to read lines from a file, ignoring comments and allowing for continuation lines.\n\n\nstring.h\nDefines several useful string functions (e.g., turning strings to uppercase, trimming white space, etc.).\n\n\nthousands.h\nDefines functions to imbue output streams and locales with commas that make it easier to read large numbers — for example, printing 23000.56 as 23,000.56.\n\n\ntype.h\nDefines the function utilities::type, which produces a string for a type.\n\n\nutilities.h\nThis “include-the-lot” header pulls in all the other files above.\n\n\n\n\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with some of our macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
+    "crumbs": [
+      "Home",
+      "Library Overview"
+    ]
+  },
+  {
+    "objectID": "pages/index.html#installation",
+    "href": "pages/index.html#installation",
+    "title": "The utilities Library",
+    "section": "Installation",
+    "text": "Installation\nThis library is header-only, so there is nothing to compile & link. Drop the small utilities header directory somewhere convenient. You can even use any single header file on a stand-alone basis.\nAlternatively, if you are using CMake, you can use the standard FetchContent module by adding a few lines to your project’s CMakeLists.txt file:\ninclude(FetchContent)\nFetchContent_Declare(utilities URL https://github.com/nessan/utilities/releases/download/current/utilities.zip)\nFetchContent_MakeAvailable(utilities)\nThis command downloads and unpacks an archive of the current version of utilities to your project’s build folder. You can then add a dependency on utilities::utilities, a CMake alias for utilities. FetchContent will automatically ensure the build system knows where to find the downloaded header files and any needed compiler flags.\n\n    \n     \n    \n    \nThat URL downloads the library’s current version — whatever is in the main branch when you do the download. That content may change from time to time. Use a URL like https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip to get a fixed library version.",
+    "crumbs": [
+      "Home",
+      "Library Overview"
+    ]
+  },
+  {
+    "objectID": "pages/index.html#documentation",
+    "href": "pages/index.html#documentation",
+    "title": "The utilities Library",
+    "section": "Documentation",
+    "text": "Documentation\nHere is a link to the project’s source code repository.\nThis documentation site was constructed using the static website generator Quarto.",
+    "crumbs": [
+      "Home",
+      "Library Overview"
+    ]
+  },
+  {
+    "objectID": "pages/index.html#tests",
+    "href": "pages/index.html#tests",
+    "title": "The utilities Library",
+    "section": "Tests",
+    "text": "Tests\nThe project makes use of Doxytest, a tool for generating C++ test programs from code embedded in header file comments.",
+    "crumbs": [
+      "Home",
+      "Library Overview"
+    ]
+  },
+  {
+    "objectID": "pages/index.html#contact",
+    "href": "pages/index.html#contact",
+    "title": "The utilities Library",
+    "section": "Contact",
+    "text": "Contact\nYou can contact me by email",
+    "crumbs": [
+      "Home",
+      "Library Overview"
+    ]
+  },
+  {
+    "objectID": "pages/index.html#copyright-and-license",
+    "href": "pages/index.html#copyright-and-license",
+    "title": "The utilities Library",
+    "section": "Copyright and License",
+    "text": "Copyright and License\nCopyright (c) 2022-present Nessan Fitzmaurice.\nYou can use this software under the MIT License",
+    "crumbs": [
+      "Home",
+      "Library Overview"
+    ]
+  },
+  {
+    "objectID": "pages/stream.html",
+    "href": "pages/stream.html",
+    "title": "Stream Functions",
+    "section": "",
+    "text": "The &lt;utilities/stream.h&gt; header supplies some utility functions that work on streams.",
+    "crumbs": [
+      "Home",
+      "Stream Functions"
+    ]
+  },
+  {
+    "objectID": "pages/stream.html#introduction",
+    "href": "pages/stream.html#introduction",
+    "title": "Stream Functions",
+    "section": "",
+    "text": "The &lt;utilities/stream.h&gt; header supplies some utility functions that work on streams.",
+    "crumbs": [
+      "Home",
+      "Stream Functions"
+    ]
+  },
+  {
+    "objectID": "pages/stream.html#reading-from-a-stream",
+    "href": "pages/stream.html#reading-from-a-stream",
+    "title": "Stream Functions",
+    "section": "Reading from a Stream",
+    "text": "Reading from a Stream\nstd::string\nutilities::read_line(std::istream &s,\n1                     std::string_view comment_begin = \"#\");\nstd::size_t\nutilities::read_line(std::istream &s, std::string &line,\n2                     std::string_view comment_begin = \"#\");\n\n1\n\nThis function reads a ‘line’ from a stream and returns that as a std::string.\n\n2\n\nOverwrites the ‘line’ argument with the contents from a stream s. Returns the number of characters placed into line.\n\n\nThese functions differ from std::getline in a few ways:\n\nThey ignore blank lines in the input stream.\nThey allow for long lines by assuming that lines that end with a “\\” continue to the next.\nThey strip out comment lines and trailing comments.\n\nComment lines begin with “#” by default.",
+    "crumbs": [
+      "Home",
+      "Stream Functions"
+    ]
+  },
+  {
+    "objectID": "pages/stream.html#related-functions",
+    "href": "pages/stream.html#related-functions",
+    "title": "Stream Functions",
+    "section": "Related Functions",
+    "text": "Related Functions\n1std::istream & rewind(std::istream &is);\n\nstd::size_t\nline_count(std::istream &is,\n2           std::string_view comment_begin = \"#\");\n\n1\n\nThis function rewinds an input stream to the start.\n\n2\n\nThis function returns the number of non-comment lines in the stream.\n\n\nIf the comment start string is empty, line_count uses std::getline to read the lines. Otherwise, we use our read_line(...) function, so comment lines are excluded, etc.\n\n    \n     \n    \n    \nThese two functions only work with file streams, etc.",
+    "crumbs": [
+      "Home",
+      "Stream Functions"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The utilities Library",
+    "section": "",
+    "text": "The utilities library is a small collection of C++ classes, functions, and macros. It is header-only, so there is nothing to compile or link.\n\n    \n     \n    \n    \nYou can use any header file in this library by itself — there are no interdependencies."
+  },
+  {
+    "objectID": "index.html#project-overview",
+    "href": "index.html#project-overview",
+    "title": "The utilities Library",
+    "section": "",
+    "text": "The utilities library is a small collection of C++ classes, functions, and macros. It is header-only, so there is nothing to compile or link.\n\n    \n     \n    \n    \nYou can use any header file in this library by itself — there are no interdependencies."
+  },
+  {
+    "objectID": "index.html#available-facilities",
+    "href": "index.html#available-facilities",
+    "title": "The utilities Library",
+    "section": "Available Facilities",
+    "text": "Available Facilities\n\n\n\n\n\n\n\n\nHeader File\nPurpose\n\n\n\n\nassert.h\nDefines some standard assert type macros that improve on the standard one in various ways. In particular, you can add a message explaining why a check failed.\n\n\nformat.h\nFunctionality that connects any class with a to_string() method to std::format.\n\n\nlog.h\nSome very simple logging macros.\n\n\nmacros.h\nDefines macros often used in test and example programs. It also defines a mechanism that lets you overload a macro based on the number of passed arguments.\n\n\nstopwatch.h\nDefines the utilities::stopwatch class you can use to time blocks of code.\n\n\nstream.h\nDefines some functions to read lines from a file, ignoring comments and allowing for continuation lines.\n\n\nstring.h\nDefines several useful string functions (e.g., turning strings to uppercase, trimming white space, etc.).\n\n\nthousands.h\nDefines functions to imbue output streams and locales with commas that make it easier to read large numbers — for example, printing 23000.56 as 23,000.56.\n\n\ntype.h\nDefines the function utilities::type, which produces a string for a type.\n\n\nutilities.h\nThis “include-the-lot” header pulls in all the other files above.\n\n\n\n\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with some of our macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you."
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "The utilities Library",
+    "section": "Installation",
+    "text": "Installation\nThis library is header-only, so there is nothing to compile & link. Drop the small utilities header directory somewhere convenient. You can even use any single header file on a stand-alone basis.\nAlternatively, if you are using CMake, you can use the standard FetchContent module by adding a few lines to your project’s CMakeLists.txt file:\ninclude(FetchContent)\nFetchContent_Declare(utilities URL https://github.com/nessan/utilities/releases/download/current/utilities.zip)\nFetchContent_MakeAvailable(utilities)\nThis command downloads and unpacks an archive of the current version of utilities to your project’s build folder. You can then add a dependency on utilities::utilities, a CMake alias for utilities. FetchContent will automatically ensure the build system knows where to find the downloaded header files and any needed compiler flags.\n\n    \n     \n    \n    \nThat URL downloads the library’s current version — whatever is in the main branch when you do the download. That content may change from time to time. Use a URL like https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip to get a fixed library version."
+  },
+  {
+    "objectID": "index.html#documentation",
+    "href": "index.html#documentation",
+    "title": "The utilities Library",
+    "section": "Documentation",
+    "text": "Documentation\nHere is a link to the project’s source code repository.\nThis documentation site was constructed using the static website generator Quarto."
+  },
+  {
+    "objectID": "index.html#tests",
+    "href": "index.html#tests",
+    "title": "The utilities Library",
+    "section": "Tests",
+    "text": "Tests\nThe project makes use of Doxytest, a tool for generating C++ test programs from code embedded in header file comments."
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "The utilities Library",
+    "section": "Contact",
+    "text": "Contact\nYou can contact me by email"
+  },
+  {
+    "objectID": "index.html#copyright-and-license",
+    "href": "index.html#copyright-and-license",
+    "title": "The utilities Library",
+    "section": "Copyright and License",
+    "text": "Copyright and License\nCopyright (c) 2022-present Nessan Fitzmaurice.\nYou can use this software under the MIT License"
+  },
+  {
+    "objectID": "pages/stopwatch.html",
+    "href": "pages/stopwatch.html",
+    "title": "Stopwatch Class",
+    "section": "",
+    "text": "The &lt;utilities/stopwatch.h&gt; header defines utilities::stopwatch, a simple stopwatch class to measure execution times.\nYou might use it like this:\nutilities::stopwatch sw;\ndo_work();\nstd::cout &lt;&lt; sw &lt;&lt; '\\n';\nThe output will be the time taken in seconds for the do_work() call to run.",
+    "crumbs": [
+      "Home",
+      "Stopwatch"
+    ]
+  },
+  {
+    "objectID": "pages/stopwatch.html#introduction",
+    "href": "pages/stopwatch.html#introduction",
+    "title": "Stopwatch Class",
+    "section": "",
+    "text": "The &lt;utilities/stopwatch.h&gt; header defines utilities::stopwatch, a simple stopwatch class to measure execution times.\nYou might use it like this:\nutilities::stopwatch sw;\ndo_work();\nstd::cout &lt;&lt; sw &lt;&lt; '\\n';\nThe output will be the time taken in seconds for the do_work() call to run.",
+    "crumbs": [
+      "Home",
+      "Stopwatch"
+    ]
+  },
+  {
+    "objectID": "pages/stopwatch.html#declaration",
+    "href": "pages/stopwatch.html#declaration",
+    "title": "Stopwatch Class",
+    "section": "Declaration",
+    "text": "Declaration\ntemplate&lt;typename Clock = std::chrono::high_resolution_clock&gt;\nclass utilities::stopwatch;\nThe header-only class is templatized over the specific clock choice, likely one of the clocks from std::chrono.\n\n    \n     \n    \n    \nOur default clock is std::::chrono::high_resolution_clock. Discussions on sites like Stack Overflow instead favour std::chrono::steady_clock. That clock is guaranteed to be monotonic and unaffected by changing the system time, so it is suitable for long-running processes. However, in practice, we primarily examine much shorter code blocks and value accuracy over “steadiness.” We also note that, in any case, the two clocks are often identical!\n\nIf the clock choice matters, you can use one of the following type aliases:\nutilities::precise_stopwatch = utilities::stopwatch&lt;std::chrono::high_resolution_clock&gt;;\nutilities::steady_stopwatch  = utilities::stopwatch&lt;std::chrono::steady_clock&gt;;\nutilities::system_stopwatch  = utilities::stopwatch&lt;std::chrono::system_clock&gt;;\nWe always store elapsed times as a double number of seconds — this is also contrary to advice that advocates the use of std::chrono::duration.\nThe primary goal for utilities::stopwatch is ease of use. Sticking to seconds as the standard unit makes everything consistent. Besides, a double number of seconds gives you 15 or 16 places of accuracy, which is enough for any conceivable application.\n\n    \n     \n    \n    \nUse the utilities::stopwatch class for cheap and cheerful performance measurement. It is not a replacement for the many more complete but more complex code profiling tools.",
+    "crumbs": [
+      "Home",
+      "Stopwatch"
+    ]
+  },
+  {
+    "objectID": "pages/stopwatch.html#construction",
+    "href": "pages/stopwatch.html#construction",
+    "title": "Stopwatch Class",
+    "section": "Construction",
+    "text": "Construction\nutilities::stopwatch(const std::string& name = \"\");\nCreates a stopwatch and sets its zero time to now. You can give it a name, which is helpful if multiple stopwatches run in one executable.",
+    "crumbs": [
+      "Home",
+      "Stopwatch"
+    ]
+  },
+  {
+    "objectID": "pages/stopwatch.html#timing-methods",
+    "href": "pages/stopwatch.html#timing-methods",
+    "title": "Stopwatch Class",
+    "section": "Timing Methods",
+    "text": "Timing Methods\nThe stopwatch class is kept deliberately simple.\nAt its core, it measures the elapsed time in seconds from a zero time set on creation or by calling the stopwatch’s reset() method. It also supports the idea of clicking a stopwatch to record a split time–the time in seconds from the zero point to the click event. Finally, it records a lap time, which is the time between the last two stopwatch clicks. However, it has no memory further back than that.\n1constexpr void reset();\n2constexpr double elapsed() const;\n3constexpr double click();\n4constexpr double split() const;\n5constexpr double lap() const;\n\n1\n\nClears out any recorded split time and resets the zero time to now.\n\n2\n\nReturns the number of seconds from the zero_time to now.\n\n3\n\nCreates a split by recording the elapsed time in seconds from the zero time to the click() call and returns that time.\n\n4\n\nReturns the last recorded split time in seconds.\n\n5\n\nReturns the time in seconds between the last two splits — i.e., between the previous two click events.",
+    "crumbs": [
+      "Home",
+      "Stopwatch"
+    ]
+  },
+  {
+    "objectID": "pages/stopwatch.html#other-methods",
+    "href": "pages/stopwatch.html#other-methods",
+    "title": "Stopwatch Class",
+    "section": "Other Methods",
+    "text": "Other Methods\n1const std::string& name() const;\nstd::string& name();\n\n1\n\nRead-only and read-write access to the stopwatch name field.",
+    "crumbs": [
+      "Home",
+      "Stopwatch"
+    ]
+  },
+  {
+    "objectID": "pages/stopwatch.html#output-functions",
+    "href": "pages/stopwatch.html#output-functions",
+    "title": "Stopwatch Class",
+    "section": "Output Functions",
+    "text": "Output Functions\ntemplate&lt;typename Clock&gt;\nstd::ostream &\n1operator&lt;&lt;(std::ostream&, const utilities::stopwatch&lt;Clock&gt;&);\n\ntemplate&lt;typename Clock&gt;\n2struct std::formatter&lt;utilities::stopwatch&lt;Clock&gt;&gt;;\n\n1\n\nThe usual output operator for a stopwatch.\n\n2\n\nAdds stopwatch support to std::format.\n\n\n\n    \n     \n    \n    \nThese functions output the stopwatch’s elapsed time only. The output will look like “3.2s” without a name. The output will look like “name: 3.2s” with a name.",
+    "crumbs": [
+      "Home",
+      "Stopwatch"
+    ]
+  },
+  {
+    "objectID": "pages/stopwatch.html#other-functions",
+    "href": "pages/stopwatch.html#other-functions",
+    "title": "Stopwatch Class",
+    "section": "Other Functions",
+    "text": "Other Functions\ntemplate&lt;class Rep, class Period&gt;\nconstexpr double\n1to_seconds(const std::chrono::duration&lt;Rep, Period&gt;);\n\n1\n\nThis converts a std::chrono::duration to a double number of seconds.\n\n\nExample: How efficient is it to put a thread to sleep?\n#include &lt;utilities/stopwatch.h&gt;\n#include &lt;format&gt;\n#include &lt;thread&gt;\n\nint main()\n{\n    using namespace std::literals;\n    utilities::stopwatch sw;\n\n    for (auto sleep_duration = 0ms; sleep_duration &lt;= 2s; sleep_duration += 200ms) {\n\n1        sw.click();\n2        std::this_thread::sleep_for(sleep_duration);\n3        sw.click();\n\n4        double sleep_ms = 1000 * utilities::to_seconds(sleep_duration);\n5        double actual_ms = 1000 * sw.lap();\n        double diff = actual_ms - sleep_ms;\n        double percent = sleep_ms != 0 ? 100 * diff / sleep_ms : 0;\n\n        std::cout &lt;&lt; std::format(\"Requested sleep for {:8.2f}ms, measured wait was {:8.2f}ms =&gt; overhead {:.2f}ms ({:.2f}%)\\n\",\n                   sleep_ms, actual_ms, diff, percent);\n    }\n    std::cout &lt;&lt; \"Total elapsed time: \" &lt;&lt; sw &lt;&lt; '\\n';\n    return 0;\n}\n\n1\n\nCreate a split.\n\n2\n\nSleep for a set number of milliseconds.\n\n3\n\nCreate a second split and, hence, a lap.\n\n4\n\nConvert the sleep duration to a double number of seconds.\n\n5\n\nGet the lap time for that last call to sleep_for(...).\n\n\nOutput\nRequested sleep for     0.00ms, measured wait was     0.00ms =&gt; overhead 0.00ms (0.00%)\nRequested sleep for   200.00ms, measured wait was   202.96ms =&gt; overhead 2.96ms (1.48%)\nRequested sleep for   400.00ms, measured wait was   401.59ms =&gt; overhead 1.59ms (0.40%)\nRequested sleep for   600.00ms, measured wait was   604.82ms =&gt; overhead 4.82ms (0.80%)\nRequested sleep for   800.00ms, measured wait was   804.06ms =&gt; overhead 4.06ms (0.51%)\nRequested sleep for  1000.00ms, measured wait was  1001.97ms =&gt; overhead 1.97ms (0.20%)\nRequested sleep for  1200.00ms, measured wait was  1202.99ms =&gt; overhead 2.99ms (0.25%)\nRequested sleep for  1400.00ms, measured wait was  1405.10ms =&gt; overhead 5.10ms (0.36%)\nRequested sleep for  1600.00ms, measured wait was  1603.67ms =&gt; overhead 3.67ms (0.23%)\nRequested sleep for  1800.00ms, measured wait was  1803.70ms =&gt; overhead 3.70ms (0.21%)\nRequested sleep for  2000.00ms, measured wait was  2004.82ms =&gt; overhead 4.82ms (0.24%)\nTotal elapsed time: 11.036255763s\n\nSee Also\nstd::chrono",
+    "crumbs": [
+      "Home",
+      "Stopwatch"
+    ]
+  },
+  {
+    "objectID": "pages/format.html",
+    "href": "pages/format.html",
+    "title": "Formatted Output",
+    "section": "",
+    "text": "C++20 introduced the formatting library std::format. That library makes it easy to create strings with interpolated values and has facilities for adding your types as values in those strings.\nThe &lt;utilities/format.h&gt; header augments that facility.\nMany classes already implement a std::string to_string() const method that returns a string representation of an instance — we can use that to push values into std::format.\nWe have a concept that captures all types with an appropriate to_string() method.\ntemplate&lt;typename T&gt;\nconcept has_to_string_method = requires(const T& x) {\n    { x.to_string() } -&gt; std::convertible_to&lt;std::string&gt;;\n};\nWe also supply a std::formatter that automatically connects any has_string_method class to the standard formatting library.\nExample\n#include &lt;utilities/format.h&gt;\n#include &lt;iostream&gt;\n\nstruct Whatever {\n    std::string to_string() const { return \"Whatever!\"; }\n};\n\nint main()\n{\n    Whatever w;\n    std::cout &lt;&lt; std::format(\"Struct with a to_string() method: '{}'\\n\", w);\n    return 0;\n}\nOutput\nStruct with a to_string() method: 'Whatever!'",
+    "crumbs": [
+      "Home",
+      "Formatted Output"
+    ]
+  },
+  {
+    "objectID": "pages/format.html#introduction",
+    "href": "pages/format.html#introduction",
+    "title": "Formatted Output",
+    "section": "",
+    "text": "C++20 introduced the formatting library std::format. That library makes it easy to create strings with interpolated values and has facilities for adding your types as values in those strings.\nThe &lt;utilities/format.h&gt; header augments that facility.\nMany classes already implement a std::string to_string() const method that returns a string representation of an instance — we can use that to push values into std::format.\nWe have a concept that captures all types with an appropriate to_string() method.\ntemplate&lt;typename T&gt;\nconcept has_to_string_method = requires(const T& x) {\n    { x.to_string() } -&gt; std::convertible_to&lt;std::string&gt;;\n};\nWe also supply a std::formatter that automatically connects any has_string_method class to the standard formatting library.\nExample\n#include &lt;utilities/format.h&gt;\n#include &lt;iostream&gt;\n\nstruct Whatever {\n    std::string to_string() const { return \"Whatever!\"; }\n};\n\nint main()\n{\n    Whatever w;\n    std::cout &lt;&lt; std::format(\"Struct with a to_string() method: '{}'\\n\", w);\n    return 0;\n}\nOutput\nStruct with a to_string() method: 'Whatever!'",
+    "crumbs": [
+      "Home",
+      "Formatted Output"
+    ]
+  },
+  {
+    "objectID": "pages/format.html#ranges-workaround",
+    "href": "pages/format.html#ranges-workaround",
+    "title": "Formatted Output",
+    "section": "Ranges workaround",
+    "text": "Ranges workaround\nC++23 will have facilities to allow std::format to work with ranges, which will make it easier to create formatted strings with interpolated values from arrays, vectors, lists, etc. If your compiler does not yet support this type of interpolation, &lt;utilities/format.h&gt; supplies a workaround.\nExample\n#include &lt;utilities/format.h&gt;\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\nint main()\n{\n1#ifdef __cpp_lib_format_ranges\n    std::cout &lt;&lt; \"The compiler natively supports formatting `ranges`!\\n\";\n#else\n    std::cout &lt;&lt; \"I will format `ranges` using the `&lt;utilities&gt;` library!\\n\";\n#endif\n\n    std::vector v = {1.123123, 2.1235, 3.555555};\n    std::cout &lt;&lt; std::format(\"Unformatted vector: {}\\n\", v);\n    std::cout &lt;&lt; std::format(\"Formatted vector:   {::3.2f}\\n\", v);\n}\n\n1\n\n__cpp_lib_format_ranges is a standard preprocessor flag indicating whether your compiler can format ranges.\n\n\nOutput\nI will format `ranges` using the `&lt;utilities&gt;` library!\nUnformatted vector: [1.123123, 2.1235, 3.555555]\nFormatted vector:   [1.12, 2.12, 3.56]\n\nSee Also\nstd::format\nstd::formatter",
+    "crumbs": [
+      "Home",
+      "Formatted Output"
+    ]
+  },
+  {
+    "objectID": "pages/type.html",
+    "href": "pages/type.html",
+    "title": "The Type of an Object",
+    "section": "",
+    "text": "The &lt;utilities/type.h&gt; header defines functions that return a string representing an object’s “type” as the compiler/preprocessor sees.\ntemplate&lt;typename T&gt;\n1constexpr std::string_view utilities::type();\n\ntemplate&lt;typename T&gt;\n2constexpr std::string_view utilities::type(const T&);\n\n1\n\nReturns a string for a type, e.g., utilities::type&lt;int&gt; will return \"int\".\n\n2\n\nReturns a string for the specific object type. For example, if x is an int, utilities::type(x) will return “int.”\n\n\nThere is no portable way to get a readable string representation of a type in C++, though clearly, the compiler has the information.\nYou can use std::typeid to retrieve the get std::type_info that has a name field. However, that name field is not standardized across compilers, and in some cases, it contains a mangled name, which is not easily readable Moreover, std::typeid is not a compile-time call, so not useful for template meta-programming.\nWe can instead use the compiler’s preprocessor. It generally has some predefined macro that produces a clean-looking signature string when invoked in any function. The name of the macro we want isn’t standardized, but clang and GCC both use __PRETTY_FUNCTION__ while Microsoft uses __FUNCSIG__. How the macro expands isn’t standardized but will be consistent with any compiler.\nThe macro string is available at compile time as its expansion is part of the pre-compilation phase. Using other constexpr functions, you can parse the string to get a printable name for any type at compile time.\n\n    \n     \n    \n    \nThe type name will be perfectly readable but not identical across compilers.\n\nExample\n#include &lt;utilities/macros.h&gt;\n#include &lt;utilities/stopwatch.h&gt;\n#include &lt;utilities/type.h&gt;\n\nint main()\n{\n1    utilities::stopwatch         sw_default;\n    utilities::precise_stopwatch sw_precise;\n    utilities::steady_stopwatch  sw_steady;\n    utilities::system_stopwatch  sw_system;\n\n2    std::cout &lt;&lt; \"Compiler: \" &lt;&lt; COMPILER_NAME &lt;&lt; '\\n';\n\n    std::print(\"sw_default has type '{}'\\n\", utilities::type(sw_default));\n    std::print(\"sw_precise has type '{}'\\n\", utilities::type(sw_precise));\n    std::print(\"sw_steady  has type '{}'\\n\", utilities::type(sw_steady));\n    std::print(\"sw_system  has type '{}'\\n\", utilities::type(sw_system));\n}\n\n1\n\nSee stopwatch.h for details.\n\n2\n\nSee macros.h for details.\n\n\nOutput from GCC\nCompiler: gcc 13.2.0\nsw_default has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nsw_precise has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nsw_steady  has type 'stopwatch&lt;std::chrono::_V2::steady_clock&gt;'\nsw_system  has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nIt seems that libstdc++, the standard library for gcc, only has one clock, namely std::chrono::system_clock. The other clocks in its std::chrono must all be aliases for that one.\nOutput from MSVC\nCompiler: MSC 193131104\nsw_default has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_precise has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_steady  has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_system  has type 'class utilities::stopwatch&lt;struct std::chrono::system_clock&gt;'\nThis version of Microsoft Visual Studio Code also uses a single clock, std::chrono::steady_clock for our system.\nOutput from clang\nCompiler: clang 17.0.6\nsw_default has type 'utilities::stopwatch&lt;&gt;'\nsw_precise has type 'utilities::stopwatch&lt;&gt;'\nsw_steady  has type 'utilities::stopwatch&lt;&gt;'\nsw_system  has type 'utilities::stopwatch&lt;std::chrono::system_clock&gt;'\nThe specific clock type is not printed for the first three objects.\nWe have observed that while clang uses the same __PRETTY_FUNCTION__ macro name as gcc, its implementation is different, and it never outputs template arguments that match a default.\nFor the first three objects above, clang outputs utilities::stopwatch&lt;&gt; without any reference to the underlying clock. We conclude that all three use the default specified in stopwatch.h, std::chrono::high_resolution_clock. For this compiler, then std::chrono:steady_clock is the same asstd::chrono::high_resolution_clock.\nHowever, the type name for the final sw_system object references a different std::chrono::system_clock. The standard library libc++ for clang is able to access two different clocks (or at least two that it thinks are different).",
+    "crumbs": [
+      "Home",
+      "Type Names"
+    ]
+  },
+  {
+    "objectID": "pages/type.html#introduction",
+    "href": "pages/type.html#introduction",
+    "title": "The Type of an Object",
+    "section": "",
+    "text": "The &lt;utilities/type.h&gt; header defines functions that return a string representing an object’s “type” as the compiler/preprocessor sees.\ntemplate&lt;typename T&gt;\n1constexpr std::string_view utilities::type();\n\ntemplate&lt;typename T&gt;\n2constexpr std::string_view utilities::type(const T&);\n\n1\n\nReturns a string for a type, e.g., utilities::type&lt;int&gt; will return \"int\".\n\n2\n\nReturns a string for the specific object type. For example, if x is an int, utilities::type(x) will return “int.”\n\n\nThere is no portable way to get a readable string representation of a type in C++, though clearly, the compiler has the information.\nYou can use std::typeid to retrieve the get std::type_info that has a name field. However, that name field is not standardized across compilers, and in some cases, it contains a mangled name, which is not easily readable Moreover, std::typeid is not a compile-time call, so not useful for template meta-programming.\nWe can instead use the compiler’s preprocessor. It generally has some predefined macro that produces a clean-looking signature string when invoked in any function. The name of the macro we want isn’t standardized, but clang and GCC both use __PRETTY_FUNCTION__ while Microsoft uses __FUNCSIG__. How the macro expands isn’t standardized but will be consistent with any compiler.\nThe macro string is available at compile time as its expansion is part of the pre-compilation phase. Using other constexpr functions, you can parse the string to get a printable name for any type at compile time.\n\n    \n     \n    \n    \nThe type name will be perfectly readable but not identical across compilers.\n\nExample\n#include &lt;utilities/macros.h&gt;\n#include &lt;utilities/stopwatch.h&gt;\n#include &lt;utilities/type.h&gt;\n\nint main()\n{\n1    utilities::stopwatch         sw_default;\n    utilities::precise_stopwatch sw_precise;\n    utilities::steady_stopwatch  sw_steady;\n    utilities::system_stopwatch  sw_system;\n\n2    std::cout &lt;&lt; \"Compiler: \" &lt;&lt; COMPILER_NAME &lt;&lt; '\\n';\n\n    std::print(\"sw_default has type '{}'\\n\", utilities::type(sw_default));\n    std::print(\"sw_precise has type '{}'\\n\", utilities::type(sw_precise));\n    std::print(\"sw_steady  has type '{}'\\n\", utilities::type(sw_steady));\n    std::print(\"sw_system  has type '{}'\\n\", utilities::type(sw_system));\n}\n\n1\n\nSee stopwatch.h for details.\n\n2\n\nSee macros.h for details.\n\n\nOutput from GCC\nCompiler: gcc 13.2.0\nsw_default has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nsw_precise has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nsw_steady  has type 'stopwatch&lt;std::chrono::_V2::steady_clock&gt;'\nsw_system  has type 'stopwatch&lt;std::chrono::_V2::system_clock&gt;'\nIt seems that libstdc++, the standard library for gcc, only has one clock, namely std::chrono::system_clock. The other clocks in its std::chrono must all be aliases for that one.\nOutput from MSVC\nCompiler: MSC 193131104\nsw_default has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_precise has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_steady  has type 'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'\nsw_system  has type 'class utilities::stopwatch&lt;struct std::chrono::system_clock&gt;'\nThis version of Microsoft Visual Studio Code also uses a single clock, std::chrono::steady_clock for our system.\nOutput from clang\nCompiler: clang 17.0.6\nsw_default has type 'utilities::stopwatch&lt;&gt;'\nsw_precise has type 'utilities::stopwatch&lt;&gt;'\nsw_steady  has type 'utilities::stopwatch&lt;&gt;'\nsw_system  has type 'utilities::stopwatch&lt;std::chrono::system_clock&gt;'\nThe specific clock type is not printed for the first three objects.\nWe have observed that while clang uses the same __PRETTY_FUNCTION__ macro name as gcc, its implementation is different, and it never outputs template arguments that match a default.\nFor the first three objects above, clang outputs utilities::stopwatch&lt;&gt; without any reference to the underlying clock. We conclude that all three use the default specified in stopwatch.h, std::chrono::high_resolution_clock. For this compiler, then std::chrono:steady_clock is the same asstd::chrono::high_resolution_clock.\nHowever, the type name for the final sw_system object references a different std::chrono::system_clock. The standard library libc++ for clang is able to access two different clocks (or at least two that it thinks are different).",
+    "crumbs": [
+      "Home",
+      "Type Names"
+    ]
+  },
+  {
+    "objectID": "pages/log.html",
+    "href": "pages/log.html",
+    "title": "Logging",
+    "section": "",
+    "text": "The header &lt;utilities/log.h&gt; supplies a couple of macros for simple logging and debugging messages.\n1LOG(...)\n2DBG(...)\n\n1\n\nThese messages are dispatched unless the NO_LOGS flag is set at compile time.\n\n2\n\nThese messages are dispatched only if the DEBUG flag is set at compile time.\n\n\nThese macros create and dispatch utilities::message objects, which hold the user-supplied message and location information specifying the message’s creation location. The LOG and DBG macros automatically pass the correct source code location information to the message.\nThe message payload can be anything that works for the facilities in std::format. The default message handler prints the source code location if there is no payload.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
+    "crumbs": [
+      "Home",
+      "Logging"
+    ]
+  },
+  {
+    "objectID": "pages/log.html#introduction",
+    "href": "pages/log.html#introduction",
+    "title": "Logging",
+    "section": "",
+    "text": "The header &lt;utilities/log.h&gt; supplies a couple of macros for simple logging and debugging messages.\n1LOG(...)\n2DBG(...)\n\n1\n\nThese messages are dispatched unless the NO_LOGS flag is set at compile time.\n\n2\n\nThese messages are dispatched only if the DEBUG flag is set at compile time.\n\n\nThese macros create and dispatch utilities::message objects, which hold the user-supplied message and location information specifying the message’s creation location. The LOG and DBG macros automatically pass the correct source code location information to the message.\nThe message payload can be anything that works for the facilities in std::format. The default message handler prints the source code location if there is no payload.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
+    "crumbs": [
+      "Home",
+      "Logging"
+    ]
+  },
+  {
+    "objectID": "pages/log.html#message-handling",
+    "href": "pages/log.html#message-handling",
+    "title": "Logging",
+    "section": "Message Handling",
+    "text": "Message Handling\nThe macros create and immediately dispatch messages to a message handler. The default handler prints the message and the location information to a default stream std::cout. You can change that default stream, for example:\nlog_file = std::ofstream(\"log.txt\");\nutilities::message::stream = &log_file;\nFor fancier usage, you can interpose your message handler\nvoid my_handler(const utilities::message& msg) { ... }\nutilities::message::handler() = my_handler;\nYour handler can do whatever it likes with the messages it receives. You can revert to the default handler by calling the class method utilities::message::use_default_handler().\n\n    \n     \n    \n    \nEverything here is deliberately rudimentary, and there is no consideration for rotating log files, etc., or for streaming efficiencies. The primary use case for the macros above and the underlying utilities::message class is easily printing useful messages during the development cycle. The emphasis is on ease of use as opposed to great generality or speed. During the development cycle, the typical output is going to be small anyway.\n\nExample (source file named example.cpp)\n#include &lt;utilities/log.h&gt;\nint add(int x, int y)\n{\n    DBG(\"The DEBUG flag was set at compile time.\");\n    LOG(\"x = {}, y = {}\", x, y);\n    return x + y;\n}\n\nint main()\n{\n1    LOG();\n    return add(10, 11);\n}\n\n1\n\nA call to LOG without any message will print the source location.\n\n\nOutput\n[LOG] function 'main' (example.cpp, line 11)\n[DBG] function 'add' (example.cpp, line 4): The DEBUG flag was set at compile time.\n[LOG] function 'add' (example.cpp, line 5): x = 10, y = 11\n\nSee Also\nassert.h",
+    "crumbs": [
+      "Home",
+      "Logging"
+    ]
+  },
+  {
+    "objectID": "pages/macros.html",
+    "href": "pages/macros.html",
+    "title": "Macros",
+    "section": "",
+    "text": "The header &lt;utilities/macros.h&gt; supplies some useful macros.\nThese include the OVERLOAD macro, which implements a well-known trick to “overload” any macro based on the number of passed arguments. See overloading below.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is unhappy with OVERLOAD, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
+    "crumbs": [
+      "Home",
+      "Useful Macros"
+    ]
+  },
+  {
+    "objectID": "pages/macros.html#introduction",
+    "href": "pages/macros.html#introduction",
+    "title": "Macros",
+    "section": "",
+    "text": "The header &lt;utilities/macros.h&gt; supplies some useful macros.\nThese include the OVERLOAD macro, which implements a well-known trick to “overload” any macro based on the number of passed arguments. See overloading below.\n\n    \n     \n    \n    \nMicrosoft’s old traditional preprocessor is unhappy with OVERLOAD, but their newer cross-platform compatible one is fine. Add the /Zc:preprocessor flag to use that upgrade at compile time. Our CMake module compiler_init does that automatically for you.",
+    "crumbs": [
+      "Home",
+      "Useful Macros"
+    ]
+  },
+  {
+    "objectID": "pages/macros.html#compiler-string",
+    "href": "pages/macros.html#compiler-string",
+    "title": "Macros",
+    "section": "Compiler String",
+    "text": "Compiler String\nCOMPILER_NAME\nExpands to a string that encodes the name of the compiler and its version. Test code can use the macro to annotate results. We only support the usual three compiler suspects, gcc, clang, and MSVC, but adding more compilers is not difficult.\nOne of the examples below uses this macro.",
+    "crumbs": [
+      "Home",
+      "Useful Macros"
+    ]
+  },
+  {
+    "objectID": "pages/macros.html#macro-expansion",
+    "href": "pages/macros.html#macro-expansion",
+    "title": "Macros",
+    "section": "Macro Expansion",
+    "text": "Macro Expansion\n1STRINGISE(foo)\n2CONCAT(foo, bar)\n\n1\n\nTurn the argument into a string.\n\n2\n\nConcatenates the two arguments.\n\n\nThese two classic macros work even if the arguments you pass in are themselves macros by fully expanding all arguments.",
+    "crumbs": [
+      "Home",
+      "Useful Macros"
+    ]
+  },
+  {
+    "objectID": "pages/macros.html#overloading",
+    "href": "pages/macros.html#overloading",
+    "title": "Macros",
+    "section": "Overloading",
+    "text": "Overloading\nOVERLOAD(macro, ...)\nYou can “overload” a macro based on the number of passed arguments.\nFor example, if you have overloaded FOO macro:\n#define FOO(...) OVERLOAD(FOO, __VA_ARGS__)\nThe consumer of the macro can call it as FOO(), or FOO(a), or FOO(a,b).\nAll calls get automatically forwarded to the correct concrete macro. For FOO, these must be named FOO0, FOO1, FOO2, etc. The macro writer provides whichever of these makes sense, but the macro’s consumer can use them through the more straightforward call.\nExample\n#include &lt;utilities/macros.h&gt;\n#include &lt;iostream&gt;\n\n1#define COUT(...) OVERLOAD(COUT, __VA_ARGS__)\n\n2#define COUT0(x)       std::cout &lt;&lt; \"Zero argument version:   \" &lt;&lt; '\\n'\n#define COUT1(x)       std::cout &lt;&lt; \"One argument version:    \" &lt;&lt; x &lt;&lt; '\\n'\n#define COUT2(x, y)    std::cout &lt;&lt; \"Two arguments version:   \" &lt;&lt; x &lt;&lt; \", \" &lt;&lt; y &lt;&lt; '\\n'\n#define COUT3(x, y, z) std::cout &lt;&lt; \"Three arguments version: \" &lt;&lt; x &lt;&lt; \", \" &lt;&lt; y &lt;&lt; \", \" &lt;&lt; z &lt;&lt; '\\n'\n\nint main()\n{\n    std::cout &lt;&lt; \"Compiler: \" &lt;&lt; COMPILER_NAME &lt;&lt; '\\n';\n\n    // NOTE: We only ever call COUT, but we expect to get the correct concrete version.\n    COUT();\n    COUT(\"x\");\n    COUT(\"x\", 2);\n    COUT(\"x\", 2, 'z');\n    return 0;\n}\n\n1\n\nWe overload a trivial macro depending on the number of passed arguments.\n\n2\n\nThe one, two, and three argument versions of COUT.\n\n\nOutput\nCompiler: clang 17.0.6\nZero argument version:\nOne argument version:    x\nTwo arguments version:   x, 2\nThree arguments version: x, 2, z",
+    "crumbs": [
+      "Home",
+      "Useful Macros"
+    ]
+  },
+  {
+    "objectID": "pages/macros.html#semantic-version-strings",
+    "href": "pages/macros.html#semantic-version-strings",
+    "title": "Macros",
+    "section": "Semantic Version Strings",
+    "text": "Semantic Version Strings\nVERSION_STRING(major)                   &lt;1&gt;\nVERSION_STRING(major, minor)            &lt;2&gt;\nVERSION_STRING(major, minor, patch)     &lt;3&gt;\n\nExpands to “major”.\nExpands to “major.minor”.\nExpands to “major.minor.patch”.\n\nVERSION_STRING is an overloaded macro. For example, VERSION_STRING(3, 1, 0) expands to the string \"3.1.0\".",
+    "crumbs": [
+      "Home",
+      "Useful Macros"
+    ]
+  },
+  {
+    "objectID": "pages/macros.html#print-code-lines-and-results",
+    "href": "pages/macros.html#print-code-lines-and-results",
+    "title": "Macros",
+    "section": "Print Code Lines and Results",
+    "text": "Print Code Lines and Results\nRUN(code)               &lt;1&gt;\nRUN(code, out)          &lt;2&gt;\nRUN(code, out1, out2)   &lt;3&gt;\n\nPrints a line of code to the screen and then runs it.\nPrints a line of code to the screen, runs it, then prints the value from out.\nPrints a line of code to the screen, runs it, then prints the values out1 and out2.\n\nThis overloaded macro prints what will be executed in a test program, optionally followed by some results. Best illustrated with an example.\nExample\n#include &lt;utilities/macros.h&gt;\n#include &lt;format&gt;\n#include &lt;iostream&gt;\n#include &lt;iterator&gt;\n#include &lt;string&gt;\n\nint main()\n{\n    RUN(std::string s1);\n    RUN(double x = 123456789.123456789);\n    RUN(std::format_to(std::back_inserter(s1), \"x = {:12.5f}\", x), s1);\n}\nOutput\n[CODE]   std::string s1\n[CODE]   double x = 123456789.123456789\n[CODE]   std::format_to(std::back_inserter(s1), \"x = {:12.5f}\", x)\n[RESULT] s1: x = 123456789.12346",
+    "crumbs": [
+      "Home",
+      "Useful Macros"
     ]
   }
 ]

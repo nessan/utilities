@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Type of an Object – C++ Utilities Library</title>
+<title>Assertions – C++ Utilities Library</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/format.html" rel="next">
-<link href="../pages/macros.html" rel="prev">
+<link href="../pages/log.html" rel="next">
+<link href="../pages/index.html" rel="prev">
 <link href="../assets/images/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -122,7 +122,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<meta property="og:title" content="The Type of an Object – C++ Utilities Library">
+<meta property="og:title" content="Assertions – C++ Utilities Library">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://nessan.github.io/utilities/pages/assets/images/logo.png">
 <meta property="og:site_name" content="C++ Utilities Library">
@@ -387,7 +387,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">The Type of an Object</h1>
+          <h1 class="quarto-secondary-nav-title">Assertions</h1>
         </a>     
     </div>
   </nav>
@@ -410,7 +410,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/assert.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/assert.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Assertions</span></a>
   </div>
 </li>
@@ -452,7 +452,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/type.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/type.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Type Names</span></a>
   </div>
 </li>
@@ -472,9 +472,24 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#boolean-checks" id="toc-boolean-checks" class="nav-link" data-scroll-target="#boolean-checks">Boolean Checks</a></li>
+  <li><a href="#equality-checks" id="toc-equality-checks" class="nav-link" data-scroll-target="#equality-checks">Equality Checks</a></li>
+  </ul></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#design-rationale" id="toc-design-rationale" class="nav-link" data-scroll-target="#design-rationale">Design Rationale</a>
+  <ul class="collapse">
+  <li><a href="#always_assert" id="toc-always_assert" class="nav-link" data-scroll-target="#always_assert"><code>always_assert</code></a></li>
+  <li><a href="#debug_assert" id="toc-debug_assert" class="nav-link" data-scroll-target="#debug_assert"><code>debug_assert</code></a></li>
+  <li><a href="#assert" id="toc-assert" class="nav-link" data-scroll-target="#assert"><code>assert</code></a></li>
+  </ul></li>
+  <li><a href="#why-macros" id="toc-why-macros" class="nav-link" data-scroll-target="#why-macros">Why macros?</a>
+  <ul class="collapse">
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/type.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/assert.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -482,7 +497,7 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">The Type of an Object</h1>
+<h1 class="title d-none d-lg-block">Assertions</h1>
 </div>
 
 
@@ -501,89 +516,137 @@ gtag('config', 'G-XHMT1TRH0L', { 'anonymize_ip': true});
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The <code>&lt;utilities/type.h&gt;</code> header defines functions that return a string representing an object’s “type” as the compiler/preprocessor sees.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">constexpr</span> <span class="bu">std::</span>string_view utilities<span class="op">::</span>type<span class="op">();</span></span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">constexpr</span> <span class="bu">std::</span>string_view utilities<span class="op">::</span>type<span class="op">(</span><span class="at">const</span> T<span class="op">&amp;);</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="1">Returns a string for a type, e.g., <code>utilities::type&lt;int&gt;</code> will return <code>"int"</code>.</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="2">Returns a string for the specific object type. For example, if x is an int, utilities::type(x) will return “int.”</span>
-</dd>
-</dl>
-<p>There is no portable way to get a readable string representation of a type in C++, though clearly, the compiler has the information.</p>
-<p>You can use <a href="https://en.cppreference.com/w/cpp/language/typeid"><code>std::typeid</code></a> to retrieve the get <a href="https://en.cppreference.com/w/cpp/types/type_info"><code>std::type_info</code></a> that has a <code>name</code> field. However, that <code>name</code> field is not standardized across compilers, and in some cases, it contains a mangled name, which is not easily readable Moreover, <a href="https://en.cppreference.com/w/cpp/language/typeid"><code>std::typeid</code></a> is not a compile-time call, so not useful for template meta-programming.</p>
-<p>We can instead use the compiler’s preprocessor. It generally has some predefined macro that produces a clean-looking signature string when invoked in any function. The name of the macro we want isn’t standardized, but <code>clang</code> and <code>GCC</code> both use <code>__PRETTY_FUNCTION__</code> while Microsoft uses <code>__FUNCSIG__</code>. How the macro expands isn’t standardized but will be consistent with any compiler.</p>
-<p>The macro string is available at compile time as its expansion is part of the pre-compilation phase. Using other <code>constexpr</code> functions, you can parse the string to get a printable name for any type at compile time.</p>
-<div class="admonition caution">
-    <table><tbody><tr>
-    <td class="icon"> <i class="fa icon-caution" title="Caution"></i></td>
-    <td class="content">
-    
-The type name will be perfectly readable but not identical across compilers.
-</td></tr></tbody></table></div>
-<p><span class="bt">Example</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/macros.h&gt;</span></span>
-<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/stopwatch.h&gt;</span></span>
-<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/type.h&gt;</span></span>
-<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a>    utilities<span class="op">::</span>stopwatch         sw_default<span class="op">;</span></span>
-<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a>    utilities<span class="op">::</span>precise_stopwatch sw_precise<span class="op">;</span></span>
-<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>    utilities<span class="op">::</span>steady_stopwatch  sw_steady<span class="op">;</span></span>
-<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10" aria-hidden="true" tabindex="-1"></a>    utilities<span class="op">::</span>system_stopwatch  sw_system<span class="op">;</span></span>
-<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-12" class="code-annotation-target"><a href="#annotated-cell-2-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Compiler: "</span> <span class="op">&lt;&lt;</span> COMPILER_NAME <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
-<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-2-14"><a href="#annotated-cell-2-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>print<span class="op">(</span><span class="st">"sw_default has type '</span><span class="sc">{}</span><span class="st">'</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> utilities<span class="op">::</span>type<span class="op">(</span>sw_default<span class="op">));</span></span>
-<span id="annotated-cell-2-15"><a href="#annotated-cell-2-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>print<span class="op">(</span><span class="st">"sw_precise has type '</span><span class="sc">{}</span><span class="st">'</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> utilities<span class="op">::</span>type<span class="op">(</span>sw_precise<span class="op">));</span></span>
-<span id="annotated-cell-2-16"><a href="#annotated-cell-2-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>print<span class="op">(</span><span class="st">"sw_steady  has type '</span><span class="sc">{}</span><span class="st">'</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> utilities<span class="op">::</span>type<span class="op">(</span>sw_steady<span class="op">));</span></span>
-<span id="annotated-cell-2-17"><a href="#annotated-cell-2-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>print<span class="op">(</span><span class="st">"sw_system  has type '</span><span class="sc">{}</span><span class="st">'</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> utilities<span class="op">::</span>type<span class="op">(</span>sw_system<span class="op">));</span></span>
-<span id="annotated-cell-2-18"><a href="#annotated-cell-2-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>&lt;utilities/assert.h&gt;</code> header has some macros that can be used to check a condition or equality of two values. On failures, the macros print a customisable message and, by default, exit the program with a non-zero status code.</p>
+<p>Exit on failure is controlled by the following static constexpr variable:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">static</span> <span class="kw">constexpr</span> <span class="kw">auto</span> exit_on_failure <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If it is set to <code>true</code> (the default), the program will exit with a non-zero status code if there are any assertion failures.</p>
+<section id="boolean-checks" class="level3">
+<h3 class="anchored" data-anchor-id="boolean-checks">Boolean Checks</h3>
+<p>The following macros are available to check a boolean condition:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>always_assert<span class="op">(</span>condition<span class="op">,</span> <span class="op">...)</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>debug_assert<span class="op">(</span>condition<span class="op">,</span> <span class="op">...)</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="ot">assert</span><span class="op">(</span>condition<span class="op">,</span> <span class="op">...)</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="1">See <a href="../pages/stopwatch.html"><code>stopwatch.h</code></a> for details.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1"><code>condition</code> is checked, and if it evaluates to <code>false</code>, an error message is printed to the standard error stream. <br> That can include a custom payload synthesized from the trailing argument list.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="12" data-code-annotation="2">See <a href="../pages/macros.html"><code>macros.h</code></a> for details.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2">The <code>debug_assert</code> macro expands to <code>always_assert</code> <strong>if</strong> the <code>DEBUG</code> flag is set; otherwise, it’s a no-op.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="3">The <code>assert</code> macro expands to <code>always_assert</code> <strong>unless</strong> the <code>NDEBUG</code> flag is set, which is a no-op. <br>This is similar to the <a href="https://www.cplusplus.com/reference/cassert/assert/">standard <code>assert</code></a> macro.</span>
 </dd>
 </dl>
-<p><span class="bt">Output from GCC</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Compiler:</span> gcc 13.2.0</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_default</span> has type <span class="st">'stopwatch&lt;std::chrono::_V2::system_clock&gt;'</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_precise</span> has type <span class="st">'stopwatch&lt;std::chrono::_V2::system_clock&gt;'</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_steady</span>  has type <span class="st">'stopwatch&lt;std::chrono::_V2::steady_clock&gt;'</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_system</span>  has type <span class="st">'stopwatch&lt;std::chrono::_V2::system_clock&gt;'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>It seems that <code>libstdc++</code>, the standard library for <code>gcc</code>, only has one clock, namely <code>std::chrono::system_clock</code>. The other clocks in its <code>std::chrono</code> must all be aliases for that one.</p>
-<p><span class="bt">Output from MSVC</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Compiler:</span> MSC 193131104</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_default</span> has type <span class="st">'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_precise</span> has type <span class="st">'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_steady</span>  has type <span class="st">'class utilities::stopwatch&lt;struct std::chrono::steady_clock&gt;'</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_system</span>  has type <span class="st">'class utilities::stopwatch&lt;struct std::chrono::system_clock&gt;'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This version of Microsoft Visual Studio Code also uses a single clock, <code>std::chrono::steady_clock</code> for our system.</p>
-<p><span class="bt">Output from clang</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Compiler:</span> clang 17.0.6</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_default</span> has type <span class="st">'utilities::stopwatch&lt;&gt;'</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_precise</span> has type <span class="st">'utilities::stopwatch&lt;&gt;'</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_steady</span>  has type <span class="st">'utilities::stopwatch&lt;&gt;'</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">sw_system</span>  has type <span class="st">'utilities::stopwatch&lt;std::chrono::system_clock&gt;'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The specific clock type is not printed for the first three objects.</p>
-<p>We have observed that while <code>clang</code> uses the same <code>__PRETTY_FUNCTION__</code> macro name as <code>gcc</code>, its implementation is different, and it never outputs template arguments that match a default.</p>
-<p>For the first three objects above, <code>clang</code> outputs <code>utilities::stopwatch&lt;&gt;</code> without any reference to the underlying clock. We conclude that all three use the default specified in <a href="../pages/stopwatch.html"><code>stopwatch.h</code></a>, <code>std::chrono::high_resolution_clock</code>. For this compiler, then <code>std::chrono:steady_clock</code> is the same as<code>std::chrono::high_resolution_clock</code>.</p>
-<p>However, the type name for the final <code>sw_system</code> object references a different <code>std::chrono::system_clock</code>. The standard library <code>libc++</code> for <code>clang</code> is able to access two different clocks (or at least two that it thinks are different).</p>
-<!-- Some reference link definitions -->
+<p>On assertion failure, an error message is printed to the standard error stream, which includes the source code location of the failure along with any custom message payload. The custom message is synthesized from the trailing variadic argument list that are sent to the <code>std::format</code> function. The message can be anything that can be formatted using the facilities in <a href="https://en.cppreference.com/w/cpp/utility/format/format"><code>std::format</code></a>.</p>
+</section>
+<section id="equality-checks" class="level3">
+<h3 class="anchored" data-anchor-id="equality-checks">Equality Checks</h3>
+<p>The following macros are available to check for the equality of two values (or objects):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-3"><pre class="sourceCode cpp code-annotation-code code-with-copy code-annotated"><code class="sourceCode cpp"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>always_assert_eq<span class="op">(</span>a<span class="op">,</span> b<span class="op">,</span> <span class="op">...)</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>debug_assert_eq<span class="op">(</span>a<span class="op">,</span> b<span class="op">,</span> <span class="op">...)</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>assert_eq<span class="op">(</span>a<span class="op">,</span> b<span class="op">,</span> <span class="op">...)</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">The two values <code>a</code> and <code>b</code> are checked for equality, and if they are not equal, print a custom message synthesized from the rest of the arguments. By default, this will also exit the program with a non-zero status code.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">The <code>debug_assert_eq</code> macro expands to <code>always_assert_eq</code> <strong>if</strong> the <code>DEBUG</code> flag is set; otherwise, it’s a no-op.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="3">The <code>assert_eq</code> macro expands to <code>always_assert_eq</code> <strong>unless</strong> the <code>NDEBUG</code> flag is set, which is a no-op. This is similar to the <a href="https://www.cplusplus.com/reference/cassert/assert/">standard <code>assert</code></a> macro.</span>
+</dd>
+</dl>
+<div class="admonition important">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-important" title="Important"></i></td>
+    <td class="content">
+    
+The first two <code>a</code> and <code>b</code> arguments to <code>assert_eq</code> must be printable using <code>std::format</code>. If they are your own types, they will need to have an appropriate specialisation for <code>std::formatter</code> as well as an <code>operator==</code> overload.
+</td></tr></tbody></table></div>
+</section>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p><span class="bt">Example</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utilities/assert.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> subtract<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    always_assert_eq<span class="op">(</span>x<span class="op">,</span> y<span class="op">,</span> <span class="st">"well that didn't work but x - y = </span><span class="sc">{}</span><span class="st">"</span><span class="op">,</span> x <span class="op">-</span> y<span class="op">);</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y <span class="op">-</span> x<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> subtract<span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">11</span><span class="op">);</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="1">
+<li>For the sake of the example we are using the <code>always_assert_eq</code> macro to check for equality. <br> More typically, you would use either the <code>debug_assert_eq</code> or the <code>assert_eq</code> macro.</li>
+</ol>
+<p><span class="bt">Output</span></p>
+<pre class="text"><code>FAILED `assert_eq(x, y)` [assert02.cpp:7]
+well that didn't work but x - y = -1
+lhs = 10
+rhs = 11</code></pre>
+<p>The program will then exit.</p>
+</section>
+<section id="design-rationale" class="level2">
+<h2 class="anchored" data-anchor-id="design-rationale">Design Rationale</h2>
+<section id="always_assert" class="level3">
+<h3 class="anchored" data-anchor-id="always_assert"><code>always_assert</code></h3>
+<p>Use this and the companion <code>always_assert_eq</code> macros when you want to check something is true and exit if it is not with an informative message. These macros are unaffected by compiler flags.</p>
+</section>
+<section id="debug_assert" class="level3">
+<h3 class="anchored" data-anchor-id="debug_assert"><code>debug_assert</code></h3>
+<p>In the development cycle, it can be helpful to range-check indices and so on.</p>
+<p>However, those checks are expensive and can slow down numerical code by orders of magnitude. Therefore, we don’t want there to be any chance that those verifications are accidentally left “on” in the production code. The <code>debug_assert</code> and <code>debug_assert_eq</code> macros cover this type of verification. Turning on these checks requires the programmer to take a specific action: she must set the <code>DEBUG</code> flag during compile time.</p>
+<p>For example, here is a pre-condition from a hypothetical <code>dot(Vector u, Vector v)</code> function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>debug_assert_eq<span class="op">(</span>u<span class="op">.</span>size<span class="op">(),</span> v<span class="op">.</span>size<span class="op">(),</span> <span class="st">"Incompatible vector sizes!"</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This code checks that the two vector arguments have equal length — a necessary constraint for the dot product operation to make sense. If the requirement is not satisfied, the program exits with an informative message that includes the size of the two vectors.</p>
+<p>The check here is <strong>off</strong> by default, and you need to do something special (i.e., define the <code>DEBUG</code> flag at compile time) to enable it. Production code may do many of these dot products; we do not generally want to pay for the check. However, enabling these sorts of checks may be very useful during development.</p>
+<p>The <code>debug_assert-</code> and <code>debug_assert_eq</code> macros expand to nothing <strong>unless</strong> you set the <code>DEBUG</code> flag at compile time.</p>
+</section>
+<section id="assert" class="level3">
+<h3 class="anchored" data-anchor-id="assert"><code>assert</code></h3>
+<p>On the other hand, there are some checks where the assertion cost is slight compared to the work of the function. Leaving these checks on in production will not likely impose much of a performance penalty.</p>
+<p>For example, a pre-condition for a matrix inversion method is that the input matrix must be square. Here is how you might do that check in an <code>invert(const Matrix&amp; M)</code> function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ot">assert</span><span class="op">(</span>M<span class="op">.</span>is_square<span class="op">(),</span> <span class="st">"Cannot invert a </span><span class="sc">{}</span><span class="st"> x </span><span class="sc">{}</span><span class="st"> NON-square matrix!"</span><span class="op">,</span> M<span class="op">.</span>rows<span class="op">(),</span> M<span class="op">.</span>cols<span class="op">());</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can only invert square matrices. The <code>M.is_square()</code> call checks that condition and, on failure, exits the program with a helpful message. The check cost is very slight compared to the work done by the <code>invert(...)</code> method, so leaving it on even in production code is not a problem.</p>
+<p>The check here is <strong>on</strong> by default, and you need to do something special (i.e., define the <code>NDEBUG</code> flag at compile time) to disable it.</p>
+<p>The <code>assert</code> and <code>assert_eq</code> macros expand to nothing <strong>only if</strong> you set the <code>NDEBUG</code> flag at compile time.</p>
+<p>The decision to use one form vs.&nbsp;the other is predicated on the cost of doing the check versus the work done by the method in question.</p>
+<p>A primary use case for <code>debug_assert</code> and <code>debug_assert_eq</code> is checking bounds on indices. From experience, this is vital during development. However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude. So it makes sense to have the checks in place for development but to ensure they are never there in release builds.</p>
+</section>
+</section>
+<section id="why-macros" class="level2">
+<h2 class="anchored" data-anchor-id="why-macros">Why macros?</h2>
+<p>The main reason we use macros instead of a function is that we need to stringify the assertion condition and assertion arguments to produce a helpful message if the assertion fails.</p>
+<div class="admonition warning">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-warning" title="Warning"></i></td>
+    <td class="content">
+    
+Macros do have the downside that they depend on comma placement to separate arguments, which can be a bit of a gotcha in some cases. For example, if you are equality testing between two <code>std::pair</code> variables. You can often get around any issues by the judicious use of parentheses, but it is something to be aware of if you start to see weird compiler errors.
+</td></tr></tbody></table></div>
+<div class="admonition tip">
+    <table><tbody><tr>
+    <td class="icon"> <i class="fa icon-tip" title="Tip"></i></td>
+    <td class="content">
+    
+Microsoft’s old traditional preprocessor is not happy with these macros, but their newer cross-platform compatible one is fine. Add the <code>/Zc:preprocessor</code> flag to use that upgrade at compile time. Our <code>CMake</code> module <code>compiler_init</code> does that automatically for you.
+</td></tr></tbody></table></div>
+<section id="see-also" class="level3">
+<h3 class="anchored" data-anchor-id="see-also">See Also</h3>
+<p><a href="../pages/format.html"><code>format.h</code></a><br>
+<a href="../pages/log.html"><code>log.h</code></a><br>
+<a href="https://www.cplusplus.com/reference/cassert/assert/">standard <code>assert</code></a></p>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1002,13 +1065,13 @@ The type name will be perfectly readable but not identical across compilers.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/macros.html" class="pagination-link" aria-label="Useful Macros">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Useful Macros</span>
+      <a href="../pages/index.html" class="pagination-link" aria-label="Library Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Library Overview</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/format.html" class="pagination-link" aria-label="Formatted Output">
-        <span class="nav-page-text">Formatted Output</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/log.html" class="pagination-link" aria-label="Logging">
+        <span class="nav-page-text">Logging</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1033,7 +1096,7 @@ The type name will be perfectly readable but not identical across compilers.
     </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/type.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nessan/utilities/edit/main/docs/pages/assert.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nessan/utilities/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p><a href="https://opensource.org/license/mit">MIT Licensed</a></p>
 </div>

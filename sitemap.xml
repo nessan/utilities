@@ -1,51 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nessan.github.io/utilities/pages/log.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/pages/index.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/pages/stopwatch.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/pages/verify.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/pages/macros.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/pages/stream.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/index.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/pages/format.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nessan.github.io/utilities/pages/type.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
-  </url>
-  <url>
     <loc>https://nessan.github.io/utilities/pages/thousands.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
+    <lastmod>2025-10-21T15:35:32.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/assert.html</loc>
+    <lastmod>2025-10-21T15:35:32.017Z</lastmod>
   </url>
   <url>
     <loc>https://nessan.github.io/utilities/pages/string.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
+    <lastmod>2025-10-21T15:35:32.018Z</lastmod>
   </url>
   <url>
-    <loc>https://nessan.github.io/utilities/pages/print.html</loc>
-    <lastmod>2024-08-26T10:01:09.520Z</lastmod>
+    <loc>https://nessan.github.io/utilities/pages/index.html</loc>
+    <lastmod>2025-10-21T15:35:32.017Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/stream.html</loc>
+    <lastmod>2025-10-21T15:35:32.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/index.html</loc>
+    <lastmod>2025-10-21T15:35:32.017Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/stopwatch.html</loc>
+    <lastmod>2025-10-21T15:35:32.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/format.html</loc>
+    <lastmod>2025-10-21T15:35:32.017Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/type.html</loc>
+    <lastmod>2025-10-21T15:35:32.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/log.html</loc>
+    <lastmod>2025-10-21T15:35:32.017Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nessan.github.io/utilities/pages/macros.html</loc>
+    <lastmod>2025-10-21T15:35:32.017Z</lastmod>
   </url>
 </urlset>

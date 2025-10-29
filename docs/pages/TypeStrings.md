@@ -96,7 +96,7 @@ sw_system has type 'utilities::stopwatch<std::chrono::system_clock>'
 
 The specific clock type is not printed for the first three objects.
 
-We have observed that, while clang uses the same `__PRETTY_FUNCTION__ `macro name as `gcc`, its implementation differs, and it never outputs template arguments that match a default.
+We have observed that, while clang uses the same `__PRETTY_FUNCTION__` macro name as `gcc`, its implementation differs, and it never outputs template arguments that match a default.
 
 For the first three objects above, `clang` outputs `utilities::stopwatch<>` without any reference to the underlying clock.
 We conclude that all three use the default specified in {stopwatch}, `std::chrono::high_resolution_clock`.

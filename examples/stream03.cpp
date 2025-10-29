@@ -1,5 +1,5 @@
-/// @brief Read from a file see how long it takes to account for comment lines vs. ignoring them
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// Read from a file see how long it takes to account for comment lines vs. ignoring them
+
 #include "utilities/utilities.h"
 #include <fstream>
 

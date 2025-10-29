@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-Script to extract test/example code from comments in header files and generate standalone C++ programs.
+Script to extract test/example code from comments in supported source files and generate standalone C++ programs.
 
 Usage: doxytest.py [options] <path_to_directory_or_file> [<path_to_directory_or_file> ...]
 
 Options:
   -d, --dir DIR           Output directory for generated .cpp files (default: current directory).
+  -e, --extensions EXT(S) Comma/space/semicolon separated list of file extensions to scan (default: .h, .hpp).
   -i, --include HEADER    A header file to include in generated test files (can be specified multiple times).
   -f, --force             Force regeneration of test files even if they exist and are newer than the header file.
   -s, --silent            Suppress progress messages (error messages are still shown).
@@ -30,29 +31,139 @@ Examples:
   doxytest.py include/project/ --combined all_tests_in_one
 
 If given a file `foo.h`, the script creates `doxy_foo.cpp` in the output directory by default (configurable via --prefix).
-If given a directory, it scans for .h files and creates separate test files for each one.
+If given a directory, it scans for supported file extensions (default: .h, .hpp) and creates separate test files for each one.
 We always include `<print.h>` at the top of each test file, if you need other headers, you can specify them with the -i option.
 
 Note:
 By default, we do not generate a test file if no test code blocks are found but if the --always flag is set, we generate a trivial test file
 which prints a message along the lines of "No test code found in foo.h" and exits.
+
+SPDX-FileCopyrightText:  2025 Nessan Fitzmaurice <nzznfitz+gh@icloud.com>
+SPDX-License-Identifier: MIT
 """
 
 import sys
 import os
 import argparse
+import re
 from datetime import datetime
 from pathlib import Path
 
 
+DEFAULT_SUPPORTED_SUFFIXES = (".h", ".hpp")
+
+HEADER_INCLUDE_SUFFIXES = {
+    ".h",
+    ".hpp",
+    ".hh",
+    ".hxx",
+    ".hp",
+    ".h++",
+}
+
+COMMENT_PREFIX_CANDIDATES = (
+    "///",
+    "//!",
+    "//",
+    "/*!",
+    "/**",
+    "/*",
+    " *",
+    "*",
+)
+
+
+def format_suffix_display(suffixes):
+    return ", ".join(suffixes)
+
+
+def format_suffix_patterns(suffixes):
+    return ", ".join(f"*{suffix}" for suffix in suffixes)
+
+
+def parse_extensions_argument(raw_value):
+    if raw_value is None:
+        return None
+    tokens = re.split(r"[,\s;]+", raw_value.strip())
+    normalized = []
+    for token in tokens:
+        token = token.strip()
+        if not token:
+            continue
+        if not token.startswith("."):
+            token = f".{token}"
+        token = token.lower()
+        if token not in normalized:
+            normalized.append(token)
+    if not normalized:
+        raise ValueError("No valid file extensions were provided for --extensions.")
+    return tuple(normalized)
+
+
+def is_header_like_suffix(suffix):
+    if not suffix:
+        return False
+    return suffix.lower() in HEADER_INCLUDE_SUFFIXES
+
+
+def _strip_comment_prefix(line, allowed_prefixes=None):
+    """
+    Remove a recognised documentation comment prefix from the line.
+
+    Parameters:
+        line: Original line (including trailing newline).
+        allowed_prefixes: Optional iterable restricting which prefixes may be stripped.
+            When empty (but not None) we avoid stripping altogether.
+
+    Returns:
+        A tuple of (text_without_prefix, text_without_prefix_lstrip, matched_prefix or None).
+        The text values do not include the trailing newline.
+    """
+
+    stripped_leading = line.lstrip()
+    matched_prefix = None
+    remainder = stripped_leading
+
+    for candidate in COMMENT_PREFIX_CANDIDATES:
+        if stripped_leading.startswith(candidate):
+            if allowed_prefixes is not None and candidate not in allowed_prefixes:
+                continue
+            matched_prefix = candidate
+            remainder = stripped_leading[len(candidate) :]
+            break
+
+    if matched_prefix is not None:
+        if remainder.startswith((" ", "\t")):
+            remainder = remainder[1:]
+        without_newline = remainder.rstrip("\n")
+        return without_newline, without_newline.lstrip(), matched_prefix
+
+    without_newline = line.rstrip("\n")
+    return without_newline, without_newline.lstrip(), None
+
+
+def _allowed_prefixes_for_block(prefix):
+    """Return the set of prefixes that should be stripped inside a block."""
+    if prefix in {"/*!", "/**", "/*"}:
+        return {"*", " *"}
+    if prefix in {"*", " *"}:
+        return {"*", " *"}
+    if prefix in {"///", "//!", "//"}:
+        return {prefix}
+    if prefix:
+        return {prefix}
+    return set()
+
+
 def build_arg_parser():
     parser = argparse.ArgumentParser(
-        description="Extracts test code from fenced code blocks in header comments and generates standalone C++ test programs.",
+        description="Extracts test code from fenced code blocks in documentation and generates standalone C++ test programs.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
   doxytest.py include/project/foo.h
   doxytest.py include/project/
+  doxytest.py include/project/ --extensions "h, cpp, md"
   doxytest.py include/project/foo.h --dir tests
   doxytest.py include/project/ -d /tmp/output
   doxytest.py include/project/foo.h -i "<other_project/Bar.h>" -i "<iostream>"
@@ -68,7 +179,16 @@ Examples:
     parser.add_argument(
         "input_paths",
         nargs="*",
-        help="Header files or directories to scan for embedded test code.",
+        help="Files or directories to scan for embedded test code.",
+    )
+    parser.add_argument(
+        "-e",
+        "--extensions",
+        help=(
+            "List of file extensions to scan for tests (default: "
+            f"{format_suffix_display(DEFAULT_SUPPORTED_SUFFIXES)}). "
+            "Separate values with commas, whitespace, or semicolons."
+        ),
     )
     parser.add_argument(
         "-d",
@@ -137,12 +257,6 @@ REQUIRED_INCLUDES = [
     "<utility>",
     "<vector>",
 ]
-
-SUPPORTED_HEADER_SUFFIXES = (".h", ".hpp")
-SUPPORTED_HEADER_PATTERNS = ", ".join(
-    f"*{suffix}" for suffix in SUPPORTED_HEADER_SUFFIXES
-)
-SUPPORTED_HEADER_SUFFIXES_DISPLAY = ", ".join(SUPPORTED_HEADER_SUFFIXES)
 
 
 def compute_header_include(header_file_path, output_directory):
@@ -258,51 +372,55 @@ def extract_code_blocks(file_path):
     i = 0
 
     while i < len(lines):
-        line = lines[i].strip()
+        block_line, block_line_stripped, matched_prefix = _strip_comment_prefix(
+            lines[i]
+        )
 
-        # Look for lines that start with /// ``` (with or without space)
-        if line.startswith("///") and line[3:].lstrip().startswith("```"):
-            start_line = i + 1  # Line numbers are 1-based
+        if not block_line_stripped.startswith("```"):
+            i += 1
+            continue
+
+        language = block_line_stripped[3:].strip().lower()
+        if language in ("", "cpp", "c++"):
             block_kind = "test"
-            block_spec = line[3:].strip() if line.startswith("///") else line
-            if block_spec.startswith("```"):
-                language = block_spec[3:].strip().lower()
-                if language == "doxytest":
-                    block_kind = "setup"
+        elif language in ("doxy", "doxytest"):
+            block_kind = "setup"
+        else:
+            block_kind = None
 
-            # Extract code content
-            code_content = []
-            i += 1  # Move past the opening ```
+        start_line = i + 1  # Line numbers are 1-based
+        allowed_prefixes = _allowed_prefixes_for_block(matched_prefix)
 
-            # Collect lines until we find the closing ```
-            while i < len(lines):
-                current_line = lines[i]
-                if current_line.strip().startswith("///") and current_line.strip()[
-                    3:
-                ].lstrip().startswith("```"):
-                    break
-                # Remove the /// prefix and add to code content
-                # Handle both indented and non-indented formats
-                if current_line.strip().startswith("/// "):
-                    # Remove the /// prefix (after stripping whitespace)
-                    code_line = current_line.strip()[4:].rstrip("\n")
-                    code_content.append(code_line)
-                elif current_line.strip() == "///":
-                    code_content.append("")
-                i += 1
+        code_content = []
+        i += 1  # Move past the opening ```
 
-            # Join and clean up the code
-            code_text = "\n".join(code_content).strip()
-            if code_text:
-                code_blocks.append(
-                    {
-                        "line": start_line,
-                        "code": code_text,
-                        "kind": block_kind,
-                    }
-                )
+        # Collect lines until we find the closing ```
+        while i < len(lines):
+            current_line, current_line_stripped, _ = _strip_comment_prefix(
+                lines[i], allowed_prefixes
+            )
+            if current_line_stripped.startswith("```"):
+                break
+            if block_kind is not None:
+                code_content.append(current_line)
+            i += 1
 
-        i += 1
+        # Skip the closing ``` if present
+        if i < len(lines):
+            i += 1
+
+        if block_kind is None:
+            continue
+
+        code_text = "\n".join(code_content).strip()
+        if code_text:
+            code_blocks.append(
+                {
+                    "line": start_line,
+                    "code": code_text,
+                    "kind": block_kind,
+                }
+            )
 
     return code_blocks
 
@@ -312,16 +430,17 @@ def generate_empty_test_file(header_file_path, header_include):
     header_path = Path(header_file_path).resolve()
     header_display = header_path.name
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    header_comment = f"// Header file(s): `{header_display}`"
+    header_comment = f"// Input file(s): `{header_display}`"
     content = []
     content.append(
-        "// This file was generated by running the script `doxytest.py` to extract tests from comments in header files."
+        "// This file was generated by running the script `doxytest.py` to extract tests from comments in input files."
     )
     content.append(header_comment)
     content.append("// Do not edit this file manually -- it may be overwritten.")
     content.append(f"// Generated on: {timestamp}")
     content.append("")
-    content.append(f"#include {header_include}")
+    if header_include:
+        content.append(f"#include {header_include}")
     content.append("#include <print>")
     content.append("")
     content.append("int main() {")
@@ -405,7 +524,7 @@ def generate_test_file(
     header_name = header_path.stem
     header_display = header_path.name
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    header_comment = f"// Header file(s): `{header_display}`"
+    header_comment = f"// Input file(s): `{header_display}`"
     include_block = build_include_block(
         includes, extra_includes=[header_include] if header_include else None
     )
@@ -415,7 +534,7 @@ def generate_test_file(
     test_count_literal = f"{test_count}"
 
     content = [
-        "// This file was generated by running the script `doxytest.py` to extract tests from comments in header files.",
+        "// This file was generated by running the script `doxytest.py` to extract tests from comments in input files.",
         header_comment,
         "// Do not edit this file manually -- it may be overwritten.",
         f"// Generated on: {timestamp}",
@@ -523,26 +642,26 @@ def generate_combined_test_file(
         if combined_output_path is not None
         else Path(".").resolve()
     )
-    header_includes = []
-    seen_header_includes = set()
-    for entry in entries:
-        include = compute_header_include(entry["header_file"], combined_output_dir)
-        if include not in seen_header_includes:
-            header_includes.append(include)
-            seen_header_includes.add(include)
+    header_includes = list(
+        dict.fromkeys(
+            compute_header_include(entry["header_file"], combined_output_dir)
+            for entry in entries
+            if is_header_like_suffix(Path(entry["header_file"]).suffix)
+        )
+    )
     include_block = build_include_block(
         includes, extra_includes=header_includes if header_includes else None
     )
 
     content = [
-        "// This combined test file was generated by running the script `doxytest.py` to extract tests from comments in header files."
+        "// This combined test file was generated by running the script `doxytest.py` to extract tests from comments in input files."
     ]
     if header_list:
         content.append(
-            f'// Header file(s): {", ".join(f"`{Path(name).name}`" for name in header_list)}'
+            f'// Input file(s): {", ".join(f"`{Path(name).name}`" for name in header_list)}'
         )
     else:
-        content.append("// Header file(s): (none)")
+        content.append("// Input file(s): (none)")
     content.append("// Do not edit this file manually -- it may be overwritten.")
     content.append(f"// Generated on: {timestamp}")
 
@@ -556,7 +675,7 @@ def generate_combined_test_file(
             [
                 "int",
                 "main() {",
-                '    std::println(stderr, "No tests were discovered in the requested headers.");',
+                '    std::println(stderr, "No tests were discovered in the requested inputs.");',
                 "}",
             ]
         )
@@ -567,12 +686,12 @@ def generate_combined_test_file(
     intro_block = [
         f"    auto header_count = {header_count};",
         f"    std::size_t test_count = {total_tests};",
-        '    std::println(stderr, "Running {} tests extracted from {} header files.", test_count, header_count);',
+        '    std::println(stderr, "Running {} tests extracted from {} input files.", test_count, header_count);',
     ]
 
     test_body_lines = []
     for entry in entries:
-        header_display = entry.get("header_display") or f"{entry['header_name']}.h"
+        header_display = entry.get("header_display", Path(entry["header_file"]).name)
         test_body_lines.append(f'    header_file = "{header_display}";')
         pending_setups = []
         run_comment_emitted = False
@@ -703,13 +822,18 @@ def process_header_file(
     generate_individual=True,
     *,
     max_fails,
+    output_basename=None,
 ):
     """Process a single header file and optionally generate its test file."""
     header_path = Path(header_file_path)
     header_name = header_path.stem
     header_display = header_path.name
-    test_file_path = Path(output_dir) / f"{file_prefix}{header_name}.cpp"
-    header_include = compute_header_include(header_file_path, test_file_path.parent)
+    header_suffix = header_path.suffix.lower()
+    output_name = output_basename or header_name
+    test_file_path = Path(output_dir) / f"{file_prefix}{output_name}.cpp"
+    header_include = None
+    if is_header_like_suffix(header_suffix):
+        header_include = compute_header_include(header_file_path, test_file_path.parent)
 
     # Extract code blocks
     code_blocks = extract_code_blocks(header_file_path)
@@ -823,13 +947,23 @@ def main():
     parser = build_arg_parser()
     args = parser.parse_args()
 
+    if args.extensions:
+        try:
+            supported_suffixes = parse_extensions_argument(args.extensions)
+        except ValueError as exc:
+            print(f"Error: {exc}")
+            sys.exit(1)
+    else:
+        supported_suffixes = DEFAULT_SUPPORTED_SUFFIXES
+
+    supported_patterns = format_suffix_patterns(supported_suffixes)
+    supported_suffix_display = format_suffix_display(supported_suffixes)
+
     def _looks_like_path(candidate):
         if candidate is None:
             return False
         candidate_lower = candidate.lower()
-        if any(
-            candidate_lower.endswith(suffix) for suffix in SUPPORTED_HEADER_SUFFIXES
-        ):
+        if any(candidate_lower.endswith(suffix) for suffix in supported_suffixes):
             return True
         if any(sep in candidate for sep in (os.sep, "/", "\\")):
             return True
@@ -853,7 +987,23 @@ def main():
         if not path_obj.exists():
             print(f"Error: Path '{path_str}' does not exist")
             sys.exit(1)
-        input_paths.append(path_obj)
+        input_paths.append(path_obj.resolve())
+
+    # Allow explicit file inputs to extend the supported file suffixes without
+    # changing the directory globbing behaviour.
+    file_suffixes = [
+        path_obj.suffix.lower()
+        for path_obj in input_paths
+        if path_obj.is_file() and path_obj.suffix
+    ]
+    additional_suffixes = tuple(
+        suffix
+        for suffix in dict.fromkeys(file_suffixes)  # Preserves first-seen order.
+        if suffix not in supported_suffixes
+    )
+
+    file_allowed_suffixes = supported_suffixes + tuple(additional_suffixes)
+    file_allowed_suffix_display = format_suffix_display(file_allowed_suffixes)
 
     output_dir = args.output_dir
     includes = args.include
@@ -874,17 +1024,115 @@ def main():
 
     combined_entries = [] if combined_requested else None
     total_success = 0
-    headers_encountered = 0
+
+    files_to_process = []
+    directory_matches = {}
+    seen_files = set()
 
     for input_path in input_paths:
         if input_path.is_file():
-            if input_path.suffix.lower() not in SUPPORTED_HEADER_SUFFIXES:
+            suffix = input_path.suffix.lower()
+            if suffix and suffix not in file_allowed_suffixes:
                 print(
-                    f"Error: '{input_path}' is not a supported header file ({SUPPORTED_HEADER_SUFFIXES_DISPLAY})"
+                    f"Error: '{input_path}' is not a supported file type ({file_allowed_suffix_display})"
                 )
                 sys.exit(1)
+            if input_path not in seen_files:
+                files_to_process.append(input_path)
+                seen_files.add(input_path)
+        elif input_path.is_dir():
+            header_files = sorted(
+                (
+                    header_file.resolve()
+                    for suffix in supported_suffixes
+                    for header_file in input_path.glob(f"*{suffix}")
+                ),
+                key=lambda path: path.name.lower(),
+            )
 
-            headers_encountered += 1
+            if not header_files:
+                if not silent:
+                    print(
+                        f"No files matching ({supported_patterns}) found in '{input_path}'"
+                    )
+                directory_matches[input_path] = []
+                continue
+
+            unique_files = []
+            for header_file in header_files:
+                if header_file not in seen_files:
+                    unique_files.append(header_file)
+                    files_to_process.append(header_file)
+                    seen_files.add(header_file)
+
+            if not unique_files:
+                if not silent:
+                    print(
+                        f"No new files matching ({supported_patterns}) found in '{input_path}'"
+                    )
+            else:
+                if not silent:
+                    print(
+                        f"Found {len(unique_files)} files ({supported_patterns}) in the directory: `{input_path}`"
+                    )
+            directory_matches[input_path] = unique_files
+        else:
+            print(f"Error: '{input_path}' is neither a file nor a directory")
+            sys.exit(1)
+
+    output_name_map = {}
+    if files_to_process:
+        stem_groups = {}
+        for file_path in files_to_process:
+            stem_groups.setdefault(file_path.stem, []).append(file_path)
+
+        primary_per_stem = {}
+        for stem, items in stem_groups.items():
+            preferred = None
+            for candidate in items:
+                if candidate.suffix.lower() in DEFAULT_SUPPORTED_SUFFIXES:
+                    preferred = candidate
+                    break
+            if preferred is None:
+                preferred = items[0]
+            primary_per_stem[stem] = preferred
+
+        used_output_names = set()
+        for file_path in files_to_process:
+            stem = file_path.stem or ""
+            suffix_with_dot = file_path.suffix.lower()
+            suffix = suffix_with_dot.lstrip(".")
+            primary = primary_per_stem.get(stem)
+            if primary is file_path and is_header_like_suffix(suffix_with_dot):
+                base_candidate = stem or "doxyfile"
+            else:
+                if suffix and stem:
+                    base_candidate = f"{stem}_{suffix}"
+                elif suffix:
+                    base_candidate = suffix
+                else:
+                    base_candidate = stem or "doxyfile"
+
+            if not base_candidate:
+                base_candidate = "doxyfile"
+
+            candidate = base_candidate
+            suffix_index = 2
+            while candidate in used_output_names:
+                candidate = f"{base_candidate}_{suffix_index}"
+                suffix_index += 1
+
+            used_output_names.add(candidate)
+            output_name_map[file_path] = candidate
+
+    files_encountered = 0
+
+    for input_path in input_paths:
+        if input_path.is_file():
+            output_basename = output_name_map.get(input_path)
+            if output_basename is None:
+                continue
+            files_encountered += 1
             if process_header_file(
                 input_path,
                 output_dir,
@@ -896,39 +1144,23 @@ def main():
                 file_prefix=file_prefix,
                 generate_individual=not combined_requested,
                 max_fails=max_fails,
+                output_basename=output_basename,
             ):
                 total_success += 1
 
         elif input_path.is_dir():
-            header_files = sorted(
-                (
-                    header_file
-                    for suffix in SUPPORTED_HEADER_SUFFIXES
-                    for header_file in input_path.glob(f"*{suffix}")
-                ),
-                key=lambda path: path.name.lower(),
-            )
-
+            header_files = directory_matches.get(input_path, [])
             if not header_files:
-                if not silent:
-                    print(
-                        f"No header files ({SUPPORTED_HEADER_PATTERNS}) found in '{input_path}'"
-                    )
                 continue
-
-            if not silent:
-                print(
-                    f"Found {len(header_files)} header files ({SUPPORTED_HEADER_PATTERNS}) in the directory: `{input_path}`"
-                )
 
             dir_success = 0
             for header_file in header_files:
-                header_path = Path(header_file)
-                header_name = header_path.stem
-                header_display = header_path.name
+                output_basename = output_name_map.get(header_file)
+                if output_basename is None:
+                    continue
                 if not silent:
-                    print(f"Processing: `{header_display}`...")
-                headers_encountered += 1
+                    print(f"Processing: `{header_file.name}`...")
+                files_encountered += 1
                 if process_header_file(
                     header_file,
                     output_dir,
@@ -940,21 +1172,22 @@ def main():
                     file_prefix=file_prefix,
                     generate_individual=not combined_requested,
                     max_fails=max_fails,
+                    output_basename=output_basename,
                 ):
                     dir_success += 1
                     total_success += 1
 
             if not silent:
                 print(
-                    f"Summary: There were {dir_success}/{len(header_files)} header files with tests."
+                    f"Summary: There were {dir_success}/{len(header_files)} files with tests."
                 )
         else:
             print(f"Error: '{input_path}' is neither a file nor a directory")
             sys.exit(1)
 
-    if headers_encountered == 0:
+    if files_encountered == 0:
         print(
-            f"No header files ({SUPPORTED_HEADER_PATTERNS}) were found in the provided inputs."
+            f"No files matching ({supported_patterns}) were found in the provided inputs."
         )
         sys.exit(1)
 

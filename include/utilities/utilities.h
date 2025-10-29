@@ -1,15 +1,16 @@
-/// @brief An include everything header for the utilities library.
-/// @link  https://nessan.github.io/utilities/
-/// SPDX-FileCopyrightText:  2024 Nessan Fitzmaurice <nessan.fitzmaurice@me.com>
-/// SPDX-License-Identifier: MIT
 #pragma once
+// SPDX-FileCopyrightText: 2025 Nessan Fitzmaurice <nzznfitz+gh@icloud.com>
+// SPDX-License-Identifier: MIT
 
-#include "assert.h"
-#include "format.h"
-#include "log.h"
-#include "macros.h"
-#include "stopwatch.h"
-#include "stream.h"
-#include "string.h"
-#include "thousands.h"
-#include "type.h"
+/// @file
+/// An "include everything" header for the utilities library.
+
+#include <utilities/assert.h>
+#include <utilities/formatter.h>
+#include <utilities/log.h>
+#include <utilities/macros.h>
+#include <utilities/stopwatch.h>
+#include <utilities/stream.h>
+#include <utilities/string.h>
+#include <utilities/thousands.h>
+#include <utilities/type.h>

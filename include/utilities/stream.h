@@ -1,22 +1,24 @@
-/// @brief Some utility functions for that can be used to read from streams.
-/// @link  https://nessan.github.io/utilities/
-/// SPDX-FileCopyrightText:  2024 Nessan Fitzmaurice <nessan.fitzmaurice@me.com>
-/// SPDX-License-Identifier: MIT
 #pragma once
+// SPDX-FileCopyrightText: 2025 Nessan Fitzmaurice <nzznfitz+gh@icloud.com>
+// SPDX-License-Identifier: MIT
+
+/// @file
+/// Some utility functions that work on contents of streams.
+/// See the [Stream Functions](docs/pages/StreamFunctions.md) page for all the details.
 
 #include <iostream>
 #include <string>
 
 namespace utilities {
 
-/// @brief  Reads a 'line' from a stream.
-/// @note   Unlike the @c std::getline(...) this version strips trailing comments (starting with a '#' by default).
-///         It also completely ignores blank lines and assumes that lines ending with a '\' continue to the next.
-/// @param  s The input stream to read from.
-/// @param  line We overwrite this with the content we read from the input stream.
-/// @param  comment_begin We ignore/strip out comments that start with this character ("#" by default).
-/// @return The number of characters read.
-/// @todo   In the code below we should escape comment delimiters that are special (e.g. '*')
+/// Reads a 'line' from a stream `s` and return the number of characters read.
+///
+/// By default we strip out comments that start with a '#' character and run to the end of the line.
+/// You can change the comment start character by passing a different string to `comment_begin` argument.
+///
+/// > [!NOTE]
+/// > Unlike the @c std::getline(...) this version strips trailing comments (starting with a '#' by default).
+/// > It also completely ignores blank lines and assumes that lines ending with a '\' continue to the next.
 static std::size_t
 read_line(std::istream& s, std::string& line, std::string_view comment_begin = "#")
 {
@@ -72,12 +74,14 @@ read_line(std::istream& s, std::string& line, std::string_view comment_begin = "
     return line.length();
 }
 
-/// @brief Reads one 'line' from a stream and returns that as a new std::string.
-/// @note Unlike the @c std::getline(...) this version strips trailing comments (starting with a '#' by default).
-/// It also completely ignores blank lines and assumes that lines ending with a '\' continue to the next.
-/// @param s The input stream to read from.
-/// @param comment_begin We ignore/strip out comments that start with this character ("#" by default)
-/// @todo In the code below we should escape comment delimiters that are special (e.g. '*')
+/// Reads one 'line' from a stream and returns that as a new std::string.
+///
+/// By default we strip out comments that start with a '#' character and run to the end of the line.
+/// You can change the comment start character by passing a different string to `comment_begin` argument.
+///
+/// > [!NOTE]
+/// > Unlike the @c std::getline(...) this version strips trailing comments (starting with a '#' by default).
+/// > It also completely ignores blank lines and assumes that lines ending with a '\' continue to the next.
 inline std::string
 read_line(std::istream& s, std::string_view comment_begin = "#")
 {
@@ -86,7 +90,7 @@ read_line(std::istream& s, std::string_view comment_begin = "#")
     return retval;
 }
 
-/// @brief Rewind an input stream to the start
+/// Rewind an input stream to the start
 inline std::istream&
 rewind(std::istream& is)
 {
@@ -95,7 +99,7 @@ rewind(std::istream& is)
     return is;
 }
 
-/// @brief Counts the number of lines in the input stream.
+/// Counts the number of lines in the input stream.
 /// @note If the comment start string is empty we use @c std::getline to read the lines, otherwise we use our own
 /// version @c read_line so comment lines are excluded etc.
 inline std::size_t

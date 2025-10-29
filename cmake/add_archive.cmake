@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# @brief Package a set of assets into an archive.
+# Package a set of assets into an archive.
 # @link  https://nessan.github.io/cmake/
 #
 # SPDX-FileCopyrightText:  2023 Nessan Fitzmaurice <nessan.fitzmaurice@me.com>

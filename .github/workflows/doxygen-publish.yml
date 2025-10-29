@@ -1,0 +1,38 @@
+# Triggers a fresh build of the projects's documentation site.
+# The site is built using the Doxygen static generator (see https://doxygen.org).
+# The source for the site is in the docs/ subdirectory, which contains the Doxyfile, the theme files, and the pages.
+# The output of the build is in the docs/site subdirectory.
+# We publish the site to github pages using the [action](https://github.com/marketplace/actions/doxygen-github-pages).
+name: Doxygen Publish
+
+# When is the workflow run?
+on:
+    # Any push to the main branch will trigger a build of the site.
+    push:
+        branches:
+            - main
+    # Any formal release
+    release:
+        types: [published]
+
+    # You can also trigger the workflow manually (handy to debug the workflow).
+    workflow_dispatch:
+
+# Just the one job in the workflow.
+jobs:
+    doxygen-publish:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v4
+
+            - name: Generate the site using Doxygen
+              uses: AgarwalSaurav/ghaction-doxygen-ghpages@release/v2
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  working-directory: .
+                  doxyfile-path: docs/Doxyfile
+                  html-output-folder: docs/site
+                  branch: gh-pages

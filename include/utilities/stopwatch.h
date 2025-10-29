@@ -1,31 +1,33 @@
-/// @brief Simple utility class that can time how long code blocks take to execute.
-/// @link  https://nessan.github.io/utilities/
-/// SPDX-FileCopyrightText:  2024 Nessan Fitzmaurice <nessan.fitzmaurice@me.com>
-/// SPDX-License-Identifier: MIT
 #pragma once
+// SPDX-FileCopyrightText: 2025 Nessan Fitzmaurice <nzznfitz+gh@icloud.com>
+// SPDX-License-Identifier: MIT
+
+/// @file
+/// A stopwatch class to measure execution times. <br>
+/// See the [Stopwatch](docs/pages/Stopwatch.md) page for all the details.
 
 #include <atomic>
 #include <chrono>
 #include <iostream>
 
 namespace utilities {
-
+/// See the [Stopwatch](docs/pages/Stopwatch.md) page for all the details.
 template<typename Clock = std::chrono::high_resolution_clock>
 class stopwatch {
 public:
-    /// @brief The underlying clock type
+    /// The underlying clock type
     using clock_type = Clock;
 
-    /// @brief A stopwatch can have a name to distinguish it from others you may have running
-    explicit stopwatch(const std::string &str = "") : m_name(str) { reset(); }
+    /// A stopwatch can have a name to distinguish it from others you may have running
+    explicit stopwatch(const std::string& str = "") : m_name(str) { reset(); }
 
-    /// @brief Read-only access to the stopwatch's name
+    /// Provides read-only access to the stopwatch's name
     std::string name() const { return m_name; }
 
-    /// @brief Read-write access to the stopwatch's name
-    std::string &name() { return m_name; }
+    /// Provides read-write access to the stopwatch's name
+    std::string& name() { return m_name; }
 
-    /// @brief Set/reset the stopwatch's 'zero' point & clear any measured splits.
+    /// Set/reset the stopwatch's 'zero' point & clear any measured splits.
     constexpr void reset()
     {
         m_zero = clock_type::now();
@@ -33,7 +35,7 @@ public:
         m_prior = 0;
     }
 
-    /// @brief Get the time that has passed from the zero point to now. Units are seconds.
+    /// Get the time that has passed from the zero point to now. Units are seconds.
     constexpr double elapsed() const
     {
         std::atomic_thread_fence(std::memory_order_relaxed);
@@ -42,8 +44,7 @@ public:
         return std::chrono::duration<double>(t - m_zero).count();
     }
 
-    /// @brief Clicks the stopwatch to create a new 'split'.
-    /// @return The elapsed time to the click in seconds.
+    /// Clicks the stopwatch to create a new 'split' and returns the elapsed time in seconds.
     constexpr double click()
     {
         auto tau = elapsed();
@@ -52,16 +53,17 @@ public:
         return m_split;
     }
 
-    /// @brief Returns the split as the time in seconds that elapsed from the zero point to the last click.
+    /// Returns the split as the time in seconds that elapsed from the zero point to the last click.
     constexpr double split() const { return m_split; }
 
-    /// @brief Returns the last 'lap' time in seconds (i.e. the time between prior 2 splits).
+    /// Returns the last 'lap' time in seconds (i.e. the time between prior 2 splits).
     constexpr double lap() const { return m_split - m_prior; }
 
-    /// @brief Get a string representation of the stopwatch's elapsed time.
-    std::string to_string() const {
+    /// Returns a string representation of the stopwatch's elapsed time in seconds.
+    std::string to_string() const
+    {
         auto tau = elapsed();
-        if(m_name.empty()) return std::format("{}s", tau);
+        if (m_name.empty()) return std::format("{}s", tau);
         return std::format("{}: {}s", m_name, tau);
     }
 
@@ -74,29 +76,31 @@ private:
     double      m_prior; // The prior split.
 };
 
-/// @brief Usual output operator. Prints the name of the stopwatch if any followed by the elapsed time in seconds.
+/// The usual output operator.
+///
+/// Prints the name of the stopwatch if any followed by the elapsed time in seconds.
 template<typename Clock>
-inline std::ostream &
-operator<<(std::ostream &os, const stopwatch<Clock> &rhs)
+inline std::ostream&
+operator<<(std::ostream& os, const stopwatch<Clock>& rhs)
 {
     return os << rhs.to_string();
 }
 
-/// @brief Small convenience function that converts a std::chrono::duration to seconds in a double.
+/// A convenience function that converts a `std::chrono::duration` to a `double` number of seconds.
 template<class Rep, class Period>
 constexpr double
-to_seconds(const std::chrono::duration<Rep, Period> &d)
+to_seconds(const std::chrono::duration<Rep, Period>& d)
 {
     return std::chrono::duration<double>(d).count();
 }
 
-/// @brief stopwatch specialization: The most precise stopwatch -- may get put off by system reboots etc.
+/// Theoretically the most precise stopwatch -- it might get put off by system reboots etc.
 using precise_stopwatch = stopwatch<std::chrono::high_resolution_clock>;
 
-/// @brief stopwatch specialization: A stopwatch that is guaranteed to be monotonic.
+/// A stopwatch that is guaranteed to be monotonic.
 using steady_stopwatch = stopwatch<std::chrono::steady_clock>;
 
-/// @brief stopwatch specialization:  A stopwatch that is uses the system clock.
+/// A stopwatch that is uses the system clock.
 using system_stopwatch = stopwatch<std::chrono::system_clock>;
 
 } // namespace utilities

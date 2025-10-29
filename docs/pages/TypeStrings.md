@@ -1,0 +1,111 @@
+# Strings for Object Types
+
+The `<utilities/type.h>` header defines functions that return a string representing an object’s “type” as the compiler/preprocessor sees.
+
+The first function returns a string for a type; e.g., `utilities::type<int>` returns `“int”`.
+
+```c++
+template<typename T> constexpr std::string_view utilities::type();
+```
+
+The second function returns a string for the specific object type. For example, if x is an int, utilities::type(x) will return “int.”
+
+```c++
+template<typename T> constexpr std::string_view utilities::type(const T&);
+```
+
+## Rationale
+
+There is no portable way to get a readable string representation of a type in C++, though clearly, the compiler has the information.
+
+You can use [`std::typeid`] to retrieve the get [`std::type_info`] that has a `name` field.
+However, compilers have no standard for the `name` field, and in some cases, it contains a mangled name that is not easily readable.
+Moreover, `std::typeid` is not a compile-time call, so it is not helpful for template meta-programming.
+
+We can instead use the compiler’s preprocessor.
+It generally has some predefined macro that produces a clean-looking signature string when invoked in any function.
+The name of the macro we want isn’t standardised, but `clang` and `GCC` both use `__PRETTY_FUNCTION__` while Microsoft uses `__FUNCSIG__`.
+How the macro expands isn’t standardised, but it will be consistent across compilers.
+
+The macro string is available at compile time because its expansion occurs during the pre-compilation phase.
+Using other `constexpr` functions, you can parse the string to get a printable name for any type at compile time.
+
+> [!CAUTION]
+> While the type name will be perfectly readable, it is not identical across compilers.
+
+## Example
+
+```cpp
+#include <utilities/macros.h>
+#include <utilities/stopwatch.h>
+#include <utilities/type.h>
+
+int main()
+{
+    utilities::stopwatch         sw_default; // <1>
+    utilities::precise_stopwatch sw_precise;
+    utilities::steady_stopwatch  sw_steady;
+    utilities::system_stopwatch  sw_system;
+
+    std::cout << "Compiler: " << COMPILER_NAME << '\n'; // <2>
+
+    std::print("sw_default has type '{}'\n", utilities::type(sw_default));
+    std::print("sw_precise has type '{}'\n", utilities::type(sw_precise));
+    std::print("sw_steady  has type '{}'\n", utilities::type(sw_steady));
+    std::print("sw_system  has type '{}'\n", utilities::type(sw_system));
+}
+```
+
+1. See [Stopwatch Class](Stopwatch.md) for details.
+2. See [Macros](Macros.md) for details.
+
+Here is the output after compiling with `gcc`:
+
+```txt
+Compiler: gcc 13.2.0
+sw_default has type 'stopwatch<std::chrono::\_V2::system_clock>'
+sw_precise has type 'stopwatch<std::chrono::\_V2::system_clock>'
+sw_steady has type 'stopwatch<std::chrono::\_V2::steady_clock>'
+sw_system has type 'stopwatch<std::chrono::\_V2::system_clock>'
+```
+
+It seems that `libstdc++`, the standard library for `gcc`, only has one clock, namely `std::chrono::system_clock`.
+The other clocks in its `std::chrono` must all be aliases for that one.
+
+Here is the output after compiling with Microsoft Visual Studio Code:
+
+```txt
+Compiler: MSC 193131104
+sw_default has type 'class utilities::stopwatch<struct std::chrono::steady_clock>'
+sw_precise has type 'class utilities::stopwatch<struct std::chrono::steady_clock>'
+sw_steady  has type 'class utilities::stopwatch<struct std::chrono::steady_clock>'
+sw_system  has type 'class utilities::stopwatch<struct std::chrono::system_clock>'
+```
+
+This version of Microsoft Visual Studio Code also uses a single clock, `std::chrono::steady_clock` for our system.
+
+Here is the output after compiling with `clang`:
+
+```txt
+Compiler: clang 17.0.6
+sw_default has type 'utilities::stopwatch<>'
+sw_precise has type 'utilities::stopwatch<>'
+sw_steady has type 'utilities::stopwatch<>'
+sw_system has type 'utilities::stopwatch<std::chrono::system_clock>'
+```
+
+The specific clock type is not printed for the first three objects.
+
+We have observed that, while clang uses the same `__PRETTY_FUNCTION__ `macro name as `gcc`, its implementation differs, and it never outputs template arguments that match a default.
+
+For the first three objects above, `clang` outputs `utilities::stopwatch<>` without any reference to the underlying clock.
+We conclude that all three use the default specified in {stopwatch}, `std::chrono::high_resolution_clock`.
+For this compiler, then `std::chrono::steady_clock` is the same as `std::chrono::high_resolution_clock`.
+
+However, the type name for the final `sw_system` object references a different `std::chrono::system_clock`.
+The standard library `libc++` for `clang` can access two different clocks (or at least two that it thinks are different).
+
+<!-- Reference Links -->
+
+[`std::typeid`]: https://en.cppreference.com/w/cpp/language/typeid
+[`std::type_info`]: https://en.cppreference.com/w/cpp/types/type_info

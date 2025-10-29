@@ -1,5 +1,5 @@
-/// @brief Read from a file and tokenize all the lines.
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// Read from a file and tokenize all the lines.
+
 #include "utilities/utilities.h"
 #include <fstream>
 

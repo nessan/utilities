@@ -1,5 +1,5 @@
-/// @brief Checking support for std::locale in the standard libraries -- GCC is notoriously poor!
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// Checking support for std::locale in the standard libraries -- GCC is notoriously poor!
+
 #include "utilities/utilities.h"
 #include <locale>
 

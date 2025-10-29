@@ -174,7 +174,7 @@ Example</h1>
 <div class="line">sw_steady has type <span class="stringliteral">&#39;utilities::stopwatch&lt;&gt;&#39;</span></div>
 <div class="line">sw_system has type <span class="stringliteral">&#39;utilities::stopwatch&lt;std::chrono::system_clock&gt;&#39;</span></div>
 </div><!-- fragment --><p>The specific clock type is not printed for the first three objects.</p>
-<p>We have observed that, while clang uses the same <span class="tt">__PRETTY_FUNCTION__ </span>macro name as <span class="tt">gcc</span>, its implementation differs, and it never outputs template arguments that match a default.</p>
+<p>We have observed that, while clang uses the same <span class="tt">__PRETTY_FUNCTION__</span> macro name as <span class="tt">gcc</span>, its implementation differs, and it never outputs template arguments that match a default.</p>
 <p>For the first three objects above, <span class="tt">clang</span> outputs <span class="tt"><a class="el" href="classutilities_1_1stopwatch.html" title="See the Stopwatch page for all the details.">utilities::stopwatch</a>&lt;&gt;</span> without any reference to the underlying clock. We conclude that all three use the default specified in {stopwatch}, <span class="tt">std::chrono::high_resolution_clock</span>. For this compiler, then <span class="tt">std::chrono::steady_clock</span> is the same as <span class="tt">std::chrono::high_resolution_clock</span>.</p>
 <p>However, the type name for the final <span class="tt">sw_system</span> object references a different <span class="tt">std::chrono::system_clock</span>. The standard library <span class="tt">libc++</span> for <span class="tt">clang</span> can access two different clocks (or at least two that it thinks are different). </p>
 </div></div><!-- contents -->

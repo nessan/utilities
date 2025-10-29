@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['tests_0',['Tests',['../index.html#tests',1,'']]],
+  ['the_20always_20versions_1',['The &quot;Always&quot; Versions',['../md_docs_2pages_2Assertions.html#the-always-versions',1,'']]],
+  ['the_20debug_20versions_2',['The &quot;Debug&quot; Versions',['../md_docs_2pages_2Assertions.html#the-debug-versions',1,'']]],
+  ['the_20standard_20versions_3',['The &quot;Standard&quot; Versions',['../md_docs_2pages_2Assertions.html#the-standard-versions',1,'']]],
+  ['the_20stopwatch_20class_4',['The Stopwatch Class',['../md_docs_2pages_2Stopwatch.html',1,'']]],
+  ['thousands_2eh_5',['thousands.h',['../thousands_8h.html',1,'']]],
+  ['timing_20methods_6',['Timing Methods',['../md_docs_2pages_2Stopwatch.html#timing-methods',1,'']]],
+  ['to_5fseconds_7',['to_seconds',['../namespaceutilities.html#a8bdece92a7dad9ce418612b648cf43fd',1,'utilities']]],
+  ['to_5fstring_8',['to_string',['../classutilities_1_1message.html#af150625c50141e9da149d61174f7f888',1,'utilities::message::to_string()'],['../classutilities_1_1stopwatch.html#aaf9352beff6b71c8958d768f8827f695',1,'utilities::stopwatch::to_string()']]],
+  ['tokenize_9',['tokenize',['../namespaceutilities.html#adf6c468215492825be0934b8142a23b4',1,'utilities']]],
+  ['tokenizing_10',['Tokenizing',['../md_docs_2pages_2StringFunctions.html#tokenizing',1,'']]],
+  ['trim_11',['trim',['../namespaceutilities.html#a719a1a3853f1a738adf5e36a7e3494c1',1,'utilities']]],
+  ['trim_5fleft_12',['trim_left',['../namespaceutilities.html#a9dadb378173fafc9a3dff52bb44a8865',1,'utilities']]],
+  ['trim_5fright_13',['trim_right',['../namespaceutilities.html#ad0bdc582b6e39f92a87d9970293f3570',1,'utilities']]],
+  ['trimmed_14',['trimmed',['../namespaceutilities.html#a089d50f62362624e1c862cb663e5cfac',1,'utilities']]],
+  ['trimmed_5fleft_15',['trimmed_left',['../namespaceutilities.html#a8090bcb66424ef78733861522af6e534',1,'utilities']]],
+  ['trimmed_5fright_16',['trimmed_right',['../namespaceutilities.html#a26d360443be2aed750f2540d2f01dce2',1,'utilities']]],
+  ['trimming_20spaces_17',['Trimming Spaces',['../md_docs_2pages_2StringFunctions.html#trimming-spaces',1,'']]],
+  ['type_18',['type',['../namespaceutilities.html#a73a800bf12ff9d6365888db10c49a059',1,'utilities::type()'],['../namespaceutilities.html#a360fce37e75ff970a92386a9c4993a24',1,'utilities::type(const T &amp;)']]],
+  ['type_2eh_19',['type.h',['../type_8h.html',1,'']]],
+  ['types_20',['Strings for Object Types',['../md_docs_2pages_2TypeStrings.html',1,'']]]
+];

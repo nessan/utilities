@@ -1,7 +1,3 @@
----
-typora-root-url: ../images
----
-
 # Project Overview
 
 ![Logo]

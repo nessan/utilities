@@ -20,6 +20,5 @@ var searchData=
   ['trimming_20spaces_17',['Trimming Spaces',['../md_docs_2pages_2StringFunctions.html#trimming-spaces',1,'']]],
   ['type_18',['type',['../namespaceutilities.html#a73a800bf12ff9d6365888db10c49a059',1,'utilities::type()'],['../namespaceutilities.html#a360fce37e75ff970a92386a9c4993a24',1,'utilities::type(const T &amp;)']]],
   ['type_2eh_19',['type.h',['../type_8h.html',1,'']]],
-  ['types_20',['Strings for Object Types',['../md_docs_2pages_2TypeStrings.html',1,'']]],
-  ['typora_20root_20url_3a_20images_21',['typora-root-url: ../images',['../index.html#typora-root-url-images',1,'']]]
+  ['types_20',['Strings for Object Types',['../md_docs_2pages_2TypeStrings.html',1,'']]]
 ];

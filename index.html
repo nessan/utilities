@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=11" />
         <meta name="generator" content="Doxygen 1.14.0" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>C++ Utilities: C++ Utilities</title>
+        <title>C++ Utilities: Project Overview</title>
         <link href="tabs.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="dynsections.js"></script>
@@ -104,23 +104,18 @@ $(function(){initNavTree('index.html','',''); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">C++ Utilities </div></div>
+  <div class="headertitle"><div class="title">Project Overview </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2 class="doxsection"><a class="anchor" id="ianchor-md_docs_2pages_2indexilinebr"></a>
-ianchor-md_docs_2pages_2indexilinebr</h2>
-<h2 class="doxsection"><a class="anchor" id="typora-root-url-images"></a>
-typora-root-url: ../images</h2>
-<h1 class="doxsection"><a class="anchor" id="project-overview"></a>
-Project Overview</h1>
+<div class="textblock"><p><a class="anchor" id="md_docs_2pages_2index"></a></p>
 <div class="image">
 <object type="image/svg+xml" data="logo.svg" style="pointer-events: none;"></object>
 </div>
     <p>The <span class="tt">utilities</span> library is a small collection of C++ classes, functions, and macros that have proven useful across several projects. It is header-only, so there is nothing to compile or link.</p>
 <p>All non-macro functionality is in the <span class="tt">utilities</span> namespace.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>You can use any header file in this library on its own &mdash; there are no interdependencies.</dd></dl>
-<h2 class="doxsection"><a class="anchor" id="available-facilities"></a>
-Available Facilities</h2>
+<h1 class="doxsection"><a class="anchor" id="available-facilities"></a>
+Available Facilities</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Focus  </th><th class="markdownTableHeadNone">Header File  </th><th class="markdownTableHeadNone">Brief Description  </th></tr>
@@ -146,15 +141,15 @@ Available Facilities</h2>
 </table>
 <dl class="section warning"><dt>Warning</dt><dd>Microsoft's old traditional preprocessor is not happy with some of our macros, but its newer, cross-platform-compatible one is fine. <br  />
  Add the <span class="tt">/Zc:preprocessor</span> flag to use that upgrade at compile time. Our <span class="tt">CMake</span> module <span class="tt">compiler_init</span> does that automatically for you.</dd></dl>
-<h2 class="doxsection"><a class="anchor" id="convenience-headers"></a>
-Convenience Headers</h2>
+<h1 class="doxsection"><a class="anchor" id="convenience-headers"></a>
+Convenience Headers</h1>
 <p>There are a couple of extra convenience "include-the-lot" headers:</p>
 <ul>
 <li><span class="tt">utilities.h</span>: Pulls in all the other header files in the library.</li>
 <li><span class="tt">namespace.h</span>: Pulls in all the other header files in the library, and follows that with a <span class="tt">using namespace utilities</span> directive.</li>
 </ul>
-<h2 class="doxsection"><a class="anchor" id="installation"></a>
-Installation</h2>
+<h1 class="doxsection"><a class="anchor" id="installation"></a>
+Installation</h1>
 <p>This library is header-only, so there is nothing to compile &amp; link. Drop the small <span class="tt">utilities</span> header directory into a convenient location. You can even use any single header file on its own.</p>
 <p>Alternatively, if you are using <span class="tt">CMake</span>, you can use the standard <span class="tt">FetchContent</span> module by adding a few lines to your project's <span class="tt">CMakeLists.txt</span> file:</p>
 <div class="fragment"><div class="line">include(FetchContent)</div>
@@ -162,17 +157,17 @@ Installation</h2>
 <div class="line">FetchContent_MakeAvailable(utilities)</div>
 </div><!-- fragment --><p>This command downloads and unpacks the current version of <span class="tt">utilities</span> into your project's build folder. You can then add a dependency on <span class="tt">utilities::utilities</span>, a <span class="tt">CMake</span> alias for <span class="tt">utilities</span>. <span class="tt">FetchContent</span> will automatically ensure the build system knows where to find the downloaded header files and any needed compiler flags.</p>
 <dl class="section note"><dt>Note</dt><dd>That URL downloads the library's current version—whatever is in the main branch when you run the download. That content may change from time to time. Use a URL like <span class="tt"><a href="https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip">https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip</a></span> to get a fixed library version.</dd></dl>
-<h2 class="doxsection"><a class="anchor" id="source-code"></a>
-Source Code</h2>
+<h1 class="doxsection"><a class="anchor" id="source-code"></a>
+Source Code</h1>
 <p>Here is a link to the project's source code <a href="https://github.com/nessan/utilities">repository</a>.</p>
-<h2 class="doxsection"><a class="anchor" id="tests"></a>
-Tests</h2>
+<h1 class="doxsection"><a class="anchor" id="tests"></a>
+Tests</h1>
 <p>The project uses <a href="https://nessan.github.io/doxytest/">Doxytest</a>, a tool for generating C++ test programs from code embedded in header file comments.</p>
-<h2 class="doxsection"><a class="anchor" id="contact"></a>
-Contact</h2>
+<h1 class="doxsection"><a class="anchor" id="contact"></a>
+Contact</h1>
 <p>You can contact me by <a href="#" onclick="location.href='mai'+'lto:'+'nzz'+'nf'+'itz'+'+g'+'h@i'+'cl'+'oud'+'.c'+'om'; return false;">email</a></p>
-<h2 class="doxsection"><a class="anchor" id="copyright-and-license"></a>
-Copyright and License</h2>
+<h1 class="doxsection"><a class="anchor" id="copyright-and-license"></a>
+Copyright and License</h1>
 <p>Copyright (c) 2022-present Nessan Fitzmaurice. <br  />
  You can use this software under the <a href="https://opensource.org/license/mit">MIT License</a> </p>
 </div></div><!-- PageDoc -->

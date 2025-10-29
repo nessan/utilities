@@ -8,6 +8,5 @@ var searchData=
   ['timing_20methods_5',['Timing Methods',['../md_docs_2pages_2Stopwatch.html#timing-methods',1,'']]],
   ['tokenizing_6',['Tokenizing',['../md_docs_2pages_2StringFunctions.html#tokenizing',1,'']]],
   ['trimming_20spaces_7',['Trimming Spaces',['../md_docs_2pages_2StringFunctions.html#trimming-spaces',1,'']]],
-  ['types_8',['Strings for Object Types',['../md_docs_2pages_2TypeStrings.html',1,'']]],
-  ['typora_20root_20url_3a_20images_9',['typora-root-url: ../images',['../index.html#typora-root-url-images',1,'']]]
+  ['types_8',['Strings for Object Types',['../md_docs_2pages_2TypeStrings.html',1,'']]]
 ];

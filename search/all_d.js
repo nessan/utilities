@@ -17,6 +17,5 @@ var searchData=
   ['replacing_20substrings_14',['Replacing Substrings',['../md_docs_2pages_2StringFunctions.html#replacing-substrings',1,'']]],
   ['reset_15',['reset',['../classutilities_1_1stopwatch.html#a08de1c324bae4cd39d310135205424d7',1,'utilities::stopwatch']]],
   ['rewind_16',['rewind',['../namespaceutilities.html#a4a9795f4e677e71c87644c5b6bf3d832',1,'utilities']]],
-  ['root_20url_3a_20images_17',['typora-root-url: ../images',['../index.html#typora-root-url-images',1,'']]],
-  ['run_18',['RUN',['../macros_8h.html#a254c7675e8b155e7b9b6da9ba4ac3cdf',1,'macros.h']]]
+  ['run_17',['RUN',['../macros_8h.html#a254c7675e8b155e7b9b6da9ba4ac3cdf',1,'macros.h']]]
 ];

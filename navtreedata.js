@@ -25,17 +25,7 @@
 var NAVTREE =
 [
   [ "C++ Utilities", "index.html", [
-    [ "Project Overview", "index.html#project-overview", [
-      [ "ianchor-md_docs_2pages_2indexilinebr", "index.html#ianchor-md_docs_2pages_2indexilinebr", null ],
-      [ "typora-root-url: ../images", "index.html#typora-root-url-images", null ],
-      [ "Available Facilities", "index.html#available-facilities", null ],
-      [ "Convenience Headers", "index.html#convenience-headers", null ],
-      [ "Installation", "index.html#installation", null ],
-      [ "Source Code", "index.html#source-code", null ],
-      [ "Tests", "index.html#tests", null ],
-      [ "Contact", "index.html#contact", null ],
-      [ "Copyright and License", "index.html#copyright-and-license", null ]
-    ] ],
+    [ "Project Overview", "index.html", "index" ],
     [ "Assertions", "md_docs_2pages_2Assertions.html", [
       [ "Boolean Assertions", "md_docs_2pages_2Assertions.html#boolean-assertions", null ],
       [ "Equality Assertions", "md_docs_2pages_2Assertions.html#equality-assertions", null ],

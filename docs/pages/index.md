@@ -1,4 +1,10 @@
+---
+typora-root-url: ../images
+---
+
 # Project Overview
+
+![Logo]
 
 The `utilities` library is a small collection of C++ classes, functions, and macros that have proven useful across several projects.
 It is header-only, so there is nothing to compile or link.
@@ -14,16 +20,16 @@ All non-macro functionality is in the `utilities` namespace.
 | ------------ | ------------- | ------------------------------------------------------------ |
 | [Assertions] | `assert.h`    | Provides several [standard assert] type macros that improve on the standard one in various ways. |
 | [Logging]    | `log.h`       | Provided some very simple logging macros.                    |
-| [Macros]     | `macros.h`    | Provides macros often used in test programs. <br> It also defines a mechanism to overload a macro based on the number of arguments. |
-| [Stopwatch]  | `stopwatch.h` | Provides the `utilities::stopwatch` class you can use to time blocks of code. |
+| [Macros]     | `macros.h`    | Provides macros commonly used in test programs. <br> It also defines a mechanism to overload a macro based on the number of arguments. |
+| [Stopwatch]  | `stopwatch.h` | Provides the `utilities::stopwatch` class, which you can use to time blocks of code. |
 | [Streams]    | `stream.h`    | Provides some functions to read lines from a file, ignoring comments and allowing for continuation lines. |
 | [Strings]    | `string.h`    | Provides several useful string functions (e.g., turning strings to uppercase, trimming white space, etc.). |
 | [Formatter]  | `formatter.h` | Provides a specialisation of [`std::formatter`] for _any_ type that has a `to_string()` method. |
 | [Output]     | `thousands.h` | Provides functions to imbue output streams and locales with commas that make it easier to read large numbers. |
-| [Types]      | `type.h`      | Provides the function `utilities::type`, which produces a string for a type. |
+| [Types]      | `type.h`      | Provides the function `utilities::type`, which returns a string for a type. |
 
 > [!WARNING]
-> Microsoft's old traditional preprocessor is not happy with some of our macros, but their newer, cross-platform-compatible one is fine. <br>
+> Microsoft's old traditional preprocessor is not happy with some of our macros, but its newer, cross-platform-compatible one is fine. <br>
 > Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 > Our `CMake` module `compiler_init` does that automatically for you.
 
@@ -37,7 +43,7 @@ There are a couple of extra convenience "include-the-lot" headers:
 ## Installation
 
 This library is header-only, so there is nothing to compile & link.
-Drop the small `utilities` header directory somewhere convenient.
+Drop the small `utilities` header directory into a convenient location.
 You can even use any single header file on its own.
 
 Alternatively, if you are using `CMake`, you can use the standard `FetchContent` module by adding a few lines to your project's `CMakeLists.txt` file:
@@ -53,7 +59,7 @@ You can then add a dependency on `utilities::utilities`, a `CMake` alias for `ut
 `FetchContent` will automatically ensure the build system knows where to find the downloaded header files and any needed compiler flags.
 
 > [!NOTE]
-> That URL downloads the library's current version --- whatever is in the `main` branch when you do the download.
+> That URL downloads the library's current version—whatever is in the main branch when you run the download.
 > That content may change from time to time.
 > Use a URL like `https://github.com/nessan/utilities/releases/download/2.0.0/utilities.zip` to get a fixed library version.
 
@@ -91,3 +97,5 @@ You can use this software under the [MIT License]
 [Streams]: StreamFunctions.md
 [Strings]: StringFunctions.md
 [Types]: TypeStrings.md
+
+[Logo]: logo.svg

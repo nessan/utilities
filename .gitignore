@@ -19,6 +19,9 @@ build
 build/
 .build/
 
+# Exclusions for Doxytest (the sources in this directory are auto-generated):
+doxytests/*.cpp
+
 # Exclusions for the MSVC build system
 out/
 .vs/

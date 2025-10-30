@@ -15,6 +15,7 @@ ERR*
 prompt.md
 
 # Build folders:
+build
 build/
 .build/
 

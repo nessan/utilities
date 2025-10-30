@@ -1,6 +1,6 @@
 # Project Overview
 
-<p align="center"><img src="logo.svg"></p>
+<p align="center"><img src="banner.svg"></p>
 
 The `utilities` library is a small collection of C++ classes, functions, and macros that have proven useful across several projects.
 It is header-only, so there is nothing to compile or link.

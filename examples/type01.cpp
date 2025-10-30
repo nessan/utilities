@@ -1,5 +1,5 @@
-/// @brief Basic check of the utilities::type(...) function
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// Basic check of the utilities::type(...) function
+
 #include "utilities/utilities.h"
 
 int

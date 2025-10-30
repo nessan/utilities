@@ -11,7 +11,7 @@ add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 # We use C++20 features
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_23)
 
-# Where to find the project headers (e.g., how to resolve `#include "utilities/format.h"`).
+# Where to find the project headers (e.g., how to resolve `#include "utilities/formatter.h"`).
 target_sources(${PROJECT_NAME} INTERFACE
     FILE_SET    library_headers
     TYPE        HEADERS
@@ -50,7 +50,6 @@ if (PROJECT_IS_TOP_LEVEL)
     # Extract the tests from the comments in the header files and create a target for each corresponding test program.
     # We have a CMake module and a Python script that make that straightforward.
     include(doxytest)
-    set(headers_with_doctests include/utilities/string.h include/utilities/thousands.h include/utilities/format.h)
-    doxytest(${headers_with_doctests} INCLUDES "<utilities/utilities.h>" LIBRARIES ${PROJECT_NAME}::${PROJECT_NAME})
+    doxytest(include/utilities INCLUDES "<utilities/namespace.h>" LIBRARIES ${PROJECT_NAME}::${PROJECT_NAME})
 
 endif()

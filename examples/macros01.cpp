@@ -1,9 +1,9 @@
-/// @brief Exercise the OVERLOAD macro in a trivial way.
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// Exercise the OVERLOAD macro in a trivial way.
+
 #include "utilities/macros.h"
 #include <iostream>
 
-/// @brief A trivial macro we will overload depending on the number of arguments it is given
+/// A trivial macro we will overload depending on the number of arguments it is given
 #define COUT(...) OVERLOAD(COUT, __VA_ARGS__)
 
 // The specific one, two, and three argument versions of the COUT test macro

@@ -1,5 +1,5 @@
-/// @brief Read from a file line by line
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// Read from a file line by line
+
 #include "utilities/utilities.h"
 #include <fstream>
 

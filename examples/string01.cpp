@@ -1,5 +1,5 @@
-/// @brief Basic check of some functions in utilities/string.h
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
+/// Basic check of some functions in utilities/string.h
+
 #include "utilities/utilities.h"
 
 int

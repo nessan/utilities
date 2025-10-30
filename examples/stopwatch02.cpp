@@ -1,8 +1,8 @@
-/// @brief Another simple test of the stopwatch class
-/// @copyright Copyright (c) 2024 Nessan Fitzmaurice
-#include "utilities/format.h"
-#include "utilities/stopwatch.h"
+/// Another simple test of the stopwatch class
 
+#include <utilities/namespace.h>
+
+#include <print>
 #include <thread>
 
 int
@@ -10,7 +10,7 @@ main()
 {
     using namespace std::literals;
 
-    utilities::stopwatch sw("Overhead stopwatch");
+    stopwatch sw("Overhead stopwatch");
     for (auto sleep_duration = 0ms; sleep_duration <= 2s; sleep_duration += 200ms) {
 
         sw.click();
@@ -22,10 +22,10 @@ main()
         double diff = actual_ms - sleep_ms;
         double percent = sleep_ms != 0 ? 100 * diff / sleep_ms : 0;
 
-        std::print("Requested sleep for {:8.2f}ms, measured wait was {:8.2f}ms => overhead {:.2f}ms ({:.2f}%)\n",
-                   sleep_ms, actual_ms, diff, percent);
+        std::println("Requested sleep for {:8.2f}ms, measured wait was {:8.2f}ms => overhead {:.2f}ms ({:.2f}%)",
+                     sleep_ms, actual_ms, diff, percent);
     }
-    std::cout << sw << '\n';
+    std::println("Total elapsed time: {}", sw);
 
     return 0;
 }

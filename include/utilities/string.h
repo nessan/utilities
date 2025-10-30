@@ -23,9 +23,46 @@ namespace utilities {
 // We start with the convert-an-input-string-in-place versions which only work on *non-const* input strings.
 // --------------------------------------------------------------------------------------------------------------------
 
+/// Converts a wide character to its upper case equivalent if it is a lowercase letter.
+///
+/// Faster than the standard C-library `toupper(...)` function but only works for ASCII characters.
+///
+/// # Example
+/// ```
+/// assert(utilities::to_upper('a') == 'A');
+/// assert(utilities::to_upper('z') == 'Z');
+/// assert(utilities::to_upper('A') == 'A');
+/// assert(utilities::to_upper('Z') == 'Z');
+/// assert(utilities::to_upper('=') == '=');
+/// ```
+[[nodiscard]] constexpr char32_t
+to_upper(char32_t cp) noexcept
+{
+    return (cp >= 97 && cp <= 122) ? (cp ^ 0b100000) : cp;
+}
+
+/// Converts a wide character to its lower case equivalent if it is a uppercase letter.
+///
+/// Faster than the standard C-library `tolower(...)` function but only works for ASCII characters.
+///
+/// # Example
+/// ```
+/// assert(utilities::to_lower('A') == 'a');
+/// assert(utilities::to_lower('Z') == 'z');
+/// assert(utilities::to_lower('a') == 'a');
+/// assert(utilities::to_lower('z') == 'z');
+/// assert(utilities::to_lower('=') == '=');
+/// ```
+[[nodiscard]] constexpr char32_t
+to_lower(char32_t cp) noexcept
+{
+    return (cp >= 65 && cp <= 90) ? (cp | 0b0100000) : cp;
+}
+
 /// Converts a string to upper case in-place.
 ///
-/// Uses the standard C-library `toupper(...)` function (so will not work for wide character sets).
+/// Uses the `to_upper(...)` function to convert each character to its upper case equivalent if it is a lowercase
+/// letter. Any non-ASCII, non-letter characters are left unchanged.
 ///
 /// # Example
 /// ```
@@ -36,12 +73,15 @@ namespace utilities {
 inline void
 upper_case(std::string& str)
 {
-    std::transform(str.begin(), str.end(), str.begin(), [](int c) { return static_cast<char>(std::toupper(c)); });
+    std::transform(str.begin(), str.end(), str.begin(), [](char ch) {
+        return static_cast<char>(to_upper(static_cast<char32_t>(static_cast<unsigned char>(ch))));
+    });
 }
 
 /// Converts a string to lower case in place.
 ///
-/// Uses the standard C-library `tolower(...)` function (so will not work for wide character sets).
+/// Uses the `to_lower(...)` function to convert each character to its lower case equivalent if it is an uppercase
+/// letter. Any non-ASCII, non-letter characters are left unchanged.
 ///
 /// # Example
 /// ```
@@ -52,7 +92,9 @@ upper_case(std::string& str)
 inline void
 lower_case(std::string& str)
 {
-    std::transform(str.begin(), str.end(), str.begin(), [](int c) { return static_cast<char>(::tolower(c)); });
+    std::transform(str.begin(), str.end(), str.begin(), [](char ch) {
+        return static_cast<char>(to_lower(static_cast<char32_t>(static_cast<unsigned char>(ch))));
+    });
 }
 
 /// Removes any leading white-space from a string in-place.

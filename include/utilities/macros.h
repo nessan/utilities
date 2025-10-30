@@ -8,8 +8,45 @@
 /// Several useful and generally well known macros. <br>
 /// See the [Macros](docs/pages/Macros.md) page for all the details.
 
+#include <array>
 #include <cstring>
 #include <print>
+#include <string>
+#include <utility>
+
+namespace  {
+
+// Remove surrounding quotes from a stringified literal when present.
+template <std::size_t N>
+[[nodiscard]] inline const char*
+stringise_literal(const char (&input)[N]) {
+    if (N > 2 && input[0] == '"' && input[N - 2] == '"') {
+        thread_local char buffer[N - 1]{};
+        for (std::size_t i = 0; i < N - 3; ++i) buffer[i] = input[i + 1];
+        buffer[N - 3] = '\0';
+        return buffer;
+    }
+    return input;
+}
+
+// Concatenate multiple C-strings into a single thread-local buffer.
+template <typename... Parts>
+[[nodiscard]] inline const char*
+concat_cstr(const Parts*... parts) {
+    thread_local std::array<std::string, 4> buffers{};
+    thread_local std::size_t next = 0;
+    auto& buffer = buffers[next++ % buffers.size()];
+    buffer.clear();
+    std::size_t total = 0;
+    auto accumulate = [&](const char* part) { total += std::strlen(part); };
+    (accumulate(parts), ...);
+    buffer.reserve(total);
+    auto append = [&](const char* part) { buffer.append(part); };
+    (append(parts), ...);
+    return buffer.c_str();
+}
+
+} // anonymous namespace
 
 /// `STRINGISE` invokes the pre-processor stringising operator, fully expanding any macro argument first!
 ///
@@ -18,9 +55,9 @@
 /// #define FOO1 "abc"
 /// #define BAR1 FOO1
 /// auto s = STRINGISE(BAR1);
-/// assert(std::strcmp(s, "abc") == 0)
+/// assert(std::strcmp(s, "abc") == 0, "s = {}", s);
 /// ```
-#define STRINGISE(s)      STRINGISE_IMPL(s)
+#define STRINGISE(s)      stringise_literal(STRINGISE_IMPL(s))
 #define STRINGISE_IMPL(s) #s
 
 /// `CONCAT` concatenates two symbols making sure to fully expand those symbols if they happen to be macros themselves.
@@ -55,8 +92,8 @@
 // The actual one, two, and three argument versions of that macro.
 // In C++, contiguous strings are concatenated so "2" "." "3" is the same as "2.3"
 #define VERSION_STRING1(major)               STRINGISE(major)
-#define VERSION_STRING2(major, minor)        STRINGISE(major) "." STRINGISE(minor)
-#define VERSION_STRING3(major, minor, patch) STRINGISE(major) "." STRINGISE(minor) "." STRINGISE(patch)
+#define VERSION_STRING2(major, minor)        concat_cstr(STRINGISE(major), ".", STRINGISE(minor))
+#define VERSION_STRING3(major, minor, patch) concat_cstr(STRINGISE(major), ".", STRINGISE(minor), ".", STRINGISE(patch))
 
 /// `RUN` prints the line of code to the console, executes it, then optionally outputs one or two results.
 ///
@@ -106,11 +143,11 @@
 ///
 /// **Note:** We can add more [compilers](https://github.com/cpredef/predef/blob/master/Compilers.md) if needed.
 #if defined(_MSC_VER)
-    #define COMPILER_NAME "MSC " STRINGISE(_MSC_FULL_VER)
+    #define COMPILER_NAME concat_cstr("MSC ", STRINGISE(_MSC_FULL_VER))
 #elif defined(__clang__)
-    #define COMPILER_NAME "clang " VERSION_STRING(__clang_major__, __clang_minor__, __clang_patchlevel__)
+    #define COMPILER_NAME concat_cstr("clang ", VERSION_STRING(__clang_major__, __clang_minor__, __clang_patchlevel__))
 #elif defined(__GNUC__)
-    #define COMPILER_NAME "gcc " VERSION_STRING(__GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__)
+    #define COMPILER_NAME concat_cstr("gcc ", VERSION_STRING(__GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__))
 #else
     #define COMPILER_NAME "Unidentified Compiler"
 #endif

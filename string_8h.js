@@ -29,6 +29,8 @@ var string_8h =
     [ "utilities::standardize", "namespaceutilities.html#ab2b25a444d3777c7b1cb8641aaa5c17a", null ],
     [ "utilities::standardized", "namespaceutilities.html#af6af8740a5d7edd1ef813711ffb5ed2d", null ],
     [ "utilities::starts_with", "namespaceutilities.html#a557f01b34e80352bfcb8b48220aa2f5f", null ],
+    [ "utilities::to_lower", "namespaceutilities.html#a5df0fc6741ea26768c08dd303a3a40c7", null ],
+    [ "utilities::to_upper", "namespaceutilities.html#a8604af1dfa966e206ab9e92b65db8e9e", null ],
     [ "utilities::tokenize", "namespaceutilities.html#adf6c468215492825be0934b8142a23b4", null ],
     [ "utilities::trim", "namespaceutilities.html#a719a1a3853f1a738adf5e36a7e3494c1", null ],
     [ "utilities::trim_left", "namespaceutilities.html#a9dadb378173fafc9a3dff52bb44a8865", null ],

@@ -143,7 +143,7 @@ Equality Assertions</h1>
 <li>The <span class="tt">assert_eq</span> macro expands to <span class="tt">always_assert_eq</span> <b>unless</b> the <span class="tt">NDEBUG</span> flag is set, which is a no-op similar to the <a href="https://en.cppreference.com/w/cpp/error/assert.html">standard assert</a> macro.</li>
 </ol>
 <p>The <span class="tt">lhs</span> and <span class="tt">rhs</span> arguments must be comparable using <span class="tt">operator==</span>. They must also be printable using <a href="https://en.cppreference.com/w/cpp/io/print.html"><span class="tt">std::print</span></a>, so we will need an appropriate specialisation for <a href="https://en.cppreference.com/w/cpp/utility/format/formatter"><span class="tt">std::formatter</span></a>.</p>
-<h1 class="doxsection"><a class="anchor" id="example-40"></a>
+<h1 class="doxsection"><a class="anchor" id="example-42"></a>
 Example</h1>
 <p>For the sake of the example, we will use the <span class="tt">always_assert_eq</span> macro to check for equality. More typically, you use either the <span class="tt">debug_assert_eq</span> or the <span class="tt">assert_eq</span> macro.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="assert_8h.html">utilities/assert.h</a>&gt;</span></div>

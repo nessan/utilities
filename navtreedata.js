@@ -29,7 +29,7 @@ var NAVTREE =
     [ "Assertions", "md_docs_2pages_2Assertions.html", [
       [ "Boolean Assertions", "md_docs_2pages_2Assertions.html#boolean-assertions", null ],
       [ "Equality Assertions", "md_docs_2pages_2Assertions.html#equality-assertions", null ],
-      [ "Example", "md_docs_2pages_2Assertions.html#example-40", null ],
+      [ "Example", "md_docs_2pages_2Assertions.html#example-42", null ],
       [ "Design Rationale", "md_docs_2pages_2Assertions.html#design-rationale", [
         [ "The \"Always\" Versions", "md_docs_2pages_2Assertions.html#the-always-versions", null ],
         [ "The \"Debug\" Versions", "md_docs_2pages_2Assertions.html#the-debug-versions", null ],
@@ -39,14 +39,14 @@ var NAVTREE =
       [ "See Also", "md_docs_2pages_2Assertions.html#see-also", null ]
     ] ],
     [ "Formatter Specialisation", "md_docs_2pages_2Formatter.html", [
-      [ "Example", "md_docs_2pages_2Formatter.html#example-41", null ],
+      [ "Example", "md_docs_2pages_2Formatter.html#example-43", null ],
       [ "Notes", "md_docs_2pages_2Formatter.html#notes", null ],
       [ "See Also", "md_docs_2pages_2Formatter.html#see-also-1", null ]
     ] ],
     [ "Formatter Specialisation", "md_docs_2pages_2Logging.html", [
       [ "Message Handling", "md_docs_2pages_2Logging.html#message-handling", null ],
-      [ "Example", "md_docs_2pages_2Logging.html#example-42", null ],
-      [ "Example", "md_docs_2pages_2Logging.html#example-43", null ],
+      [ "Example", "md_docs_2pages_2Logging.html#example-44", null ],
+      [ "Example", "md_docs_2pages_2Logging.html#example-45", null ],
       [ "Notes", "md_docs_2pages_2Logging.html#notes-1", null ],
       [ "See Also", "md_docs_2pages_2Logging.html#see-also-2", null ]
     ] ],
@@ -54,11 +54,11 @@ var NAVTREE =
       [ "Compiler String", "md_docs_2pages_2Macros.html#compiler-string", null ],
       [ "Macro Expansion", "md_docs_2pages_2Macros.html#macro-expansion", null ],
       [ "Macro \"Overloading\"", "md_docs_2pages_2Macros.html#macro-overloading", [
-        [ "Example", "md_docs_2pages_2Macros.html#example-44", null ]
+        [ "Example", "md_docs_2pages_2Macros.html#example-46", null ]
       ] ],
       [ "Semantic Version Strings", "md_docs_2pages_2Macros.html#semantic-version-strings", null ],
       [ "Print Code &amp; Execute", "md_docs_2pages_2Macros.html#print-code--execute", [
-        [ "Example", "md_docs_2pages_2Macros.html#example-45", null ]
+        [ "Example", "md_docs_2pages_2Macros.html#example-47", null ]
       ] ]
     ] ],
     [ "The Stopwatch Class", "md_docs_2pages_2Stopwatch.html", [
@@ -68,7 +68,7 @@ var NAVTREE =
       [ "Timing Methods", "md_docs_2pages_2Stopwatch.html#timing-methods", null ],
       [ "Other Methods", "md_docs_2pages_2Stopwatch.html#other-methods", null ],
       [ "Output Functions", "md_docs_2pages_2Stopwatch.html#output-functions", null ],
-      [ "Example", "md_docs_2pages_2Stopwatch.html#example-46", null ]
+      [ "Example", "md_docs_2pages_2Stopwatch.html#example-48", null ]
     ] ],
     [ "Stream Utilities", "md_docs_2pages_2StreamFunctions.html", [
       [ "Readers", "md_docs_2pages_2StreamFunctions.html#readers", null ],
@@ -85,15 +85,15 @@ var NAVTREE =
         [ "Function Arguments", "md_docs_2pages_2StringFunctions.html#function-arguments", null ]
       ] ],
       [ "Extracting Values", "md_docs_2pages_2StringFunctions.html#extracting-values", [
-        [ "Example", "md_docs_2pages_2StringFunctions.html#example-47", null ]
+        [ "Example", "md_docs_2pages_2StringFunctions.html#example-49", null ]
       ] ]
     ] ],
     [ "Pretty Printing Utilities", "md_docs_2pages_2PrettyPrinting.html", [
-      [ "Example", "md_docs_2pages_2PrettyPrinting.html#example-48", null ]
+      [ "Example", "md_docs_2pages_2PrettyPrinting.html#example-50", null ]
     ] ],
     [ "Strings for Object Types", "md_docs_2pages_2TypeStrings.html", [
       [ "Rationale", "md_docs_2pages_2TypeStrings.html#rationale", null ],
-      [ "Example", "md_docs_2pages_2TypeStrings.html#example-49", null ]
+      [ "Example", "md_docs_2pages_2TypeStrings.html#example-51", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],

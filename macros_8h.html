@@ -180,7 +180,7 @@ Example</h1>
 <div class="line"><span class="keyword">auto</span> value = <a class="code hl_define" href="#a88fa737059e67b4b17ec980e5877361e">CONCAT</a>(FOO2, BAR2);</div>
 <div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(value == foofoo);</div>
 <div class="ttc" id="aassert_8h_html_a9060b56e4856b69095f94f334ae2609c"><div class="ttname"><a href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a></div><div class="ttdeci">#define assert(cond,...)</div><div class="ttdoc">An assertion macro that checks a boolean condition cond.   On failure, the assertion prints an error ...</div><div class="ttdef"><b>Definition</b> assert.h:99</div></div>
-<div class="ttc" id="amacros_8h_html_a88fa737059e67b4b17ec980e5877361e"><div class="ttname"><a href="#a88fa737059e67b4b17ec980e5877361e">CONCAT</a></div><div class="ttdeci">#define CONCAT(a, b)</div><div class="ttdoc">CONCAT concatenates two symbols making sure to fully expand those symbols if they happen to be macros...</div><div class="ttdef"><b>Definition</b> macros.h:36</div></div>
+<div class="ttc" id="amacros_8h_html_a88fa737059e67b4b17ec980e5877361e"><div class="ttname"><a href="#a88fa737059e67b4b17ec980e5877361e">CONCAT</a></div><div class="ttdeci">#define CONCAT(a, b)</div><div class="ttdoc">CONCAT concatenates two symbols making sure to fully expand those symbols if they happen to be macros...</div><div class="ttdef"><b>Definition</b> macros.h:73</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -231,8 +231,8 @@ Example</h1>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#aea5bfcf5109b5bfcc5a12c70fea6dff3">OVERLOAD</a>(<a class="code hl_define" href="#a254c7675e8b155e7b9b6da9ba4ac3cdf">RUN</a>, __VA_ARGS__)</div>
-<div class="ttc" id="amacros_8h_html_a254c7675e8b155e7b9b6da9ba4ac3cdf"><div class="ttname"><a href="#a254c7675e8b155e7b9b6da9ba4ac3cdf">RUN</a></div><div class="ttdeci">#define RUN(...)</div><div class="ttdoc">RUN prints the line of code to the console, executes it, then optionally outputs one or two results.</div><div class="ttdef"><b>Definition</b> macros.h:71</div></div>
-<div class="ttc" id="amacros_8h_html_aea5bfcf5109b5bfcc5a12c70fea6dff3"><div class="ttname"><a href="#aea5bfcf5109b5bfcc5a12c70fea6dff3">OVERLOAD</a></div><div class="ttdeci">#define OVERLOAD(macro,...)</div><div class="ttdoc">OVERLOAD makes it appear that a macro can be overloaded by the number of passed arguments.</div><div class="ttdef"><b>Definition</b> macros.h:97</div></div>
+<div class="ttc" id="amacros_8h_html_a254c7675e8b155e7b9b6da9ba4ac3cdf"><div class="ttname"><a href="#a254c7675e8b155e7b9b6da9ba4ac3cdf">RUN</a></div><div class="ttdeci">#define RUN(...)</div><div class="ttdoc">RUN prints the line of code to the console, executes it, then optionally outputs one or two results.</div><div class="ttdef"><b>Definition</b> macros.h:108</div></div>
+<div class="ttc" id="amacros_8h_html_aea5bfcf5109b5bfcc5a12c70fea6dff3"><div class="ttname"><a href="#aea5bfcf5109b5bfcc5a12c70fea6dff3">OVERLOAD</a></div><div class="ttdeci">#define OVERLOAD(macro,...)</div><div class="ttdoc">OVERLOAD makes it appear that a macro can be overloaded by the number of passed arguments.</div><div class="ttdef"><b>Definition</b> macros.h:134</div></div>
 </div><!-- fragment -->
 <p><span class="tt">RUN</span> prints the line of code to the console, executes it, then optionally outputs one or two results. </p>
 <p>This is often used in example code to show the specific line of code getting executed, possibly followed by the values of one or two variables that were changed by that code.</p>
@@ -263,7 +263,7 @@ Example</h1>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">STRINGISE_IMPL(s)</div>
+<b>Value:</b><div class="fragment"><div class="line">stringise_literal(STRINGISE_IMPL(s))</div>
 </div><!-- fragment -->
 <p><span class="tt">STRINGISE</span> invokes the pre-processor stringising operator, fully expanding any macro argument first! </p>
 <h1 class="doxsection"><a class="anchor" id="example-1"></a>
@@ -271,8 +271,8 @@ Example</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#define FOO1 &quot;abc&quot;</span></div>
 <div class="line"><span class="preprocessor">#define BAR1 FOO1</span></div>
 <div class="line"><span class="keyword">auto</span> s = <a class="code hl_define" href="#a157e503825396913a8a4b0fbfa128fed">STRINGISE</a>(BAR1);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(std::strcmp(s, <span class="stringliteral">&quot;abc&quot;</span>) == 0)</div>
-<div class="ttc" id="amacros_8h_html_a157e503825396913a8a4b0fbfa128fed"><div class="ttname"><a href="#a157e503825396913a8a4b0fbfa128fed">STRINGISE</a></div><div class="ttdeci">#define STRINGISE(s)</div><div class="ttdoc">STRINGISE invokes the pre-processor stringising operator, fully expanding any macro argument first!</div><div class="ttdef"><b>Definition</b> macros.h:23</div></div>
+<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(std::strcmp(s, <span class="stringliteral">&quot;abc&quot;</span>) == 0, <span class="stringliteral">&quot;s = {}&quot;</span>, s);</div>
+<div class="ttc" id="amacros_8h_html_a157e503825396913a8a4b0fbfa128fed"><div class="ttname"><a href="#a157e503825396913a8a4b0fbfa128fed">STRINGISE</a></div><div class="ttdeci">#define STRINGISE(s)</div><div class="ttdoc">STRINGISE invokes the pre-processor stringising operator, fully expanding any macro argument first!</div><div class="ttdef"><b>Definition</b> macros.h:60</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -291,7 +291,7 @@ Example</h1>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#aea5bfcf5109b5bfcc5a12c70fea6dff3">OVERLOAD</a>(<a class="code hl_define" href="#af866de570d5760a2adf975be6521467a">VERSION_STRING</a>, __VA_ARGS__)</div>
-<div class="ttc" id="amacros_8h_html_af866de570d5760a2adf975be6521467a"><div class="ttname"><a href="#af866de570d5760a2adf975be6521467a">VERSION_STRING</a></div><div class="ttdeci">#define VERSION_STRING(...)</div><div class="ttdoc">VERSION_STRING creates a semantic version string from 1, 2, or 3 arguments.</div><div class="ttdef"><b>Definition</b> macros.h:53</div></div>
+<div class="ttc" id="amacros_8h_html_af866de570d5760a2adf975be6521467a"><div class="ttname"><a href="#af866de570d5760a2adf975be6521467a">VERSION_STRING</a></div><div class="ttdeci">#define VERSION_STRING(...)</div><div class="ttdoc">VERSION_STRING creates a semantic version string from 1, 2, or 3 arguments.</div><div class="ttdef"><b>Definition</b> macros.h:90</div></div>
 </div><!-- fragment -->
 <p><span class="tt">VERSION_STRING</span> creates a semantic version string from 1, 2, or 3 arguments. </p>
 <h1 class="doxsection"><a class="anchor" id="example-3"></a>

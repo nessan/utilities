@@ -131,7 +131,7 @@ Message Handling</h1>
 <div class="ttc" id="aclassutilities_1_1message_html_ae06e53f22653fbf3efa4096b04858daa"><div class="ttname"><a href="classutilities_1_1message.html#ae06e53f22653fbf3efa4096b04858daa">utilities::message::handler</a></div><div class="ttdeci">static handler_type *&amp; handler()</div><div class="ttdoc">Class method that lets you set a custom message handling function.</div><div class="ttdef"><b>Definition</b> log.h:44</div></div>
 </div><!-- fragment --><p>Your handler can do whatever it likes with the messages it receives. You can revert to the default handler by calling the class method <span class="tt"><a class="el" href="classutilities_1_1message.html#aaeea3d6722bfa7b0949e3d333ae321b0" title="Class method that sets the message handler back to the default value.">utilities::message::use_default_handler()</a></span>.</p>
 <dl class="section note"><dt>Note</dt><dd>Everything here is deliberately rudimentary, with no consideration for rotating log files, etc., or for streaming efficiency. The primary use case for the macros above and the underlying <span class="tt"><a class="el" href="classutilities_1_1message.html" title="A utilities::message object captures a location where the message was created and optionally a payloa...">utilities::message</a></span> class is easily printing useful messages during the development cycle. The emphasis is on ease of use rather than great generality or speed. During the development cycle, the typical output is going to be small anyway.</dd></dl>
-<h1 class="doxsection"><a class="anchor" id="example-42"></a>
+<h1 class="doxsection"><a class="anchor" id="example-44"></a>
 Example</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="log_8h.html">utilities/log.h</a>&gt;</span></div>
 <div class="line"><span class="keywordtype">int</span> add(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)</div>
@@ -167,7 +167,7 @@ Example</h1>
 <div class="line">};</div>
 <div class="ttc" id="aconceptutilities_1_1has__to__string_html"><div class="ttname"><a href="conceptutilities_1_1has__to__string.html">utilities::has_to_string</a></div><div class="ttdoc">A concept that matches any type that has an accessible std::string to_string() const method.</div><div class="ttdef"><b>Definition</b> formatter.h:18</div></div>
 </div><!-- fragment --><p>We then specialised <a href="https://en.cppreference.com/w/cpp/utility/format/formatter"><span class="tt">std::formatter</span></a> to work with <em>any</em> <span class="tt">has_to_string</span> compatible class.</p>
-<h1 class="doxsection"><a class="anchor" id="example-43"></a>
+<h1 class="doxsection"><a class="anchor" id="example-45"></a>
 Example</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="formatter_8h.html">utilities/formatter.h</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;print&gt;</span></div>

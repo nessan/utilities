@@ -25,7 +25,7 @@ All non-macro functionality is in the `utilities` namespace.
 | [Types][]      | `type.h`      | Provides the function `utilities::type`, which returns a string for a type.                                                            |
 
 > [!WARNING]
-> Microsoft's old traditional preprocessor is not happy with some of our macros, but its newer, cross-platform-compatible one is fine. <br>
+> Microsoft's old traditional preprocessor is not happy with some of our macros, but its newer, cross-platform-compatible one is fine.
 > Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 > Our `CMake` module `compiler_init` does that automatically for you.
 

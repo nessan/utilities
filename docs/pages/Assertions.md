@@ -134,7 +134,7 @@ For example, if you are equality testing between two `std::pair` variables.
 You can often get around any issues by the judicious use of parentheses, but it is something to be aware of if you start to see weird compiler errors.
 
 > [!WARNING]
-> Microsoft's old traditional preprocessor is unhappy with some of our macros, but its newer, cross-platform-compatible one is fine. <br>
+> Microsoft's old traditional preprocessor is not happy with some of our macros, but its newer, cross-platform-compatible one is fine.
 > Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 > Our `CMake` module `compiler_init` does that automatically for you.
 

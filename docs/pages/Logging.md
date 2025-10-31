@@ -14,7 +14,7 @@ The message payload can be anything that works for the facilities in [`std::form
 The default message handler prints the source code location if there is no payload.
 
 > [!WARNING]
-Microsoft's old traditional preprocessor is unhappy with some of our macros, but its newer, cross-platform-compatible one is fine. <br>
+Microsoft's old traditional preprocessor is unhappy with some of our macros, but its newer, cross-platform-compatible one is fine.
 > Add the `/Zc:preprocessor` flag to use that upgrade at compile time.
 > Our `CMake` module `compiler_init` does that automatically for you.
 

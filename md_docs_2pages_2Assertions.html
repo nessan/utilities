@@ -191,8 +191,7 @@ The "Standard" Versions</h2>
 Why Macros?</h1>
 <p>The main reason we use macros instead of a function is that we need to stringify the assertion condition and assertion arguments to produce a helpful message if the assertion fails.</p>
 <p>WARNING: Macros can depend on comma placement to separate arguments, which can be a gotcha in some cases. For example, if you are equality testing between two <span class="tt">std::pair</span> variables. You can often get around any issues by the judicious use of parentheses, but it is something to be aware of if you start to see weird compiler errors.</p>
-<dl class="section warning"><dt>Warning</dt><dd>Microsoft's old traditional preprocessor is unhappy with some of our macros, but its newer, cross-platform-compatible one is fine. <br  />
- Add the <span class="tt">/Zc:preprocessor</span> flag to use that upgrade at compile time. Our <span class="tt">CMake</span> module <span class="tt">compiler_init</span> does that automatically for you.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Microsoft's old traditional preprocessor is not happy with some of our macros, but its newer, cross-platform-compatible one is fine. Add the <span class="tt">/Zc:preprocessor</span> flag to use that upgrade at compile time. Our <span class="tt">CMake</span> module <span class="tt">compiler_init</span> does that automatically for you.</dd></dl>
 <h1 class="doxsection"><a class="anchor" id="see-also"></a>
 See Also</h1>
 <p><a href="https://en.cppreference.com/w/cpp/error/assert.html">standard assert</a> </p>

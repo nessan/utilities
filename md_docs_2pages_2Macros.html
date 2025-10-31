@@ -110,8 +110,7 @@ $(function(){initNavTree('md_docs_2pages_2Macros.html','',''); });
 <div class="textblock"><p><a class="anchor" id="macros"></a></p>
 <p>The header <span class="tt">&lt;<a class="el" href="macros_8h.html" title="Several useful and generally well known macros.   See the Macros page for all the details.">utilities/macros.h</a>&gt;</span> defines a set of generally useful macros.</p>
 <p>These include the <span class="tt">OVERLOAD</span> macro, which implements a well-known trick to "overload" any macro based on the number of passed arguments. See [overloading] below.</p>
-<dl class="section warning"><dt>Warning</dt><dd>Microsoft's old traditional preprocessor is unhappy with some of our macros, but its newer, cross-platform-compatible one is fine. <br  />
- Add the <span class="tt">/Zc:preprocessor</span> flag to use that upgrade at compile time. Our <span class="tt">CMake</span> module <span class="tt">compiler_init</span> does that automatically for you.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Microsoft's old traditional preprocessor is unhappy with some of our macros, but its newer, cross-platform-compatible one is fine. Add the <span class="tt">/Zc:preprocessor</span> flag to use that upgrade at compile time. Our <span class="tt">CMake</span> module <span class="tt">compiler_init</span> does that automatically for you.</dd></dl>
 <h1 class="doxsection"><a class="anchor" id="compiler-string"></a>
 Compiler String</h1>
 <p>The macro</p>

@@ -289,8 +289,8 @@ template&lt;typename T&gt; </td></tr>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello,   World!  &quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#aca18061e04afe6b054874177db40ad3e">utilities::condense</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
-<div class="ttc" id="aassert_8h_html_a1e004ef6e7738c9d34212af5ddfdce54"><div class="ttname"><a href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a></div><div class="ttdeci">#define assert_eq(lhs, rhs,...)</div><div class="ttdoc">An assertion macro that checks the equality of two values lhs and rhs.   On failure,...</div><div class="ttdef"><b>Definition</b> assert.h:114</div></div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="ttc" id="aattest_8h_html_a75606dcd2abd162ac02ae7e66b3c6320"><div class="ttname"><a href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a></div><div class="ttdeci">#define attest_eq(lhs, rhs,...)</div><div class="ttdoc">An attestion macro that checks the equality of two values lhs and rhs.   On failure,...</div><div class="ttdef"><b>Definition</b> attest.h:114</div></div>
 <div class="ttc" id="anamespaceutilities_html_aca18061e04afe6b054874177db40ad3e"><div class="ttname"><a href="#aca18061e04afe6b054874177db40ad3e">utilities::condense</a></div><div class="ttdeci">void condense(std::string &amp;s, bool also_trim=true)</div><div class="ttdoc">Condense contiguous white space sequences in a string in-place.</div><div class="ttdef"><b>Definition</b> string.h:224</div></div>
 </div><!-- fragment --> 
 </div>
@@ -328,7 +328,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello,   World!  &quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> condensed_str = <a class="code hl_function" href="#aad7e82d67abde45269e04b260e3f941b">utilities::condensed</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(condensed_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(condensed_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_aad7e82d67abde45269e04b260e3f941b"><div class="ttname"><a href="#aad7e82d67abde45269e04b260e3f941b">utilities::condensed</a></div><div class="ttdeci">std::string condensed(std::string_view input, bool also_trim=true)</div><div class="ttdoc">Returns a copy of the input with all contiguous white space sequences replaced with one space.</div><div class="ttdef"><b>Definition</b> string.h:516</div></div>
 </div><!-- fragment --> 
 </div>
@@ -365,7 +365,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><span class="keywordtype">bool</span> ends_with_world = <a class="code hl_function" href="#a05eccf065308260954365df2d30cb7f2">utilities::ends_with</a>(str, <span class="stringliteral">&quot;World!&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(ends_with_world, <span class="keyword">true</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(ends_with_world, <span class="keyword">true</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a05eccf065308260954365df2d30cb7f2"><div class="ttname"><a href="#a05eccf065308260954365df2d30cb7f2">utilities::ends_with</a></div><div class="ttdeci">bool ends_with(std::string_view str, std::string_view suffix)</div><div class="ttdoc">Check if a string ends with a particular suffix string.</div><div class="ttdef"><b>Definition</b> string.h:635</div></div>
 </div><!-- fragment --> 
 </div>
@@ -402,7 +402,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#a8a28d2664aa38b7605a166246320b467">utilities::erase</a>(str, <span class="stringliteral">&quot;def&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;abcghijklmnopqrstuvwxyz&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;abcghijklmnopqrstuvwxyz&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a8a28d2664aa38b7605a166246320b467"><div class="ttname"><a href="#a8a28d2664aa38b7605a166246320b467">utilities::erase</a></div><div class="ttdeci">void erase(std::string &amp;str, std::string_view target)</div><div class="ttdoc">Erase all occurrences of a target substring.</div><div class="ttdef"><b>Definition</b> string.h:268</div></div>
 </div><!-- fragment --> 
 </div>
@@ -439,7 +439,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#aa724c9cffe788e8868d635884e95f2b6">utilities::erase_left</a>(str, <span class="stringliteral">&quot;World&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello, !&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello, !&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_aa724c9cffe788e8868d635884e95f2b6"><div class="ttname"><a href="#aa724c9cffe788e8868d635884e95f2b6">utilities::erase_left</a></div><div class="ttdeci">void erase_left(std::string &amp;str, std::string_view target)</div><div class="ttdoc">Erase the first occurrence of a target substring.</div><div class="ttdef"><b>Definition</b> string.h:238</div></div>
 </div><!-- fragment --> 
 </div>
@@ -476,7 +476,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#ad80e303571d8fe6e747756bcd2886724">utilities:: erase_right</a>(str, <span class="stringliteral">&quot;World&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello, !&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello, !&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_ad80e303571d8fe6e747756bcd2886724"><div class="ttname"><a href="#ad80e303571d8fe6e747756bcd2886724">utilities::erase_right</a></div><div class="ttdeci">void erase_right(std::string &amp;str, std::string_view target)</div><div class="ttdoc">Erase the last occurrence of a target substring.</div><div class="ttdef"><b>Definition</b> string.h:253</div></div>
 </div><!-- fragment --> 
 </div>
@@ -513,7 +513,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> erased_str = <a class="code hl_function" href="#af3bc3f01ac30022034620e5099bdbcef">utilities::erased</a>(str, <span class="stringliteral">&quot;def&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(erased_str, <span class="stringliteral">&quot;abcghijklmnopqrstuvwxyz&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(erased_str, <span class="stringliteral">&quot;abcghijklmnopqrstuvwxyz&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_af3bc3f01ac30022034620e5099bdbcef"><div class="ttname"><a href="#af3bc3f01ac30022034620e5099bdbcef">utilities::erased</a></div><div class="ttdeci">std::string erased(std::string_view input, std::string_view target)</div><div class="ttdoc">Returns a new string that is a copy of the input with the all occurrence of a target substring erased...</div><div class="ttdef"><b>Definition</b> string.h:564</div></div>
 </div><!-- fragment --> 
 </div>
@@ -550,7 +550,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> erased_left_str = <a class="code hl_function" href="#a929059be3b219dcef55125db7de32894">utilities::erased_left</a>(str, <span class="stringliteral">&quot;World&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(erased_left_str, <span class="stringliteral">&quot;Hello, !&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(erased_left_str, <span class="stringliteral">&quot;Hello, !&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a929059be3b219dcef55125db7de32894"><div class="ttname"><a href="#a929059be3b219dcef55125db7de32894">utilities::erased_left</a></div><div class="ttdeci">std::string erased_left(std::string_view input, std::string_view target)</div><div class="ttdoc">Returns a new string that is a copy of the input with the first occurrence of a target substring eras...</div><div class="ttdef"><b>Definition</b> string.h:532</div></div>
 </div><!-- fragment --> 
 </div>
@@ -587,7 +587,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> erased_right_str = <a class="code hl_function" href="#ad267c481087b95cd828297daa8850511">utilities::erased_right</a>(str, <span class="stringliteral">&quot;World&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(erased_right_str, <span class="stringliteral">&quot;Hello, !&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(erased_right_str, <span class="stringliteral">&quot;Hello, !&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_ad267c481087b95cd828297daa8850511"><div class="ttname"><a href="#ad267c481087b95cd828297daa8850511">utilities::erased_right</a></div><div class="ttdeci">std::string erased_right(std::string_view input, std::string_view target)</div><div class="ttdoc">Returns a new string that is a copy of the input with the last occurrence of a target substring erase...</div><div class="ttdef"><b>Definition</b> string.h:548</div></div>
 </div><!-- fragment --> 
 </div>
@@ -776,7 +776,7 @@ template&lt;std::input_iterator InputIt, std::forward_iterator ForwardIt, typena
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;HELLO, WORLD!&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#a0d76497444815267a22e6d6ede76a082">utilities::lower_case</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;hello, world!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;hello, world!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a0d76497444815267a22e6d6ede76a082"><div class="ttname"><a href="#a0d76497444815267a22e6d6ede76a082">utilities::lower_case</a></div><div class="ttdeci">void lower_case(std::string &amp;str)</div><div class="ttdoc">Converts a string to lower case in place.</div><div class="ttdef"><b>Definition</b> string.h:93</div></div>
 </div><!-- fragment --> 
 </div>
@@ -810,7 +810,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> lower_str = <a class="code hl_function" href="#aae3bc1c9f09aada8d76f5a112cd37d4d">utilities::lower_cased</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(lower_str, <span class="stringliteral">&quot;hello, world!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(lower_str, <span class="stringliteral">&quot;hello, world!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_aae3bc1c9f09aada8d76f5a112cd37d4d"><div class="ttname"><a href="#aae3bc1c9f09aada8d76f5a112cd37d4d">utilities::lower_cased</a></div><div class="ttdeci">std::string lower_cased(std::string_view input)</div><div class="ttdoc">Returns a new string that is a copy of the input converted to lower case.</div><div class="ttdef"><b>Definition</b> string.h:381</div></div>
 </div><!-- fragment --> 
 </div>
@@ -884,7 +884,7 @@ template&lt;typename T&gt; </div>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;123.456&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> x = <a class="code hl_function" href="#a2fd6696fd2142797b0a4a48350e4fa2a">utilities::possible&lt;double&gt;</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(*x, 123.456);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(*x, 123.456);</div>
 <div class="ttc" id="anamespaceutilities_html_a2fd6696fd2142797b0a4a48350e4fa2a"><div class="ttname"><a href="#a2fd6696fd2142797b0a4a48350e4fa2a">utilities::possible</a></div><div class="ttdeci">constexpr std::optional&lt; T &gt; possible(std::string_view in, const char **next=nullptr)</div><div class="ttdoc">Try to read a value of a particular type from a string.</div><div class="ttdef"><b>Definition</b> string.h:653</div></div>
 </div><!-- fragment --> 
 </div>
@@ -918,7 +918,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line"><a class="code hl_function" href="#a649697548a75ed9fe1fe877ca3b17764">utilities::pretty_print_thousands</a>();</div>
 <div class="line"><span class="keyword">auto</span> x_str = std::format(<span class="stringliteral">&quot;x = {:L}&quot;</span>, 123456789.9);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(x_str, <span class="stringliteral">&quot;x = 123,456,789.9&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(x_str, <span class="stringliteral">&quot;x = 123,456,789.9&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a649697548a75ed9fe1fe877ca3b17764"><div class="ttname"><a href="#a649697548a75ed9fe1fe877ca3b17764">utilities::pretty_print_thousands</a></div><div class="ttdeci">void pretty_print_thousands(bool on=true)</div><div class="ttdoc">Force the global locale &amp; the usual output streams to insert commas into large numbers.</div><div class="ttdef"><b>Definition</b> thousands.h:64</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1063,7 +1063,7 @@ template&lt;typename Iter, typename Traits, typename CharT, typename UnaryFuncti
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;(Hello, World!)&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#a542ea5b25675261b8e55edb44d1a8744">utilities::remove_surrounds</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a542ea5b25675261b8e55edb44d1a8744"><div class="ttname"><a href="#a542ea5b25675261b8e55edb44d1a8744">utilities::remove_surrounds</a></div><div class="ttdeci">void remove_surrounds(std::string &amp;s)</div><div class="ttdoc">Removes &quot;surrounds&quot; from a string in-place so for example: (text) -&gt; text.</div><div class="ttdef"><b>Definition</b> string.h:286</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1100,7 +1100,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;(Hello, World!)&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> removed_surrounds_str = <a class="code hl_function" href="#a3608564aad66eee9de92bb7509484085">utilities::removed_surrounds</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(removed_surrounds_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(removed_surrounds_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a3608564aad66eee9de92bb7509484085"><div class="ttname"><a href="#a3608564aad66eee9de92bb7509484085">utilities::removed_surrounds</a></div><div class="ttdeci">std::string removed_surrounds(std::string_view input)</div><div class="ttdoc">Returns a new string that is a copy of the input with &quot;surrounds&quot; stripped from it.</div><div class="ttdef"><b>Definition</b> string.h:583</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1142,7 +1142,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World! Hello, Universe!&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#ad48cd31e4c400a9ddacc306a0920f353">utilities::replace</a>(str, <span class="stringliteral">&quot;Hello&quot;</span>, <span class="stringliteral">&quot;Goodbye&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Goodbye, World! Goodbye, Universe!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Goodbye, World! Goodbye, Universe!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_ad48cd31e4c400a9ddacc306a0920f353"><div class="ttname"><a href="#ad48cd31e4c400a9ddacc306a0920f353">utilities::replace</a></div><div class="ttdeci">void replace(std::string &amp;str, std::string_view target, std::string_view replacement)</div><div class="ttdoc">Replace all occurrences of a target substring with some other string in-place.</div><div class="ttdef"><b>Definition</b> string.h:182</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1184,7 +1184,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#adfde3e647978b463bc43fba1ef2bb9bd">utilities::replace_left</a>(str, <span class="stringliteral">&quot;World&quot;</span>, <span class="stringliteral">&quot;Universe&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello, Universe!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello, Universe!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_adfde3e647978b463bc43fba1ef2bb9bd"><div class="ttname"><a href="#adfde3e647978b463bc43fba1ef2bb9bd">utilities::replace_left</a></div><div class="ttdeci">void replace_left(std::string &amp;str, std::string_view target, std::string_view replacement)</div><div class="ttdoc">Replace the first occurrence of a target substring with some other string in-place.</div><div class="ttdef"><b>Definition</b> string.h:152</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1226,7 +1226,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#a1e6899ac81d2c7d3a9d8415a3bf3a8a2">utilities::replace_right</a>(str, <span class="stringliteral">&quot;World&quot;</span>, <span class="stringliteral">&quot;Universe&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello, Universe!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello, Universe!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a1e6899ac81d2c7d3a9d8415a3bf3a8a2"><div class="ttname"><a href="#a1e6899ac81d2c7d3a9d8415a3bf3a8a2">utilities::replace_right</a></div><div class="ttdeci">void replace_right(std::string &amp;str, std::string_view target, std::string_view replacement)</div><div class="ttdoc">Replace the final occurrence of a target substring with some other string in-place.</div><div class="ttdef"><b>Definition</b> string.h:167</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1270,7 +1270,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;    Hello   World!  &quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#a695c671cef91196110964193a1d29802">utilities::replace_space</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a695c671cef91196110964193a1d29802"><div class="ttname"><a href="#a695c671cef91196110964193a1d29802">utilities::replace_space</a></div><div class="ttdeci">void replace_space(std::string &amp;s, const std::string &amp;with=&quot; &quot;, bool also_trim=true)</div><div class="ttdoc">Replace all contiguous white space sequences in a string in-place.</div><div class="ttdef"><b>Definition</b> string.h:205</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1312,7 +1312,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello World! Hello Universe!&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> replaced_str = <a class="code hl_function" href="#aa95bef3aec8ca74fa0427948ca8ba36f">utilities::replaced</a>(str, <span class="stringliteral">&quot;Hello&quot;</span>, <span class="stringliteral">&quot;Goodbye&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(replaced_str, <span class="stringliteral">&quot;Goodbye World! Goodbye Universe!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(replaced_str, <span class="stringliteral">&quot;Goodbye World! Goodbye Universe!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_aa95bef3aec8ca74fa0427948ca8ba36f"><div class="ttname"><a href="#aa95bef3aec8ca74fa0427948ca8ba36f">utilities::replaced</a></div><div class="ttdeci">std::string replaced(std::string_view input, std::string_view target, std::string_view replacement)</div><div class="ttdoc">Returns a new string that is a copy of the input with all occurrences of a target substring replaced.</div><div class="ttdef"><b>Definition</b> string.h:477</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1354,7 +1354,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> replaced_str = <a class="code hl_function" href="#af5de5e0b7e9d8b36a6ec0c32e4926c2f">utilities::replaced_left</a>(str, <span class="stringliteral">&quot;World&quot;</span>, <span class="stringliteral">&quot;Universe&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(replaced_str, <span class="stringliteral">&quot;Hello, Universe!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(replaced_str, <span class="stringliteral">&quot;Hello, Universe!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_af5de5e0b7e9d8b36a6ec0c32e4926c2f"><div class="ttname"><a href="#af5de5e0b7e9d8b36a6ec0c32e4926c2f">utilities::replaced_left</a></div><div class="ttdeci">std::string replaced_left(std::string_view input, std::string_view target, std::string_view replacement)</div><div class="ttdoc">Returns a new string that is a copy of the input with the first occurrence of a target substring repl...</div><div class="ttdef"><b>Definition</b> string.h:445</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1396,7 +1396,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> replaced_str = <a class="code hl_function" href="#a64d5ab8a5e9c36ca8a7315165a8b6099">utilities::replaced_right</a>(str, <span class="stringliteral">&quot;World&quot;</span>, <span class="stringliteral">&quot;Universe&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(replaced_str, <span class="stringliteral">&quot;Hello, Universe!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(replaced_str, <span class="stringliteral">&quot;Hello, Universe!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a64d5ab8a5e9c36ca8a7315165a8b6099"><div class="ttname"><a href="#a64d5ab8a5e9c36ca8a7315165a8b6099">utilities::replaced_right</a></div><div class="ttdeci">std::string replaced_right(std::string_view input, std::string_view target, std::string_view replacement)</div><div class="ttdoc">Returns a new string that is a copy of the input with the final occurrence of a target substring repl...</div><div class="ttdef"><b>Definition</b> string.h:461</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1442,7 +1442,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;  Hello    World!  &quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> replaced_space_str = <a class="code hl_function" href="#a1e909ee573a128481281b8181774a669">utilities::replaced_space</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(replaced_space_str, <span class="stringliteral">&quot;Hello World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(replaced_space_str, <span class="stringliteral">&quot;Hello World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a1e909ee573a128481281b8181774a669"><div class="ttname"><a href="#a1e909ee573a128481281b8181774a669">utilities::replaced_space</a></div><div class="ttdeci">std::string replaced_space(std::string_view input, const std::string &amp;with=&quot; &quot;, bool also_trim=true)</div><div class="ttdoc">Returns a new string that is a copy of the input with all contiguous white space sequences replaced.</div><div class="ttdef"><b>Definition</b> string.h:497</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1489,7 +1489,7 @@ Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> tokens = <a class="code hl_function" href="#a6f271f75b70c6f292e45809278df6f99">utilities::split</a>(str);</div>
 <div class="line">std::vector&lt;std::string&gt; expected = {<span class="stringliteral">&quot;Hello&quot;</span>, <span class="stringliteral">&quot;World&quot;</span>};</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(tokens, expected);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(tokens, expected);</div>
 <div class="ttc" id="anamespaceutilities_html_a6f271f75b70c6f292e45809278df6f99"><div class="ttname"><a href="#a6f271f75b70c6f292e45809278df6f99">utilities::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(std::string_view input, std::string_view delimiters=&quot;\t,;: &quot;, bool skip=true)</div><div class="ttdoc">Tokenize a string and return the tokens as a vector of strings.</div><div class="ttdef"><b>Definition</b> string.h:727</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1522,7 +1522,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;[ hallo   world ]  &quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#ab2b25a444d3777c7b1cb8641aaa5c17a">utilities::standardize</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;HALLO WORLD&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;HALLO WORLD&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_ab2b25a444d3777c7b1cb8641aaa5c17a"><div class="ttname"><a href="#ab2b25a444d3777c7b1cb8641aaa5c17a">utilities::standardize</a></div><div class="ttdeci">void standardize(std::string &amp;s)</div><div class="ttdoc">&quot;Standardize&quot; a string – turns &quot;[ hallo   world ]  &quot; or &quot;   Hallo World&quot; into &quot;HALLO WORLD&quot;</div><div class="ttdef"><b>Definition</b> string.h:339</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1556,7 +1556,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;[ hallo world ]&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> standardized_str = <a class="code hl_function" href="#af6af8740a5d7edd1ef813711ffb5ed2d">utilities::standardized</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(standardized_str, <span class="stringliteral">&quot;HALLO WORLD&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(standardized_str, <span class="stringliteral">&quot;HALLO WORLD&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_af6af8740a5d7edd1ef813711ffb5ed2d"><div class="ttname"><a href="#af6af8740a5d7edd1ef813711ffb5ed2d">utilities::standardized</a></div><div class="ttdeci">std::string standardized(std::string_view input)</div><div class="ttdoc">Returns a &quot;standardized&quot; string that is a copy of the input.</div><div class="ttdef"><b>Definition</b> string.h:601</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1593,7 +1593,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><span class="keywordtype">bool</span> starts_with_hello = <a class="code hl_function" href="#a557f01b34e80352bfcb8b48220aa2f5f">utilities::starts_with</a>(str, <span class="stringliteral">&quot;Hello&quot;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(starts_with_hello, <span class="keyword">true</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(starts_with_hello, <span class="keyword">true</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a557f01b34e80352bfcb8b48220aa2f5f"><div class="ttname"><a href="#a557f01b34e80352bfcb8b48220aa2f5f">utilities::starts_with</a></div><div class="ttdeci">bool starts_with(std::string_view str, std::string_view prefix)</div><div class="ttdoc">Check if a string starts with a particular prefix string.</div><div class="ttdef"><b>Definition</b> string.h:621</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1625,12 +1625,12 @@ Example</h1>
 <p>Faster than the standard C-library <span class="tt">tolower(...)</span> function but only works for ASCII characters.</p>
 <h1 class="doxsection"><a class="anchor" id="example-5"></a>
 Example</h1>
-<div class="fragment"><div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;A&#39;</span>) == <span class="charliteral">&#39;a&#39;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;Z&#39;</span>) == <span class="charliteral">&#39;z&#39;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;a&#39;</span>) == <span class="charliteral">&#39;a&#39;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;z&#39;</span>) == <span class="charliteral">&#39;z&#39;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;=&#39;</span>) == <span class="charliteral">&#39;=&#39;</span>);</div>
-<div class="ttc" id="aassert_8h_html_a9060b56e4856b69095f94f334ae2609c"><div class="ttname"><a href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a></div><div class="ttdeci">#define assert(cond,...)</div><div class="ttdoc">An assertion macro that checks a boolean condition cond.   On failure, the assertion prints an error ...</div><div class="ttdef"><b>Definition</b> assert.h:99</div></div>
+<div class="fragment"><div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;A&#39;</span>) == <span class="charliteral">&#39;a&#39;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;Z&#39;</span>) == <span class="charliteral">&#39;z&#39;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;a&#39;</span>) == <span class="charliteral">&#39;a&#39;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;z&#39;</span>) == <span class="charliteral">&#39;z&#39;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a>(<span class="charliteral">&#39;=&#39;</span>) == <span class="charliteral">&#39;=&#39;</span>);</div>
+<div class="ttc" id="aattest_8h_html_a77dc3ca60af24729f7c0605f845026a4"><div class="ttname"><a href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a></div><div class="ttdeci">#define attest(cond,...)</div><div class="ttdoc">An attestion macro that checks a boolean condition cond.   On failure, the attestion prints an error ...</div><div class="ttdef"><b>Definition</b> attest.h:99</div></div>
 <div class="ttc" id="anamespaceutilities_html_a5df0fc6741ea26768c08dd303a3a40c7"><div class="ttname"><a href="#a5df0fc6741ea26768c08dd303a3a40c7">utilities::to_lower</a></div><div class="ttdeci">constexpr char32_t to_lower(char32_t cp) noexcept</div><div class="ttdoc">Converts a wide character to its lower case equivalent if it is a uppercase letter.</div><div class="ttdef"><b>Definition</b> string.h:57</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1662,11 +1662,11 @@ Example</h1>
 <p>Faster than the standard C-library <span class="tt">toupper(...)</span> function but only works for ASCII characters.</p>
 <h1 class="doxsection"><a class="anchor" id="example-4"></a>
 Example</h1>
-<div class="fragment"><div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;a&#39;</span>) == <span class="charliteral">&#39;A&#39;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;z&#39;</span>) == <span class="charliteral">&#39;Z&#39;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;A&#39;</span>) == <span class="charliteral">&#39;A&#39;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;Z&#39;</span>) == <span class="charliteral">&#39;Z&#39;</span>);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;=&#39;</span>) == <span class="charliteral">&#39;=&#39;</span>);</div>
+<div class="fragment"><div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;a&#39;</span>) == <span class="charliteral">&#39;A&#39;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;z&#39;</span>) == <span class="charliteral">&#39;Z&#39;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;A&#39;</span>) == <span class="charliteral">&#39;A&#39;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;Z&#39;</span>) == <span class="charliteral">&#39;Z&#39;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(<a class="code hl_function" href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a>(<span class="charliteral">&#39;=&#39;</span>) == <span class="charliteral">&#39;=&#39;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a8604af1dfa966e206ab9e92b65db8e9e"><div class="ttname"><a href="#a8604af1dfa966e206ab9e92b65db8e9e">utilities::to_upper</a></div><div class="ttdeci">constexpr char32_t to_upper(char32_t cp) noexcept</div><div class="ttdoc">Converts a wide character to its upper case equivalent if it is a lowercase letter.</div><div class="ttdef"><b>Definition</b> string.h:39</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1722,7 +1722,7 @@ Example</h1>
 <div class="line">std::vector&lt;std::string&gt; tokens;</div>
 <div class="line"><a class="code hl_function" href="#adf6c468215492825be0934b8142a23b4">utilities::tokenize</a>(str, tokens);</div>
 <div class="line">std::vector&lt;std::string&gt; expected = {<span class="stringliteral">&quot;Hello&quot;</span>, <span class="stringliteral">&quot;World&quot;</span>};</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(tokens, expected);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(tokens, expected);</div>
 <div class="ttc" id="anamespaceutilities_html_adf6c468215492825be0934b8142a23b4"><div class="ttname"><a href="#adf6c468215492825be0934b8142a23b4">utilities::tokenize</a></div><div class="ttdeci">constexpr void tokenize(std::string_view input, Container_t &amp;output, std::string_view delimiters=&quot;\t,;: &quot;, bool skip=true)</div><div class="ttdoc">Tokenize a string and put the tokens into the supplied output container.</div><div class="ttdef"><b>Definition</b> string.h:701</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1755,7 +1755,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;  Hello, World!  &quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#a719a1a3853f1a738adf5e36a7e3494c1">utilities::trim</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a719a1a3853f1a738adf5e36a7e3494c1"><div class="ttname"><a href="#a719a1a3853f1a738adf5e36a7e3494c1">utilities::trim</a></div><div class="ttdeci">void trim(std::string &amp;str)</div><div class="ttdoc">Removes all leading &amp; trailing white-space from a string in-place.</div><div class="ttdef"><b>Definition</b> string.h:137</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1788,7 +1788,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;  Hello, World!&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#a9dadb378173fafc9a3dff52bb44a8865">utilities::trim_left</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a9dadb378173fafc9a3dff52bb44a8865"><div class="ttname"><a href="#a9dadb378173fafc9a3dff52bb44a8865">utilities::trim_left</a></div><div class="ttdeci">void trim_left(std::string &amp;str)</div><div class="ttdoc">Removes any leading white-space from a string in-place.</div><div class="ttdef"><b>Definition</b> string.h:109</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1821,7 +1821,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!  &quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#ad0bdc582b6e39f92a87d9970293f3570">utilities::trim_right</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_ad0bdc582b6e39f92a87d9970293f3570"><div class="ttname"><a href="#ad0bdc582b6e39f92a87d9970293f3570">utilities::trim_right</a></div><div class="ttdeci">void trim_right(std::string &amp;str)</div><div class="ttdoc">Remove any trailing white-space from a string in-place.</div><div class="ttdef"><b>Definition</b> string.h:123</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1854,7 +1854,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;  Hello, World!  &quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> trimmed_str = <a class="code hl_function" href="#a089d50f62362624e1c862cb663e5cfac">utilities::trimmed</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(trimmed_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(trimmed_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a089d50f62362624e1c862cb663e5cfac"><div class="ttname"><a href="#a089d50f62362624e1c862cb663e5cfac">utilities::trimmed</a></div><div class="ttdeci">std::string trimmed(std::string_view input)</div><div class="ttdoc">Returns a new string that is a copy of the input with all leading and trailing white-space removed.</div><div class="ttdef"><b>Definition</b> string.h:429</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1887,7 +1887,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;  Hello, World!&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> trimmed_left_str = <a class="code hl_function" href="#a8090bcb66424ef78733861522af6e534">utilities::trimmed_left</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(trimmed_left_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(trimmed_left_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a8090bcb66424ef78733861522af6e534"><div class="ttname"><a href="#a8090bcb66424ef78733861522af6e534">utilities::trimmed_left</a></div><div class="ttdeci">std::string trimmed_left(std::string_view input)</div><div class="ttdoc">Returns a new string that is a copy of the input with leading white-space removed.</div><div class="ttdef"><b>Definition</b> string.h:397</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1920,7 +1920,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!  &quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> trimmed_right_str = <a class="code hl_function" href="#a26d360443be2aed750f2540d2f01dce2">utilities::trimmed_right</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(trimmed_right_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(trimmed_right_str, <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a26d360443be2aed750f2540d2f01dce2"><div class="ttname"><a href="#a26d360443be2aed750f2540d2f01dce2">utilities::trimmed_right</a></div><div class="ttdeci">std::string trimmed_right(std::string_view input)</div><div class="ttdoc">Returns a new string that is a copy of the input with trailing white-space removed.</div><div class="ttdef"><b>Definition</b> string.h:413</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1954,7 +1954,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><a class="code hl_function" href="#a0b107eecd6cdf4127782b997b4c3e51c">utilities::upper_case</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(str, <span class="stringliteral">&quot;HELLO, WORLD!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(str, <span class="stringliteral">&quot;HELLO, WORLD!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a0b107eecd6cdf4127782b997b4c3e51c"><div class="ttname"><a href="#a0b107eecd6cdf4127782b997b4c3e51c">utilities::upper_case</a></div><div class="ttdeci">void upper_case(std::string &amp;str)</div><div class="ttdoc">Converts a string to upper case in-place.</div><div class="ttdef"><b>Definition</b> string.h:74</div></div>
 </div><!-- fragment --> 
 </div>
@@ -1988,7 +1988,7 @@ Example</h1>
 Example</h1>
 <div class="fragment"><div class="line">std::string str = <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
 <div class="line"><span class="keyword">auto</span> upper_str = <a class="code hl_function" href="#a3a84cca149c1daa5565c68c12e2faced">utilities::upper_cased</a>(str);</div>
-<div class="line"><a class="code hl_define" href="assert_8h.html#a1e004ef6e7738c9d34212af5ddfdce54">assert_eq</a>(upper_str, <span class="stringliteral">&quot;HELLO, WORLD!&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(upper_str, <span class="stringliteral">&quot;HELLO, WORLD!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_a3a84cca149c1daa5565c68c12e2faced"><div class="ttname"><a href="#a3a84cca149c1daa5565c68c12e2faced">utilities::upper_cased</a></div><div class="ttdeci">std::string upper_cased(std::string_view input)</div><div class="ttdoc">Returns a new string that is a copy of the input converted to upper case.</div><div class="ttdef"><b>Definition</b> string.h:363</div></div>
 </div><!-- fragment --> 
 </div>

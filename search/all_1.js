@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['boolean_20assertions_0',['Boolean Assertions',['../md_docs_2pages_2Assertions.html#boolean-assertions',1,'']]]
+  ['boolean_20checks_0',['Boolean Checks',['../md_docs_2pages_2Attestations.html#boolean-checks',1,'']]]
 ];

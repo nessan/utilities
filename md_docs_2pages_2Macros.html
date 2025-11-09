@@ -115,7 +115,7 @@ $(function(){initNavTree('md_docs_2pages_2Macros.html','',''); });
 Compiler String</h1>
 <p>The macro</p>
 <div class="fragment"><div class="line"><a class="code hl_define" href="macros_8h.html#af3c0501ced5546c9b30728cfad7df3f6">COMPILER_NAME</a></div>
-<div class="ttc" id="amacros_8h_html_af3c0501ced5546c9b30728cfad7df3f6"><div class="ttname"><a href="macros_8h.html#af3c0501ced5546c9b30728cfad7df3f6">COMPILER_NAME</a></div><div class="ttdeci">#define COMPILER_NAME</div><div class="ttdoc">COMPILER_NAME is a macro that expands to the current compiler name &amp; version as a string.</div><div class="ttdef"><b>Definition</b> macros.h:152</div></div>
+<div class="ttc" id="amacros_8h_html_af3c0501ced5546c9b30728cfad7df3f6"><div class="ttname"><a href="macros_8h.html#af3c0501ced5546c9b30728cfad7df3f6">COMPILER_NAME</a></div><div class="ttdeci">#define COMPILER_NAME</div><div class="ttdoc">COMPILER_NAME is a macro that expands to the current compiler name &amp; version as a string.</div><div class="ttdef"><b>Definition</b> macros.h:154</div></div>
 </div><!-- fragment --><p>expands to a string that encodes the compiler's name and version.</p>
 <p>Test code can use the macro to annotate results. We only support the usual three compiler suspects —<span class="tt">gcc</span>, <span class="tt">clang</span>, and <span class="tt">MSVC</span> —but adding more <a href="https://github.com/cpredef/predef/blob/master/Compilers.md">compilers</a> is not difficult.</p>
 <p>One of the examples below uses this macro.</p>
@@ -123,8 +123,8 @@ Compiler String</h1>
 Macro Expansion</h1>
 <div class="fragment"><div class="line"><a class="code hl_define" href="macros_8h.html#a157e503825396913a8a4b0fbfa128fed">STRINGISE</a>(foo) <span class="comment">// &lt;1&gt;</span></div>
 <div class="line"><a class="code hl_define" href="macros_8h.html#a88fa737059e67b4b17ec980e5877361e">CONCAT</a>(foo, bar) <span class="comment">// &lt;2&gt;</span></div>
-<div class="ttc" id="amacros_8h_html_a157e503825396913a8a4b0fbfa128fed"><div class="ttname"><a href="macros_8h.html#a157e503825396913a8a4b0fbfa128fed">STRINGISE</a></div><div class="ttdeci">#define STRINGISE(s)</div><div class="ttdoc">STRINGISE invokes the pre-processor stringising operator, fully expanding any macro argument first!</div><div class="ttdef"><b>Definition</b> macros.h:60</div></div>
-<div class="ttc" id="amacros_8h_html_a88fa737059e67b4b17ec980e5877361e"><div class="ttname"><a href="macros_8h.html#a88fa737059e67b4b17ec980e5877361e">CONCAT</a></div><div class="ttdeci">#define CONCAT(a, b)</div><div class="ttdoc">CONCAT concatenates two symbols making sure to fully expand those symbols if they happen to be macros...</div><div class="ttdef"><b>Definition</b> macros.h:73</div></div>
+<div class="ttc" id="amacros_8h_html_a157e503825396913a8a4b0fbfa128fed"><div class="ttname"><a href="macros_8h.html#a157e503825396913a8a4b0fbfa128fed">STRINGISE</a></div><div class="ttdeci">#define STRINGISE(s)</div><div class="ttdoc">STRINGISE invokes the pre-processor stringising operator, fully expanding any macro argument first!</div><div class="ttdef"><b>Definition</b> macros.h:62</div></div>
+<div class="ttc" id="amacros_8h_html_a88fa737059e67b4b17ec980e5877361e"><div class="ttname"><a href="macros_8h.html#a88fa737059e67b4b17ec980e5877361e">CONCAT</a></div><div class="ttdeci">#define CONCAT(a, b)</div><div class="ttdoc">CONCAT concatenates two symbols making sure to fully expand those symbols if they happen to be macros...</div><div class="ttdef"><b>Definition</b> macros.h:75</div></div>
 </div><!-- fragment --><ol type="1">
 <li>Turns the argument into a string.</li>
 <li>Concatenates the two arguments.</li>
@@ -134,7 +134,7 @@ Macro Expansion</h1>
 Macro "Overloading"</h1>
 <p>The macro</p>
 <div class="fragment"><div class="line"><a class="code hl_define" href="macros_8h.html#aea5bfcf5109b5bfcc5a12c70fea6dff3">OVERLOAD</a>(macro, ...)</div>
-<div class="ttc" id="amacros_8h_html_aea5bfcf5109b5bfcc5a12c70fea6dff3"><div class="ttname"><a href="macros_8h.html#aea5bfcf5109b5bfcc5a12c70fea6dff3">OVERLOAD</a></div><div class="ttdeci">#define OVERLOAD(macro,...)</div><div class="ttdoc">OVERLOAD makes it appear that a macro can be overloaded by the number of passed arguments.</div><div class="ttdef"><b>Definition</b> macros.h:134</div></div>
+<div class="ttc" id="amacros_8h_html_aea5bfcf5109b5bfcc5a12c70fea6dff3"><div class="ttname"><a href="macros_8h.html#aea5bfcf5109b5bfcc5a12c70fea6dff3">OVERLOAD</a></div><div class="ttdeci">#define OVERLOAD(macro,...)</div><div class="ttdoc">OVERLOAD makes it appear that a macro can be overloaded by the number of passed arguments.</div><div class="ttdef"><b>Definition</b> macros.h:136</div></div>
 </div><!-- fragment --><p>makes it appear to the consumer that <span class="tt">macro</span> is overloaded with multiple versions based on the number of arguments passed.</p>
 <p>For example, if you have an overloaded <span class="tt">FOO</span> macro:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#define FOO(...) OVERLOAD(FOO, __VA_ARGS__)</span></div>
@@ -179,7 +179,7 @@ Semantic Version Strings</h1>
 <div class="fragment"><div class="line"><a class="code hl_define" href="macros_8h.html#af866de570d5760a2adf975be6521467a">VERSION_STRING</a>(major)                   &lt;1&gt;</div>
 <div class="line"><a class="code hl_define" href="macros_8h.html#af866de570d5760a2adf975be6521467a">VERSION_STRING</a>(major, minor)            &lt;2&gt;</div>
 <div class="line"><a class="code hl_define" href="macros_8h.html#af866de570d5760a2adf975be6521467a">VERSION_STRING</a>(major, minor, patch)     &lt;3&gt;</div>
-<div class="ttc" id="amacros_8h_html_af866de570d5760a2adf975be6521467a"><div class="ttname"><a href="macros_8h.html#af866de570d5760a2adf975be6521467a">VERSION_STRING</a></div><div class="ttdeci">#define VERSION_STRING(...)</div><div class="ttdoc">VERSION_STRING creates a semantic version string from 1, 2, or 3 arguments.</div><div class="ttdef"><b>Definition</b> macros.h:90</div></div>
+<div class="ttc" id="amacros_8h_html_af866de570d5760a2adf975be6521467a"><div class="ttname"><a href="macros_8h.html#af866de570d5760a2adf975be6521467a">VERSION_STRING</a></div><div class="ttdeci">#define VERSION_STRING(...)</div><div class="ttdoc">VERSION_STRING creates a semantic version string from 1, 2, or 3 arguments.</div><div class="ttdef"><b>Definition</b> macros.h:92</div></div>
 </div><!-- fragment --><ol type="1">
 <li>Expands to "major".</li>
 <li>Expands to "major.minor".</li>
@@ -192,7 +192,7 @@ Print Code &amp; Execute</h1>
 <div class="fragment"><div class="line"><a class="code hl_define" href="macros_8h.html#a254c7675e8b155e7b9b6da9ba4ac3cdf">RUN</a>(code)               &lt;1&gt;</div>
 <div class="line"><a class="code hl_define" href="macros_8h.html#a254c7675e8b155e7b9b6da9ba4ac3cdf">RUN</a>(code, out)          &lt;2&gt;</div>
 <div class="line"><a class="code hl_define" href="macros_8h.html#a254c7675e8b155e7b9b6da9ba4ac3cdf">RUN</a>(code, out1, out2)   &lt;3&gt;</div>
-<div class="ttc" id="amacros_8h_html_a254c7675e8b155e7b9b6da9ba4ac3cdf"><div class="ttname"><a href="macros_8h.html#a254c7675e8b155e7b9b6da9ba4ac3cdf">RUN</a></div><div class="ttdeci">#define RUN(...)</div><div class="ttdoc">RUN prints the line of code to the console, executes it, then optionally outputs one or two results.</div><div class="ttdef"><b>Definition</b> macros.h:108</div></div>
+<div class="ttc" id="amacros_8h_html_a254c7675e8b155e7b9b6da9ba4ac3cdf"><div class="ttname"><a href="macros_8h.html#a254c7675e8b155e7b9b6da9ba4ac3cdf">RUN</a></div><div class="ttdeci">#define RUN(...)</div><div class="ttdoc">RUN prints the line of code to the console, executes it, then optionally outputs one or two results.</div><div class="ttdef"><b>Definition</b> macros.h:110</div></div>
 </div><!-- fragment --><ol type="1">
 <li>Prints a stringified version of <span class="tt">code</span> to the screen and then runs it.</li>
 <li>Does the same thing, and then prints the value from <span class="tt">out</span>.</li>

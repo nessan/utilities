@@ -143,12 +143,11 @@ $(function(){initNavTree('formatter_8h_source.html','',''); });
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">// Throw an error for anything that is not default formatted.</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="comment">// The `to_string()` method might handle various formatting options, but we cannot know that here.</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">auto</span> it = ctx.begin();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_define" href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a>(it == ctx.end() || *it == <span class="charliteral">&#39;}&#39;</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        assert(it == ctx.end() || *it == <span class="charliteral">&#39;}&#39;</span>);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span> it;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
 </div>
-<div class="ttc" id="aassert_8h_html_a9060b56e4856b69095f94f334ae2609c"><div class="ttname"><a href="assert_8h.html#a9060b56e4856b69095f94f334ae2609c">assert</a></div><div class="ttdeci">#define assert(cond,...)</div><div class="ttdoc">An assertion macro that checks a boolean condition cond.   On failure, the assertion prints an error ...</div><div class="ttdef"><b>Definition</b> assert.h:99</div></div>
 <div class="ttc" id="aconceptutilities_1_1has__to__string_html"><div class="ttname"><a href="conceptutilities_1_1has__to__string.html">utilities::has_to_string</a></div><div class="ttdoc">A concept that matches any type that has an accessible std::string to_string() const method.</div><div class="ttdef"><b>Definition</b> formatter.h:18</div></div>
 <div class="ttc" id="anamespaceutilities_html"><div class="ttname"><a href="namespaceutilities.html">utilities</a></div><div class="ttdoc">The namespace for the utilities library.</div><div class="ttdef"><b>Definition</b> formatter.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->

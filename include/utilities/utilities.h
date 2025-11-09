@@ -5,7 +5,7 @@
 /// @file
 /// An "include everything" header for the utilities library.
 
-#include <utilities/assert.h>
+#include <utilities/attest.h>
 #include <utilities/formatter.h>
 #include <utilities/log.h>
 #include <utilities/macros.h>

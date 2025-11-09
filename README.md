@@ -12,17 +12,17 @@ All non-macro functionality is in the `utilities` namespace.
 
 ## Available Facilities
 
-| Focus          | Header File   | Brief Description                                                                                                                      |
-| -------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| [Assertions][] | `assert.h`    | Provides several [standard assert][] type macros that improve on the standard one in various ways.                                     |
-| [Logging][]    | `log.h`       | Provided some very simple logging macros.                                                                                              |
-| [Macros][]     | `macros.h`    | Provides macros commonly used in test programs. <br> It also defines a mechanism to overload a macro based on the number of arguments. |
-| [Stopwatch][]  | `stopwatch.h` | Provides the `utilities::stopwatch` class, which you can use to time blocks of code.                                                   |
-| [Streams][]    | `stream.h`    | Provides some functions to read lines from a file, ignoring comments and allowing for continuation lines.                              |
-| [Strings][]    | `string.h`    | Provides several useful string functions (e.g., turning strings to uppercase, trimming white space, etc.).                             |
-| [Formatter][]  | `formatter.h` | Provides a specialisation of [`std::formatter`][] for _any_ type that has a `to_string()` method.                                      |
-| [Output][]     | `thousands.h` | Provides functions to imbue output streams and locales with commas that make it easier to read large numbers.                          |
-| [Types][]      | `type.h`      | Provides the function `utilities::type`, which returns a string for a type.                                                            |
+| Focus            | Header File   | Brief Description                                                                                                                   |
+| ---------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| [Attestations][] | `attest.h`    | Provides several `attest` macros that improve on the [standard `assert`][] one in various ways.                                     |
+| [Logging][]      | `log.h`       | Provided some very simple logging macros.                                                                                           |
+| [Macros][]       | `macros.h`    | Provides macros commonly used in test programs. <br> This includes a mechanism to overload macros based on the number of arguments. |
+| [Stopwatch][]    | `stopwatch.h` | Provides the `utilities::stopwatch` class, which you can use to time blocks of code.                                                |
+| [Streams][]      | `stream.h`    | Provides some functions to read lines from a file, ignoring comments and allowing for continuation lines.                           |
+| [Strings][]      | `string.h`    | Provides several useful string functions (e.g., turning strings to uppercase, trimming white space, etc.).                          |
+| [Formatter][]    | `formatter.h` | Provides a specialisation of [`std::formatter`][] for _any_ type that has a `to_string()` method.                                   |
+| [Output][]       | `thousands.h` | Provides functions to imbue output streams and locales with commas that make it easier to read large numbers.                       |
+| [Types][]        | `type.h`      | Provides the function `utilities::type`, which returns a string for a type.                                                         |
 
 > [!WARNING]
 > Microsoft's old traditional preprocessor is not happy with some of our macros, but its newer, cross-platform-compatible one is fine.
@@ -80,8 +80,8 @@ You can use this software under the [MIT License]
 [documentation site]: https://nessan.github.io/utilities
 [email]: mailto:nzznfitz+gh@icloud.com
 [`std::formatter`]: https://en.cppreference.com/w/cpp/utility/format/formatter
-[standard assert]: https://en.cppreference.com/w/cpp/error/assert.html
-[Assertions]: docs/pages/Assertions.md
+[standard `assert`]: https://en.cppreference.com/w/cpp/error/assert.html
+[Attestations]: docs/pages/Attestations.md
 [Formatter]: docs/pages/Formatter.md
 [Logging]: docs/pages/Logging.md
 [Macros]: docs/pages/Macros.md

@@ -14,12 +14,13 @@
 #include <string>
 #include <utility>
 
-namespace  {
+namespace {
 
 // Remove surrounding quotes from a stringified literal when present.
-template <std::size_t N>
+template<std::size_t N>
 [[nodiscard]] inline const char*
-stringise_literal(const char (&input)[N]) {
+stringise_literal(const char (&input)[N])
+{
     if (N > 2 && input[0] == '"' && input[N - 2] == '"') {
         thread_local char buffer[N - 1]{};
         for (std::size_t i = 0; i < N - 3; ++i) buffer[i] = input[i + 1];
@@ -30,15 +31,16 @@ stringise_literal(const char (&input)[N]) {
 }
 
 // Concatenate multiple C-strings into a single thread-local buffer.
-template <typename... Parts>
+template<typename... Parts>
 [[nodiscard]] inline const char*
-concat_cstr(const Parts*... parts) {
+concat_cstr(const Parts*... parts)
+{
     thread_local std::array<std::string, 4> buffers{};
-    thread_local std::size_t next = 0;
-    auto& buffer = buffers[next++ % buffers.size()];
+    thread_local std::size_t                next = 0;
+    auto&                                   buffer = buffers[next++ % buffers.size()];
     buffer.clear();
     std::size_t total = 0;
-    auto accumulate = [&](const char* part) { total += std::strlen(part); };
+    auto        accumulate = [&](const char* part) { total += std::strlen(part); };
     (accumulate(parts), ...);
     buffer.reserve(total);
     auto append = [&](const char* part) { buffer.append(part); };
@@ -55,7 +57,7 @@ concat_cstr(const Parts*... parts) {
 /// #define FOO1 "abc"
 /// #define BAR1 FOO1
 /// auto s = STRINGISE(BAR1);
-/// assert(std::strcmp(s, "abc") == 0, "s = {}", s);
+/// attest(std::strcmp(s, "abc") == 0, "s = {}", s);
 /// ```
 #define STRINGISE(s)      stringise_literal(STRINGISE_IMPL(s))
 #define STRINGISE_IMPL(s) #s
@@ -68,7 +70,7 @@ concat_cstr(const Parts*... parts) {
 /// #define BAR2 FOO2
 /// int foofoo = 42;
 /// auto value = CONCAT(FOO2, BAR2);
-/// assert(value == foofoo);
+/// attest(value == foofoo);
 /// ```
 #define CONCAT(a, b)      CONCAT_IMPL(a, b)
 #define CONCAT_IMPL(a, b) a##b
@@ -83,9 +85,9 @@ concat_cstr(const Parts*... parts) {
 /// auto s3 = VERSION_STRING(major, minor, patch);
 /// auto s2 = VERSION_STRING(major, minor);
 /// auto s1 = VERSION_STRING(major);
-/// assert(std::strcmp(s3, "3.2.1") == 0);
-/// assert(std::strcmp(s2, "3.2") == 0);
-/// assert(std::strcmp(s1, "3") == 0);
+/// attest(std::strcmp(s3, "3.2.1") == 0);
+/// attest(std::strcmp(s2, "3.2") == 0);
+/// attest(std::strcmp(s1, "3") == 0);
 /// ```
 #define VERSION_STRING(...) OVERLOAD(VERSION_STRING, __VA_ARGS__)
 
@@ -108,7 +110,7 @@ concat_cstr(const Parts*... parts) {
 #define RUN(...) OVERLOAD(RUN, __VA_ARGS__)
 
 // Concrete implementations for `RUN` called with 1, 2, or 3 arguments.
-#define RUN1(code)                             \
+#define RUN1(code)                      \
     std::println("[CODE]   {}", #code); \
     code
 

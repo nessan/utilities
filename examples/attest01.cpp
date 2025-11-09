@@ -1,11 +1,11 @@
 /// Trigger an verification error error and see what the message looks like.
 
-#include "utilities/assert.h"
+#include "utilities/attest.h"
 
 int
 subtract01(int x, int y)
 {
-    assert(x == y, "x = {}, y = {}", x, y);
+    attest(x == y, "x = {}, y = {}", x, y);
     return y - x;
 }
 

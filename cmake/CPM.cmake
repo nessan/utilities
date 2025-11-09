@@ -464,7 +464,7 @@ function(cpm_parse_add_package_single_arg arg outArgs)
     # We don't try to parse the version if it's not provided explicitly. cpm_get_version_from_url
     # should do this at a later point
   else()
-    # We should never get here. This is an assertion and hitting it means there's a problem with the
+    # We should never get here. This is an attestion and hitting it means there's a problem with the
     # code above. A packageType was set, but not handled by this if-else.
     message(FATAL_ERROR "${CPM_INDENT} Unsupported package type '${packageType}' of '${arg}'")
   endif()

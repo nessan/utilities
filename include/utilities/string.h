@@ -29,11 +29,11 @@ namespace utilities {
 ///
 /// # Example
 /// ```
-/// assert(utilities::to_upper('a') == 'A');
-/// assert(utilities::to_upper('z') == 'Z');
-/// assert(utilities::to_upper('A') == 'A');
-/// assert(utilities::to_upper('Z') == 'Z');
-/// assert(utilities::to_upper('=') == '=');
+/// attest(utilities::to_upper('a') == 'A');
+/// attest(utilities::to_upper('z') == 'Z');
+/// attest(utilities::to_upper('A') == 'A');
+/// attest(utilities::to_upper('Z') == 'Z');
+/// attest(utilities::to_upper('=') == '=');
 /// ```
 [[nodiscard]] constexpr char32_t
 to_upper(char32_t cp) noexcept
@@ -47,11 +47,11 @@ to_upper(char32_t cp) noexcept
 ///
 /// # Example
 /// ```
-/// assert(utilities::to_lower('A') == 'a');
-/// assert(utilities::to_lower('Z') == 'z');
-/// assert(utilities::to_lower('a') == 'a');
-/// assert(utilities::to_lower('z') == 'z');
-/// assert(utilities::to_lower('=') == '=');
+/// attest(utilities::to_lower('A') == 'a');
+/// attest(utilities::to_lower('Z') == 'z');
+/// attest(utilities::to_lower('a') == 'a');
+/// attest(utilities::to_lower('z') == 'z');
+/// attest(utilities::to_lower('=') == '=');
 /// ```
 [[nodiscard]] constexpr char32_t
 to_lower(char32_t cp) noexcept
@@ -68,7 +68,7 @@ to_lower(char32_t cp) noexcept
 /// ```
 /// std::string str = "Hello, World!";
 /// utilities::upper_case(str);
-/// assert_eq(str, "HELLO, WORLD!");
+/// attest_eq(str, "HELLO, WORLD!");
 /// ```
 inline void
 upper_case(std::string& str)
@@ -87,7 +87,7 @@ upper_case(std::string& str)
 /// ```
 /// std::string str = "HELLO, WORLD!";
 /// utilities::lower_case(str);
-/// assert_eq(str, "hello, world!");
+/// attest_eq(str, "hello, world!");
 /// ```
 inline void
 lower_case(std::string& str)
@@ -103,7 +103,7 @@ lower_case(std::string& str)
 /// ```
 /// std::string str = "  Hello, World!";
 /// utilities::trim_left(str);
-/// assert_eq(str, "Hello, World!");
+/// attest_eq(str, "Hello, World!");
 /// ```
 inline void
 trim_left(std::string& str)
@@ -117,7 +117,7 @@ trim_left(std::string& str)
 /// ```
 /// std::string str = "Hello, World!  ";
 /// utilities::trim_right(str);
-/// assert_eq(str, "Hello, World!");
+/// attest_eq(str, "Hello, World!");
 /// ```
 inline void
 trim_right(std::string& str)
@@ -131,7 +131,7 @@ trim_right(std::string& str)
 /// ```
 /// std::string str = "  Hello, World!  ";
 /// utilities::trim(str);
-/// assert_eq(str, "Hello, World!");
+/// attest_eq(str, "Hello, World!");
 /// ```
 inline void
 trim(std::string& str)
@@ -146,7 +146,7 @@ trim(std::string& str)
 /// ```
 /// std::string str = "Hello, World!";
 /// utilities::replace_left(str, "World", "Universe");
-/// assert_eq(str, "Hello, Universe!");
+/// attest_eq(str, "Hello, Universe!");
 /// ```
 inline void
 replace_left(std::string& str, std::string_view target, std::string_view replacement)
@@ -161,7 +161,7 @@ replace_left(std::string& str, std::string_view target, std::string_view replace
 /// ```
 /// std::string str = "Hello, World!";
 /// utilities::replace_right(str, "World", "Universe");
-/// assert_eq(str, "Hello, Universe!");
+/// attest_eq(str, "Hello, Universe!");
 /// ```
 inline void
 replace_right(std::string& str, std::string_view target, std::string_view replacement)
@@ -176,7 +176,7 @@ replace_right(std::string& str, std::string_view target, std::string_view replac
 /// ```
 /// std::string str = "Hello, World! Hello, Universe!";
 /// utilities::replace(str, "Hello", "Goodbye");
-/// assert_eq(str, "Goodbye, World! Goodbye, Universe!");
+/// attest_eq(str, "Goodbye, World! Goodbye, Universe!");
 /// ```
 inline void
 replace(std::string& str, std::string_view target, std::string_view replacement)
@@ -199,7 +199,7 @@ replace(std::string& str, std::string_view target, std::string_view replacement)
 /// ```
 /// std::string str = "    Hello   World!  ";
 /// utilities::replace_space(str);
-/// assert_eq(str, "Hello World!");
+/// attest_eq(str, "Hello World!");
 /// ```
 inline void
 replace_space(std::string& s, const std::string& with = " ", bool also_trim = true)
@@ -218,7 +218,7 @@ replace_space(std::string& s, const std::string& with = " ", bool also_trim = tr
 /// ```
 /// std::string str = "Hello,   World!  ";
 /// utilities::condense(str);
-/// assert_eq(str, "Hello, World!");
+/// attest_eq(str, "Hello, World!");
 /// ```
 inline void
 condense(std::string& s, bool also_trim = true)
@@ -232,7 +232,7 @@ condense(std::string& s, bool also_trim = true)
 /// ```
 /// std::string str = "Hello, World!";
 /// utilities::erase_left(str, "World");
-/// assert_eq(str, "Hello, !");
+/// attest_eq(str, "Hello, !");
 /// ```
 inline void
 erase_left(std::string& str, std::string_view target)
@@ -247,7 +247,7 @@ erase_left(std::string& str, std::string_view target)
 /// ```
 /// std::string str = "Hello, World!";
 /// utilities:: erase_right(str, "World");
-/// assert_eq(str, "Hello, !");
+/// attest_eq(str, "Hello, !");
 /// ```
 inline void
 erase_right(std::string& str, std::string_view target)
@@ -262,7 +262,7 @@ erase_right(std::string& str, std::string_view target)
 /// ```
 /// std::string str = "abcdefghijklmnopqrstuvwxyz";
 /// utilities::erase(str, "def");
-/// assert_eq(str, "abcghijklmnopqrstuvwxyz");
+/// attest_eq(str, "abcghijklmnopqrstuvwxyz");
 /// ```
 inline void
 erase(std::string& str, std::string_view target)
@@ -280,7 +280,7 @@ erase(std::string& str, std::string_view target)
 /// ```
 /// std::string str = "(Hello, World!)";
 /// utilities::remove_surrounds(str);
-/// assert_eq(str, "Hello, World!");
+/// attest_eq(str, "Hello, World!");
 /// ```
 inline void
 remove_surrounds(std::string& s)
@@ -333,7 +333,7 @@ remove_surrounds(std::string& s)
 /// ```
 /// std::string str = "[ hallo   world ]  ";
 /// utilities::standardize(str);
-/// assert_eq(str, "HALLO WORLD");
+/// attest_eq(str, "HALLO WORLD");
 /// ```
 inline void
 standardize(std::string& s)
@@ -357,7 +357,7 @@ standardize(std::string& s)
 /// ```
 /// std::string str = "Hello, World!";
 /// auto upper_str = utilities::upper_cased(str);
-/// assert_eq(upper_str, "HELLO, WORLD!");
+/// attest_eq(upper_str, "HELLO, WORLD!");
 /// ```
 inline std::string
 upper_cased(std::string_view input)
@@ -375,7 +375,7 @@ upper_cased(std::string_view input)
 /// ```
 /// std::string str = "Hello, World!";
 /// auto lower_str = utilities::lower_cased(str);
-/// assert_eq(lower_str, "hello, world!");
+/// attest_eq(lower_str, "hello, world!");
 /// ```
 inline std::string
 lower_cased(std::string_view input)
@@ -391,7 +391,7 @@ lower_cased(std::string_view input)
 /// ```
 /// std::string str = "  Hello, World!";
 /// auto trimmed_left_str = utilities::trimmed_left(str);
-/// assert_eq(trimmed_left_str, "Hello, World!");
+/// attest_eq(trimmed_left_str, "Hello, World!");
 /// ```
 inline std::string
 trimmed_left(std::string_view input)
@@ -407,7 +407,7 @@ trimmed_left(std::string_view input)
 /// ```
 /// std::string str = "Hello, World!  ";
 /// auto trimmed_right_str = utilities::trimmed_right(str);
-/// assert_eq(trimmed_right_str, "Hello, World!");
+/// attest_eq(trimmed_right_str, "Hello, World!");
 /// ```
 inline std::string
 trimmed_right(std::string_view input)
@@ -423,7 +423,7 @@ trimmed_right(std::string_view input)
 /// ```
 /// std::string str = "  Hello, World!  ";
 /// auto trimmed_str = utilities::trimmed(str);
-/// assert_eq(trimmed_str, "Hello, World!");
+/// attest_eq(trimmed_str, "Hello, World!");
 /// ```
 inline std::string
 trimmed(std::string_view input)
@@ -439,7 +439,7 @@ trimmed(std::string_view input)
 /// ```
 /// std::string str = "Hello, World!";
 /// auto replaced_str = utilities::replaced_left(str, "World", "Universe");
-/// assert_eq(replaced_str, "Hello, Universe!");
+/// attest_eq(replaced_str, "Hello, Universe!");
 /// ```
 inline std::string
 replaced_left(std::string_view input, std::string_view target, std::string_view replacement)
@@ -455,7 +455,7 @@ replaced_left(std::string_view input, std::string_view target, std::string_view 
 /// ```
 /// std::string str = "Hello, World!";
 /// auto replaced_str = utilities::replaced_right(str, "World", "Universe");
-/// assert_eq(replaced_str, "Hello, Universe!");
+/// attest_eq(replaced_str, "Hello, Universe!");
 /// ```
 inline std::string
 replaced_right(std::string_view input, std::string_view target, std::string_view replacement)
@@ -471,7 +471,7 @@ replaced_right(std::string_view input, std::string_view target, std::string_view
 /// ```
 /// std::string str = "Hello World! Hello Universe!";
 /// auto replaced_str = utilities::replaced(str, "Hello", "Goodbye");
-/// assert_eq(replaced_str, "Goodbye World! Goodbye Universe!");
+/// attest_eq(replaced_str, "Goodbye World! Goodbye Universe!");
 /// ```
 inline std::string
 replaced(std::string_view input, std::string_view target, std::string_view replacement)
@@ -491,7 +491,7 @@ replaced(std::string_view input, std::string_view target, std::string_view repla
 /// ```
 /// std::string str = "  Hello    World!  ";
 /// auto replaced_space_str = utilities::replaced_space(str);
-/// assert_eq(replaced_space_str, "Hello World!");
+/// attest_eq(replaced_space_str, "Hello World!");
 /// ```
 inline std::string
 replaced_space(std::string_view input, const std::string& with = " ", bool also_trim = true)
@@ -510,7 +510,7 @@ replaced_space(std::string_view input, const std::string& with = " ", bool also_
 /// ```
 /// std::string str = "Hello,   World!  ";
 /// auto condensed_str = utilities::condensed(str);
-/// assert_eq(condensed_str, "Hello, World!");
+/// attest_eq(condensed_str, "Hello, World!");
 /// ```
 inline std::string
 condensed(std::string_view input, bool also_trim = true)
@@ -526,7 +526,7 @@ condensed(std::string_view input, bool also_trim = true)
 /// ```
 /// std::string str = "Hello, World!";
 /// auto erased_left_str = utilities::erased_left(str, "World");
-/// assert_eq(erased_left_str, "Hello, !");
+/// attest_eq(erased_left_str, "Hello, !");
 /// ```
 inline std::string
 erased_left(std::string_view input, std::string_view target)
@@ -542,7 +542,7 @@ erased_left(std::string_view input, std::string_view target)
 /// ```
 /// std::string str = "Hello, World!";
 /// auto erased_right_str = utilities::erased_right(str, "World");
-/// assert_eq(erased_right_str, "Hello, !");
+/// attest_eq(erased_right_str, "Hello, !");
 /// ```
 inline std::string
 erased_right(std::string_view input, std::string_view target)
@@ -558,7 +558,7 @@ erased_right(std::string_view input, std::string_view target)
 /// ```
 /// std::string str = "abcdefghijklmnopqrstuvwxyz";
 /// auto erased_str = utilities::erased(str, "def");
-/// assert_eq(erased_str, "abcghijklmnopqrstuvwxyz");
+/// attest_eq(erased_str, "abcghijklmnopqrstuvwxyz");
 /// ```
 inline std::string
 erased(std::string_view input, std::string_view target)
@@ -577,7 +577,7 @@ erased(std::string_view input, std::string_view target)
 /// ```
 /// std::string str = "(Hello, World!)";
 /// auto removed_surrounds_str = utilities::removed_surrounds(str);
-/// assert_eq(removed_surrounds_str, "Hello, World!");
+/// attest_eq(removed_surrounds_str, "Hello, World!");
 /// ```
 inline std::string
 removed_surrounds(std::string_view input)
@@ -595,7 +595,7 @@ removed_surrounds(std::string_view input)
 /// ```
 /// std::string str = "[ hallo world ]";
 /// auto standardized_str = utilities::standardized(str);
-/// assert_eq(standardized_str, "HALLO WORLD");
+/// attest_eq(standardized_str, "HALLO WORLD");
 /// ```
 inline std::string
 standardized(std::string_view input)
@@ -615,7 +615,7 @@ standardized(std::string_view input)
 /// ```
 /// std::string str = "Hello, World!";
 /// bool starts_with_hello = utilities::starts_with(str, "Hello");
-/// assert_eq(starts_with_hello, true);
+/// attest_eq(starts_with_hello, true);
 /// ```
 inline bool
 starts_with(std::string_view str, std::string_view prefix)
@@ -629,7 +629,7 @@ starts_with(std::string_view str, std::string_view prefix)
 /// ```
 /// std::string str = "Hello, World!";
 /// bool ends_with_world = utilities::ends_with(str, "World!");
-/// assert_eq(ends_with_world, true);
+/// attest_eq(ends_with_world, true);
 /// ```
 inline bool
 ends_with(std::string_view str, std::string_view suffix)
@@ -646,7 +646,7 @@ ends_with(std::string_view str, std::string_view suffix)
 /// ```
 /// std::string str = "123.456";
 /// auto x = utilities::possible<double>(str);
-/// assert_eq(*x, 123.456);
+/// attest_eq(*x, 123.456);
 /// ```
 template<typename T>
 constexpr std::optional<T>
@@ -694,7 +694,7 @@ for_each_token(InputIt ib, InputIt ie, ForwardIt db, ForwardIt de, BinaryFunc fu
 /// std::vector<std::string> tokens;
 /// utilities::tokenize(str, tokens);
 /// std::vector<std::string> expected = {"Hello", "World"};
-/// assert_eq(tokens, expected);
+/// attest_eq(tokens, expected);
 /// ```
 template<typename Container_t>
 constexpr void
@@ -721,7 +721,7 @@ tokenize(std::string_view input, Container_t& output, std::string_view delimiter
 /// std::string str = "Hello, World";
 /// auto tokens = utilities::split(str);
 /// std::vector<std::string> expected = {"Hello", "World"};
-/// assert_eq(tokens, expected);
+/// attest_eq(tokens, expected);
 /// ```
 inline std::vector<std::string>
 split(std::string_view input, std::string_view delimiters = "\t,;: ", bool skip = true)

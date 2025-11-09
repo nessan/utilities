@@ -1008,7 +1008,7 @@ WARN_LOGFILE           =
 
 INPUT                  = include/utilities \
                          README.md \
-                         docs/pages/Assertions.md \
+                         docs/pages/Attestations.md \
                          docs/pages/Formatter.md \
                          docs/pages/Logging.md \
                          docs/pages/Macros.md \

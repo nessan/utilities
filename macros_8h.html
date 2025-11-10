@@ -178,8 +178,8 @@ Example</h1>
 <div class="line"><span class="preprocessor">#define BAR2 FOO2</span></div>
 <div class="line"><span class="keywordtype">int</span> foofoo = 42;</div>
 <div class="line"><span class="keyword">auto</span> value = <a class="code hl_define" href="#a88fa737059e67b4b17ec980e5877361e">CONCAT</a>(FOO2, BAR2);</div>
-<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(value == foofoo);</div>
-<div class="ttc" id="aattest_8h_html_a77dc3ca60af24729f7c0605f845026a4"><div class="ttname"><a href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a></div><div class="ttdeci">#define attest(cond,...)</div><div class="ttdoc">An attestion macro that checks a boolean condition cond.   On failure, the attestion prints an error ...</div><div class="ttdef"><b>Definition</b> attest.h:99</div></div>
+<div class="line"><a class="code hl_define" href="confirm_8h.html#aaa6240e096d775b2f89803b09c6b1cac">confirm</a>(value == foofoo);</div>
+<div class="ttc" id="aconfirm_8h_html_aaa6240e096d775b2f89803b09c6b1cac"><div class="ttname"><a href="confirm_8h.html#aaa6240e096d775b2f89803b09c6b1cac">confirm</a></div><div class="ttdeci">#define confirm(cond,...)</div><div class="ttdoc">An confirmation macro that checks a boolean condition cond.   On failure, the confirmation prints an ...</div><div class="ttdef"><b>Definition</b> confirm.h:99</div></div>
 <div class="ttc" id="amacros_8h_html_a88fa737059e67b4b17ec980e5877361e"><div class="ttname"><a href="#a88fa737059e67b4b17ec980e5877361e">CONCAT</a></div><div class="ttdeci">#define CONCAT(a, b)</div><div class="ttdoc">CONCAT concatenates two symbols making sure to fully expand those symbols if they happen to be macros...</div><div class="ttdef"><b>Definition</b> macros.h:75</div></div>
 </div><!-- fragment --> 
 </div>
@@ -271,7 +271,7 @@ Example</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#define FOO1 &quot;abc&quot;</span></div>
 <div class="line"><span class="preprocessor">#define BAR1 FOO1</span></div>
 <div class="line"><span class="keyword">auto</span> s = <a class="code hl_define" href="#a157e503825396913a8a4b0fbfa128fed">STRINGISE</a>(BAR1);</div>
-<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(std::strcmp(s, <span class="stringliteral">&quot;abc&quot;</span>) == 0, <span class="stringliteral">&quot;s = {}&quot;</span>, s);</div>
+<div class="line"><a class="code hl_define" href="confirm_8h.html#aaa6240e096d775b2f89803b09c6b1cac">confirm</a>(std::strcmp(s, <span class="stringliteral">&quot;abc&quot;</span>) == 0, <span class="stringliteral">&quot;s = {}&quot;</span>, s);</div>
 <div class="ttc" id="amacros_8h_html_a157e503825396913a8a4b0fbfa128fed"><div class="ttname"><a href="#a157e503825396913a8a4b0fbfa128fed">STRINGISE</a></div><div class="ttdeci">#define STRINGISE(s)</div><div class="ttdoc">STRINGISE invokes the pre-processor stringising operator, fully expanding any macro argument first!</div><div class="ttdef"><b>Definition</b> macros.h:62</div></div>
 </div><!-- fragment --> 
 </div>
@@ -302,9 +302,9 @@ Example</h1>
 <div class="line"><span class="keyword">auto</span> s3 = <a class="code hl_define" href="#af866de570d5760a2adf975be6521467a">VERSION_STRING</a>(major, minor, patch);</div>
 <div class="line"><span class="keyword">auto</span> s2 = <a class="code hl_define" href="#af866de570d5760a2adf975be6521467a">VERSION_STRING</a>(major, minor);</div>
 <div class="line"><span class="keyword">auto</span> s1 = <a class="code hl_define" href="#af866de570d5760a2adf975be6521467a">VERSION_STRING</a>(major);</div>
-<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(std::strcmp(s3, <span class="stringliteral">&quot;3.2.1&quot;</span>) == 0);</div>
-<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(std::strcmp(s2, <span class="stringliteral">&quot;3.2&quot;</span>) == 0);</div>
-<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(std::strcmp(s1, <span class="stringliteral">&quot;3&quot;</span>) == 0);</div>
+<div class="line"><a class="code hl_define" href="confirm_8h.html#aaa6240e096d775b2f89803b09c6b1cac">confirm</a>(std::strcmp(s3, <span class="stringliteral">&quot;3.2.1&quot;</span>) == 0);</div>
+<div class="line"><a class="code hl_define" href="confirm_8h.html#aaa6240e096d775b2f89803b09c6b1cac">confirm</a>(std::strcmp(s2, <span class="stringliteral">&quot;3.2&quot;</span>) == 0);</div>
+<div class="line"><a class="code hl_define" href="confirm_8h.html#aaa6240e096d775b2f89803b09c6b1cac">confirm</a>(std::strcmp(s1, <span class="stringliteral">&quot;3&quot;</span>) == 0);</div>
 </div><!-- fragment --> 
 </div>
 </div>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['rationale_0',['Rationale',['../md_docs_2pages_2Attestations.html#design-rationale',1,'Design Rationale'],['../md_docs_2pages_2TypeStrings.html#rationale',1,'Rationale']]],
+  ['rationale_0',['Rationale',['../md_docs_2pages_2Confirmations.html#design-rationale',1,'Design Rationale'],['../md_docs_2pages_2TypeStrings.html#rationale',1,'Rationale']]],
   ['read_5fline_1',['read_line',['../namespaceutilities.html#a9feb9742d87a8442764e0836e3de2118',1,'utilities']]],
   ['readers_2',['Readers',['../md_docs_2pages_2StreamFunctions.html#readers',1,'']]],
   ['regex_5freplace_3',['regex_replace',['../namespaceutilities.html#aee2db4d496d56d21b7b91adc1df30791',1,'utilities::regex_replace(Iter ib, Iter ie, const std::basic_regex&lt; CharT, Traits &gt; &amp;re, UnaryFunction f)'],['../namespaceutilities.html#a22895f3addb46d0110e6e3e60aa99ba7',1,'utilities::regex_replace(const std::string &amp;s, const std::basic_regex&lt; CharT, Traits &gt; &amp;re, UnaryFunction f)']]],

@@ -26,17 +26,17 @@ var NAVTREE =
 [
   [ "C++ Utilities", "index.html", [
     [ "Project Overview", "index.html", "index" ],
-    [ "Attestations", "md_docs_2pages_2Attestations.html", [
-      [ "Boolean Checks", "md_docs_2pages_2Attestations.html#boolean-checks", null ],
-      [ "Equality Checks", "md_docs_2pages_2Attestations.html#equality-checks", null ],
-      [ "Example", "md_docs_2pages_2Attestations.html#example-42", null ],
-      [ "Design Rationale", "md_docs_2pages_2Attestations.html#design-rationale", [
-        [ "The \"Always\" Versions", "md_docs_2pages_2Attestations.html#the-always-versions", null ],
-        [ "The \"Debug\" Versions", "md_docs_2pages_2Attestations.html#the-debug-versions", null ],
-        [ "The \"Standard\" Versions", "md_docs_2pages_2Attestations.html#the-standard-versions", null ]
+    [ "Confirmations", "md_docs_2pages_2Confirmations.html", [
+      [ "Boolean Checks", "md_docs_2pages_2Confirmations.html#boolean-checks", null ],
+      [ "Equality Checks", "md_docs_2pages_2Confirmations.html#equality-checks", null ],
+      [ "Example", "md_docs_2pages_2Confirmations.html#example-42", null ],
+      [ "Design Rationale", "md_docs_2pages_2Confirmations.html#design-rationale", [
+        [ "The \"Always\" Versions", "md_docs_2pages_2Confirmations.html#the-always-versions", null ],
+        [ "The \"Debug\" Versions", "md_docs_2pages_2Confirmations.html#the-debug-versions", null ],
+        [ "The \"Standard\" Versions", "md_docs_2pages_2Confirmations.html#the-standard-versions", null ]
       ] ],
-      [ "Why Macros?", "md_docs_2pages_2Attestations.html#why-macros", null ],
-      [ "See Also", "md_docs_2pages_2Attestations.html#see-also", null ]
+      [ "Why Macros?", "md_docs_2pages_2Confirmations.html#why-macros", null ],
+      [ "See Also", "md_docs_2pages_2Confirmations.html#see-also", null ]
     ] ],
     [ "Formatter Specialisation", "md_docs_2pages_2Formatter.html", [
       [ "Example", "md_docs_2pages_2Formatter.html#example-43", null ],

@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=11" />
         <meta name="generator" content="Doxygen 1.14.0" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>C++ Utilities: Attestations</title>
+        <title>C++ Utilities: Confirmations</title>
         <link href="tabs.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="dynsections.js"></script>
@@ -78,7 +78,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('md_docs_2pages_2Attestations.html','',''); });
+$(function(){initNavTree('md_docs_2pages_2Confirmations.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -104,62 +104,62 @@ $(function(){initNavTree('md_docs_2pages_2Attestations.html','',''); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Attestations </div></div>
+  <div class="headertitle"><div class="title">Confirmations </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="attestations"></a></p>
-<p>The <span class="tt">&lt;<a class="el" href="attest_8h.html" title="Assertion macros that are replacements for the standard attest macro, and which improve on it in vari...">utilities/attest.h</a>&gt;</span> header includes macros for checking a boolean condition or comparing two values. <br  />
+<div class="textblock"><p><a class="anchor" id="confirmations"></a></p>
+<p>The <span class="tt">&lt;<a class="el" href="confirm_8h.html" title="Assertion macros that are replacements for the standard confirm macro, and which improve on it in var...">utilities/confirm.h</a>&gt;</span> header includes macros for checking a boolean condition or checking that two values are equal. <br  />
  The macros improve on the <a href="https://en.cppreference.com/w/cpp/error/assert.html">standard <span class="tt">assert</span></a> macro in various ways.</p>
 <p>On failures, the macros print a customisable message to the standard error stream and then exit the program with a non-zero status code.</p>
-<p>Failed attestions show the source code location where the attestion was called, along with a stringified version of the condition that caused the failure.</p>
+<p>Failed confirmations show the source code location where the confirmation was called, along with a stringified version of the condition that caused the failure.</p>
 <p>You can also add extra content by passing trailing arguments to the macros. Those arguments are sent to <a href="https://en.cppreference.com/w/cpp/utility/format/format"><span class="tt">std::format</span></a> to produce a string.</p>
 <h1 class="doxsection"><a class="anchor" id="boolean-checks"></a>
 Boolean Checks</h1>
 <p>The following macros are available to check a Boolean condition:</p>
-<div class="fragment"><div class="line"><a class="code hl_define" href="attest_8h.html#a729cbeb2f49bdb04ea6584213e7e4df7">always_attest</a>(condition, ...)   <span class="comment">// &lt;1&gt;</span></div>
-<div class="line"><a class="code hl_define" href="attest_8h.html#a5a6e0dd57038711d0fe4f395b4159f56">debug_attest</a>(condition, ...)    <span class="comment">// &lt;2&gt;</span></div>
-<div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(condition, ...)          <span class="comment">// &lt;3&gt;</span></div>
-<div class="ttc" id="aattest_8h_html_a5a6e0dd57038711d0fe4f395b4159f56"><div class="ttname"><a href="attest_8h.html#a5a6e0dd57038711d0fe4f395b4159f56">debug_attest</a></div><div class="ttdeci">#define debug_attest(cond,...)</div><div class="ttdoc">An attestion macro that checks a boolean condition cond.   On failure, the attestion prints an error ...</div><div class="ttdef"><b>Definition</b> attest.h:69</div></div>
-<div class="ttc" id="aattest_8h_html_a729cbeb2f49bdb04ea6584213e7e4df7"><div class="ttname"><a href="attest_8h.html#a729cbeb2f49bdb04ea6584213e7e4df7">always_attest</a></div><div class="ttdeci">#define always_attest(cond,...)</div><div class="ttdoc">An attestion macro that checks a boolean condition cond.   On failure, the attestion prints an error ...</div><div class="ttdef"><b>Definition</b> attest.h:42</div></div>
-<div class="ttc" id="aattest_8h_html_a77dc3ca60af24729f7c0605f845026a4"><div class="ttname"><a href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a></div><div class="ttdeci">#define attest(cond,...)</div><div class="ttdoc">An attestion macro that checks a boolean condition cond.   On failure, the attestion prints an error ...</div><div class="ttdef"><b>Definition</b> attest.h:99</div></div>
+<div class="fragment"><div class="line"><a class="code hl_define" href="confirm_8h.html#a117cee046c40d27e51d7af4a93575cfc">always_confirm</a>(condition, ...)   <span class="comment">// &lt;1&gt;</span></div>
+<div class="line"><a class="code hl_define" href="confirm_8h.html#ae4c6193005efd5f6a95328eb2475205e">debug_confirm</a>(condition, ...)    <span class="comment">// &lt;2&gt;</span></div>
+<div class="line"><a class="code hl_define" href="confirm_8h.html#aaa6240e096d775b2f89803b09c6b1cac">confirm</a>(condition, ...)          <span class="comment">// &lt;3&gt;</span></div>
+<div class="ttc" id="aconfirm_8h_html_a117cee046c40d27e51d7af4a93575cfc"><div class="ttname"><a href="confirm_8h.html#a117cee046c40d27e51d7af4a93575cfc">always_confirm</a></div><div class="ttdeci">#define always_confirm(cond,...)</div><div class="ttdoc">An confirmation macro that checks a boolean condition cond.   On failure, the confirmation prints an ...</div><div class="ttdef"><b>Definition</b> confirm.h:42</div></div>
+<div class="ttc" id="aconfirm_8h_html_aaa6240e096d775b2f89803b09c6b1cac"><div class="ttname"><a href="confirm_8h.html#aaa6240e096d775b2f89803b09c6b1cac">confirm</a></div><div class="ttdeci">#define confirm(cond,...)</div><div class="ttdoc">An confirmation macro that checks a boolean condition cond.   On failure, the confirmation prints an ...</div><div class="ttdef"><b>Definition</b> confirm.h:99</div></div>
+<div class="ttc" id="aconfirm_8h_html_ae4c6193005efd5f6a95328eb2475205e"><div class="ttname"><a href="confirm_8h.html#ae4c6193005efd5f6a95328eb2475205e">debug_confirm</a></div><div class="ttdeci">#define debug_confirm(cond,...)</div><div class="ttdoc">An confirmation macro that checks a boolean condition cond.   On failure, the confirmation prints an ...</div><div class="ttdef"><b>Definition</b> confirm.h:69</div></div>
 </div><!-- fragment --><ol type="1">
 <li>The <span class="tt">condition</span> is checked, and if it evaluates to <span class="tt">false</span>, an error message is printed to the standard error stream. <br  />
  That can include a custom payload synthesised from the trailing argument list.</li>
-<li>The <span class="tt">debug_attest</span> macro expands to <span class="tt">always_attest</span> <b>if</b> the <span class="tt">DEBUG</span> flag is set; otherwise, it's a no-op.</li>
-<li>The <span class="tt">attest</span> macro expands to <span class="tt">always_attest</span> <b>unless</b> the <span class="tt">NDEBUG</span> flag is set, which is a no-op. <br  />
+<li>The <span class="tt">debug_confirm</span> macro expands to <span class="tt">always_confirm</span> <b>if</b> the <span class="tt">DEBUG</span> flag is set; otherwise, it's a no-op.</li>
+<li>The <span class="tt">confirm</span> macro expands to <span class="tt">always_confirm</span> <b>unless</b> the <span class="tt">NDEBUG</span> flag is set, which is a no-op. <br  />
 This is similar to the <a href="https://en.cppreference.com/w/cpp/error/assert.html">standard <span class="tt">assert</span></a> macro.</li>
 </ol>
 <h1 class="doxsection"><a class="anchor" id="equality-checks"></a>
 Equality Checks</h1>
 <p>The following macros are available to check for the equality of two objects:</p>
-<div class="fragment"><div class="line"><a class="code hl_define" href="attest_8h.html#a7589617cff4f08d59d6512da7bc732c3">always_attest_eq</a>(lhs, rhs, ...) <span class="comment">// &lt;1&gt;</span></div>
-<div class="line"><a class="code hl_define" href="attest_8h.html#ac2fb0dcd48e9b5f64f3692d04459ece5">debug_attest_eq</a>(lhs, rhs, ...)  <span class="comment">// &lt;2&gt;</span></div>
-<div class="line"><a class="code hl_define" href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a>(lhs, rhs, ...)        <span class="comment">// &lt;3&gt;</span></div>
-<div class="ttc" id="aattest_8h_html_a75606dcd2abd162ac02ae7e66b3c6320"><div class="ttname"><a href="attest_8h.html#a75606dcd2abd162ac02ae7e66b3c6320">attest_eq</a></div><div class="ttdeci">#define attest_eq(lhs, rhs,...)</div><div class="ttdoc">An attestion macro that checks the equality of two values lhs and rhs.   On failure,...</div><div class="ttdef"><b>Definition</b> attest.h:114</div></div>
-<div class="ttc" id="aattest_8h_html_a7589617cff4f08d59d6512da7bc732c3"><div class="ttname"><a href="attest_8h.html#a7589617cff4f08d59d6512da7bc732c3">always_attest_eq</a></div><div class="ttdeci">#define always_attest_eq(lhs, rhs,...)</div><div class="ttdoc">An attestion macro that checks the equality of two values lhs and rhs.   On failure,...</div><div class="ttdef"><b>Definition</b> attest.h:52</div></div>
-<div class="ttc" id="aattest_8h_html_ac2fb0dcd48e9b5f64f3692d04459ece5"><div class="ttname"><a href="attest_8h.html#ac2fb0dcd48e9b5f64f3692d04459ece5">debug_attest_eq</a></div><div class="ttdeci">#define debug_attest_eq(a, b,...)</div><div class="ttdoc">An attestion macro that checks the equality of two values lhs and rhs.   On failure,...</div><div class="ttdef"><b>Definition</b> attest.h:84</div></div>
+<div class="fragment"><div class="line"><a class="code hl_define" href="confirm_8h.html#af0c00e72029fbec6f155e1e09d81786d">always_confirm_eq</a>(lhs, rhs, ...) <span class="comment">// &lt;1&gt;</span></div>
+<div class="line"><a class="code hl_define" href="confirm_8h.html#ad94948648cef2578474afbdc7a680c89">debug_confirm_eq</a>(lhs, rhs, ...)  <span class="comment">// &lt;2&gt;</span></div>
+<div class="line"><a class="code hl_define" href="confirm_8h.html#aedde7051633d114f13ccf801d18e924e">confirm_eq</a>(lhs, rhs, ...)        <span class="comment">// &lt;3&gt;</span></div>
+<div class="ttc" id="aconfirm_8h_html_ad94948648cef2578474afbdc7a680c89"><div class="ttname"><a href="confirm_8h.html#ad94948648cef2578474afbdc7a680c89">debug_confirm_eq</a></div><div class="ttdeci">#define debug_confirm_eq(a, b,...)</div><div class="ttdoc">An confirmation macro that checks the equality of two values lhs and rhs.   On failure,...</div><div class="ttdef"><b>Definition</b> confirm.h:84</div></div>
+<div class="ttc" id="aconfirm_8h_html_aedde7051633d114f13ccf801d18e924e"><div class="ttname"><a href="confirm_8h.html#aedde7051633d114f13ccf801d18e924e">confirm_eq</a></div><div class="ttdeci">#define confirm_eq(lhs, rhs,...)</div><div class="ttdoc">An confirmation macro that checks the equality of two values lhs and rhs.   On failure,...</div><div class="ttdef"><b>Definition</b> confirm.h:114</div></div>
+<div class="ttc" id="aconfirm_8h_html_af0c00e72029fbec6f155e1e09d81786d"><div class="ttname"><a href="confirm_8h.html#af0c00e72029fbec6f155e1e09d81786d">always_confirm_eq</a></div><div class="ttdeci">#define always_confirm_eq(lhs, rhs,...)</div><div class="ttdoc">An confirmation macro that checks the equality of two values lhs and rhs.   On failure,...</div><div class="ttdef"><b>Definition</b> confirm.h:52</div></div>
 </div><!-- fragment --><ol type="1">
 <li>The two values <span class="tt">lhs</span> and <span class="tt">rhs</span> are checked for equality, and if they are not equal, the macro prints a customisable message and exits the program.</li>
-<li>The <span class="tt">debug_attest_eq</span> macro expands to <span class="tt">always_attest_eq</span> <b>if</b> the <span class="tt">DEBUG</span> flag is set; otherwise, it's a no-op.</li>
-<li>The <span class="tt">attest_eq</span> macro expands to <span class="tt">always_attest_eq</span> <b>unless</b> the <span class="tt">NDEBUG</span> flag is set, which is a no-op similar to the <a href="https://en.cppreference.com/w/cpp/error/assert.html">standard <span class="tt">assert</span></a> macro.</li>
+<li>The <span class="tt">debug_confirm_eq</span> macro expands to <span class="tt">always_confirm_eq</span> <b>if</b> the <span class="tt">DEBUG</span> flag is set; otherwise, it's a no-op.</li>
+<li>The <span class="tt">confirm_eq</span> macro expands to <span class="tt">always_confirm_eq</span> <b>unless</b> the <span class="tt">NDEBUG</span> flag is set, which is a no-op similar to the <a href="https://en.cppreference.com/w/cpp/error/assert.html">standard <span class="tt">assert</span></a> macro.</li>
 </ol>
 <p>The <span class="tt">lhs</span> and <span class="tt">rhs</span> arguments must be comparable using <span class="tt">operator==</span>. They must also be printable using <a href="https://en.cppreference.com/w/cpp/io/print.html"><span class="tt">std::print</span></a>, so we will need an appropriate specialisation for <a href="https://en.cppreference.com/w/cpp/utility/format/formatter"><span class="tt">std::formatter</span></a>.</p>
 <h1 class="doxsection"><a class="anchor" id="example-42"></a>
 Example</h1>
-<p>For the sake of the example, we will use the <span class="tt">always_attest_eq</span> macro to check for equality. More typically, you use either the <span class="tt">debug_attest_eq</span> or the <span class="tt">attest_eq</span> macro.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="attest_8h.html">utilities/attest.h</a>&gt;</span></div>
+<p>For the sake of the example, we will use the <span class="tt">always_confirm_eq</span> macro to check for equality. More typically, you use either the <span class="tt">debug_confirm_eq</span> or the <span class="tt">confirm_eq</span> macro.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="confirm_8h.html">utilities/confirm.h</a>&gt;</span></div>
 <div class="line"><span class="keywordtype">int</span> subtract(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)</div>
 <div class="line">{</div>
-<div class="line">    <a class="code hl_define" href="attest_8h.html#a7589617cff4f08d59d6512da7bc732c3">always_attest_eq</a>(x, y, <span class="stringliteral">&quot;well that didn&#39;t work but x - y = {}&quot;</span>, x - y);</div>
+<div class="line">    <a class="code hl_define" href="confirm_8h.html#af0c00e72029fbec6f155e1e09d81786d">always_confirm_eq</a>(x, y, <span class="stringliteral">&quot;well that didn&#39;t work but x - y = {}&quot;</span>, x - y);</div>
 <div class="line">    <span class="keywordflow">return</span> y - x;</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">return</span> subtract(10, 11);</div>
 <div class="line">}</div>
-<div class="ttc" id="aattest_8h_html"><div class="ttname"><a href="attest_8h.html">attest.h</a></div><div class="ttdoc">Assertion macros that are replacements for the standard attest macro, and which improve on it in vari...</div></div>
+<div class="ttc" id="aconfirm_8h_html"><div class="ttname"><a href="confirm_8h.html">confirm.h</a></div><div class="ttdoc">Assertion macros that are replacements for the standard confirm macro, and which improve on it in var...</div></div>
 </div><!-- fragment --><p>That program exits with the message:</p>
-<div class="fragment"><div class="line">FAILED `attest_eq(x, y)` [attest02.cpp:7]</div>
+<div class="fragment"><div class="line">FAILED `confirm_eq(x, y)` [confirm02.cpp:7]</div>
 <div class="line">well that didn&#39;t work but x - y = -1</div>
 <div class="line">lhs = 10</div>
 <div class="line">rhs = 11</div>
@@ -167,30 +167,30 @@ Example</h1>
 Design Rationale</h1>
 <h2 class="doxsection"><a class="anchor" id="the-always-versions"></a>
 The "Always" Versions</h2>
-<p>The <span class="tt">always_attest</span> and <span class="tt">always_attest_eq</span> macros are used to verify that a condition is true and to exit with an informative message if it is not. <br  />
+<p>The <span class="tt">always_confirm</span> and <span class="tt">always_confirm_eq</span> macros are used to verify that a condition is true and to exit with an informative message if it is not. <br  />
  These macros are unaffected by compiler flags.</p>
 <h2 class="doxsection"><a class="anchor" id="the-debug-versions"></a>
 The "Debug" Versions</h2>
 <p>In the development cycle, it can be helpful to range-check indices and so on.</p>
-<p>However, those checks are expensive and can slow down numerical code by orders of magnitude. Therefore, we don't want there to be any chance that those verifications are accidentally left "on" in the production code. The <span class="tt">debug_attest</span> and <span class="tt">debug_attest_eq</span> macros cover this type of verification. Enabling these checks requires the programmer to take a specific action: she must set the <span class="tt">DEBUG</span> flag at compile time.</p>
+<p>However, those checks are expensive and can slow down numerical code by orders of magnitude. Therefore, we don't want there to be any chance that those verifications are accidentally left "on" in the production code. The <span class="tt">debug_confirm</span> and <span class="tt">debug_confirm_eq</span> macros cover this type of verification. Enabling these checks requires the programmer to take a specific action: she must set the <span class="tt">DEBUG</span> flag at compile time.</p>
 <p>For example, here is a precondition from a hypothetical <span class="tt">dot(Vector u, Vector v)</span> function:</p>
-<div class="fragment"><div class="line"><a class="code hl_define" href="attest_8h.html#ac2fb0dcd48e9b5f64f3692d04459ece5">debug_attest_eq</a>(u.size(), v.size(), <span class="stringliteral">&quot;Incompatible vector sizes!&quot;</span>);</div>
+<div class="fragment"><div class="line"><a class="code hl_define" href="confirm_8h.html#ad94948648cef2578474afbdc7a680c89">debug_confirm_eq</a>(u.size(), v.size(), <span class="stringliteral">&quot;Incompatible vector sizes!&quot;</span>);</div>
 </div><!-- fragment --><p>This code checks that the two vector arguments have equal length &mdash; a necessary constraint for the dot product operation to make sense. If the requirement is not satisfied, the program exits with an informative message that includes the size of the two vectors.</p>
 <p>The check here is <b>off</b> by default, and you need to do something special (i.e., define the <span class="tt">DEBUG</span> flag at compile time) to enable it. Production code may do many of these dot products; we do not generally want to pay for the check. However, enabling these sorts of checks may be very useful during development.</p>
 <p>These "debug" macros expand to nothing <b>unless</b> you set the <span class="tt">DEBUG</span> flag at compile time.</p>
 <h2 class="doxsection"><a class="anchor" id="the-standard-versions"></a>
 The "Standard" Versions</h2>
-<p>On the other hand, there are some checks where the attestion cost is slight compared to the function's overall work. Leaving these checks on in production will not likely impose much of a performance penalty.</p>
+<p>On the other hand, there are some checks where the confirmation cost is slight compared to the function's overall work. Leaving these checks on in production will not likely impose much of a performance penalty.</p>
 <p>For example, a precondition for a matrix inversion method is that the input matrix must be square. Here is how you might do that check in an <span class="tt">invert(const Matrix&amp; M)</span> function:</p>
-<div class="fragment"><div class="line"><a class="code hl_define" href="attest_8h.html#a77dc3ca60af24729f7c0605f845026a4">attest</a>(M.is_square(), <span class="stringliteral">&quot;Cannot invert a {} x {} NON-square matrix!&quot;</span>, M.rows(), M.cols());</div>
+<div class="fragment"><div class="line"><a class="code hl_define" href="confirm_8h.html#aaa6240e096d775b2f89803b09c6b1cac">confirm</a>(M.is_square(), <span class="stringliteral">&quot;Cannot invert a {} x {} NON-square matrix!&quot;</span>, M.rows(), M.cols());</div>
 </div><!-- fragment --><p>We can only invert square matrices. The <span class="tt">M.is_square()</span> call checks that condition and, on failure, exits the program with a helpful message. The check cost is very slight compared to the work done by the <span class="tt">invert(...)</span> method, so leaving it on even in production code is not a problem.</p>
 <p>The check here is <b>on</b> by default, and you need to do something special (i.e., define the <span class="tt">NDEBUG</span> flag at compile time) to turn it off.</p>
 <p>These macros expand to nothing <b>only if</b> you set the <span class="tt">NDEBUG</span> flag at compile time.</p>
 <p>The decision to use one form vs. the other is predicated on the cost of doing the check versus the work done by the method in question.</p>
-<p>A primary use case for <span class="tt">debug_attest</span> and <span class="tt">debug_attest_eq</span> is checking index bounds. From experience, this is vital during development. However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude. It makes sense to have the checks in place for development, but ensure they are never present in release builds.</p>
+<p>A primary use case for <span class="tt">debug_confirm</span> and <span class="tt">debug_confirm_eq</span> is checking index bounds. From experience, this is vital during development. However, bounds-checking every index operation incurs a considerable performance penalty and can slow down numerical code by orders of magnitude. It makes sense to have the checks in place for development, but ensure they are never present in release builds.</p>
 <h1 class="doxsection"><a class="anchor" id="why-macros"></a>
 Why Macros?</h1>
-<p>The main reason we use macros instead of a function is that we need to stringify the attestion condition and attestion arguments to produce a helpful message if the attestion fails.</p>
+<p>The main reason we use macros instead of a function is that we need to stringify the confirmation condition and confirmation arguments to produce a helpful message if the confirmation fails.</p>
 <p>WARNING: Macros can depend on comma placement to separate arguments, which can be a gotcha in some cases. For example, if you are equality testing between two <span class="tt">std::pair</span> variables. You can often get around any issues by the judicious use of parentheses, but it is something to be aware of if you start to see weird compiler errors.</p>
 <dl class="section warning"><dt>Warning</dt><dd>Microsoft's old traditional preprocessor is not happy with some of our macros, but its newer, cross-platform-compatible one is fine. Add the <span class="tt">/Zc:preprocessor</span> flag to use that upgrade at compile time. Our <span class="tt">CMake</span> module <span class="tt">compiler_init</span> does that automatically for you.</dd></dl>
 <h1 class="doxsection"><a class="anchor" id="see-also"></a>

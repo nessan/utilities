@@ -7,11 +7,11 @@ int
 main(int argc, char* argv[])
 {
     // Must have exactly 1 argument (name of file to read from)
-    always_attest_eq(argc, 2, "Usage: '{} <filename>' -- missing filename argument!", argv[0]);
+    always_confirm_eq(argc, 2, "Usage: '{} <filename>' -- missing filename argument!", argv[0]);
 
     // Try to open the file
     std::ifstream file{argv[1]};
-    always_attest(file, "Failed to open file '{}'", argv[1]);
+    always_confirm(file, "Failed to open file '{}'", argv[1]);
 
     // And we're off ...
     utilities::imbue_stream_with_commas(std::cout);

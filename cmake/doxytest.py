@@ -273,42 +273,83 @@ def compute_header_include(header_file_path, output_directory):
     return f'"{include_path}"'
 
 
-def build_include_block(user_includes, extra_includes=None):
-    """Return a list of unique includes (required + user)."""
-    include_block = []
-    for inc in (extra_includes or []) + REQUIRED_INCLUDES + (user_includes or []):
-        if not inc:
+def _normalize_include_entry(include):
+    """Return an include surrounded with the proper delimiters or None."""
+    if not include:
+        return None
+    include = include.strip()
+    if not include:
+        return None
+    if include.startswith("<") and include.endswith(">"):
+        return include
+    if include.startswith('"') and include.endswith('"'):
+        return include
+    return f'"{include}"'
+
+
+def build_include_sections(user_includes=None, header_includes=None):
+    """Return include sections split into standard, user, and header blocks."""
+    sections = {
+        "standard": [],
+        "user": [],
+        "header": [],
+    }
+    seen = set()
+
+    def add(section_name, include):
+        formatted = _normalize_include_entry(include)
+        if not formatted or formatted in seen:
+            return
+        seen.add(formatted)
+        sections[section_name].append(formatted)
+
+    for include in REQUIRED_INCLUDES:
+        add("standard", include)
+    for include in user_includes or []:
+        add("user", include)
+    for include in header_includes or []:
+        add("header", include)
+
+    return sections
+
+
+def render_include_sections(include_sections):
+    """Return formatted include lines grouped with descriptive comments."""
+    order = [
+        ("standard", "// Standard library includes."),
+        ("user", "// User requested includes."),
+        ("header", "// The header file that supplied the doctests."),
+    ]
+    lines = []
+    emitted = False
+    for key, comment in order:
+        includes = include_sections.get(key) or []
+        if not includes:
             continue
-        inc = inc.strip()
-        if not inc:
-            continue
-        if inc.startswith("<") and inc.endswith(">"):
-            formatted = inc
-        elif inc.startswith('"') and inc.endswith('"'):
-            formatted = inc
-        else:
-            formatted = f'"{inc}"'
-        if formatted not in include_block:
-            include_block.append(formatted)
-    return include_block
+        if emitted:
+            lines.append("")
+        lines.append(comment)
+        lines.extend(f"#include {include}" for include in includes)
+        emitted = True
+    return lines
 
 
 def build_helper_block(max_fails):
     """Return the inline helper code used by generated tests."""
     return [
         "",
-        "// We use our own attest macros instead of the standard ones.",
-        "#ifdef attest",
-        "    #undef attest",
+        "// We use our own assert macros instead of the standard ones.",
+        "#ifdef assert",
+        "    #undef assert",
         "#endif",
-        "#ifdef attest_eq",
-        "    #undef attest_eq",
+        "#ifdef assert_eq",
+        "    #undef assert_eq",
         "#endif",
         "",
-        "#define attest(cond, ...) \\",
+        "#define assert(cond, ...) \\",
         "    if(!(cond)) doxy::failed(#cond, header_file, header_line __VA_OPT__(, __VA_ARGS__));",
         "",
-        "#define attest_eq(a, b, ...) \\",
+        "#define assert_eq(a, b, ...) \\",
         "    if(!((a) == (b))) doxy::failed_eq(#a, #b, (a), (b), header_file, header_line __VA_OPT__(, __VA_ARGS__));",
         "",
         "namespace doxy {",
@@ -326,12 +367,12 @@ def build_helper_block(max_fails):
         "// Program exit (possibly break in `doxy::exit` if you are debugging a test failure).",
         "void exit(int status) { ::exit(status); }",
         "",
-        "// Handle boolean condition attestion evaluation failures.",
+        "// Handle boolean condition assertion evaluation failures.",
         "template <typename... Args>",
         "void",
         "failed(std::string_view cond_str, std::string_view hdr_file, std::size_t hdr_line, ",
         '       std::string_view msg_format = "", Args&&... msg_args) {',
-        '    auto what = std::format("\\nFAILED `attest({})` [{}:{}]\\n", cond_str, hdr_file, hdr_line);',
+        '    auto what = std::format("\\nFAILED `assert({})` [{}:{}]\\n", cond_str, hdr_file, hdr_line);',
         "    if (!msg_format.empty()) {",
         "        auto arg_storage = std::tuple<std::decay_t<Args>...>(std::forward<Args>(msg_args)...);",
         "        auto format_args = std::apply([](auto&... values) { return std::make_format_args<std::format_context>(values...); }, arg_storage);",
@@ -341,12 +382,12 @@ def build_helper_block(max_fails):
         "    throw error{std::move(what)};",
         "}",
         "",
-        "// Handle equality attestion evaluation failures.",
+        "// Handle equality assertion evaluation failures.",
         "template <typename LHS, typename RHS, typename... Args>",
         "void",
         "failed_eq(std::string_view lhs_str, std::string_view rhs_str, const LHS& lhs, const RHS& rhs,",
         '          std::string_view hdr_file, std::size_t hdr_line, std::string_view msg_format = "", Args&&... msg_args) {',
-        '    auto what = std::format("\\nFAILED `attest_eq({}, {})` [{}:{}]\\n", lhs_str, rhs_str, hdr_file, hdr_line);',
+        '    auto what = std::format("\\nFAILED `assert_eq({}, {})` [{}:{}]\\n", lhs_str, rhs_str, hdr_file, hdr_line);',
         "    if (!msg_format.empty()) {",
         "        auto arg_storage = std::tuple<std::decay_t<Args>...>(std::forward<Args>(msg_args)...);",
         "        auto format_args = std::apply([](auto&... values) { return std::make_format_args<std::format_context>(values...); }, arg_storage);",
@@ -425,7 +466,7 @@ def extract_code_blocks(file_path):
     return code_blocks
 
 
-def generate_empty_test_file(header_file_path, header_include):
+def generate_empty_test_file(header_file_path, header_include, includes=None):
     """Generate an empty test file when no code blocks are found."""
     header_path = Path(header_file_path).resolve()
     header_display = header_path.name
@@ -439,9 +480,14 @@ def generate_empty_test_file(header_file_path, header_include):
     content.append("// Do not edit this file manually -- it may be overwritten.")
     content.append(f"// Generated on: {timestamp}")
     content.append("")
-    if header_include:
-        content.append(f"#include {header_include}")
-    content.append("#include <print>")
+    include_sections = build_include_sections(
+        user_includes=includes,
+        header_includes=[header_include] if header_include else None,
+    )
+    include_lines = render_include_sections(include_sections)
+    if include_lines:
+        content.append("")
+        content.extend(include_lines)
     content.append("")
     content.append("int main() {")
     content.append(
@@ -525,9 +571,11 @@ def generate_test_file(
     header_display = header_path.name
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     header_comment = f"// Input file(s): `{header_display}`"
-    include_block = build_include_block(
-        includes, extra_includes=[header_include] if header_include else None
+    include_sections = build_include_sections(
+        user_includes=includes,
+        header_includes=[header_include] if header_include else None,
     )
+    include_lines = render_include_sections(include_sections)
 
     test_blocks = [block for block in code_blocks if block["kind"] == "test"]
     test_count = len(test_blocks)
@@ -540,9 +588,9 @@ def generate_test_file(
         f"// Generated on: {timestamp}",
     ]
 
-    if include_block:
+    if include_lines:
         content.append("")
-        content.extend(f"#include {include}" for include in include_block)
+        content.extend(include_lines)
 
     content.extend(build_helper_block(max_fails))
 
@@ -649,9 +697,11 @@ def generate_combined_test_file(
             if is_header_like_suffix(Path(entry["header_file"]).suffix)
         )
     )
-    include_block = build_include_block(
-        includes, extra_includes=header_includes if header_includes else None
+    include_sections = build_include_sections(
+        user_includes=includes,
+        header_includes=header_includes if header_includes else None,
     )
+    include_lines = render_include_sections(include_sections)
 
     content = [
         "// This combined test file was generated by running the script `doxytest.py` to extract tests from comments in input files."
@@ -665,9 +715,9 @@ def generate_combined_test_file(
     content.append("// Do not edit this file manually -- it may be overwritten.")
     content.append(f"// Generated on: {timestamp}")
 
-    if include_block:
+    if include_lines:
         content.append("")
-        content.extend(f"#include {include}" for include in include_block)
+        content.extend(include_lines)
 
     if total_tests == 0:
         content.extend(build_helper_block(max_fails))
@@ -850,7 +900,9 @@ def process_header_file(
             return False  # No file is generated if no test cases are found
 
         # Generate empty test file when --always flag is set
-        test_content = generate_empty_test_file(header_file_path, header_include)
+        test_content = generate_empty_test_file(
+            header_file_path, header_include, includes
+        )
 
         # Determine output file path
         # Check if we need to regenerate the test file

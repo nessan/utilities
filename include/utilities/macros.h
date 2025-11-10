@@ -57,7 +57,7 @@ concat_cstr(const Parts*... parts)
 /// #define FOO1 "abc"
 /// #define BAR1 FOO1
 /// auto s = STRINGISE(BAR1);
-/// attest(std::strcmp(s, "abc") == 0, "s = {}", s);
+/// confirm(std::strcmp(s, "abc") == 0, "s = {}", s);
 /// ```
 #define STRINGISE(s)      stringise_literal(STRINGISE_IMPL(s))
 #define STRINGISE_IMPL(s) #s
@@ -70,7 +70,7 @@ concat_cstr(const Parts*... parts)
 /// #define BAR2 FOO2
 /// int foofoo = 42;
 /// auto value = CONCAT(FOO2, BAR2);
-/// attest(value == foofoo);
+/// confirm(value == foofoo);
 /// ```
 #define CONCAT(a, b)      CONCAT_IMPL(a, b)
 #define CONCAT_IMPL(a, b) a##b
@@ -85,9 +85,9 @@ concat_cstr(const Parts*... parts)
 /// auto s3 = VERSION_STRING(major, minor, patch);
 /// auto s2 = VERSION_STRING(major, minor);
 /// auto s1 = VERSION_STRING(major);
-/// attest(std::strcmp(s3, "3.2.1") == 0);
-/// attest(std::strcmp(s2, "3.2") == 0);
-/// attest(std::strcmp(s1, "3") == 0);
+/// confirm(std::strcmp(s3, "3.2.1") == 0);
+/// confirm(std::strcmp(s2, "3.2") == 0);
+/// confirm(std::strcmp(s1, "3") == 0);
 /// ```
 #define VERSION_STRING(...) OVERLOAD(VERSION_STRING, __VA_ARGS__)
 

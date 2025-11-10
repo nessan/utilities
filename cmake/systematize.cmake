@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# Add/remove the SYSTEM attribute to/from target include directories.
+# @brief Add/remove the SYSTEM attribute to/from target include directories.
 # @link  https://nessan.github.io/cmake/
 #
 # SPDX-FileCopyrightText:  2023 Nessan Fitzmaurice <nessan.fitzmaurice@me.com>

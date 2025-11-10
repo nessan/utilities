@@ -30,7 +30,7 @@ concept has_to_string = requires(const T& x) {
 /// };
 /// Whatever whatever;
 /// auto whatever_str = std::format("{}", whatever);
-/// attest_eq(whatever_str, "Whatever!");
+/// confirm_eq(whatever_str, "Whatever!");
 /// ```
 template<utilities::has_to_string T>
 struct std::formatter<T> {

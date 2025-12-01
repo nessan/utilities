@@ -11,7 +11,7 @@ var searchData=
   ['stream_20utilities_8',['Stream Utilities',['../md_docs_2pages_2StreamFunctions.html',1,'']]],
   ['string_9',['Compiler String',['../md_docs_2pages_2Macros.html#compiler-string',1,'']]],
   ['string_20utilities_10',['String Utilities',['../md_docs_2pages_2StringFunctions.html',1,'']]],
-  ['strings_11',['Strings',['../md_docs_2pages_2StringFunctions.html#standardising-strings',1,'"Standardising" Strings'],['../md_docs_2pages_2Macros.html#semantic-version-strings',1,'Semantic Version Strings']]],
+  ['strings_11',['Strings',['../md_docs_2pages_2StringFunctions.html#standardising-strings',1,'&quot;Standardising&quot; Strings'],['../md_docs_2pages_2Macros.html#semantic-version-strings',1,'Semantic Version Strings']]],
   ['strings_20for_20object_20types_12',['Strings for Object Types',['../md_docs_2pages_2TypeStrings.html',1,'']]],
   ['substrings_13',['Substrings',['../md_docs_2pages_2StringFunctions.html#erasing-substrings',1,'Erasing Substrings'],['../md_docs_2pages_2StringFunctions.html#replacing-substrings',1,'Replacing Substrings']]]
 ];

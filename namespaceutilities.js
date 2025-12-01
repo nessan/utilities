@@ -1,8 +1,8 @@
 var namespaceutilities =
 [
-    [ "commas_facet", "structutilities_1_1commas__facet.html", null ],
     [ "message", "classutilities_1_1message.html", "classutilities_1_1message" ],
     [ "stopwatch", "classutilities_1_1stopwatch.html", "classutilities_1_1stopwatch" ],
+    [ "commas_facet", "structutilities_1_1commas__facet.html", null ],
     [ "has_to_string", "conceptutilities_1_1has__to__string.html", null ],
     [ "precise_stopwatch", "namespaceutilities.html#a751dc05b935d982376b2286c40fef99b", null ],
     [ "steady_stopwatch", "namespaceutilities.html#a28ce93082f9922ced9985748474e38b2", null ],

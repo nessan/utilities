@@ -2,7 +2,7 @@
 # Uses this [action](https://github.com/marketplace/actions/DenverCoder1/doxygen-github-pages-action).
 # The site is built using the Doxygen static generator (see https://doxygen.org).
 # The source for the site is in the docs/ subdirectory, which contains the Doxyfile, the theme files, and the pages.
-# The output of the build is in the docs/site subdirectory.
+# The output of the build is in the docs/site subdirectory. 
 name: Run Doxygen and publish documentation sit to GitHub Pages
 
 # When is the workflow run?

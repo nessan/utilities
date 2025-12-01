@@ -3,7 +3,7 @@
 name: Release library archive
 
 # The files & directories we archive and the name for the archive.
-# The git tag for the release is either 'current' or the relase tag like '2.1.2'
+# The git tag for the release is either 'current' or the release tag like '2.1.2'
 env:
     archive_content: LICENSE CMakeLists.txt include
     archive_name: ${{ github.event.repository.name }}.zip

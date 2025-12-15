@@ -28,7 +28,7 @@ public:
     std::string& name() { return m_name; }
 
     /// Set/reset the stopwatch's 'zero' point & clear any measured splits.
-    constexpr void reset()
+    void reset()
     {
         m_zero = clock_type::now();
         m_split = 0;
@@ -36,7 +36,7 @@ public:
     }
 
     /// Get the time that has passed from the zero point to now. Units are seconds.
-    constexpr double elapsed() const
+    double elapsed() const
     {
         std::atomic_thread_fence(std::memory_order_relaxed);
         auto t = clock_type::now();
@@ -45,7 +45,7 @@ public:
     }
 
     /// Clicks the stopwatch to create a new 'split' and returns the elapsed time in seconds.
-    constexpr double click()
+    double click()
     {
         auto tau = elapsed();
         m_prior = m_split;
@@ -54,10 +54,10 @@ public:
     }
 
     /// Returns the split as the time in seconds that elapsed from the zero point to the last click.
-    constexpr double split() const { return m_split; }
+    double split() const { return m_split; }
 
     /// Returns the last 'lap' time in seconds (i.e. the time between prior 2 splits).
-    constexpr double lap() const { return m_split - m_prior; }
+    double lap() const { return m_split - m_prior; }
 
     /// Returns a string representation of the stopwatch's elapsed time in seconds.
     std::string to_string() const
@@ -88,7 +88,7 @@ operator<<(std::ostream& os, const stopwatch<Clock>& rhs)
 
 /// A convenience function that converts a `std::chrono::duration` to a `double` number of seconds.
 template<class Rep, class Period>
-constexpr double
+inline double
 to_seconds(const std::chrono::duration<Rep, Period>& d)
 {
     return std::chrono::duration<double>(d).count();

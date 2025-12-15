@@ -139,9 +139,6 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>system_stopwatch</b>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a96e1c23b2c1b0ae717a03787c2df7ef5" id="r_a96e1c23b2c1b0ae717a03787c2df7ef5"><td class="memTemplParams" colspan="2">template&lt;typename Clock&gt; </td></tr>
-<tr class="memitem:a96e1c23b2c1b0ae717a03787c2df7ef5 template"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96e1c23b2c1b0ae717a03787c2df7ef5">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classutilities_1_1stopwatch.html">stopwatch</a>&lt; Clock &gt; &amp;rhs)</td></tr>
-<tr class="memdesc:a96e1c23b2c1b0ae717a03787c2df7ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The usual output operator.  <br /></td></tr>
 <tr class="memitem:a3c14ed95e38ce2cb206dbe177e345655" id="r_a3c14ed95e38ce2cb206dbe177e345655"><td class="memTemplParams" colspan="2"><a id="a3c14ed95e38ce2cb206dbe177e345655" name="a3c14ed95e38ce2cb206dbe177e345655"></a>
 template&lt;class Rep, class Period&gt; </td></tr>
 <tr class="memitem:a3c14ed95e38ce2cb206dbe177e345655 template"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><b>to_seconds</b> (const std::chrono::duration&lt; Rep, Period &gt; &amp;d)</td></tr>
@@ -813,40 +810,6 @@ Example</h1>
 <div class="line"><a class="code hl_define" href="confirm_8h.html#aedde7051633d114f13ccf801d18e924e">confirm_eq</a>(lower_str, <span class="stringliteral">&quot;hello, world!&quot;</span>);</div>
 <div class="ttc" id="anamespaceutilities_html_aae3bc1c9f09aada8d76f5a112cd37d4d"><div class="ttname"><a href="#aae3bc1c9f09aada8d76f5a112cd37d4d">utilities::lower_cased</a></div><div class="ttdeci">std::string lower_cased(std::string_view input)</div><div class="ttdoc">Returns a new string that is a copy of the input converted to lower case.</div><div class="ttdef"><b>Definition</b> string.h:381</div></div>
 </div><!-- fragment --> 
-</div>
-</div>
-<a id="a96e1c23b2c1b0ae717a03787c2df7ef5" name="a96e1c23b2c1b0ae717a03787c2df7ef5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96e1c23b2c1b0ae717a03787c2df7ef5">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Clock&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream &amp; utilities::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classutilities_1_1stopwatch.html">stopwatch</a>&lt; Clock &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The usual output operator. </p>
-<p>Prints the name of the stopwatch if any followed by the elapsed time in seconds. </p>
-
 </div>
 </div>
 <a id="a2fd6696fd2142797b0a4a48350e4fa2a" name="a2fd6696fd2142797b0a4a48350e4fa2a"></a>

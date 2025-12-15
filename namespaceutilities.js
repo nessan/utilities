@@ -44,7 +44,7 @@ var namespaceutilities =
     [ "standardized", "namespaceutilities.html#af6af8740a5d7edd1ef813711ffb5ed2d", null ],
     [ "starts_with", "namespaceutilities.html#a557f01b34e80352bfcb8b48220aa2f5f", null ],
     [ "to_lower", "namespaceutilities.html#a5df0fc6741ea26768c08dd303a3a40c7", null ],
-    [ "to_seconds", "namespaceutilities.html#a8bdece92a7dad9ce418612b648cf43fd", null ],
+    [ "to_seconds", "namespaceutilities.html#a3c14ed95e38ce2cb206dbe177e345655", null ],
     [ "to_upper", "namespaceutilities.html#a8604af1dfa966e206ab9e92b65db8e9e", null ],
     [ "tokenize", "namespaceutilities.html#adf6c468215492825be0934b8142a23b4", null ],
     [ "trim", "namespaceutilities.html#a719a1a3853f1a738adf5e36a7e3494c1", null ],

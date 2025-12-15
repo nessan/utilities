@@ -3,7 +3,7 @@ var searchData=
   ['case_20conversions_0',['Case Conversions',['../md_docs_2pages_2StringFunctions.html#case-conversions',1,'']]],
   ['checks_1',['Checks',['../md_docs_2pages_2Confirmations.html#boolean-checks',1,'Boolean Checks'],['../md_docs_2pages_2Confirmations.html#equality-checks',1,'Equality Checks']]],
   ['class_2',['The Stopwatch Class',['../md_docs_2pages_2Stopwatch.html',1,'']]],
-  ['click_3',['click',['../classutilities_1_1stopwatch.html#aecd71725690d213413d753f6c89f29f5',1,'utilities::stopwatch']]],
+  ['click_3',['click',['../classutilities_1_1stopwatch.html#a905b695486c9ac0e271ad22bc7e96749',1,'utilities::stopwatch']]],
   ['clock_5ftype_4',['clock_type',['../classutilities_1_1stopwatch.html#ab0a96c3218673e895895f5ee28ab9025',1,'utilities::stopwatch']]],
   ['code_20execute_5',['Print Code &amp;amp; Execute',['../md_docs_2pages_2Macros.html#print-code--execute',1,'']]],
   ['commas_5ffacet_6',['commas_facet',['../structutilities_1_1commas__facet.html',1,'utilities']]],

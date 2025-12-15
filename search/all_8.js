@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['lap_0',['lap',['../classutilities_1_1stopwatch.html#ac002eb5e511235aca99175977cc2582a',1,'utilities::stopwatch']]],
+  ['lap_0',['lap',['../classutilities_1_1stopwatch.html#acd61c4b6cabfaf059b3a5acacd780658',1,'utilities::stopwatch']]],
   ['license_1',['Copyright and License',['../index.html#copyright-and-license',1,'']]],
   ['line_5fcount_2',['line_count',['../namespaceutilities.html#a479281bb601ef7f0f5ed98be598f57e7',1,'utilities']]],
   ['links_3',['Links',['../index.html#links',1,'']]],

@@ -130,21 +130,21 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () co
 <tr class="memitem:afac4f39092709d3a63a8bac8252c7021" id="r_afac4f39092709d3a63a8bac8252c7021"><td class="memItemLeft" align="right" valign="top"><a id="afac4f39092709d3a63a8bac8252c7021" name="afac4f39092709d3a63a8bac8252c7021"></a>
 std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> ()</td></tr>
 <tr class="memdesc:afac4f39092709d3a63a8bac8252c7021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides read-write access to the stopwatch's name. <br /></td></tr>
-<tr class="memitem:a08de1c324bae4cd39d310135205424d7" id="r_a08de1c324bae4cd39d310135205424d7"><td class="memItemLeft" align="right" valign="top"><a id="a08de1c324bae4cd39d310135205424d7" name="a08de1c324bae4cd39d310135205424d7"></a>
-constexpr void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
-<tr class="memdesc:a08de1c324bae4cd39d310135205424d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/reset the stopwatch's 'zero' point &amp; clear any measured splits. <br /></td></tr>
-<tr class="memitem:a8a1fcb062cd931654c5cd42b23e28935" id="r_a8a1fcb062cd931654c5cd42b23e28935"><td class="memItemLeft" align="right" valign="top"><a id="a8a1fcb062cd931654c5cd42b23e28935" name="a8a1fcb062cd931654c5cd42b23e28935"></a>
-constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>elapsed</b> () const</td></tr>
-<tr class="memdesc:a8a1fcb062cd931654c5cd42b23e28935"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the time that has passed from the zero point to now. Units are seconds. <br /></td></tr>
-<tr class="memitem:aecd71725690d213413d753f6c89f29f5" id="r_aecd71725690d213413d753f6c89f29f5"><td class="memItemLeft" align="right" valign="top"><a id="aecd71725690d213413d753f6c89f29f5" name="aecd71725690d213413d753f6c89f29f5"></a>
-constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>click</b> ()</td></tr>
-<tr class="memdesc:aecd71725690d213413d753f6c89f29f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clicks the stopwatch to create a new 'split' and returns the elapsed time in seconds. <br /></td></tr>
-<tr class="memitem:af360f743dcc18fbafd544f88824c9b97" id="r_af360f743dcc18fbafd544f88824c9b97"><td class="memItemLeft" align="right" valign="top"><a id="af360f743dcc18fbafd544f88824c9b97" name="af360f743dcc18fbafd544f88824c9b97"></a>
-constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>split</b> () const</td></tr>
-<tr class="memdesc:af360f743dcc18fbafd544f88824c9b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the split as the time in seconds that elapsed from the zero point to the last click. <br /></td></tr>
-<tr class="memitem:ac002eb5e511235aca99175977cc2582a" id="r_ac002eb5e511235aca99175977cc2582a"><td class="memItemLeft" align="right" valign="top"><a id="ac002eb5e511235aca99175977cc2582a" name="ac002eb5e511235aca99175977cc2582a"></a>
-constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>lap</b> () const</td></tr>
-<tr class="memdesc:ac002eb5e511235aca99175977cc2582a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last 'lap' time in seconds (i.e. the time between prior 2 splits). <br /></td></tr>
+<tr class="memitem:a7f2b5783b14749a5cfbf80ee28e967ce" id="r_a7f2b5783b14749a5cfbf80ee28e967ce"><td class="memItemLeft" align="right" valign="top"><a id="a7f2b5783b14749a5cfbf80ee28e967ce" name="a7f2b5783b14749a5cfbf80ee28e967ce"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr class="memdesc:a7f2b5783b14749a5cfbf80ee28e967ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/reset the stopwatch's 'zero' point &amp; clear any measured splits. <br /></td></tr>
+<tr class="memitem:ad074917c1a522c523a415d81477f1974" id="r_ad074917c1a522c523a415d81477f1974"><td class="memItemLeft" align="right" valign="top"><a id="ad074917c1a522c523a415d81477f1974" name="ad074917c1a522c523a415d81477f1974"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>elapsed</b> () const</td></tr>
+<tr class="memdesc:ad074917c1a522c523a415d81477f1974"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the time that has passed from the zero point to now. Units are seconds. <br /></td></tr>
+<tr class="memitem:a905b695486c9ac0e271ad22bc7e96749" id="r_a905b695486c9ac0e271ad22bc7e96749"><td class="memItemLeft" align="right" valign="top"><a id="a905b695486c9ac0e271ad22bc7e96749" name="a905b695486c9ac0e271ad22bc7e96749"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>click</b> ()</td></tr>
+<tr class="memdesc:a905b695486c9ac0e271ad22bc7e96749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clicks the stopwatch to create a new 'split' and returns the elapsed time in seconds. <br /></td></tr>
+<tr class="memitem:a2e875d8057b1d96b54e3b71fd6276e05" id="r_a2e875d8057b1d96b54e3b71fd6276e05"><td class="memItemLeft" align="right" valign="top"><a id="a2e875d8057b1d96b54e3b71fd6276e05" name="a2e875d8057b1d96b54e3b71fd6276e05"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>split</b> () const</td></tr>
+<tr class="memdesc:a2e875d8057b1d96b54e3b71fd6276e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the split as the time in seconds that elapsed from the zero point to the last click. <br /></td></tr>
+<tr class="memitem:acd61c4b6cabfaf059b3a5acacd780658" id="r_acd61c4b6cabfaf059b3a5acacd780658"><td class="memItemLeft" align="right" valign="top"><a id="acd61c4b6cabfaf059b3a5acacd780658" name="acd61c4b6cabfaf059b3a5acacd780658"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>lap</b> () const</td></tr>
+<tr class="memdesc:acd61c4b6cabfaf059b3a5acacd780658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last 'lap' time in seconds (i.e. the time between prior 2 splits). <br /></td></tr>
 <tr class="memitem:aaf9352beff6b71c8958d768f8827f695" id="r_aaf9352beff6b71c8958d768f8827f695"><td class="memItemLeft" align="right" valign="top"><a id="aaf9352beff6b71c8958d768f8827f695" name="aaf9352beff6b71c8958d768f8827f695"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> () const</td></tr>
 <tr class="memdesc:aaf9352beff6b71c8958d768f8827f695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation of the stopwatch's elapsed time in seconds. <br /></td></tr>

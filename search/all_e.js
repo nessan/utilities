@@ -5,7 +5,7 @@ var searchData=
   ['semantic_20version_20strings_2',['Semantic Version Strings',['../md_docs_2pages_2Macros.html#semantic-version-strings',1,'']]],
   ['spaces_3',['Trimming Spaces',['../md_docs_2pages_2StringFunctions.html#trimming-spaces',1,'']]],
   ['specialisation_4',['Specialisation',['../md_docs_2pages_2Formatter.html',1,'Formatter Specialisation'],['../md_docs_2pages_2Logging.html',1,'Formatter Specialisation']]],
-  ['split_5',['split',['../classutilities_1_1stopwatch.html#af360f743dcc18fbafd544f88824c9b97',1,'utilities::stopwatch::split()'],['../namespaceutilities.html#a6f271f75b70c6f292e45809278df6f99',1,'utilities::split()']]],
+  ['split_5',['split',['../classutilities_1_1stopwatch.html#a2e875d8057b1d96b54e3b71fd6276e05',1,'utilities::stopwatch::split()'],['../namespaceutilities.html#a6f271f75b70c6f292e45809278df6f99',1,'utilities::split()']]],
   ['standard_20versions_6',['The &quot;Standard&quot; Versions',['../md_docs_2pages_2Confirmations.html#the-standard-versions',1,'']]],
   ['standardising_20strings_7',['&quot;Standardising&quot; Strings',['../md_docs_2pages_2StringFunctions.html#standardising-strings',1,'']]],
   ['standardize_8',['standardize',['../namespaceutilities.html#ab2b25a444d3777c7b1cb8641aaa5c17a',1,'utilities']]],

@@ -15,7 +15,7 @@ var searchData=
   ['replaced_5fright_12',['replaced_right',['../namespaceutilities.html#a64d5ab8a5e9c36ca8a7315165a8b6099',1,'utilities']]],
   ['replaced_5fspace_13',['replaced_space',['../namespaceutilities.html#a1e909ee573a128481281b8181774a669',1,'utilities']]],
   ['replacing_20substrings_14',['Replacing Substrings',['../md_docs_2pages_2StringFunctions.html#replacing-substrings',1,'']]],
-  ['reset_15',['reset',['../classutilities_1_1stopwatch.html#a08de1c324bae4cd39d310135205424d7',1,'utilities::stopwatch']]],
+  ['reset_15',['reset',['../classutilities_1_1stopwatch.html#a7f2b5783b14749a5cfbf80ee28e967ce',1,'utilities::stopwatch']]],
   ['rewind_16',['rewind',['../namespaceutilities.html#a4a9795f4e677e71c87644c5b6bf3d832',1,'utilities']]],
   ['run_17',['RUN',['../macros_8h.html#a254c7675e8b155e7b9b6da9ba4ac3cdf',1,'macros.h']]]
 ];

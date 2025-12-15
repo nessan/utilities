@@ -22,6 +22,7 @@ var namespaceutilities =
     [ "line_count", "namespaceutilities.html#a479281bb601ef7f0f5ed98be598f57e7", null ],
     [ "lower_case", "namespaceutilities.html#a0d76497444815267a22e6d6ede76a082", null ],
     [ "lower_cased", "namespaceutilities.html#aae3bc1c9f09aada8d76f5a112cd37d4d", null ],
+    [ "operator<<", "namespaceutilities.html#a96e1c23b2c1b0ae717a03787c2df7ef5", null ],
     [ "possible", "namespaceutilities.html#a2fd6696fd2142797b0a4a48350e4fa2a", null ],
     [ "pretty_print_thousands", "namespaceutilities.html#a649697548a75ed9fe1fe877ca3b17764", null ],
     [ "read_line", "namespaceutilities.html#a9feb9742d87a8442764e0836e3de2118", null ],

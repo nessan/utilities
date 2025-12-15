@@ -1,7 +1,7 @@
 var searchData=
 [
   ['object_20types_0',['Strings for Object Types',['../md_docs_2pages_2TypeStrings.html',1,'']]],
-  ['operator_3c_3c_1',['operator&lt;&lt;',['../classutilities_1_1stopwatch.html#a6b80dca3710be667a673fe0b1214bbd1',1,'utilities::stopwatch']]],
+  ['operator_3c_3c_1',['operator&lt;&lt;',['../namespaceutilities.html#a96e1c23b2c1b0ae717a03787c2df7ef5',1,'utilities']]],
   ['other_20functions_2',['Other Functions',['../md_docs_2pages_2StreamFunctions.html#other-functions',1,'']]],
   ['other_20methods_3',['Other Methods',['../md_docs_2pages_2Stopwatch.html#other-methods',1,'']]],
   ['output_20functions_4',['Output Functions',['../md_docs_2pages_2Stopwatch.html#output-functions',1,'']]],

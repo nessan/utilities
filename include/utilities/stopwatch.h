@@ -70,11 +70,6 @@ public:
         return std::format("{}: {}s", m_name, tau);
     }
 
-    /// The usual output stream operator.
-    ///
-    /// Prints the name of the stopwatch if any followed by the elapsed time in seconds.
-    std::ostream& operator<<(std::ostream& os) const { return os << to_string(); }
-
 private:
     using time_point = typename Clock::time_point;
 
@@ -100,6 +95,16 @@ using steady_stopwatch = stopwatch<std::chrono::steady_clock>;
 
 /// A stopwatch that is uses the system clock.
 using system_stopwatch = stopwatch<std::chrono::system_clock>;
+
+/// The usual output stream operator.
+///
+/// Prints the name of the stopwatch if any followed by the elapsed time in seconds.
+template<typename Clock>
+inline std::ostream&
+operator<<(std::ostream& os, const stopwatch<Clock>& rhs)
+{
+    return os << rhs.to_string();
+}
 
 } // namespace utilities
 

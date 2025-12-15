@@ -7,8 +7,11 @@
 /// See the [Stopwatch](docs/pages/Stopwatch.md) page for all the details.
 
 #include <atomic>
+#include <cassert>
 #include <chrono>
 #include <iostream>
+#include <string>
+#include <format>
 
 namespace utilities {
 /// See the [Stopwatch](docs/pages/Stopwatch.md) page for all the details.
@@ -67,6 +70,11 @@ public:
         return std::format("{}: {}s", m_name, tau);
     }
 
+    /// The usual output stream operator.
+    ///
+    /// Prints the name of the stopwatch if any followed by the elapsed time in seconds.
+    std::ostream& operator<<(std::ostream& os) const { return os << to_string(); }
+
 private:
     using time_point = typename Clock::time_point;
 
@@ -75,16 +83,6 @@ private:
     double      m_split; // The total seconds to when the stopwatch was most recently clicked.
     double      m_prior; // The prior split.
 };
-
-/// The usual output operator.
-///
-/// Prints the name of the stopwatch if any followed by the elapsed time in seconds.
-template<typename Clock>
-inline std::ostream&
-operator<<(std::ostream& os, const stopwatch<Clock>& rhs)
-{
-    return os << rhs.to_string();
-}
 
 /// A convenience function that converts a `std::chrono::duration` to a `double` number of seconds.
 template<class Rep, class Period>
@@ -104,3 +102,27 @@ using steady_stopwatch = stopwatch<std::chrono::steady_clock>;
 using system_stopwatch = stopwatch<std::chrono::system_clock>;
 
 } // namespace utilities
+
+// --------------------------------------------------------------------------------------------------------------------
+// Specialises `std::formatter` to handle our stopwatch class ...
+// -------------------------------------------------------------------------------------------------------------------
+
+/// Specialise `std::formatter` for our `utilities::stopwatch<Clock>` type.
+template<typename Clock>
+struct std::formatter<utilities::stopwatch<Clock>> {
+
+    constexpr auto parse(const std::format_parse_context& ctx)
+    {
+        // Throw an error for anything that is not default formatted for now ...
+        auto it = ctx.begin();
+        assert(it == ctx.end() || *it == '}');
+        return it;
+    }
+
+    template<class FormatContext>
+    auto format(const utilities::stopwatch<Clock>& rhs, FormatContext& ctx) const
+    {
+        // Punt the formatting to the stopwatch's `to_string()` method.
+        return std::format_to(ctx.out(), "{}", rhs.to_string());
+    }
+};

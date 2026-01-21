@@ -62,12 +62,32 @@ public:
     /// Returns the last 'lap' time in seconds (i.e. the time between prior 2 splits).
     double lap() const { return m_split - m_prior; }
 
+    /// Class method that returns a "pretty" string for a time in seconds.
+    ///
+    /// - If the time is less than 1 second, it is formatted as a number of milliseconds.
+    /// - If the time is greater than 1 second, it is formatted as a number of seconds.
+    ///
+    /// Numbers are formatted to 2 decimal places and output with a unit suffix (`ms` or `s`).
+    ///
+    /// # Examples
+    /// ```
+    /// assert_eq(stopwatch<>::format_seconds(0.0001), "0.10ms");
+    /// assert_eq(stopwatch<>::format_seconds(0.011), "11.00ms");
+    /// assert_eq(stopwatch<>::format_seconds(1.0), "1.00s");
+    /// assert_eq(stopwatch<>::format_seconds(25.23456789), "25.23s");
+    /// ```
+    constexpr static std::string format_seconds(double seconds)
+    {
+        if (seconds < 1.0) { return std::format("{:.2f}ms", seconds * 1000.0); }
+        return std::format("{:.2f}s", seconds);
+    }
+
     /// Returns a string representation of the stopwatch's elapsed time in seconds.
     std::string to_string() const
     {
-        auto tau = elapsed();
-        if (m_name.empty()) return std::format("{}s", tau);
-        return std::format("{}: {}s", m_name, tau);
+        auto tau = format_seconds(elapsed());
+        if (m_name.empty()) return tau;
+        return std::format("{}: {}", m_name, tau);
     }
 
 private:

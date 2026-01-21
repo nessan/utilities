@@ -11,11 +11,12 @@ std::cout << sw << '\n';
 ```
 
 The output will be the time taken for the `do_work()` call.
-The units are seconds.
+The units are milliseconds if the elapsed time is less than a second, or seconds otherwise.
+The time is always shown to two decimal places and suffixed with "ms" or "s" as appropriate.
 
 ## Declaration
 
-The header-only class is templatised over a specific clock choice, likely one of the clocks from [`std::chrono`].
+The header-only class is a template over a specific clock choice, likely one of the clocks from [`std::chrono`].
 
 ```c++
 template<typename Clock> class utilities::stopwatch;
@@ -64,15 +65,15 @@ The stopwatch class is kept deliberately simple.
 
 At its core, it measures the elapsed time in seconds from a _zero time_ set on creation or by calling the stopwatch's `reset()` method.
 It also supports the idea of _clicking_ a stopwatch to record a _split time — the time, in seconds, from the zero point to the click event.
-Finally, it records a _lap_ time, which is the time between the last two stopwatch clicks.
+Finally, it records a \_lap_ time, which is the time between the last two stopwatch clicks.
 However, it has no memory beyond that.
 
 ```c++
-constexpr void reset(); // <1>
-constexpr double elapsed() const; // <2>
-constexpr double click(); // <3>
-constexpr double split() const; // <4>
-constexpr double lap() const; // <5>
+constexpr void reset();             // <1>
+constexpr double elapsed() const;   // <2>
+constexpr double click();           // <3>
+constexpr double split() const;     // <4>
+constexpr double lap() const;       // <5>
 ```
 
 1. Clears out any recorded split time and resets the _zero time_ to now.
@@ -80,6 +81,16 @@ constexpr double lap() const; // <5>
 3. Creates a _split_ by recording the elapsed time in seconds from the _zero time_ to the `click()` call and returns that time.
 4. Returns the last recorded split time in seconds.
 5. Returns the time in seconds between the last two splits --- i.e., between the previous two click events.
+
+## Stringification
+
+We have a method to get the elapsed time as a string:
+
+```c++
+constexpr std::string to_string() const;
+```
+
+This outputs the stopwatch's elapsed time either in milliseconds if the elapsed time is less than a second, or otherwise in seconds. The time is always shown to two decimal places and suffixed with "ms" or "s" as appropriate. If the stopwatch has a name, it is prepended to the output followed by a colon and a space.
 
 ## Other Methods
 
@@ -92,6 +103,12 @@ std::string& name();
 
 ## Output Functions
 
+There is the usual stopwatch.
+
+```c++
+constexpr std::string to_string() const;
+```
+
 We have the usual stream output operator and also a specialisation for [`std::formatter`]:
 
 ```c++
@@ -103,10 +120,7 @@ template<typename Clock>
 struct std::formatter<utilities::stopwatch<Clock>>;
 ```
 
-> [!NOTE]
-> These functions output only the stopwatch's elapsed time.
-> The output will look like "3.2s" without a name.
-> The output will look like "name: 3.2s" with a name.
+These functions delegate to the stopwatch's `to_string()` method.
 
 We also have a little utility to convert a [`std::chrono::duration`] to a `double` number of seconds.
 
@@ -120,7 +134,7 @@ to_seconds(const std::chrono::duration<Rep, Period>);
 
 How efficient is it to put a thread to sleep?
 
-```cpp
+```c++
 #include <utilities/stopwatch.h>
 #include <format>
 #include <thread>
@@ -132,12 +146,12 @@ int main()
 
     for (auto sleep_duration = 0ms; sleep_duration <= 2s; sleep_duration += 200ms) {
 
-        sw.click(); // <1>
-        std::this_thread::sleep_for(sleep_duration); // <2>
-        sw.click(); // <3>
+        sw.click();                                                         // <1>
+        std::this_thread::sleep_for(sleep_duration);                        // <2>
+        sw.click();                                                         // <3>
 
-        double sleep_ms = 1000 * utilities::to_seconds(sleep_duration); // <4>
-        double actual_ms = 1000 * sw.lap(); // <5>
+        double sleep_ms = 1000 * utilities::to_seconds(sleep_duration);     // <4>
+        double actual_ms = 1000 * sw.lap();                                 // <5>
         double diff = actual_ms - sleep_ms;
         double percent = sleep_ms != 0 ? 100 * diff / sleep_ms : 0;
 
@@ -149,11 +163,11 @@ int main()
 }
 ```
 
-1. Create a split.
-2. Sleep for a set number of milliseconds.
-3. Create a second split and, hence, a lap.
-4. Convert the sleep duration to a double number of seconds.
-5. Get the lap time for that last call to `sleep_for(...)`.
+1. Create a stopwatch split to mark the start time.
+2. Sleep the current thread for a set number of milliseconds.
+3. Create a second split and, hence, a lap that measures the actual sleep time.
+4. Convert the requested sleep duration to a double number of seconds.
+5. Get the actual sleep time as a double number of seconds from the stopwatch lap.
 
 The program outputs something along the lines:
 

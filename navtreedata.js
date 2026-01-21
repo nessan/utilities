@@ -66,6 +66,7 @@ var NAVTREE =
       [ "Notes", "md_docs_2pages_2Stopwatch.html#notes-2", null ],
       [ "Construction", "md_docs_2pages_2Stopwatch.html#construction", null ],
       [ "Timing Methods", "md_docs_2pages_2Stopwatch.html#timing-methods", null ],
+      [ "Stringification", "md_docs_2pages_2Stopwatch.html#stringification", null ],
       [ "Other Methods", "md_docs_2pages_2Stopwatch.html#other-methods", null ],
       [ "Output Functions", "md_docs_2pages_2Stopwatch.html#output-functions", null ],
       [ "Example", "md_docs_2pages_2Stopwatch.html#example-48", null ]

@@ -24,9 +24,10 @@ var searchData=
   ['string_21',['Compiler String',['../md_docs_2pages_2Macros.html#compiler-string',1,'']]],
   ['string_20utilities_22',['String Utilities',['../md_docs_2pages_2StringFunctions.html',1,'']]],
   ['string_2eh_23',['string.h',['../string_8h.html',1,'']]],
-  ['stringise_24',['STRINGISE',['../macros_8h.html#a157e503825396913a8a4b0fbfa128fed',1,'macros.h']]],
-  ['strings_25',['Strings',['../md_docs_2pages_2StringFunctions.html#standardising-strings',1,'&quot;Standardising&quot; Strings'],['../md_docs_2pages_2Macros.html#semantic-version-strings',1,'Semantic Version Strings']]],
-  ['strings_20for_20object_20types_26',['Strings for Object Types',['../md_docs_2pages_2TypeStrings.html',1,'']]],
-  ['substrings_27',['Substrings',['../md_docs_2pages_2StringFunctions.html#erasing-substrings',1,'Erasing Substrings'],['../md_docs_2pages_2StringFunctions.html#replacing-substrings',1,'Replacing Substrings']]],
-  ['system_5fstopwatch_28',['system_stopwatch',['../namespaceutilities.html#a19d1ffe48823f631627dd9260004300a',1,'utilities']]]
+  ['stringification_24',['Stringification',['../md_docs_2pages_2Stopwatch.html#stringification',1,'']]],
+  ['stringise_25',['STRINGISE',['../macros_8h.html#a157e503825396913a8a4b0fbfa128fed',1,'macros.h']]],
+  ['strings_26',['Strings',['../md_docs_2pages_2StringFunctions.html#standardising-strings',1,'&quot;Standardising&quot; Strings'],['../md_docs_2pages_2Macros.html#semantic-version-strings',1,'Semantic Version Strings']]],
+  ['strings_20for_20object_20types_27',['Strings for Object Types',['../md_docs_2pages_2TypeStrings.html',1,'']]],
+  ['substrings_28',['Substrings',['../md_docs_2pages_2StringFunctions.html#erasing-substrings',1,'Erasing Substrings'],['../md_docs_2pages_2StringFunctions.html#replacing-substrings',1,'Replacing Substrings']]],
+  ['system_5fstopwatch_29',['system_stopwatch',['../namespaceutilities.html#a19d1ffe48823f631627dd9260004300a',1,'utilities']]]
 ];

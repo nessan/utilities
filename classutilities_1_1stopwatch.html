@@ -148,11 +148,58 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>lap</b> () const</t
 <tr class="memitem:aaf9352beff6b71c8958d768f8827f695" id="r_aaf9352beff6b71c8958d768f8827f695"><td class="memItemLeft" align="right" valign="top"><a id="aaf9352beff6b71c8958d768f8827f695" name="aaf9352beff6b71c8958d768f8827f695"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> () const</td></tr>
 <tr class="memdesc:aaf9352beff6b71c8958d768f8827f695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation of the stopwatch's elapsed time in seconds. <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a10f75aec0bba172ed06e3269e9169650" id="r_a10f75aec0bba172ed06e3269e9169650"><td class="memItemLeft" align="right" valign="top">static constexpr std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10f75aec0bba172ed06e3269e9169650">format_seconds</a> (double seconds)</td></tr>
+<tr class="memdesc:a10f75aec0bba172ed06e3269e9169650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class method that returns a "pretty" string for a time in seconds.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Clock = std::chrono::high_resolution_clock&gt;<br />
 class utilities::stopwatch&lt; Clock &gt;</div><p>See the <a class="el" href="md_docs_2pages_2Stopwatch.html">Stopwatch</a> page for all the details. </p>
-</div></div><!-- contents -->
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a10f75aec0bba172ed06e3269e9169650" name="a10f75aec0bba172ed06e3269e9169650"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10f75aec0bba172ed06e3269e9169650">&#9670;&#160;</a></span>format_seconds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Clock = std::chrono::high_resolution_clock&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::string <a class="el" href="classutilities_1_1stopwatch.html">utilities::stopwatch</a>&lt; Clock &gt;::format_seconds </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>seconds</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class method that returns a "pretty" string for a time in seconds. </p>
+<ul>
+<li>If the time is less than 1 second, it is formatted as a number of milliseconds.</li>
+<li>If the time is greater than 1 second, it is formatted as a number of seconds.</li>
+</ul>
+<p>Numbers are formatted to 2 decimal places and output with a unit suffix (<span class="tt">ms</span> or <span class="tt">s</span>).</p>
+<h1 class="doxsection"><a class="anchor" id="examples"></a>
+Examples</h1>
+<div class="fragment"><div class="line">assert_eq(<a class="code hl_function" href="#a10f75aec0bba172ed06e3269e9169650">stopwatch&lt;&gt;::format_seconds</a>(0.0001), <span class="stringliteral">&quot;0.10ms&quot;</span>);</div>
+<div class="line">assert_eq(<a class="code hl_function" href="#a10f75aec0bba172ed06e3269e9169650">stopwatch&lt;&gt;::format_seconds</a>(0.011), <span class="stringliteral">&quot;11.00ms&quot;</span>);</div>
+<div class="line">assert_eq(<a class="code hl_function" href="#a10f75aec0bba172ed06e3269e9169650">stopwatch&lt;&gt;::format_seconds</a>(1.0), <span class="stringliteral">&quot;1.00s&quot;</span>);</div>
+<div class="line">assert_eq(<a class="code hl_function" href="#a10f75aec0bba172ed06e3269e9169650">stopwatch&lt;&gt;::format_seconds</a>(25.23456789), <span class="stringliteral">&quot;25.23s&quot;</span>);</div>
+<div class="ttc" id="aclassutilities_1_1stopwatch_html_a10f75aec0bba172ed06e3269e9169650"><div class="ttname"><a href="#a10f75aec0bba172ed06e3269e9169650">utilities::stopwatch::format_seconds</a></div><div class="ttdeci">static constexpr std::string format_seconds(double seconds)</div><div class="ttdoc">Class method that returns a &quot;pretty&quot; string for a time in seconds.</div><div class="ttdef"><b>Definition</b> stopwatch.h:79</div></div>
+</div><!-- fragment --> 
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
